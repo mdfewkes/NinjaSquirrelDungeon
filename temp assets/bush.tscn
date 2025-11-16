@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dplx8gnuq04lk"]
+
+[ext_resource type="Texture2D" uid="uid://cv4ea8acqc1s3" path="res://temp assets/bush-temp.png" id="1_8cy4n"]
+[ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_28u5p"]
+[ext_resource type="PackedScene" uid="uid://dq1l63ht8k17e" path="res://temp assets/grasseffect.tscn" id="2_txick"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_fktey"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cy4n"]
+radius = 20.0
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilexf"]
+radius = 17.117243
+
+[node name="Bush" type="StaticBody2D"]
+script = ExtResource("1_28u5p")
+destroy_effect = ExtResource("2_txick")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -92)
+texture = ExtResource("1_8cy4n")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("CapsuleShape2D_8cy4n")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(1, -28)
+collision_mask = 2
+script = ExtResource("4_fktey")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ilexf")
