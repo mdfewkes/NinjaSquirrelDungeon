@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var speed = 300;
 @export var roll_speed = 600;
-@export var max_hp = 5
+@export var max_hp = 4
 var current_hp = max_hp
 
 var input_vector: = Vector2.ZERO
@@ -13,8 +13,9 @@ var last_input_vector: = Vector2.DOWN
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
+signal update_health(current_health, max_health)
+
 func _ready():
-	Globals.player = self
 	hurt_box.area_entered.connect(_on_hurt)
 
 func _physics_process(_delta: float) -> void:
@@ -75,6 +76,7 @@ func update_blend_positions() -> void:
 
 func _on_hurt(hitbox: HitBox):
 	current_hp -= hitbox.damage
+	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
 	if current_hp <= 0:
 		_die()
