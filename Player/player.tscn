@@ -1,7 +1,7 @@
 [gd_scene load_steps=59 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://Player/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cc2y5m83xd4l3" path="res://Player/player-temp-tileset.png" id="2_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://ppxamr2g7sb6" path="res://Player/player-temp-tileset-squirrel.png" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_gwnis"]
 
@@ -790,7 +790,7 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4ntmi")
+texture = ExtResource("2_gwnis")
 offset = Vector2(0, -32.195)
 hframes = 2
 vframes = 4
