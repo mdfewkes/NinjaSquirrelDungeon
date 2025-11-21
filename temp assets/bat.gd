@@ -35,6 +35,7 @@ func chase_state():
 	move_and_slide()
 
 func knockback_state(delta):
+	if current_hp <= 0: queue_free()
 	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	move_and_slide()
 
