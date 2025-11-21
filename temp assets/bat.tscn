@@ -198,7 +198,6 @@ target_position = Vector2(16, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_0wgnc")
-signal_disabled = null
 metadata/_custom_type_script = "uid://jrn1snxemt88"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
