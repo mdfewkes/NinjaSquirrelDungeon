@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4kwsiasl0gw1"]
+[gd_scene load_steps=22 format=3 uid="uid://c4kwsiasl0gw1"]
 
 [ext_resource type="Texture2D" uid="uid://b6a5kj3o7b6ep" path="res://temp assets/bat.png" id="1_1u6w6"]
 [ext_resource type="Script" uid="uid://batg7bpwdq0yi" path="res://temp assets/bat.gd" id="1_3pt26"]
@@ -157,6 +157,9 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqpo7"]
 radius = 16.03122
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fac5f"]
+polygon = PackedVector2Array(-5, -51, 3, -54, 10, -49, 13, -41, 13, -29, 8, -23, 0, -21, -6, -24, -9, -29, -9, -38, -8, -47)
+
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
@@ -220,3 +223,7 @@ offset_bottom = -52.0
 text = "health"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_fac5f")
+occluder_light_mask = 3

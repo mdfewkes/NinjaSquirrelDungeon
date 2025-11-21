@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://idvuu5pv2ejg"]
+
+[ext_resource type="Texture2D" uid="uid://b4l1wybno7p36" path="res://icon.svg" id="1_hdgcg"]
+
+[sub_resource type="Gradient" id="Gradient_pkg7o"]
+offsets = PackedFloat32Array(0, 0.72)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gbfbk"]
+gradient = SubResource("Gradient_pkg7o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Light" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.735, 0.735)
+texture = ExtResource("1_hdgcg")
+
+[node name="PointLight2D" type="PointLight2D" parent="Icon"]
+scale = Vector2(10, 10)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_gbfbk")
