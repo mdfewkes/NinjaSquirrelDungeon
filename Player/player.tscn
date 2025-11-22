@@ -781,7 +781,6 @@ motion_mode = 1
 script = ExtResource("1_onrkg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -28)
 polygon = PackedVector2Array(-25, 9, 0, 31, 25, 9, 0, -8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -791,7 +790,6 @@ position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gwnis")
-offset = Vector2(0, -32.195)
 hframes = 2
 vframes = 4
 frame = 6
@@ -832,5 +830,5 @@ script = ExtResource("4_gwnis")
 metadata/_custom_type_script = "uid://jrn1snxemt88"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -31)
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_hshwv")
