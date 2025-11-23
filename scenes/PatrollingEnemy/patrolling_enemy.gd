@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+enum States {IDLE, PATROL, CHASE, STUN}
+
 @export var view_range: = 300
 @export var speed: = 200
 @export var knockback_friction = 1000
@@ -20,11 +22,11 @@ var current_patrol_point := 0:
 			current_patrol_point = val
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback = animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var patrol_timer: Timer = $PatrolTimer
+
+var state := States.IDLE
 
 var player = null
 
@@ -35,35 +37,44 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	$Label.text = str(current_hp)
-	var state = playback.get_current_node()
 	match state:
-		"idleState":
+		States.IDLE:
 			idle_state()
-		"patrolState":
+		States.PATROL:
 			patrol_state()
-		"chaseState":
+		States.CHASE:
 			chase_state()
-		"knockbackState":
+		States.STUN:
 			knockback_state(_delta)
 
 
 func idle_state():
 	if current_hp <= 0:
 		queue_free()
+	if can_see_player():
+		state = States.CHASE
+	elif not at_patrol_point():
+		state = States.PATROL
 
 
 func chase_state():
 	velocity = global_position.direction_to(player.global_position) * speed
 	sprite_2d.scale.x = sign(velocity.x)
 	move_and_slide()
+	if not can_see_player():
+		state = States.IDLE
 
 
 func patrol_state():
 	var target_coordinates : Vector2 = patrol_points.get(current_patrol_point).coordinates
-	if (global_position.distance_to(target_coordinates) > patrol_point_radius):
+	if not at_patrol_point():
 		velocity = global_position.direction_to(target_coordinates) * speed
 		sprite_2d.scale.x = sign(velocity.x)
 		move_and_slide()
+	if can_see_player():
+		state = States.CHASE
+	elif at_patrol_point():
+		state = States.IDLE
 
 
 func knockback_state(delta):
@@ -90,11 +101,15 @@ func can_see_player() -> bool:
 	return not ray_cast_2d.is_colliding()
 
 
+func at_patrol_point() -> bool:
+	var target_coordinates : Vector2 = patrol_points.get(current_patrol_point).coordinates
+	return global_position.distance_to(target_coordinates) <= patrol_point_radius
+
+
 func _on_hurt(hit_box: HitBox):
 	velocity = hit_box.global_position.direction_to(global_position) * 1000
 	current_hp -= hit_box.damage
 	print(hit_box.name)
-	playback.start("knockbackState")
 
 
 func _on_patrol_timer_timeout() -> void:

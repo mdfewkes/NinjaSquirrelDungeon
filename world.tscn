@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=54 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://scenes/Bat/bat.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://bwfrrxhnpgcjm" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="9_ioo17"]
+[ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="10_wse8f"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -580,6 +582,30 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_036b0")
 
+[sub_resource type="Resource" id="Resource_wse8f"]
+script = ExtResource("10_wse8f")
+duration = 5.0
+coordinates = Vector2(1184, -16)
+metadata/_custom_type_script = "uid://btp4qrx8g0uin"
+
+[sub_resource type="Resource" id="Resource_ic0uy"]
+script = ExtResource("10_wse8f")
+duration = 5.0
+coordinates = Vector2(1184, -208)
+metadata/_custom_type_script = "uid://btp4qrx8g0uin"
+
+[sub_resource type="Resource" id="Resource_k3n1d"]
+script = ExtResource("10_wse8f")
+duration = 5.0
+coordinates = Vector2(1824, -208)
+metadata/_custom_type_script = "uid://btp4qrx8g0uin"
+
+[sub_resource type="Resource" id="Resource_2o6r5"]
+script = ExtResource("10_wse8f")
+duration = 5.0
+coordinates = Vector2(1824, -16)
+metadata/_custom_type_script = "uid://btp4qrx8g0uin"
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
@@ -704,3 +730,8 @@ position = Vector2(504, 375)
 
 [node name="Light5" parent="." instance=ExtResource("8_gbfbk")]
 position = Vector2(1175, -155)
+
+[node name="PatrollingEnemy" parent="." instance=ExtResource("9_ioo17")]
+position = Vector2(1184, -16)
+patrol_point_radius = 5
+patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wse8f"), SubResource("Resource_ic0uy"), SubResource("Resource_k3n1d"), SubResource("Resource_2o6r5")])

@@ -1,119 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwfrrxhnpgcjm"]
+[gd_scene load_steps=9 format=3 uid="uid://bwfrrxhnpgcjm"]
 
 [ext_resource type="Script" uid="uid://6g2mctlq0fjj" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="1_q5r4c"]
+[ext_resource type="Texture2D" uid="uid://fjyhnxtbr8gl" path="res://scenes/PatrollingEnemy/bat.png" id="2_qc4yg"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_qc4yg"]
-
-[sub_resource type="Animation" id="Animation_fac5f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:collision_layer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
-[sub_resource type="Animation" id="Animation_0wgnc"]
-resource_name = "fly"
-length = 0.4
-loop_mode = 1
-step = 0.1
-
-[sub_resource type="Animation" id="Animation_uqpo7"]
-resource_name = "stun"
-length = 0.4
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:collision_layer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqpo7"]
-_data = {
-&"RESET": SubResource("Animation_fac5f"),
-&"fly": SubResource("Animation_0wgnc"),
-&"stun": SubResource("Animation_uqpo7")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_go5uw"]
-animation = &"fly"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b3yqd"]
-animation = &"fly"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_su815"]
-animation = &"stun"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_su815"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nltsd"]
-advance_mode = 2
-advance_expression = "can_see_player()"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jg56"]
-advance_mode = 2
-advance_expression = "!is_player_in_range()"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mp6cv"]
-advance_mode = 2
-advance_expression = "velocity == Vector2(0,0)"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mp6cv"]
-states/chaseState/node = SubResource("AnimationNodeAnimation_go5uw")
-states/chaseState/position = Vector2(476, 195)
-states/idleState/node = SubResource("AnimationNodeAnimation_b3yqd")
-states/idleState/position = Vector2(476, 100)
-states/knockbackState/node = SubResource("AnimationNodeAnimation_su815")
-states/knockbackState/position = Vector2(659, 100)
-transitions = ["Start", "idleState", SubResource("AnimationNodeStateMachineTransition_su815"), "idleState", "chaseState", SubResource("AnimationNodeStateMachineTransition_nltsd"), "chaseState", "idleState", SubResource("AnimationNodeStateMachineTransition_8jg56"), "knockbackState", "idleState", SubResource("AnimationNodeStateMachineTransition_mp6cv")]
-graph_offset = Vector2(-237, 16)
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dunq3"]
-graph_offset = Vector2(-337, 31)
-nodes/output/position = Vector2(300, 200)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_mp6cv")
-nodes/StateMachine/position = Vector2(-120, 120)
-node_connections = [&"output", 0, &"StateMachine"]
-
-[sub_resource type="GDScript" id="GDScript_twpn5"]
-script/source = "class_name HurtBox extends Area2D
-
-signal hurt(hitbox: HitBox)
-
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if not area is HitBox:
-		return
-
-	var hitbox := area as HitBox
-	if hitbox.signal_disabled:
-		return
-
-	# Defer emitting the signal so it happens AFTER physics queries finish
-	call_deferred(\"_emit_hurt\", hitbox)
-
-
-func _emit_hurt(hitbox: HitBox) -> void:
-	hurt.emit(hitbox)
-"
+[ext_resource type="Texture2D" uid="uid://b5gt5vg8i70sv" path="res://scenes/PatrollingEnemy/batshadow.png" id="3_ukvp4"]
+[ext_resource type="Script" uid="uid://ci3sipw3u305j" path="res://code/HurtBox.gd" id="4_qc4yg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pt26"]
 height = 46.0
@@ -125,25 +16,31 @@ radius = 16.03122
 polygon = PackedVector2Array(-5, -51, 3, -54, 10, -49, 13, -41, 13, -29, 8, -23, 0, -21, -6, -24, -9, -29, -9, -38, -8, -47)
 
 [node name="PatrollingEnemy" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_q5r4c")
+view_range = null
+speed = null
+knockback_friction = null
+max_hp = null
+random_patrol = null
+patrol_point_radius = null
+patrol_points = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2_qc4yg")
+hframes = 3
+frame = 1
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("3_ukvp4")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -8)
 polygon = PackedVector2Array(0, 0, -10, 6, 0, 12, 12, 6)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uqpo7")
-}
-autoplay = "fly"
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendTree_dunq3")
-advance_expression_base_node = NodePath("..")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(16, 0)
@@ -151,8 +48,7 @@ target_position = Vector2(16, 0)
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = SubResource("GDScript_twpn5")
-metadata/_custom_type_script = "uid://jrn1snxemt88"
+script = ExtResource("4_qc4yg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1, -19)
