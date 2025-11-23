@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @export var view_range: = 300
 @export var speed: = 200
+@export var knockback_multiply = 2
 @export var knockback_friction = 1000
-@export var max_hp = 7
+@export var max_hp = 3
 var current_hp = max_hp
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -67,7 +68,6 @@ func can_see_player() -> bool:
 
 
 func _on_hurt(hit_box: HitBox):
-	velocity = hit_box.global_position.direction_to(global_position) * 1000
+	velocity = hit_box.global_position.direction_to(global_position).normalized() * hit_box.knockback * knockback_multiply
 	current_hp -= hit_box.damage
-	print(hit_box.name)
 	playback.start("knockbackState")

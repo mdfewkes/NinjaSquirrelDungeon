@@ -13,6 +13,7 @@ var last_input_vector: Vector2 = Vector2.DOWN
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
+@onready var shuriken_spawn: Node2D = $ShurikenSpawn
 
 const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
 var shuriken_cooldown_time = 0.5
@@ -107,13 +108,10 @@ func throw_shuriken() -> void:
 	shuriken_cooldown = shuriken_cooldown_time
 	
 	# spawn a shuriken that flies in the direction we are facing
-	var spawnoffset = 32
-	var armheight = 42
 	var dir := Vector2(last_input_vector.x, last_input_vector.y).normalized()
 	var ninjastar = shuriken_projectile_scene.instantiate()
 	get_parent().add_child(ninjastar)
-	ninjastar.global_position = global_position 
-	ninjastar.global_position += Vector2(dir.x*spawnoffset, dir.y*spawnoffset - armheight)
+	ninjastar.global_position = shuriken_spawn.global_position 
 	ninjastar.velocity.x = 0
 	ninjastar.velocity.y = 0
 	if (dir.x>0): ninjastar.velocity.x = 500

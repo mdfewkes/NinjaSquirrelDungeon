@@ -2,6 +2,7 @@ class_name HitBox extends Area2D
 
 @export var signal_disabled: bool = false
 @export var damage = 1
+@export var knockback = 500
 
 signal hit(hurtbox: HurtBox)
 

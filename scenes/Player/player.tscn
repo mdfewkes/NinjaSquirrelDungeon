@@ -834,3 +834,6 @@ metadata/_custom_type_script = "uid://jrn1snxemt88"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -31)
 shape = SubResource("CircleShape2D_hshwv")
+
+[node name="ShurikenSpawn" type="Node2D" parent="."]
+position = Vector2(0, -31)

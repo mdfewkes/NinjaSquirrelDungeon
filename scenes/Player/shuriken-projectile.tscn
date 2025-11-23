@@ -17,9 +17,10 @@ spin_speed = 10.0
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("4_pyhrw")
 damage = 0
+knockback = 100
 metadata/_custom_type_script = "uid://dtiynebo6fexe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
