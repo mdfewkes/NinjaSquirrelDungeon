@@ -20,96 +20,96 @@ const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
 signal update_health(current_health, max_health)
 
 func _ready() -> void:
-    hurt_box.hurt.connect(_on_hurt)
+	hurt_box.hurt.connect(_on_hurt)
 
 
 func _physics_process(_delta: float) -> void:
-    var state = playback.get_current_node()
-    match state:
-        "MoveState":
-            move_state()
-        "ActionState":
-            action_state()
-        "RollState":
-            roll_state()
+	var state = playback.get_current_node()
+	match state:
+		"MoveState":
+			move_state()
+		"ActionState":
+			action_state()
+		"RollState":
+			roll_state()
 
 
 func move_state() -> void:
-    velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 
-    input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-    if input_vector != Vector2.ZERO:
-        last_input_vector = input_vector
-        update_blend_positions()
+	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	if input_vector != Vector2.ZERO:
+		last_input_vector = input_vector
+		update_blend_positions()
 
-    velocity = input_vector * speed
-    move_and_slide()
+	velocity = input_vector * speed
+	move_and_slide()
 
-    # melee attack with katana sword / punch
-    if Input.is_action_just_pressed("action_1"):
-        playback.travel("ActionState")
-    # dodge roll crouch slide move
-    if Input.is_action_just_pressed("action_2"):
-        velocity = last_input_vector * roll_speed
-        playback.travel("RollState")
-    # projectile shuriken / potion / bomb 
-    if Input.is_action_just_pressed("action_3"):
-        throw_shuriken()
+	# melee attack with katana sword / punch
+	if Input.is_action_just_pressed("action_1"):
+		playback.travel("ActionState")
+	# dodge roll crouch slide move
+	if Input.is_action_just_pressed("action_2"):
+		velocity = last_input_vector * roll_speed
+		playback.travel("RollState")
+	# projectile shuriken / potion / bomb 
+	if Input.is_action_just_pressed("action_3"):
+		throw_shuriken()
 
 
 func action_state() -> void:
-    pass
+	pass
 
 
 func roll_state() -> void:
-    move_and_slide()
+	move_and_slide()
 
-    if Input.is_action_just_pressed("action_1"):
-        input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-        if input_vector != Vector2.ZERO:
-            last_input_vector = input_vector
-            update_blend_positions()
-        playback.travel("ActionState")
+	if Input.is_action_just_pressed("action_1"):
+		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		if input_vector != Vector2.ZERO:
+			last_input_vector = input_vector
+			update_blend_positions()
+		playback.travel("ActionState")
 
-    if Input.is_action_just_pressed("action_2"):
-        input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-        if input_vector != Vector2.ZERO:
-            velocity = input_vector * velocity.length()
+	if Input.is_action_just_pressed("action_2"):
+		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		if input_vector != Vector2.ZERO:
+			velocity = input_vector * velocity.length()
 
 
 func _die() -> void:
-    process_mode = Node.PROCESS_MODE_DISABLED
-    # later you can add queue_free or disable collisions here
+	process_mode = Node.PROCESS_MODE_DISABLED
+	# later you can add queue_free or disable collisions here
 
 
 func update_blend_positions() -> void:
-    var direction_vector := Vector2(input_vector.x, -input_vector.y)
-    animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", direction_vector)
-    animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
-    animation_tree.set("parameters/StateMachine/ActionState/blend_position", direction_vector)
-    animation_tree.set("parameters/StateMachine/RollState/blend_position", direction_vector)
+	var direction_vector := Vector2(input_vector.x, -input_vector.y)
+	animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/ActionState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/RollState/blend_position", direction_vector)
 
 
 func _on_hurt(hitbox: HitBox) -> void:
-    current_hp -= hitbox.damage
-    update_health.emit(current_hp, max_hp)
-    effect_animation_player.play("blink")
+	current_hp -= hitbox.damage
+	update_health.emit(current_hp, max_hp)
+	effect_animation_player.play("blink")
 
-    if current_hp <= 0:
-        call_deferred("_die")  # extra safe; now definitely outside physics
+	if current_hp <= 0:
+		call_deferred("_die")  # extra safe; now definitely outside physics
 
 func throw_shuriken() -> void:
-    # spawn a shuriken that flies in the direction we are facing
-    var spawnoffset = 32
-    var armheight = 42
-    var dir := Vector2(last_input_vector.x, last_input_vector.y).normalized()
-    var ninjastar = shuriken_projectile_scene.instantiate()
-    get_parent().add_child(ninjastar)
-    ninjastar.global_position = global_position 
-    ninjastar.global_position += Vector2(dir.x*spawnoffset, dir.y*spawnoffset - armheight)
-    ninjastar.velocity.x = 0
-    ninjastar.velocity.y = 0
-    if (dir.x>0): ninjastar.velocity.x = 500
-    if (dir.x<0): ninjastar.velocity.x = -500
-    if (dir.y>0): ninjastar.velocity.y = 500
-    if (dir.y<0): ninjastar.velocity.y = -500
+	# spawn a shuriken that flies in the direction we are facing
+	var spawnoffset = 32
+	var armheight = 42
+	var dir := Vector2(last_input_vector.x, last_input_vector.y).normalized()
+	var ninjastar = shuriken_projectile_scene.instantiate()
+	get_parent().add_child(ninjastar)
+	ninjastar.global_position = global_position 
+	ninjastar.global_position += Vector2(dir.x*spawnoffset, dir.y*spawnoffset - armheight)
+	ninjastar.velocity.x = 0
+	ninjastar.velocity.y = 0
+	if (dir.x>0): ninjastar.velocity.x = 500
+	if (dir.x<0): ninjastar.velocity.x = -500
+	if (dir.y>0): ninjastar.velocity.y = 500
+	if (dir.y<0): ninjastar.velocity.y = -500

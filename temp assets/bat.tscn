@@ -225,4 +225,4 @@ vertical_alignment = 1
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_fac5f")
-occluder_light_mask = 3
+occluder_light_mask = 4

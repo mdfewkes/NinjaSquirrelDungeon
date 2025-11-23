@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://idvuu5pv2ejg"]
+[gd_scene load_steps=7 format=3 uid="uid://idvuu5pv2ejg"]
 
+[ext_resource type="Script" uid="uid://cesdgy7wcnuis" path="res://light.gd" id="1_5qqhr"]
 [ext_resource type="Texture2D" uid="uid://b4l1wybno7p36" path="res://icon.svg" id="1_hdgcg"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_njlvs"]
 
 [sub_resource type="Gradient" id="Gradient_pkg7o"]
 offsets = PackedFloat32Array(0, 0.72)
@@ -12,14 +14,26 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_esukd"]
+
 [node name="Light" type="Node2D"]
+script = ExtResource("1_5qqhr")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.735, 0.735)
 texture = ExtResource("1_hdgcg")
 
-[node name="PointLight2D" type="PointLight2D" parent="Icon"]
-scale = Vector2(10, 10)
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(7.3500004, 7.3500004)
 range_item_cull_mask = 3
 shadow_enabled = true
+shadow_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_gbfbk")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_njlvs")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_esukd")
