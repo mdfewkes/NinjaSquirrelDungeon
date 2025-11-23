@@ -15,6 +15,8 @@ var last_input_vector: Vector2 = Vector2.DOWN
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
 const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
+var shuriken_cooldown_time = 0.5
+var shuriken_cooldown = 0.0
 
 
 signal update_health(current_health, max_health)
@@ -23,7 +25,9 @@ func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	shuriken_cooldown -= delta
+	
 	var state = playback.get_current_node()
 	match state:
 		"MoveState":
@@ -99,6 +103,9 @@ func _on_hurt(hitbox: HitBox) -> void:
 		call_deferred("_die")  # extra safe; now definitely outside physics
 
 func throw_shuriken() -> void:
+	if shuriken_cooldown > 0: return
+	shuriken_cooldown = shuriken_cooldown_time
+	
 	# spawn a shuriken that flies in the direction we are facing
 	var spawnoffset = 32
 	var armheight = 42
