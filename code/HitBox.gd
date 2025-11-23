@@ -13,4 +13,8 @@ func _on_area_entered(area):
 	if not area is HurtBox: return
 	var hurt_box = area as HurtBox
 	
+	call_deferred("_emit_hit", hurt_box)
+
+
+func _emit_hit(hurt_box: HurtBox) -> void:
 	hit.emit(hurt_box)
