@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmlo3wxqb4hq4"
-path="res://.godot/imported/batshadow.png-beefd1cf6f8864daf18662681a5a8348.ctex"
+uid="uid://dxmfyn4uanr2y"
+path="res://.godot/imported/main_character.png-020eef2eaf50926b531de1f898d7eafc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp assets/batshadow.png"
-dest_files=["res://.godot/imported/batshadow.png-beefd1cf6f8864daf18662681a5a8348.ctex"]
+source_file="res://scenes/Player/main_character.png"
+dest_files=["res://.godot/imported/main_character.png-020eef2eaf50926b531de1f898d7eafc.ctex"]
 
 [params]
 

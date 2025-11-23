@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ppxamr2g7sb6"
-path="res://.godot/imported/player-temp-tileset-squirrel.png-a28cd4f5d296b158eccfeba642ee3d48.ctex"
+uid="uid://cc2y5m83xd4l3"
+path="res://.godot/imported/player-temp-tileset.png-bb49674cd42ebf8ba76e366e21061c10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/player-temp-tileset-squirrel.png"
-dest_files=["res://.godot/imported/player-temp-tileset-squirrel.png-a28cd4f5d296b158eccfeba642ee3d48.ctex"]
+source_file="res://scenes/Player/player-temp-tileset.png"
+dest_files=["res://.godot/imported/player-temp-tileset.png-bb49674cd42ebf8ba76e366e21061c10.ctex"]
 
 [params]
 

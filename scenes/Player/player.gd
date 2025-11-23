@@ -28,10 +28,10 @@ func _physics_process(_delta: float) -> void:
 	match state:
 		"MoveState":
 			move_state()
-		"ActionState":
-			action_state()
 		"RollState":
 			roll_state()
+		"ActionState":
+			action_state()
 
 
 func move_state() -> void:
@@ -47,11 +47,11 @@ func move_state() -> void:
 
 	# melee attack with katana sword / punch
 	if Input.is_action_just_pressed("action_1"):
-		playback.travel("ActionState")
-	# dodge roll crouch slide move
-	if Input.is_action_just_pressed("action_2"):
 		velocity = last_input_vector * roll_speed
 		playback.travel("RollState")
+	# dodge roll crouch slide move
+	if Input.is_action_just_pressed("action_2"):
+		playback.travel("ActionState")
 	# projectile shuriken / potion / bomb 
 	if Input.is_action_just_pressed("action_3"):
 		throw_shuriken()

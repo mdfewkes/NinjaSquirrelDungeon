@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ea3lunwfspsx"]
 
-[ext_resource type="Script" uid="uid://d2ul1el12t2xy" path="res://Player/shuriken_projectile.gd" id="1_3b6gb"]
-[ext_resource type="Texture2D" uid="uid://cih5onscjg41g" path="res://Player/shuriken-projectile.png" id="1_dtmi2"]
+[ext_resource type="Script" uid="uid://d2ul1el12t2xy" path="res://scenes/Player/shuriken_projectile.gd" id="1_3b6gb"]
+[ext_resource type="Texture2D" uid="uid://cih5onscjg41g" path="res://scenes/Player/shuriken-projectile.png" id="1_dtmi2"]
 [ext_resource type="Script" uid="uid://c2v35he0ge0kq" path="res://code/Spin.gd" id="2_ssili"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_pyhrw"]
 

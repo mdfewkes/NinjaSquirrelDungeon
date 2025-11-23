@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cih5onscjg41g"
-path="res://.godot/imported/shuriken-projectile.png-d9cbcf925a248f8bf2d3881c5ecfa55b.ctex"
+uid="uid://c0ggnm27qm07x"
+path="res://.godot/imported/Heart Empty.png-c6273a4080fe01967dbac1cd46f68084.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/shuriken-projectile.png"
-dest_files=["res://.godot/imported/shuriken-projectile.png-d9cbcf925a248f8bf2d3881c5ecfa55b.ctex"]
+source_file="res://scenes/Hearts_UI/Heart Empty.png"
+dest_files=["res://.godot/imported/Heart Empty.png-c6273a4080fe01967dbac1cd46f68084.ctex"]
 
 [params]
 

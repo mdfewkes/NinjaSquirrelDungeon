@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://idvuu5pv2ejg"]
 
-[ext_resource type="Script" uid="uid://cesdgy7wcnuis" path="res://light.gd" id="1_5qqhr"]
+[ext_resource type="Script" uid="uid://cesdgy7wcnuis" path="res://scenes/Light/light.gd" id="1_5qqhr"]
 [ext_resource type="Texture2D" uid="uid://b4l1wybno7p36" path="res://icon.svg" id="1_hdgcg"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_njlvs"]
 

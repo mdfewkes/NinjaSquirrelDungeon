@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6a5kj3o7b6ep"
-path="res://.godot/imported/bat.png-82b4b8cb134948a1906b1dcd6455f3cf.ctex"
+uid="uid://cih5onscjg41g"
+path="res://.godot/imported/shuriken-projectile.png-ae8180d0399c80798b730641be61fb19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp assets/bat.png"
-dest_files=["res://.godot/imported/bat.png-82b4b8cb134948a1906b1dcd6455f3cf.ctex"]
+source_file="res://scenes/Player/shuriken-projectile.png"
+dest_files=["res://.godot/imported/shuriken-projectile.png-ae8180d0399c80798b730641be61fb19.ctex"]
 
 [params]
 

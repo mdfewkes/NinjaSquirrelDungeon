@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://c4kwsiasl0gw1"]
 
-[ext_resource type="Texture2D" uid="uid://b6a5kj3o7b6ep" path="res://temp assets/bat.png" id="1_1u6w6"]
-[ext_resource type="Script" uid="uid://batg7bpwdq0yi" path="res://temp assets/bat.gd" id="1_3pt26"]
-[ext_resource type="Texture2D" uid="uid://dmlo3wxqb4hq4" path="res://temp assets/batshadow.png" id="2_3pt26"]
+[ext_resource type="Texture2D" uid="uid://b6a5kj3o7b6ep" path="res://scenes/Bat/bat.png" id="1_1u6w6"]
+[ext_resource type="Script" uid="uid://batg7bpwdq0yi" path="res://scenes/Bat/bat.gd" id="1_3pt26"]
+[ext_resource type="Texture2D" uid="uid://dmlo3wxqb4hq4" path="res://scenes/Bat/batshadow.png" id="2_3pt26"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_0wgnc"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="5_fac5f"]
 

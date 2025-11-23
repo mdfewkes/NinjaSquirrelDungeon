@@ -1,13 +1,13 @@
 [gd_scene load_steps=48 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://hearts_ui.tscn" id="1_dwbse"]
-[ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://Player/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
+[ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="3_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://temp assets/bat.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://scenes/Bat/bat.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
-[ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://light.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)

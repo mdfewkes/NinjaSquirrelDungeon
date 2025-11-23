@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmfyn4uanr2y"
-path="res://.godot/imported/main_character.png-2bbd19a3a1092edfa2d2099cba7b6632.ctex"
+uid="uid://b6a5kj3o7b6ep"
+path="res://.godot/imported/bat.png-4ede94dc5066c1cfe237c5c20c2168bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp assets/main_character.png"
-dest_files=["res://.godot/imported/main_character.png-2bbd19a3a1092edfa2d2099cba7b6632.ctex"]
+source_file="res://scenes/Bat/bat.png"
+dest_files=["res://.godot/imported/bat.png-4ede94dc5066c1cfe237c5c20c2168bb.ctex"]
 
 [params]
 

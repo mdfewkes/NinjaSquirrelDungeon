@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://edngnlq58tuy"]
 
-[ext_resource type="Script" uid="uid://d1kme5a4bi3gr" path="res://hearts_ui.gd" id="1_pca1g"]
-[ext_resource type="Texture2D" uid="uid://c0ggnm27qm07x" path="res://temp assets/Heart Empty.png" id="2_1iwju"]
-[ext_resource type="Texture2D" uid="uid://xwi7eodpb7fu" path="res://temp assets/Heart Full.png" id="3_olmcf"]
+[ext_resource type="Script" uid="uid://d1kme5a4bi3gr" path="res://scenes/Hearts_UI/hearts_ui.gd" id="1_pca1g"]
+[ext_resource type="Texture2D" uid="uid://c0ggnm27qm07x" path="res://scenes/Hearts_UI/Heart Empty.png" id="2_1iwju"]
+[ext_resource type="Texture2D" uid="uid://xwi7eodpb7fu" path="res://scenes/Hearts_UI/Heart Full.png" id="3_olmcf"]
 
 [node name="HeartsUI" type="Control"]
 layout_mode = 3
