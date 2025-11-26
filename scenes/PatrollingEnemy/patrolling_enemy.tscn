@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fjyhnxtbr8gl" path="res://scenes/PatrollingEnemy/bat.png" id="2_qc4yg"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_qc4yg"]
 [ext_resource type="Texture2D" uid="uid://b5gt5vg8i70sv" path="res://scenes/PatrollingEnemy/batshadow.png" id="3_ukvp4"]
-[ext_resource type="Script" uid="uid://ci3sipw3u305j" path="res://code/HurtBox.gd" id="4_qc4yg"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_qc4yg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pt26"]
 height = 46.0
