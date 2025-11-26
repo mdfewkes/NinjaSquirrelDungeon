@@ -12,6 +12,7 @@ var last_input_vector: Vector2 = Vector2.DOWN
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var hit_box: HitBox = $HitBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var shuriken_spawn: Node2D = $ShurikenSpawn
 
@@ -19,11 +20,13 @@ const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
 var shuriken_cooldown_time = 0.5
 var shuriken_cooldown = 0.0
 
+const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
 signal update_health(current_health, max_health)
 
 func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
+	hit_box.hit.connect(_on_hit)
 
 
 func _physics_process(delta: float) -> void:
@@ -102,6 +105,14 @@ func _on_hurt(hitbox: HitBox) -> void:
 
 	if current_hp <= 0:
 		call_deferred("_die")  # extra safe; now definitely outside physics
+
+
+func _on_hit(hurtbox: HurtBox):
+	if hit_effect != null:
+		var hit_effect_instance = hit_effect.instantiate()
+		get_tree().current_scene.add_child(hit_effect_instance)
+		hit_effect_instance.global_position = hurtbox.global_position
+
 
 func throw_shuriken() -> void:
 	if shuriken_cooldown > 0: return
