@@ -129,8 +129,6 @@ advance_mode = 2
 advance_expression = "can_see_player()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jg56"]
-advance_mode = 2
-advance_expression = "!is_player_in_range()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mp6cv"]
 advance_mode = 2
@@ -146,7 +144,7 @@ states/knockbackState/position = Vector2(659, 100)
 transitions = ["Start", "idleState", SubResource("AnimationNodeStateMachineTransition_su815"), "idleState", "chaseState", SubResource("AnimationNodeStateMachineTransition_nltsd"), "chaseState", "idleState", SubResource("AnimationNodeStateMachineTransition_8jg56"), "knockbackState", "idleState", SubResource("AnimationNodeStateMachineTransition_mp6cv")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dunq3"]
-graph_offset = Vector2(-463.7273, 5.727272)
+graph_offset = Vector2(-645.1217, 13.18689)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_mp6cv")
 nodes/StateMachine/position = Vector2(-120, 80)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -190,6 +188,11 @@ autoplay = "fly"
 tree_root = SubResource("AnimationNodeBlendTree_dunq3")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+debug_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(16, 0)

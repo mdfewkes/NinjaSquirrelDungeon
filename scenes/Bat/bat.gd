@@ -12,6 +12,7 @@ var current_hp = max_hp
 @onready var playback = animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 const destroy_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
@@ -40,7 +41,9 @@ func idle_state():
 
 
 func chase_state():
-	velocity = global_position.direction_to(player.global_position) * speed
+	navigation_agent_2d.target_position = player.global_position
+	var next_point = navigation_agent_2d.get_next_path_position()
+	velocity = global_position.direction_to(next_point) * speed
 	sprite_2d.scale.x = sign(velocity.x)
 	move_and_slide()
 
