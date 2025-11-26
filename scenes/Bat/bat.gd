@@ -13,6 +13,8 @@ var current_hp = max_hp
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
 
+const destroy_effect = preload("res://scenes/Effects/hit_effect.tscn")
+
 var player = null
 
 func _ready() -> void:
@@ -34,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 
 func idle_state():
 	if current_hp <= 0:
-		queue_free()
+		die()
 
 
 func chase_state():
@@ -45,7 +47,7 @@ func chase_state():
 
 func knockback_state(delta):
 	if current_hp <= 0:
-		queue_free()
+		die()
 	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	move_and_slide()
 
@@ -65,6 +67,14 @@ func can_see_player() -> bool:
 
 	ray_cast_2d.target_position = player.global_position - global_position
 	return not ray_cast_2d.is_colliding()
+
+
+func die() -> void:
+	if destroy_effect != null:
+		var destroy_effect_inastance = destroy_effect.instantiate()
+		get_tree().current_scene.add_child(destroy_effect_inastance)
+		destroy_effect_inastance.global_position = global_position
+	queue_free()
 
 
 func _on_hurt(hit_box: HitBox):
