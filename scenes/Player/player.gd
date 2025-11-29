@@ -23,6 +23,8 @@ var shuriken_cooldown = 0.0
 const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
 signal update_health(current_health, max_health)
+signal direction_changed(new_direction)
+signal shuriken_throw
 
 func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
@@ -96,6 +98,7 @@ func update_blend_positions() -> void:
 	animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/ActionState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/RollState/blend_position", direction_vector)
+	direction_changed.emit(direction_vector)
 
 
 func _on_hurt(hitbox: HitBox) -> void:
@@ -117,6 +120,7 @@ func _on_hit(hurtbox: HurtBox):
 func throw_shuriken() -> void:
 	if shuriken_cooldown > 0: return
 	shuriken_cooldown = shuriken_cooldown_time
+	shuriken_throw.emit()
 	
 	# spawn a shuriken that flies in the direction we are facing
 	var dir := Vector2(last_input_vector.x, last_input_vector.y).normalized()
