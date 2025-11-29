@@ -23,13 +23,14 @@ var shuriken_cooldown = 0.0
 const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
 signal update_health(current_health, max_health)
+signal player_death
 signal direction_changed(new_direction)
 signal shuriken_throw
 
 func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
-
+	player_death.connect(_on_player_death)
 
 func _physics_process(delta: float) -> void:
 	shuriken_cooldown -= delta
@@ -88,9 +89,17 @@ func roll_state() -> void:
 
 
 func _die() -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	timer.start()
+	await timer.timeout
+	emit_signal("player_death")
 	# later you can add queue_free or disable collisions here
 
+func _on_player_death() -> void:
+	get_tree().reload_current_scene()
 
 func update_blend_positions() -> void:
 	var direction_vector := Vector2(input_vector.x, -input_vector.y)
