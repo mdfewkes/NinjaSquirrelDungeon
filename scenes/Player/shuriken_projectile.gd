@@ -16,21 +16,21 @@ func set_direction(dir: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
-	if wall_detector.is_colliding():
+	if wall_detector.is_colliding() and wall_detector.get_collider() is TileMapLayer:
 		var wall_normal := wall_detector.get_collision_normal()
 		var cur_direction := velocity.normalized()
 		var bounce_direction := cur_direction.bounce(wall_normal)
 		var speed := velocity.length()
 
-		print([bounce_direction, wall_normal, cur_direction])
 		if bounce_direction.is_equal_approx(wall_normal):
 			speed = STOP_SPEED
 		else:
 			speed *= SLOW_FACTOR
-		if speed <= STOP_SPEED:
-			_fade_and_free()
 		velocity = bounce_direction * speed
 		wall_detector.target_position = bounce_direction * RAY_LENGTH
+
+		if speed <= STOP_SPEED:
+			_fade_and_free()
 
 
 func _fade_and_free():
