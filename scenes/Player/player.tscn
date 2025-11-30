@@ -812,6 +812,9 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
 polygon = PackedVector2Array(-25, 9, 0, 31, 25, 9, 0, -8)
