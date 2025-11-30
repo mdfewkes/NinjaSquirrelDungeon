@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var max_hp: int = 4
 var current_hp: int = max_hp
 
+@export var sound_hurt: AudioStream
+
 var input_vector: Vector2 = Vector2.ZERO
 var last_input_vector: Vector2 = Vector2.DOWN
 
@@ -114,6 +116,8 @@ func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
+	if sound_hurt != null:
+		AudioManager.PlaySFX(sound_hurt, self)
 
 	if current_hp <= 0:
 		call_deferred("_die")  # extra safe; now definitely outside physics

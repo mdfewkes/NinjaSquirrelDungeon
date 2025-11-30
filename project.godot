@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 driver/mix_rate=48000
 
+[autoload]
+
+AudioManager="*res://scenes/AudioManager/audio_manager.tscn"
+
 [global_group]
 
 player=""
