@@ -51,6 +51,15 @@ func _ready() -> void:
 		tail_shape.push_back(shape)
 		add_child(shape)
 
+func calculate_segment(i: int, target_position: Vector2) -> Vector2:
+	var ideal_position = target_position + tail_poses[selected_pose][i].position
+	var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
+	var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
+	if not editing:
+		tail_shape[i].set_global_position(result_position)
+		tail_shape[i].shape.radius = tail_poses[selected_pose][i].size * clamp(distance_modifier, 0.7, 1.3)
+	return result_position
+
 @export var editing = false
 @export var print_pose = false
 func _process(_delta: float) -> void:
@@ -73,23 +82,18 @@ func _process(_delta: float) -> void:
 
 	# Set each tail segment to strive for the active pose
 	var target_position = attachement.get_global_position() + tail_start_offset
-	var shader_data: PackedVector3Array = []
-	var min_pos = Vector2(10000, 10000)
-	var max_pos = Vector2(-10000, -10000)
-	for i in range(tail_poses[selected_pose].size()):
-		var ideal_position = target_position + tail_poses[selected_pose][i].position
-		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
-		var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
-		if not editing:
-			tail_shape[i].set_global_position(result_position)
-			tail_shape[i].shape.radius = tail_poses[selected_pose][i].size * clamp(distance_modifier, 0.7, 1.3)
-		min_pos.x = min(min_pos.x, result_position.x - tail_shape[i].shape.radius - display_padding)
-		min_pos.y = min(min_pos.y, result_position.y - tail_shape[i].shape.radius - display_padding)
-		max_pos.x = max(max_pos.x, result_position.x + tail_shape[i].shape.radius + display_padding)
-		max_pos.y = max(max_pos.y, result_position.y + tail_shape[i].shape.radius + display_padding)
-		target_position = result_position
+	var min_pos = target_position - Vector2(1,1) * (tail_shape[0].shape.radius - display_padding)
+	var max_pos = target_position + Vector2(1,1) * (tail_shape[0].shape.radius + display_padding)
+	tail_shape[0].set_global_position(target_position) # The first segment follows target without fail
+	for i in range(1, tail_poses[selected_pose].size()):
+		target_position = calculate_segment(i, target_position)
+		min_pos.x = min(min_pos.x, target_position.x - tail_shape[i].shape.radius - display_padding)
+		min_pos.y = min(min_pos.y, target_position.y - tail_shape[i].shape.radius - display_padding)
+		max_pos.x = max(max_pos.x, target_position.x + tail_shape[i].shape.radius + display_padding)
+		max_pos.y = max(max_pos.y, target_position.y + tail_shape[i].shape.radius + display_padding)
 
 	# Collect display data for the tail
+	var shader_data: PackedVector3Array = []
 	for tail_segment in tail_shape:
 		var normalizer = max_pos - min_pos
 		var normalized_position = (tail_segment.get_global_position() - min_pos) / normalizer
@@ -98,7 +102,6 @@ func _process(_delta: float) -> void:
 	# Set display data for the tail segments
 	$display.set_global_position(min_pos)
 	$display.set_size(max_pos - min_pos)
-	$display.material.set_shader_parameter("point_count", tail_poses[selected_pose].size())
 	$display.material.set_shader_parameter("points", shader_data)
 
 func _on_player_direction_changed(new_direction: Variant) -> void:
@@ -114,5 +117,5 @@ func _on_player_direction_changed(new_direction: Variant) -> void:
 func _on_player_shuriken_throw() -> void:
 	var segment_throwing_shuriken = 4
 	for i in range(1, segment_throwing_shuriken):
-		var wave_strength = tail_motion_strength * (1. - i/segment_throwing_shuriken)
+		var wave_strength = tail_motion_strength * (1. - float(i)/segment_throwing_shuriken)
 		create_tween().tween_property(tail_shape[i], "position", tail_shape[i].get_position() + direction * wave_strength, 0.1)

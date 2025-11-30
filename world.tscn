@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=60 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
@@ -590,9 +590,21 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(
 outlines = Array[PackedVector2Array]([PackedVector2Array(8, 816, 0, -448, 1936, -440, 1920, 800)])
 source_geometry_mode = 2
 
+[sub_resource type="Gradient" id="Gradient_k3n1d"]
+offsets = PackedFloat32Array(0.40585774, 0.51882845)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2o6r5"]
+gradient = SubResource("Gradient_k3n1d")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
 shader = ExtResource("7_k3n1d")
-shader_parameter/point_count = 7
+shader_parameter/tail_color_threshold = 0.01
+shader_parameter/tail_outline_threshold = 0.03
+shader_parameter/smooth_tail = false
+shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2o6r5")
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_wse8f"]
