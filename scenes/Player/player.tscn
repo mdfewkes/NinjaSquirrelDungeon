@@ -83,7 +83,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, -31, 56, 32, 0, 64, -72, 32), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, 56, 64, 0, 96, -72, 64), PackedVector2Array()]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,7 +124,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, -30, -64, 8, -96, -40, -64, -104), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, 40, -96, 0, -64, -70), PackedVector2Array()]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -165,7 +165,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, -32, 72, -72, 112, -32, 64, 8), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, 72, -40, 112, 0, 64, 40), PackedVector2Array()]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -206,7 +206,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, -31, -64, -80, 0, -136, 56, -80), PackedVector2Array()]
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, -40, 0, -100, 56, -48), PackedVector2Array()]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -868,6 +868,7 @@ damage = 2
 metadata/_custom_type_script = "uid://dtiynebo6fexe"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
+position = Vector2(0, -32)
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
