@@ -25,3 +25,5 @@ metadata/_custom_type_script = "uid://dtiynebo6fexe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_0w2d3")
+
+[node name="WallDetector" type="RayCast2D" parent="."]

@@ -139,10 +139,5 @@ func throw_shuriken() -> void:
 	var dir := Vector2(last_input_vector.x, last_input_vector.y).normalized()
 	var ninjastar = shuriken_projectile_scene.instantiate()
 	get_parent().add_child(ninjastar)
-	ninjastar.global_position = shuriken_spawn.global_position 
-	ninjastar.velocity.x = 0
-	ninjastar.velocity.y = 0
-	if (dir.x>0): ninjastar.velocity.x = 500
-	if (dir.x<0): ninjastar.velocity.x = -500
-	if (dir.y>0): ninjastar.velocity.y = 500
-	if (dir.y<0): ninjastar.velocity.y = -500
+	ninjastar.global_position = shuriken_spawn.global_position
+	ninjastar.set_direction(dir)
