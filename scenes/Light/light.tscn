@@ -20,11 +20,12 @@ fill_to = Vector2(0, 0)
 script = ExtResource("1_5qqhr")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.735, 0.735)
+scale = Vector2(0.265, 0.265)
 texture = ExtResource("1_hdgcg")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(7.3500004, 7.3500004)
+color = Color(1, 0.88100004, 0.49, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 5
