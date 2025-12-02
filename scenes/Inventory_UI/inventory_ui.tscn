@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjh23nsspqgh7"]
+
+[ext_resource type="Script" uid="uid://cs67tigakstsn" path="res://scenes/Inventory_UI/inventory_ui.gd" id="1_f2pmq"]
+[ext_resource type="Texture2D" uid="uid://bm3g6n61cc5yn" path="res://temp assets/items-temp.png" id="2_ow3gw"]
+
+[node name="InventoryUI" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.4
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f2pmq")
+
+[node name="TemplateContainer" type="AspectRatioContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="TemplateContainer"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ow3gw")
+hframes = 2
+vframes = 2
