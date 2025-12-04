@@ -37,6 +37,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	shuriken_cooldown -= delta
 	
+	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	
 	var state = playback.get_current_node()
 	match state:
 		"MoveState":
@@ -45,46 +47,37 @@ func _physics_process(delta: float) -> void:
 			roll_state()
 		"ActionState":
 			action_state()
+	
+	if input_vector != Vector2.ZERO:
+		update_blend_positions()
+		last_input_vector = input_vector
+	move_and_slide()
 
 
 func move_state() -> void:
-	velocity = Vector2.ZERO
-
-	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	if input_vector != Vector2.ZERO:
-		last_input_vector = input_vector
-		update_blend_positions()
-
 	velocity = input_vector * speed
-	move_and_slide()
 
 	# melee attack with katana sword / punch
-	if Input.is_action_just_pressed("action_1"):
+	if Input.is_action_just_pressed("roll"):
 		velocity = last_input_vector * roll_speed
 		playback.travel("RollState")
 	# dodge roll crouch slide move
-	if Input.is_action_just_pressed("action_2"):
+	if Input.is_action_just_pressed("action_1"):
 		playback.travel("ActionState")
 	# projectile shuriken / potion / bomb 
-	if Input.is_action_just_pressed("action_3"):
+	if Input.is_action_just_pressed("action_2"):
 		throw_shuriken()
 
 
 func action_state() -> void:
-	pass
+	velocity = Vector2.ZERO
 
 
 func roll_state() -> void:
-	move_and_slide()
-
 	if Input.is_action_just_pressed("action_1"):
-		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-		if input_vector != Vector2.ZERO:
-			last_input_vector = input_vector
-			update_blend_positions()
 		playback.travel("ActionState")
 
-	if Input.is_action_just_pressed("action_2"):
+	if Input.is_action_just_pressed("roll"):
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		if input_vector != Vector2.ZERO:
 			velocity = input_vector * velocity.length()
@@ -104,6 +97,8 @@ func _on_player_death() -> void:
 	get_tree().reload_current_scene()
 
 func update_blend_positions() -> void:
+	if input_vector == last_input_vector: return
+	
 	var direction_vector := Vector2(input_vector.x, -input_vector.y)
 	animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
