@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=70 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://blsx7xpa1woj0" path="res://temp assets/test_audio_01.ogg" id="2_a06cl"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bdu37qw1jmohm" path="res://scenes/Player/Audio/squirrel-footstep-3.ogg" id="8_t6q27"]
 [ext_resource type="AudioStream" uid="uid://bhn81pjisvpsl" path="res://scenes/Player/Audio/squirrel-footstep-4.ogg" id="9_wyey8"]
 [ext_resource type="AudioStream" uid="uid://fq80ffye3285" path="res://scenes/Player/Audio/squirrel-footstep-5.ogg" id="10_1bwnf"]
+[ext_resource type="Script" uid="uid://jnvskcs62i4r" path="res://scenes/Player/KatanaActionState.gd" id="13_jxtnq"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 2
@@ -890,11 +891,12 @@ node_connections = [&"output", 0, &"StateMachine"]
 [sub_resource type="CircleShape2D" id="CircleShape2D_hshwv"]
 radius = 31.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1") groups=["player"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
 sound_hurt = SubResource("AudioStreamRandomizer_wwtew")
+action_1 = NodePath("Katana ActionState")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
@@ -964,3 +966,7 @@ shape = SubResource("CircleShape2D_hshwv")
 position = Vector2(0, -31)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Katana ActionState" type="Node" parent="."]
+script = ExtResource("13_jxtnq")
+metadata/_custom_type_script = "uid://tfabbyx4daf2"

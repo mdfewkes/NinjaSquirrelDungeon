@@ -8,6 +8,9 @@ var current_hp: int = max_hp
 
 @export var sound_hurt: AudioStream
 
+@export var action_1: ActionState
+var current_action_state = null
+
 var input_vector: Vector2 = Vector2.ZERO
 var last_input_vector: Vector2 = Vector2.DOWN
 
@@ -46,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		"RollState":
 			roll_state()
 		"ActionState":
-			action_state()
+			action_state(delta)
 	
 	if input_vector != Vector2.ZERO:
 		update_blend_positions()
@@ -63,19 +66,24 @@ func move_state() -> void:
 		playback.travel("RollState")
 	# dodge roll crouch slide move
 	if Input.is_action_just_pressed("action_1"):
-		playback.travel("ActionState")
+		current_action_state = action_1
+		action_1.enter_state(self)
 	# projectile shuriken / potion / bomb 
 	if Input.is_action_just_pressed("action_2"):
 		throw_shuriken()
 
 
-func action_state() -> void:
-	velocity = Vector2.ZERO
+func action_state(delta: float) -> void:
+	if current_action_state == null: return
+	if current_action_state.process_state(self, delta): 
+		current_action_state.exit_state(self)
+		current_action_state = null
 
 
 func roll_state() -> void:
 	if Input.is_action_just_pressed("action_1"):
-		playback.travel("ActionState")
+		current_action_state = action_1
+		action_1.enter_state(self)
 
 	if Input.is_action_just_pressed("roll"):
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
