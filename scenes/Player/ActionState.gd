@@ -14,7 +14,7 @@ func _ready() -> void:
 	exit.connect(_action_exit)
 
 func process_state(player :Player, delta :float) -> bool:
-	return false
+	return true
 
 func _action_enter(player :Player) -> void:
 	pass

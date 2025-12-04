@@ -836,4 +836,3 @@ position = Vector2(575, 1219)
 required_key_value = 2
 
 [connection signal="direction_changed" from="Player" to="tail" method="_on_player_direction_changed"]
-[connection signal="shuriken_throw" from="Player" to="tail" method="_on_player_shuriken_throw"]

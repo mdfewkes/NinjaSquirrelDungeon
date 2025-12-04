@@ -2,8 +2,6 @@ extends ActionState
 
 @export var cooldown_time_msec = 500
 
-@onready var shuriken_spawn: Node2D = $ShurikenSpawn
-
 const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
 var last_throw_time = 0.0
 
