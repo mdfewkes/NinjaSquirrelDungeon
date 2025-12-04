@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6a5kj3o7b6ep"
-path="res://.godot/imported/bat.png-4ede94dc5066c1cfe237c5c20c2168bb.ctex"
+uid="uid://c5j8ixvj0ecma"
+path="res://.godot/imported/ninja_squirrel_tailess_sprite_sheet.png-7099aaa580312764d8850f22a13e5f16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Bat/bat.png"
-dest_files=["res://.godot/imported/bat.png-4ede94dc5066c1cfe237c5c20c2168bb.ctex"]
+source_file="res://scenes/Player/Art/ninja_squirrel_tailess_sprite_sheet.png"
+dest_files=["res://.godot/imported/ninja_squirrel_tailess_sprite_sheet.png-7099aaa580312764d8850f22a13e5f16.ctex"]
 
 [params]
 

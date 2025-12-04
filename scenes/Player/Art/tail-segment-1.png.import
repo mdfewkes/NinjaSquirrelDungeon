@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6f8rmm6r5nft"
-path="res://.godot/imported/ninja_squirrel_run_right.png-979b0e8d04d90f293b35accfc781f4ba.ctex"
+uid="uid://dnjsu108sqcut"
+path="res://.godot/imported/tail-segment-1.png-7d3abee98468036428a97ca5a1731bc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Player/ninja_squirrel_run_right.png"
-dest_files=["res://.godot/imported/ninja_squirrel_run_right.png-979b0e8d04d90f293b35accfc781f4ba.ctex"]
+source_file="res://scenes/Player/Art/tail-segment-1.png"
+dest_files=["res://.godot/imported/tail-segment-1.png-7d3abee98468036428a97ca5a1731bc7.ctex"]
 
 [params]
 

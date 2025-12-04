@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnjsu108sqcut"
-path="res://.godot/imported/tail-segment-1.png-2813ac44e5d0cade6577d1efcb4e9b11.ctex"
+uid="uid://b6a5kj3o7b6ep"
+path="res://.godot/imported/bat.png-b2764ee0a2fe1945485377c78a0948ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Player/tail-segment-1.png"
-dest_files=["res://.godot/imported/tail-segment-1.png-2813ac44e5d0cade6577d1efcb4e9b11.ctex"]
+source_file="res://scenes/Bat/Art/bat.png"
+dest_files=["res://.godot/imported/bat.png-b2764ee0a2fe1945485377c78a0948ba.ctex"]
 
 [params]
 

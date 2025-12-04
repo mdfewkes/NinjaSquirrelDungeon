@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://blsx7xpa1woj0" path="res://temp assets/test_audio_01.ogg" id="2_a06cl"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_btcbx"]
 [ext_resource type="AudioStream" uid="uid://cy2g8gwspkj2d" path="res://temp assets/test_audio_02.ogg" id="3_dl1wr"]
-[ext_resource type="Texture2D" uid="uid://c5j8ixvj0ecma" path="res://scenes/Player/ninja_squirrel_tailess_sprite_sheet.png" id="3_uiqp4"]
-[ext_resource type="Texture2D" uid="uid://biid8l55g27m5" path="res://scenes/Player/ninja_squirrel_sprite_sheet_small.png" id="4_c4h5g"]
+[ext_resource type="Texture2D" uid="uid://c5j8ixvj0ecma" path="res://scenes/Player/Art/ninja_squirrel_tailess_sprite_sheet.png" id="3_uiqp4"]
+[ext_resource type="Texture2D" uid="uid://biid8l55g27m5" path="res://scenes/Player/Art/ninja_squirrel_sprite_sheet_small.png" id="4_c4h5g"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_gwnis"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]

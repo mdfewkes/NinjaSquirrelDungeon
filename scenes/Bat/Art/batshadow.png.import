@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5j8ixvj0ecma"
-path="res://.godot/imported/ninja_squirrel_tailess_sprite_sheet.png-e6ebf16d56ba8597f17c6867563de7d7.ctex"
+uid="uid://dmlo3wxqb4hq4"
+path="res://.godot/imported/batshadow.png-0186974230661e963bda6fe92d6a06f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Player/ninja_squirrel_tailess_sprite_sheet.png"
-dest_files=["res://.godot/imported/ninja_squirrel_tailess_sprite_sheet.png-e6ebf16d56ba8597f17c6867563de7d7.ctex"]
+source_file="res://scenes/Bat/Art/batshadow.png"
+dest_files=["res://.godot/imported/batshadow.png-0186974230661e963bda6fe92d6a06f8.ctex"]
 
 [params]
 

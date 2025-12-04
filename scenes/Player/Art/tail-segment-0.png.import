@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfhq75nowl0r3"
-path="res://.godot/imported/tail-segments-all.png-9ca5a44c3da114d30656c70710e866fc.ctex"
+uid="uid://bkam376adlg7p"
+path="res://.godot/imported/tail-segment-0.png-28c88ea5602eb190c327d7e326852602.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Player/tail-segments-all.png"
-dest_files=["res://.godot/imported/tail-segments-all.png-9ca5a44c3da114d30656c70710e866fc.ctex"]
+source_file="res://scenes/Player/Art/tail-segment-0.png"
+dest_files=["res://.godot/imported/tail-segment-0.png-28c88ea5602eb190c327d7e326852602.ctex"]
 
 [params]
 

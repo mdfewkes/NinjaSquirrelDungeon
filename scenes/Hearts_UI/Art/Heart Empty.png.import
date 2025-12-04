@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkam376adlg7p"
-path="res://.godot/imported/tail-segment-0.png-e19f71be02451d7adc329dfd0eab4dd7.ctex"
+uid="uid://c0ggnm27qm07x"
+path="res://.godot/imported/Heart Empty.png-84d524688cffee8274c4dfeb85730552.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Player/tail-segment-0.png"
-dest_files=["res://.godot/imported/tail-segment-0.png-e19f71be02451d7adc329dfd0eab4dd7.ctex"]
+source_file="res://scenes/Hearts_UI/Art/Heart Empty.png"
+dest_files=["res://.godot/imported/Heart Empty.png-84d524688cffee8274c4dfeb85730552.ctex"]
 
 [params]
 
