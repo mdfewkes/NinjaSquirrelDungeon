@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnkf7s8eo12ho"]
+[gd_scene load_steps=3 format=3 uid="uid://dnkf7s8eo12ho"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_o53yu"]
+[ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_wy4sj"]
 
-[node name="Control" type="Control"]
+[node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,3 +26,33 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Legend of Shadowtail"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 328.0
+offset_right = 672.0
+offset_bottom = 392.0
+text = "Play Game"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://world.tscn"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 504.0
+offset_right = 520.0
+offset_bottom = 568.0
+text = "Credits"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://scenes/Screens/Credits_Screen/credits_screen.tscn"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 512.0
+offset_right = 832.0
+offset_bottom = 576.0
+text = "History"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"

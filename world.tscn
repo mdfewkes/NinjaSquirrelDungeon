@@ -626,7 +626,7 @@ source_geometry_mode = 2
 offsets = PackedFloat32Array(0.40585774, 0.51882845)
 colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2o6r5"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2u3nc"]
 gradient = SubResource("Gradient_k3n1d")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 0)
@@ -636,7 +636,7 @@ shader = ExtResource("7_k3n1d")
 shader_parameter/tail_color_threshold = 0.01
 shader_parameter/tail_outline_threshold = 0.03
 shader_parameter/smooth_tail = false
-shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2o6r5")
+shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_wse8f"]

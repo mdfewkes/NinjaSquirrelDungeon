@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk20rvipu2exi"]
+
+[ext_resource type="Script" uid="uid://bsokfo8fr7dot" path="res://scenes/Main/game_manager.gd" id="1_gol0p"]
+[ext_resource type="PackedScene" uid="uid://dnkf7s8eo12ho" path="res://scenes/Screens/title_screen.tscn" id="2_br8qb"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("current_scene")]
+script = ExtResource("1_gol0p")
+current_scene = NodePath("TitleScreen")
+metadata/_custom_type_script = "uid://bsokfo8fr7dot"
+
+[node name="TitleScreen" parent="." instance=ExtResource("2_br8qb")]

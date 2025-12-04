@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://betelkdbjb1w1"]
+[gd_scene load_steps=3 format=3 uid="uid://betelkdbjb1w1"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_6lrmm"]
+[ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_mkbpl"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,3 +27,13 @@ text = "Squirrel Lore
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 328.0
+offset_right = 672.0
+offset_bottom = 392.0
+text = "To Title"
+script = ExtResource("2_mkbpl")
+path_to_scene = "res://scenes/Screens/Title_Screen/title_screen.tscn"
