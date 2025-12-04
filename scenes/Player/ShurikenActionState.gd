@@ -18,5 +18,5 @@ func _action_enter(player :Player) -> void:
 	var dir := Vector2(player.last_input_vector.x, player.last_input_vector.y).normalized()
 	var ninjastar = shuriken_projectile_scene.instantiate()
 	player.get_parent().add_child(ninjastar)
-	player.ninjastar.global_position = player.shuriken_spawn.global_position
-	player.ninjastar.set_direction(dir)
+	ninjastar.global_position = player.shuriken_spawn.global_position
+	ninjastar.set_direction(dir)

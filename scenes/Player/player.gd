@@ -9,6 +9,7 @@ var current_hp: int = max_hp
 @export var sound_hurt: AudioStream
 
 @export var action_1: ActionState
+@export var action_2: ActionState
 var current_action_state = null
 
 var input_vector: Vector2 = Vector2.ZERO
@@ -70,7 +71,8 @@ func move_state() -> void:
 		action_1.enter_state(self)
 	# projectile shuriken / potion / bomb 
 	if Input.is_action_just_pressed("action_2"):
-		throw_shuriken()
+		current_action_state = action_2
+		action_2.enter_state(self)
 
 
 func action_state(delta: float) -> void:
