@@ -6,8 +6,13 @@ const STOP_SPEED = 250.0
 const RAY_LENGTH = 10.0
 
 @export var velocity: Vector2 = Vector2(500, 0)
+@export var sound_throw: AudioStream
 
 @onready var wall_detector: RayCast2D = $WallDetector
+
+func _ready() -> void:
+	if sound_throw != null:
+		AudioManager.PlaySFX(sound_throw, self)
 
 func set_direction(dir: Vector2) -> void:
 	velocity = dir * SPEED
