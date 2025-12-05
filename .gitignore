@@ -13,6 +13,9 @@ export_credentials.cfg
 # MacOS system files
 .DS_Store
 
+# IDE
+.vscode/
+
 # Mono-specific ignores
 .mono/
 data_*/
