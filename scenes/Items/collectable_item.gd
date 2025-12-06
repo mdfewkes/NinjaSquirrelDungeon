@@ -28,7 +28,7 @@ signal item_collected(node: CollectableItem)
 @onready var sprite: Sprite2D = $Sprite2D
 
 # randomized to make sure items don't all bounce in lockstep
-var bounce_differentiator: int
+var bounce_differentiator: float
 
 
 func trigger_collection() -> void:
@@ -40,12 +40,12 @@ func trigger_collection() -> void:
 
 
 func _ready() -> void:
-	bounce_differentiator = randf_range(0.0, 2 * PI)
+	bounce_differentiator = randf_range(0.0, 2.0 * PI)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if sprite:
-		sprite.offset.y = sin(bounce_speed * 2 * PI * Time.get_ticks_msec() / 1000.0) * bounce_amount
+		sprite.offset.y = sin(bounce_speed * 2.0 * PI * Time.get_ticks_msec() / 1000.0) * bounce_amount
 
 
 func _on_body_entered(body: Node2D) -> void:

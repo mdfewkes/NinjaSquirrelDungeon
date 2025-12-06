@@ -25,6 +25,10 @@ AudioManager="*res://scenes/AudioManager/audio_manager.tscn"
 InventoryManager="*res://code/InventoryManager.gd"
 FeatureFlags="*res://code/FeatureFlags.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 player=""

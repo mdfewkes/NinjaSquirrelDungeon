@@ -21,11 +21,15 @@ extends StaticBody2D
 ## If true, the key is removed from inventory as the door opens.
 @export var single_use_key := true
 
+## If one or more switches is linked, they open the door instead of the normal unlock area
+@export var switches: Array[FloorSwitch] = []
+
 @onready var sprite := $Sprite2D
 @onready var blocker := $Blocker
 @onready var anim := $AnimationPlayer
 
 var close_timer: Timer
+
 
 func _ready() -> void:
 	if is_open:
@@ -40,6 +44,9 @@ func _ready() -> void:
 		close_timer.wait_time = close_after_seconds
 		close_timer.connect("timeout", close)
 		add_child(close_timer)
+		
+	for switch in switches:
+		switch.connect("triggered", _on_switch_triggered)
 
 
 func open():
@@ -56,16 +63,17 @@ func close():
 
 func _on_unlock_area_entered(body: Node2D) -> void:
 	if body is Player:
-		if required_key_value == 0:
-			open()
-		elif InventoryManager.has_item(InventoryManager.ItemType.key, required_key_value):
-			open()
-			if single_use_key:
-				InventoryManager.remove_item(InventoryManager.ItemType.key, required_key_value)
-		else:
-			print("Required key not present: ", required_key_value)
 		if close_timer:
 			close_timer.stop()
+		if not is_open:
+			if required_key_value == 0 and len(switches) == 0:
+				open()
+			elif InventoryManager.has_item(InventoryManager.ItemType.key, required_key_value):
+				open()
+				if single_use_key:
+					InventoryManager.remove_item(InventoryManager.ItemType.key, required_key_value)
+			else:
+				print("Required key not present: ", required_key_value)
 
 
 func _on_unlock_area_body_exited(body: Node2D) -> void:
@@ -73,7 +81,7 @@ func _on_unlock_area_body_exited(body: Node2D) -> void:
 		close_timer.start()
 
 
-func _on_close_timer():
-	if close_timer != null:
-		close()
-	close_timer = null
+func _on_switch_triggered(_switch: FloorSwitch):
+	call_deferred("open")
+	if close_timer:
+		close_timer.call_deferred("start")
