@@ -17,6 +17,12 @@ export_credentials.cfg
 .vscode/
 .claude/settings.local.json
 
+# Local project documentation
+CLAUDE.md
+
+# Feature flags (local config)
+feature_flags.json
+
 # Mono-specific ignores
 .mono/
 data_*/
