@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://ea3lunwfspsx"]
+
+[ext_resource type="Script" uid="uid://b8ng18c01fsy8" path="res://scenes/Projectiles/projectile.gd" id="1_x53je"]
+[ext_resource type="Texture2D" uid="uid://cih5onscjg41g" path="res://scenes/Projectiles/Art/shuriken.png" id="2_n65al"]
+[ext_resource type="Script" uid="uid://c2v35he0ge0kq" path="res://code/Spin.gd" id="3_ciyhp"]
+[ext_resource type="PackedScene" uid="uid://dp3y7pkypo3a4" path="res://scenes/Effects/sparks.tscn" id="4_imat3"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="5_1j77e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0w2d3"]
+
+[node name="ShurikenProjectile" type="Node2D"]
+script = ExtResource("1_x53je")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n65al")
+script = ExtResource("3_ciyhp")
+spin_speed = 10.0
+
+[node name="Sparks" parent="." instance=ExtResource("4_imat3")]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("5_1j77e")
+damage = 0
+knockback = 100
+metadata/_custom_type_script = "uid://dtiynebo6fexe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_0w2d3")
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)

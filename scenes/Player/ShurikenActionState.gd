@@ -1,8 +1,9 @@
 extends ActionState
 
-@export var cooldown_time_msec = 500
+@export var cooldown_time_msec := 500.0
+@export var sound_throw: AudioStream
 
-const shuriken_projectile_scene = preload("shuriken-projectile.tscn")
+const shuriken_projectile_scene = preload("res://scenes/Projectiles/shuriken.tscn")
 var last_throw_time = 0.0
 
 signal shuriken_throw
@@ -11,7 +12,10 @@ func _action_enter(player :Player) -> void:
 	if Time.get_ticks_msec() - last_throw_time < cooldown_time_msec: return
 	last_throw_time = Time.get_ticks_msec()
 	shuriken_throw.emit()
-	
+
+	if sound_throw != null:
+		AudioManager.PlaySFX(sound_throw, player)
+
 	# spawn a shuriken that flies in the direction we are facing
 	var dir := Vector2(player.last_input_vector.x, player.last_input_vector.y).normalized()
 	var ninjastar = shuriken_projectile_scene.instantiate()

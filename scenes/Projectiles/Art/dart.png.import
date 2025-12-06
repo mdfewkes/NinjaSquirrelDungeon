@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce7rjgyeihc13"
-path="res://.godot/imported/dart-temp.png-922c6aa7a29c219339f69b386c92fe0c.ctex"
+path="res://.godot/imported/dart.png-33bdfef1ee0b37508c0e91380e774fd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp assets/dart-temp.png"
-dest_files=["res://.godot/imported/dart-temp.png-922c6aa7a29c219339f69b386c92fe0c.ctex"]
+source_file="res://scenes/Projectiles/Art/dart.png"
+dest_files=["res://.godot/imported/dart.png-33bdfef1ee0b37508c0e91380e774fd5.ctex"]
 
 [params]
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://8gyht6yjpui1"]
+
+[ext_resource type="Script" uid="uid://b8ng18c01fsy8" path="res://scenes/Projectiles/projectile.gd" id="1_yvpcq"]
+[ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="2_umxqs"]
+[ext_resource type="PackedScene" uid="uid://dp3y7pkypo3a4" path="res://scenes/Effects/sparks.tscn" id="3_fvhhx"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_e2cde"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhjwi"]
+size = Vector2(32, 5)
+
+[node name="Dart" type="Node2D"]
+script = ExtResource("1_yvpcq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+texture = ExtResource("2_umxqs")
+
+[node name="Sparks" parent="." instance=ExtResource("3_fvhhx")]
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_e2cde")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_rhjwi")

@@ -9,8 +9,8 @@ extends Node2D
 ## If one or more switches is linked, they trigger the firing instead of the timer
 @export var switches: Array[FloorSwitch] = []
 
-@onready var fire_particles: CPUParticles2D = $FireParticles
-@onready var template: Dart = $DartTemplate
+@onready var smoke_effect: CPUParticles2D = $SmokeBurstEffect
+@onready var template: Projectile = $DartTemplate
 @onready var timer: Timer = $FireTimer
 
 
@@ -30,7 +30,7 @@ func _ready():
 func fire():
 	if not template:
 		return
-	fire_particles.emitting = true
+	smoke_effect.emitting = true
 	var dart = template.duplicate(DUPLICATE_USE_INSTANTIATION)
 	get_parent().add_child(dart)
 	# normalize the dart's rotation and position to include the parent's rotation
