@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=68 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="7_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="9_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://bwfrrxhnpgcjm" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="9_ioo17"]
 [ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="10_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bfsjclbxrvnhr" path="res://scenes/Items/small_key.tscn" id="13_2o6r5"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="16_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
+[ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="20_26xuy"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -683,6 +685,7 @@ color = Color(0.60052365, 0.52271074, 0.8287144, 1)
 z_index = -1
 
 [node name="Parallax2D" type="Parallax2D" parent="GroundLayer"]
+scroll_scale = Vector2(1.1, 1.1)
 repeat_size = Vector2(1280, 768)
 
 [node name="TextureRect" type="TextureRect" parent="GroundLayer/Parallax2D"]
@@ -888,5 +891,18 @@ position = Vector2(736, 2017.9998)
 rotation = -2.443461
 fire_wait_time = 0.0
 switches = [NodePath("../TrapSwitch1")]
+
+[node name="SwingingTrap" parent="." node_paths=PackedStringArray("triggers") instance=ExtResource("9_cbp6q")]
+position = Vector2(1509, -148)
+triggers = [NodePath("../RockTrigger1"), NodePath("../RockTrigger2")]
+
+[node name="RockTrigger1" parent="." instance=ExtResource("18_ikiii")]
+position = Vector2(1510, 312)
+scale = Vector2(3, 3)
+invisible = true
+
+[node name="RockTrigger2" parent="." instance=ExtResource("20_26xuy")]
+position = Vector2(1376, 576)
+rotation = 1.5707964
 
 [connection signal="direction_changed" from="Player" to="tail" method="_on_player_direction_changed"]

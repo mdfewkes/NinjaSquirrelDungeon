@@ -1,0 +1,174 @@
+[gd_scene load_steps=10 format=3 uid="uid://7hlcc4tjod4o"]
+
+[ext_resource type="Script" uid="uid://ducuwmk7pveb8" path="res://scenes/Traps/swinging_trap.gd" id="1_edkgv"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="2_gp6gi"]
+[ext_resource type="Texture2D" uid="uid://whw4v4a1rfin" path="res://scenes/Traps/Art/swinging-rock.png" id="3_epsgw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twpuu"]
+radius = 35.0
+height = 86.0
+
+[sub_resource type="Gradient" id="Gradient_epsgw"]
+colors = PackedColorArray(0.39607844, 0.12156863, 0.1254902, 1, 0.5137255, 0.3137255, 0.22352941, 0)
+
+[sub_resource type="Gradient" id="Gradient_7dxas"]
+offsets = PackedFloat32Array(0.0034246575, 1)
+colors = PackedColorArray(0.6509804, 0.30588236, 0.22745098, 1, 0.5137255, 0.3137255, 0.22352941, 0)
+
+[sub_resource type="Animation" id="Animation_fynx0"]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/HitBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/RockSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rotator:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_edkgv"]
+resource_name = "swing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5707963267948966, -1.5707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/HitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/RockSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.88670092140587, 1.0297442586766543]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rotator:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.8, 1),
+"transitions": PackedFloat32Array(2.0000002, 1, 0.4999999, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dh7q"]
+_data = {
+&"RESET": SubResource("Animation_fynx0"),
+&"swing": SubResource("Animation_edkgv")
+}
+
+[node name="SwingingTrap" type="Node2D"]
+script = ExtResource("1_edkgv")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="Rotator"]
+position = Vector2(1, 455)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("2_gp6gi")
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/HitBox"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_twpuu")
+disabled = true
+
+[node name="RopeShadow" type="Line2D" parent="Rotator"]
+light_mask = 2146435072
+z_index = 2
+position = Vector2(-1, 455)
+points = PackedVector2Array(0, 0, 0, -600)
+width = 4.0
+default_color = Color(1, 1, 1, 0)
+gradient = SubResource("Gradient_epsgw")
+sharp_limit = 1.0
+
+[node name="Rope" type="Line2D" parent="Rotator"]
+light_mask = 2146435072
+z_index = 2
+position = Vector2(1, 455)
+points = PackedVector2Array(0, 0, 0, -600)
+width = 4.0
+default_color = Color(1, 1, 1, 0)
+gradient = SubResource("Gradient_7dxas")
+sharp_limit = 1.0
+
+[node name="RockSprite" type="Sprite2D" parent="Rotator"]
+light_mask = 2146435072
+z_index = 2
+position = Vector2(1, 455)
+texture = ExtResource("3_epsgw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8dh7q")
+}
+speed_scale = 0.8
