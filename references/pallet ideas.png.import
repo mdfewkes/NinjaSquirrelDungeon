@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2uguqkt2vvvb"
-path="res://.godot/imported/shadowtail-dungeon-mock-up.png-37c1afe7d8fe3587daa68d078418c69b.ctex"
+uid="uid://8fpi41mq65ey"
+path="res://.godot/imported/pallet ideas.png-f130343b5cba9d66f214b8ba161511e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shadowtail-dungeon-mock-up.png"
-dest_files=["res://.godot/imported/shadowtail-dungeon-mock-up.png-37c1afe7d8fe3587daa68d078418c69b.ctex"]
+source_file="res://references/pallet ideas.png"
+dest_files=["res://.godot/imported/pallet ideas.png-f130343b5cba9d66f214b8ba161511e1.ctex"]
 
 [params]
 
