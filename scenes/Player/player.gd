@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+## Set this to true to make this a non-interactable version for use in cutscenes.
+@export var is_cutscene_squirrel = false
 @export var speed: float = 300
 @export var roll_speed: float = 600
 @export var max_hp: int = 4
@@ -37,7 +39,8 @@ func _ready() -> void:
 	player_death.connect(_on_player_death)
 
 func _physics_process(delta: float) -> void:
-	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	if not is_cutscene_squirrel:
+		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
 	match current_state:
 		PlayerState.Move:
@@ -147,3 +150,6 @@ func _on_hit(hurtbox: HurtBox):
 
 func _on_player_death() -> void:
 	get_tree().reload_current_scene()
+
+func _on_player_directed(vector: Vector2) -> void:
+	input_vector = vector
