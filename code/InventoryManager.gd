@@ -58,6 +58,12 @@ func has_item(item_type: ItemType, item_value: int) -> bool:
 	return _get_first_index(item_type, item_value) > -1
 
 
+func reset() -> void:
+	for item in items:
+		emit_signal('item_removed', item)
+	items = []
+
+
 func _get_first_index(item_type: ItemType, item_value: int) -> int:
 	for i in range(len(items)):
 		if items[i].type == item_type and items[i].value == item_value:

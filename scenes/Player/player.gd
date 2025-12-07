@@ -37,6 +37,7 @@ func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
 	player_death.connect(_on_player_death)
+	InventoryManager.reset()
 
 func _physics_process(delta: float) -> void:
 	if not is_cutscene_squirrel:
