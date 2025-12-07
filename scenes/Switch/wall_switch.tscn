@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://4pkxpvcoftys"]
+[gd_scene load_steps=3 format=3 uid="uid://cnh13635nxntx"]
 
-[ext_resource type="Script" uid="uid://bevja8c5uu4l5" path="res://scenes/Switch/switch_trigger.gd" id="1_8ih5f"]
+[ext_resource type="Script" uid="uid://bevja8c5uu4l5" path="res://scenes/Switch/switch_trigger.gd" id="1_mlmra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ih5f"]
-size = Vector2(40, 40)
+size = Vector2(60, 40)
 
-[node name="FloorSwitch" type="Area2D"]
+[node name="WallSwitch" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_8ih5f")
-hitbox_trigger = false
+script = ExtResource("1_mlmra")
+player_trigger = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ih5f")
@@ -20,13 +20,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -5.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = 5.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.2)
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetTimer" type="Timer" parent="."]
 one_shot = true

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bfsjclbxrvnhr" path="res://scenes/Items/small_key.tscn" id="13_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="14_70uel"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="16_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/DartTrap/dart_trap.tscn" id="17_udxuc"]
+[ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]

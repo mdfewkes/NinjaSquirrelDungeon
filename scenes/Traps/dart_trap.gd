@@ -7,7 +7,7 @@ extends Node2D
 @export var fire_wait_time := 1.0
 
 ## If one or more switches is linked, they trigger the firing instead of the timer
-@export var switches: Array[FloorSwitch] = []
+@export var switches: Array[SwitchTrigger] = []
 
 @onready var smoke_effect: CPUParticles2D = $SmokeBurstEffect
 @onready var template: Projectile = $DartTemplate
@@ -43,5 +43,5 @@ func fire():
 	dart.show()
 
 
-func _on_switch_triggered(_switch: FloorSwitch):
+func _on_switch_triggered(_switch: SwitchTrigger):
 	call_deferred("fire")

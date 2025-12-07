@@ -22,7 +22,7 @@ extends StaticBody2D
 @export var single_use_key := true
 
 ## If one or more switches is linked, they open the door instead of the normal unlock area
-@export var switches: Array[FloorSwitch] = []
+@export var switches: Array[SwitchTrigger] = []
 
 @onready var sprite := $Sprite2D
 @onready var blocker := $Blocker
@@ -81,7 +81,7 @@ func _on_unlock_area_body_exited(body: Node2D) -> void:
 		close_timer.start()
 
 
-func _on_switch_triggered(_switch: FloorSwitch):
+func _on_switch_triggered(_switch: SwitchTrigger):
 	call_deferred("open")
 	if close_timer:
 		close_timer.call_deferred("start")

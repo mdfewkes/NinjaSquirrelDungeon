@@ -2,9 +2,17 @@ class_name Projectile
 extends Node2D
 
 @export var default_speed := 500.0
+
+## Each time the projectile hits a wall it slows a little bit
 @export var slow_on_bounce := 0.8
+
+## If the speed gets to this value after bouncing the projectile will die/fade
 @export var stop_speed := 250.0
+
+## How quickly does it fade out after hitting a wall?
 @export var fade_speed := 0.2
+
+## If true, the node will rotate to face the direction it's headed (including after a bounce)
 @export var rotate_with_direction := true
 
 @onready var sparks: CPUParticles2D = $Sparks

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmuwm24uar0hy"]
 
-[ext_resource type="Script" uid="uid://def1vv3nncdq" path="res://scenes/DartTrap/dart_trap.gd" id="1_rhjwi"]
+[ext_resource type="Script" uid="uid://def1vv3nncdq" path="res://scenes/Traps/dart_trap.gd" id="1_rhjwi"]
 [ext_resource type="PackedScene" uid="uid://8gyht6yjpui1" path="res://scenes/Projectiles/dart.tscn" id="2_rhjwi"]
 [ext_resource type="PackedScene" uid="uid://ckfyuwake6yu8" path="res://scenes/Effects/smoke_burst.tscn" id="3_yjvur"]
 
