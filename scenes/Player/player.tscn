@@ -1,21 +1,31 @@
-[gd_scene load_steps=80 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=90 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
-[ext_resource type="AudioStream" uid="uid://blsx7xpa1woj0" path="res://temp assets/test_audio_01.ogg" id="2_a06cl"]
+[ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_btcbx"]
-[ext_resource type="AudioStream" uid="uid://cy2g8gwspkj2d" path="res://temp assets/test_audio_02.ogg" id="3_dl1wr"]
 [ext_resource type="Texture2D" uid="uid://c5j8ixvj0ecma" path="res://scenes/Player/Art/ninja_squirrel_tailess_sprite_sheet.png" id="3_uiqp4"]
 [ext_resource type="Texture2D" uid="uid://biid8l55g27m5" path="res://scenes/Player/Art/ninja_squirrel_sprite_sheet_small.png" id="4_c4h5g"]
+[ext_resource type="AudioStream" uid="uid://dcnqmilminhlj" path="res://scenes/Player/Audio/hero_hurt_11.ogg" id="4_e6s7e"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_gwnis"]
+[ext_resource type="AudioStream" uid="uid://cyr2h3gf6lbon" path="res://scenes/Player/Audio/hero_hurt_12.ogg" id="5_gb22u"]
 [ext_resource type="AudioStream" uid="uid://dd27ft0ug7aq0" path="res://scenes/Player/Audio/squirrel-footstep-1.ogg" id="6_7tfl1"]
+[ext_resource type="AudioStream" uid="uid://q1mkvmvkvusj" path="res://scenes/Player/Audio/hero_hurt_13.ogg" id="6_pnj8v"]
+[ext_resource type="AudioStream" uid="uid://durvhvidjrbyj" path="res://scenes/Player/Audio/hero_hurt_14.ogg" id="7_4xm4e"]
 [ext_resource type="AudioStream" uid="uid://6vftiojt2rkl" path="res://scenes/Player/Audio/squirrel-footstep-2.ogg" id="7_jxtnq"]
 [ext_resource type="AudioStream" uid="uid://bdu37qw1jmohm" path="res://scenes/Player/Audio/squirrel-footstep-3.ogg" id="8_t6q27"]
+[ext_resource type="AudioStream" uid="uid://buw0io4ylq5td" path="res://scenes/Player/Audio/hero_hurt_16.ogg" id="9_eiysd"]
 [ext_resource type="AudioStream" uid="uid://bhn81pjisvpsl" path="res://scenes/Player/Audio/squirrel-footstep-4.ogg" id="9_wyey8"]
 [ext_resource type="AudioStream" uid="uid://fq80ffye3285" path="res://scenes/Player/Audio/squirrel-footstep-5.ogg" id="10_1bwnf"]
+[ext_resource type="AudioStream" uid="uid://buvt6255rafu1" path="res://scenes/Player/Audio/hero_hurt_03.ogg" id="11_bs247"]
+[ext_resource type="AudioStream" uid="uid://drq5crvv7plt4" path="res://scenes/Player/Audio/hero_hurt_05.ogg" id="13_35xlt"]
 [ext_resource type="Script" uid="uid://jnvskcs62i4r" path="res://scenes/Player/KatanaActionState.gd" id="13_jxtnq"]
+[ext_resource type="AudioStream" uid="uid://bcw6iba6scjql" path="res://scenes/Player/Audio/hero_hurt_06.ogg" id="14_0d4db"]
 [ext_resource type="Script" uid="uid://43i1qg62y5ku" path="res://scenes/Player/ShurikenActionState.gd" id="14_t6q27"]
 [ext_resource type="AudioStream" uid="uid://cdmuw8y2xo1uv" path="res://scenes/Player/Audio/shuriken-throw-1.ogg" id="15_cctgl"]
+[ext_resource type="AudioStream" uid="uid://vf3lhh41we2h" path="res://scenes/Player/Audio/hero_hurt_07.ogg" id="15_ipg72"]
 [ext_resource type="AudioStream" uid="uid://csaoym8uj4ls4" path="res://scenes/Player/Audio/shuriken-throw-2.ogg" id="16_an8q1"]
+[ext_resource type="AudioStream" uid="uid://cf22s14gxnerv" path="res://scenes/Player/Audio/hero_hurt_08.ogg" id="16_mro02"]
+[ext_resource type="AudioStream" uid="uid://5dgthyehtcq3" path="res://scenes/Player/Audio/hero_hurt_09.ogg" id="17_34uhp"]
 [ext_resource type="AudioStream" uid="uid://ntcf3v05vbo1" path="res://scenes/Player/Audio/shuriken-throw-3.ogg" id="17_hxkm2"]
 [ext_resource type="AudioStream" uid="uid://brakemjef537r" path="res://scenes/Player/Audio/shuriken-throw-4.ogg" id="18_18ciy"]
 [ext_resource type="AudioStream" uid="uid://cyhyqv0b8grym" path="res://scenes/Player/Audio/shuriken-throw-5.ogg" id="19_cg2hl"]
@@ -24,10 +34,19 @@
 [ext_resource type="AudioStream" uid="uid://c3prmoi203db4" path="res://scenes/Player/Audio/shuriken-throw-8.ogg" id="22_jn0uf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
-streams_count = 2
-stream_0/stream = ExtResource("2_a06cl")
-stream_1/stream = ExtResource("3_dl1wr")
-stream_1/weight = 0.5
+streams_count = 12
+stream_0/stream = ExtResource("2_7iww4")
+stream_1/stream = ExtResource("11_bs247")
+stream_2/stream = ExtResource("13_35xlt")
+stream_3/stream = ExtResource("14_0d4db")
+stream_4/stream = ExtResource("15_ipg72")
+stream_5/stream = ExtResource("16_mro02")
+stream_6/stream = ExtResource("17_34uhp")
+stream_7/stream = ExtResource("4_e6s7e")
+stream_8/stream = ExtResource("5_gb22u")
+stream_9/stream = ExtResource("6_pnj8v")
+stream_10/stream = ExtResource("7_4xm4e")
+stream_11/stream = ExtResource("9_eiysd")
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 length = 0.001
