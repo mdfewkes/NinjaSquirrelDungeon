@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=80 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://blsx7xpa1woj0" path="res://temp assets/test_audio_01.ogg" id="2_a06cl"]
@@ -14,6 +14,14 @@
 [ext_resource type="AudioStream" uid="uid://fq80ffye3285" path="res://scenes/Player/Audio/squirrel-footstep-5.ogg" id="10_1bwnf"]
 [ext_resource type="Script" uid="uid://jnvskcs62i4r" path="res://scenes/Player/KatanaActionState.gd" id="13_jxtnq"]
 [ext_resource type="Script" uid="uid://43i1qg62y5ku" path="res://scenes/Player/ShurikenActionState.gd" id="14_t6q27"]
+[ext_resource type="AudioStream" uid="uid://cdmuw8y2xo1uv" path="res://scenes/Player/Audio/shuriken-throw-1.ogg" id="15_cctgl"]
+[ext_resource type="AudioStream" uid="uid://csaoym8uj4ls4" path="res://scenes/Player/Audio/shuriken-throw-2.ogg" id="16_an8q1"]
+[ext_resource type="AudioStream" uid="uid://ntcf3v05vbo1" path="res://scenes/Player/Audio/shuriken-throw-3.ogg" id="17_hxkm2"]
+[ext_resource type="AudioStream" uid="uid://brakemjef537r" path="res://scenes/Player/Audio/shuriken-throw-4.ogg" id="18_18ciy"]
+[ext_resource type="AudioStream" uid="uid://cyhyqv0b8grym" path="res://scenes/Player/Audio/shuriken-throw-5.ogg" id="19_cg2hl"]
+[ext_resource type="AudioStream" uid="uid://r61rkw66knct" path="res://scenes/Player/Audio/shuriken-throw-6.ogg" id="20_o05ft"]
+[ext_resource type="AudioStream" uid="uid://c68q2owgo5ro" path="res://scenes/Player/Audio/shuriken-throw-7.ogg" id="21_nbg44"]
+[ext_resource type="AudioStream" uid="uid://c3prmoi203db4" path="res://scenes/Player/Audio/shuriken-throw-8.ogg" id="22_jn0uf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 2
@@ -892,6 +900,17 @@ node_connections = [&"output", 0, &"StateMachine"]
 [sub_resource type="CircleShape2D" id="CircleShape2D_hshwv"]
 radius = 31.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ni0x"]
+streams_count = 8
+stream_0/stream = ExtResource("15_cctgl")
+stream_1/stream = ExtResource("16_an8q1")
+stream_2/stream = ExtResource("17_hxkm2")
+stream_3/stream = ExtResource("18_18ciy")
+stream_4/stream = ExtResource("19_cg2hl")
+stream_5/stream = ExtResource("20_o05ft")
+stream_6/stream = ExtResource("21_nbg44")
+stream_7/stream = ExtResource("22_jn0uf")
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2") groups=["player"]]
 collision_layer = 2
 motion_mode = 1
@@ -975,4 +994,5 @@ metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
+sound_throw = SubResource("AudioStreamRandomizer_4ni0x")
 metadata/_custom_type_script = "uid://tfabbyx4daf2"
