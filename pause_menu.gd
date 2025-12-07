@@ -1,6 +1,7 @@
 extends Control
 
 @onready var menu_panel: Control = $"."
+@onready var resume_btn: Button = %Resume
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -17,6 +18,7 @@ func set_paused(paused: bool) -> void:
 		menu_panel.show()
 		menu_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		$AnimationPlayer.play("blur")
+		resume_btn.grab_focus()
 	else:
 		# Disable menu visually + input
 		menu_panel.hide()
