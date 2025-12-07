@@ -36,3 +36,4 @@ offset_bottom = 392.0
 text = "To Title"
 script = ExtResource("2_fe5uk")
 path_to_scene = "res://scenes/Screens/Title_Screen/title_screen.tscn"
+start_with_focus = true

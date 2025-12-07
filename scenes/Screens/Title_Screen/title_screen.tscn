@@ -27,32 +27,44 @@ text = "Legend of Shadowtail"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 488.0
 offset_top = 328.0
 offset_right = 672.0
 offset_bottom = 392.0
+focus_neighbor_left = NodePath("../CreditsButton")
+focus_neighbor_right = NodePath("../HistoryButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../HistoryButton")
+focus_previous = NodePath("../CreditsButton")
 text = "Play Game"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://world.tscn"
+start_with_focus = true
 
-[node name="Button2" type="Button" parent="."]
+[node name="CreditsButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 504.0
 offset_right = 520.0
 offset_bottom = 568.0
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../HistoryButton")
+focus_next = NodePath("../PlayButton")
 text = "Credits"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Credits_Screen/credits_screen.tscn"
 
-[node name="Button3" type="Button" parent="."]
+[node name="HistoryButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 648.0
 offset_top = 512.0
 offset_right = 832.0
 offset_bottom = 576.0
+focus_neighbor_left = NodePath("../CreditsButton")
+focus_neighbor_top = NodePath("../PlayButton")
+focus_previous = NodePath("../PlayButton")
 text = "History"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
