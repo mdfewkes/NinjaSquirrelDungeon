@@ -1,10 +1,246 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwfrrxhnpgcjm"]
+[gd_scene load_steps=35 format=3 uid="uid://bwfrrxhnpgcjm"]
 
 [ext_resource type="Script" uid="uid://6g2mctlq0fjj" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="1_q5r4c"]
 [ext_resource type="Texture2D" uid="uid://fjyhnxtbr8gl" path="res://scenes/PatrollingEnemy/bat.png" id="2_qc4yg"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_qc4yg"]
 [ext_resource type="Texture2D" uid="uid://b5gt5vg8i70sv" path="res://scenes/PatrollingEnemy/batshadow.png" id="3_ukvp4"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_qc4yg"]
+[ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/raccoon_sprite_sheet.png" id="6_ukvp4"]
+
+[sub_resource type="Animation" id="Animation_4tl1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_lx2ih"]
+resource_name = "chase_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 7]
+}
+
+[sub_resource type="Animation" id="Animation_cam4r"]
+resource_name = "chase_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_xeo5x"]
+resource_name = "chase_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 19]
+}
+
+[sub_resource type="Animation" id="Animation_urh6s"]
+resource_name = "chase_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_boh0k"]
+resource_name = "patrol_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 10]
+}
+
+[sub_resource type="Animation" id="Animation_3dyxq"]
+resource_name = "patrol_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15250123, 0.3, 0.45024478),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 16]
+}
+
+[sub_resource type="Animation" id="Animation_ukvp4"]
+resource_name = "patrol_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 22]
+}
+
+[sub_resource type="Animation" id="Animation_n1pqa"]
+resource_name = "patrol_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RaccoonSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 4, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urh6s"]
+_data = {
+&"RESET": SubResource("Animation_4tl1y"),
+&"chase_down": SubResource("Animation_lx2ih"),
+&"chase_left": SubResource("Animation_cam4r"),
+&"chase_right": SubResource("Animation_xeo5x"),
+&"chase_up": SubResource("Animation_urh6s"),
+&"patrol_down": SubResource("Animation_boh0k"),
+&"patrol_left": SubResource("Animation_3dyxq"),
+&"patrol_right": SubResource("Animation_ukvp4"),
+&"patrol_up": SubResource("Animation_n1pqa")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2lfg"]
+animation = &"chase_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h404y"]
+animation = &"chase_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kqgey"]
+animation = &"chase_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvs2r"]
+animation = &"chase_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ukvp4"]
+animation = &"chase_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7e1ba"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_d2lfg")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_h404y")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kqgey")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_hvs2r")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ukvp4")
+blend_point_4/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24ug0"]
+animation = &"patrol_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ct2qf"]
+animation = &"patrol_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkt4x"]
+animation = &"patrol_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cgf06"]
+animation = &"patrol_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_grfb8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_24ug0")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ct2qf")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fkt4x")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_cgf06")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fnaqb"]
+advance_mode = 2
+advance_condition = &"is_chase"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_je13o"]
+advance_mode = 2
+advance_condition = &"is_patrol"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vep02"]
+advance_mode = 2
+advance_condition = &"is_patrol"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uddvb"]
+states/Chase/node = SubResource("AnimationNodeBlendSpace2D_7e1ba")
+states/Chase/position = Vector2(417, 162)
+states/Patrol/node = SubResource("AnimationNodeBlendSpace2D_grfb8")
+states/Patrol/position = Vector2(417, 34)
+transitions = ["Patrol", "Chase", SubResource("AnimationNodeStateMachineTransition_fnaqb"), "Chase", "Patrol", SubResource("AnimationNodeStateMachineTransition_je13o"), "Start", "Patrol", SubResource("AnimationNodeStateMachineTransition_vep02")]
+graph_offset = Vector2(73, -60)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pt26"]
 height = 46.0
@@ -20,13 +256,6 @@ collision_layer = 0
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_q5r4c")
-view_range = null
-speed = null
-knockback_friction = null
-max_hp = null
-random_patrol = null
-patrol_point_radius = null
-patrol_points = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
@@ -34,18 +263,45 @@ texture = ExtResource("2_qc4yg")
 hframes = 3
 frame = 1
 
+[node name="RaccoonSpriteSheet" type="Sprite2D" parent="."]
+position = Vector2(4, -54)
+scale = Vector2(0.39361477, 0.39361477)
+texture = ExtResource("6_ukvp4")
+hframes = 6
+vframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_urh6s")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_uddvb")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_chase = true
+parameters/conditions/is_patrol = false
+parameters/Chase/blend_position = Vector2(0.30728614, -0.8247863)
+parameters/Patrol/blend_position = Vector2(-0.13305175, 0.4102564)
+
 [node name="ShadowSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -24)
 texture = ExtResource("3_ukvp4")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -6)
 polygon = PackedVector2Array(0, 0, -10, 6, 0, 12, 12, 6)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(16, 0)
 
 [node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(-3, -0.9999981)
+scale = Vector2(4.187297, 2.3085177)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_qc4yg")
@@ -55,6 +311,8 @@ position = Vector2(1, -19)
 shape = SubResource("CapsuleShape2D_3pt26")
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2(-2, 17.000004)
+scale = Vector2(3.8937712, 3.642353)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_qc4yg")
@@ -65,10 +323,10 @@ position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_uqpo7")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -75.0
-offset_right = 26.0
-offset_bottom = -52.0
+offset_left = -21.0
+offset_top = -131.0
+offset_right = 29.0
+offset_bottom = -108.0
 text = "health"
 horizontal_alignment = 1
 vertical_alignment = 1

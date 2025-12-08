@@ -25,8 +25,12 @@ var current_patrol_point := 0:
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var patrol_timer: Timer = $PatrolTimer
+@onready var animation_tree: AnimationTree = $AnimationTree
+
 
 var state := States.IDLE
+var chase:  bool
+var patrol: bool
 
 var player = null
 
@@ -34,7 +38,8 @@ func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 	player = get_tree().get_nodes_in_group("player")[0]
 	patrol_timer.wait_time = patrol_points.get(current_patrol_point).duration
-
+	animation_tree.active = true
+	
 func _physics_process(_delta: float) -> void:
 	$Label.text = str(current_hp)
 	match state:
@@ -46,8 +51,20 @@ func _physics_process(_delta: float) -> void:
 			chase_state()
 		States.STUN:
 			knockback_state(_delta)
+			
+	if chase:
+		animation_tree.set("parameters/conditions/is_chase", true)
+		animation_tree.set("parameters/conditions/is_patrol", false)
+		
+	if patrol:
+		animation_tree.set("parameters/conditions/is_chase", false)
+		animation_tree.set("parameters/conditions/is_patrol", true)
+		
+	
+	animation_tree.set("parameters/Chase/blend_position", velocity.normalized())
+	animation_tree.set("parameters/Patrol/blend_position", velocity.normalized())
 
-
+	
 func idle_state():
 	if current_hp <= 0:
 		queue_free()
@@ -58,8 +75,10 @@ func idle_state():
 
 
 func chase_state():
-	velocity = global_position.direction_to(player.global_position) * speed
-	sprite_2d.scale.x = sign(velocity.x)
+	velocity = global_position.direction_to(player.global_position).normalized() * speed
+	#sprite_2d.scale.x = sign(velocity.x)
+	chase = true
+	patrol = false
 	move_and_slide()
 	if not can_see_player():
 		state = States.IDLE
@@ -67,9 +86,13 @@ func chase_state():
 
 func patrol_state():
 	var target_coordinates : Vector2 = patrol_points.get(current_patrol_point).coordinates
+	patrol = true
+	chase = false
 	if not at_patrol_point():
 		velocity = global_position.direction_to(target_coordinates) * speed
-		sprite_2d.scale.x = sign(velocity.x)
+		patrol = true
+		chase = false
+		#sprite_2d.scale.x = sign(velocity.x)
 		move_and_slide()
 	if can_see_player():
 		state = States.CHASE
