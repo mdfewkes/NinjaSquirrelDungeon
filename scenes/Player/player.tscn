@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=93 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://drq5crvv7plt4" path="res://scenes/Player/Audio/hero_hurt_05.ogg" id="13_35xlt"]
 [ext_resource type="Script" uid="uid://jnvskcs62i4r" path="res://scenes/Player/KatanaActionState.gd" id="13_jxtnq"]
 [ext_resource type="AudioStream" uid="uid://bcw6iba6scjql" path="res://scenes/Player/Audio/hero_hurt_06.ogg" id="14_0d4db"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="14_ihqbe"]
 [ext_resource type="Script" uid="uid://43i1qg62y5ku" path="res://scenes/Player/ShurikenActionState.gd" id="14_t6q27"]
 [ext_resource type="AudioStream" uid="uid://cdmuw8y2xo1uv" path="res://scenes/Player/Audio/shuriken-throw-1.ogg" id="15_cctgl"]
 [ext_resource type="AudioStream" uid="uid://vf3lhh41we2h" path="res://scenes/Player/Audio/hero_hurt_07.ogg" id="15_ipg72"]
@@ -47,6 +48,11 @@ stream_8/stream = ExtResource("5_gb22u")
 stream_9/stream = ExtResource("6_pnj8v")
 stream_10/stream = ExtResource("7_4xm4e")
 stream_11/stream = ExtResource("9_eiysd")
+
+[sub_resource type="Resource" id="Resource_cgmen"]
+script = ExtResource("14_ihqbe")
+stream = SubResource("AudioStreamRandomizer_wwtew")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 length = 0.001
@@ -930,11 +936,17 @@ stream_5/stream = ExtResource("20_o05ft")
 stream_6/stream = ExtResource("21_nbg44")
 stream_7/stream = ExtResource("22_jn0uf")
 
+[sub_resource type="Resource" id="Resource_ihqbe"]
+script = ExtResource("14_ihqbe")
+stream = SubResource("AudioStreamRandomizer_4ni0x")
+maxVoices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2") groups=["player"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
-sound_hurt = SubResource("AudioStreamRandomizer_wwtew")
+sfx_hurt = SubResource("Resource_cgmen")
 action_1 = NodePath("Katana ActionState")
 action_2 = NodePath("Shiruken ActionState")
 
@@ -1013,5 +1025,5 @@ metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
-sound_throw = SubResource("AudioStreamRandomizer_4ni0x")
+sfx_throw = SubResource("Resource_ihqbe")
 metadata/_custom_type_script = "uid://tfabbyx4daf2"
