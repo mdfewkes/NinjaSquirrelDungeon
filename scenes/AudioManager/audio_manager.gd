@@ -13,10 +13,10 @@ func _process(_delta: float) -> void:
 	print("```")
 	var dead_voices = []
 	for voice in active_voices:
-		print("voice ", voice)
+		#print("voice ", voice)
 		var dead_source = []
 		for i in range(active_voices[voice].size()):
-			print("source ", active_voices[voice][i])
+			#print("source ", active_voices[voice][i])
 			if not is_instance_valid(active_voices[voice][i]):
 				dead_source.push_front(i)
 				
