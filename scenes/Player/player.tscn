@@ -52,6 +52,9 @@ stream_11/stream = ExtResource("9_eiysd")
 [sub_resource type="Resource" id="Resource_cgmen"]
 script = ExtResource("14_ihqbe")
 stream = SubResource("AudioStreamRandomizer_wwtew")
+maxVoices = 1
+voiceStealling = false
+cooldown_time_msec = 200.0
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_gwnis"]
@@ -1025,5 +1028,6 @@ metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
+cooldown_time_msec = 0.0
 sfx_throw = SubResource("Resource_ihqbe")
 metadata/_custom_type_script = "uid://tfabbyx4daf2"
