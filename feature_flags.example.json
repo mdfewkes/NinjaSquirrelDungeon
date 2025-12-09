@@ -1,13 +1,13 @@
 {
-    "_doc": "Feature flags - copy to feature_flags.json and set enabled:true to activate",
+	"_doc": "Feature flags - copy to feature_flags.json and set enabled:true to activate",
 
-    "example_feature": {
-        "enabled": false,
-        "description": "Example flag - replace with your own"
-    },
+	"example_feature": {
+		"enabled": false,
+		"description": "Example flag - replace with your own"
+	},
 
-    "mute_toggle": {
-        "enabled": false,
-        "description": "Adds M key to toggle audio mute on/off"
-    }
+	"mute_toggle": {
+		"enabled": false,
+		"description": "Adds M key to toggle audio mute on/off"
+	}
 }
