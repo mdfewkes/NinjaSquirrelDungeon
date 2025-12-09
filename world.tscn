@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=63 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="3_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://scenes/Bat/bat.tscn" id="5_036b0"]
-[ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="5_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
-[ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="7_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="9_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://bwfrrxhnpgcjm" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="9_ioo17"]
@@ -626,23 +624,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 1936, -440, 1888, 1720)])
 source_geometry_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_k3n1d"]
-offsets = PackedFloat32Array(0.40585774, 0.51882845)
-colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2u3nc"]
-gradient = SubResource("Gradient_k3n1d")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
-shader = ExtResource("7_k3n1d")
-shader_parameter/tail_color_threshold = 0.01
-shader_parameter/tail_outline_threshold = 0.03
-shader_parameter/smooth_tail = false
-shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
-shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
 [sub_resource type="Resource" id="Resource_wse8f"]
 script = ExtResource("10_wse8f")
 duration = 5.0
@@ -706,21 +687,6 @@ navigation_polygon = SubResource("NavigationPolygon_wse8f")
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 z_index = 10
 position = Vector2(582, 574)
-
-[node name="tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
-position = Vector2(579.77, 558.56)
-script = ExtResource("5_ic0uy")
-attachement = NodePath("../Player")
-responsiveness = 0.865
-tail_start_offset = Vector2(0, -30)
-tail_motion_strength = 120.0
-
-[node name="display" type="ColorRect" parent="tail"]
-material = SubResource("ShaderMaterial_2o6r5")
-offset_left = -200.0
-offset_top = -50.0
-offset_right = -200.0
-offset_bottom = -50.0
 
 [node name="Bush" parent="." instance=ExtResource("3_tlwt5")]
 position = Vector2(1056, 376)
@@ -898,5 +864,3 @@ invisible = true
 [node name="RockTrigger2" parent="." instance=ExtResource("20_26xuy")]
 position = Vector2(1376, 576)
 rotation = 1.5707964
-
-[connection signal="direction_changed" from="Player" to="tail" method="_on_player_direction_changed"]

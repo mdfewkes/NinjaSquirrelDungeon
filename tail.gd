@@ -1,10 +1,10 @@
 extends Node2D
 
 @export var attachement: CharacterBody2D
-@export var responsiveness: float = 0.3
+@export var responsiveness: float = 0.865
 @export var display_padding: float = 50
 @export var tail_start_offset: Vector2 = Vector2()
-@export var tail_motion_strength: float = 150.
+@export var tail_motion_strength: float = 120.
 
 # Direction index values
 enum Direction {
@@ -109,9 +109,9 @@ func _on_player_direction_changed(new_direction: Variant) -> void:
 	direction = Vector2(new_direction.x, -new_direction.y)
 	match selected_pose:
 		Direction.UP:
-			z_index = 11
+			z_index = 1
 		Direction.LEFT, Direction.RIGHT, Direction.DOWN:
-			z_index = 9
+			z_index = -1
 
 
 func _on_player_shuriken_throw() -> void:
