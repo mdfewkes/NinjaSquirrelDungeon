@@ -685,7 +685,6 @@ color = Color(0.60052365, 0.52271074, 0.8287144, 1)
 z_index = -1
 
 [node name="Parallax2D" type="Parallax2D" parent="GroundLayer"]
-scroll_scale = Vector2(1.1, 1.1)
 repeat_size = Vector2(1280, 768)
 
 [node name="TextureRect" type="TextureRect" parent="GroundLayer/Parallax2D"]
