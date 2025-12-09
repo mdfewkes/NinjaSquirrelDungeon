@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=98 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -964,12 +964,6 @@ shader_parameter/smooth_tail = false
 shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-[sub_resource type="Curve" id="Curve_cgmen"]
-_limits = [2.0, 25.0, 0.0, 7.0]
-bake_resolution = 8
-_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1, 6), 0.0, 0.0, 0, 0, Vector2(2, 15), 0.0, 0.0, 0, 0, Vector2(3, 25), 0.0, 0.0, 0, 0, Vector2(4, 25), 0.0, 0.0, 0, 0, Vector2(5, 25), 0.0, 0.0, 0, 0, Vector2(6, 20), 0.0, 0.0, 0, 0, Vector2(7, 2), 0.0, 0.0, 0, 0]
-point_count = 8
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2") groups=["player"]]
 collision_layer = 2
 motion_mode = 1
@@ -1054,7 +1048,6 @@ script = ExtResource("13_jxtnq")
 script = ExtResource("14_t6q27")
 cooldown_time_msec = 0.0
 sfx_throw = SubResource("Resource_ihqbe")
-metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
 z_index = -1
@@ -1069,14 +1062,6 @@ offset_left = -200.0
 offset_top = -50.0
 offset_right = -200.0
 offset_bottom = -50.0
-
-[node name="path" type="Path2D" parent="tail"]
-visible = false
-
-[node name="Line2D" type="Line2D" parent="tail"]
-visible = false
-points = PackedVector2Array(0, -35, 30, -70, 10, -50, -5, -55, 12, -55, 17, -40, 15, -26, 2, -12)
-width_curve = SubResource("Curve_cgmen")
 
 [connection signal="direction_changed" from="." to="tail" method="_on_player_direction_changed"]
 [connection signal="shuriken_throw" from="Shiruken ActionState" to="tail" method="_on_player_shuriken_throw"]
