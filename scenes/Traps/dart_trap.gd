@@ -25,6 +25,8 @@ func _ready():
 		timer.stop()
 
 	template.hide()
+	template.hit_box.monitoring = false
+	template.hit_box.monitorable = false
 
 
 func fire():
@@ -40,6 +42,8 @@ func fire():
 	dart.rotation += rotation
 	dart.velocity = Vector2.from_angle(dart.rotation) * dart_speed
 	dart.global_position = template.global_position
+	dart.hit_box.monitoring = true
+	dart.hit_box.monitorable = true
 	dart.show()
 
 
