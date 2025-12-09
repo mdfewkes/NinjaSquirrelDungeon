@@ -43,13 +43,19 @@ var selected_pose = Direction.UP
 var direction: Vector2 = Vector2(0., -1.)
 
 func _ready() -> void:
+	# needs to be deferred because the parent component isn't ready
+	call_deferred("create_shapes")
+
+func create_shapes():
 	for segment in tail_poses[selected_pose]:
 		var shape = CollisionShape2D.new()
 		shape.position = segment.position
 		shape.shape = CircleShape2D.new()
 		shape.shape.radius = segment.size
 		tail_shape.push_back(shape)
-		add_child(shape)
+		# the shapes need to be outside the player node so they
+		# can trail behind a little bit
+		get_parent().get_parent().add_child(shape)
 
 func calculate_segment(i: int, target_position: Vector2) -> Vector2:
 	var ideal_position = target_position + tail_poses[selected_pose][i].position
