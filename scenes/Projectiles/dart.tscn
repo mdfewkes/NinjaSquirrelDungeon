@@ -56,7 +56,6 @@ stream_7/stream = ExtResource("18_yfbux")
 [sub_resource type="Resource" id="Resource_w8csu"]
 script = ExtResource("2_502sn")
 stream = SubResource("AudioStreamRandomizer_2s7nv")
-max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhjwi"]

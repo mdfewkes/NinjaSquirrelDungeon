@@ -36,18 +36,11 @@ func toggle_mute() -> void:
 func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	if sfx == null or target == null:
 		return null
-	if not sfx.trigger_if_out_of_range:
-		var center = Vector2.ZERO
-		var viewport = get_viewport()
-		if viewport:
-			if viewport.get_audio_listener_2d():
-				center = viewport.get_audio_listener_2d().global_position
-			elif viewport.get_camera_2d():
-				center = viewport.get_camera_2d().get_screen_center_position()
+	if not sfx.trigger_when_out_of_range:
+		var center = _get_listening_center()
 		var distance = center.distance_to(target.global_position)
-		print(distance)
 		if distance > listening_range:
-			return
+			return null
 	if not _open_voice_available(sfx):
 		return null
 	
@@ -82,15 +75,38 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 	sfx.last_play_time = Time.get_ticks_msec()
 	
 	if active_voices.has(sfx):
-		if sfx.max_voices > active_voices[sfx].size():
+		if active_voices[sfx].size() < sfx.max_voices:
 			active_voices[sfx].push_back(source)
-		elif sfx.voice_stealling:
-			if sfx.steal_oldest:
-				active_voices[sfx].pop_front().stop()
-				active_voices[sfx].push_back(source)
-			else:
-				active_voices[sfx].pop_back().stop()
-				active_voices[sfx].push_back(source)
+			return
+			
+		if sfx.voice_stealling:
+			match sfx.steal_strategy:
+				AudioSFX.StealStrategy.Oldest:
+					active_voices[sfx].pop_front().stop()
+					active_voices[sfx].push_back(source)
+				AudioSFX.StealStrategy.Furthest:
+					active_voices[sfx].push_back(source)
+					
+					var center = _get_listening_center()
+					var furthest_playback = -1
+					var furthest_distance = center.distance_to(source.global_position)
+					for playback in range(active_voices[sfx].size()):
+						var distance = center.distance_to(active_voices[sfx][playback].global_position)
+						if distance > furthest_distance:
+							furthest_playback = playback
+							furthest_distance = distance
+					active_voices[sfx][furthest_playback].stop()
+					active_voices[sfx].remove_at(furthest_playback)
 	else:
 		active_voices[sfx] = []
 		active_voices[sfx].push_back(source)
+
+func _get_listening_center() -> Vector2:
+	var center = Vector2.ZERO
+	var viewport = get_viewport()
+	if viewport:
+		if viewport.get_audio_listener_2d():
+			center = viewport.get_audio_listener_2d().global_position
+		elif viewport.get_camera_2d():
+			center = viewport.get_camera_2d().get_screen_center_position()
+	return center

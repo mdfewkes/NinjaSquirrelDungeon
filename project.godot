@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
+general/2d_panning_strength=1.0
 driver/mix_rate=48000
 
 [autoload]

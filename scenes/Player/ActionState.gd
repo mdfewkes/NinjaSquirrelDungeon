@@ -13,7 +13,7 @@ func _ready() -> void:
 	enter.connect(_action_enter)
 	exit.connect(_action_exit)
 
-func process_state(player :Player, delta :float) -> bool:
+func process_state(player :Player) -> bool:
 	return true
 
 func _action_enter(player :Player) -> void:
