@@ -4,6 +4,7 @@ const int TAIL_POINTS_COUNT = 8;
 const int TAIL_SEGMENT_COUNT = TAIL_POINTS_COUNT - 1;
 
 uniform float tail_color_threshold : hint_range(-0.1, 0.25) = 0.01;
+uniform float tail_color2_threshold : hint_range(-0.1, 0.25) = 0.01;
 uniform float tail_outline_threshold : hint_range(0.0, 0.25) = 0.03;
 uniform bool smooth_tail = false;
 uniform sampler2D tail_color_lookup; // Color lookup, but can also be used to animate later
@@ -55,7 +56,17 @@ void fragment() {
 	if(smooth_tail) {
 		tail_color = texture(tail_color_lookup, vec2(x_position_in_lookup, 0.5)).rgb * smoothstep(tail_color_threshold, -tail_color_threshold, dist);
 	} else {
-		tail_color = texture(tail_color_lookup, vec2(x_position_in_lookup, 0.5)).rgb * step(tail_color_threshold, -dist);
+		// tail_color = texture(tail_color_lookup, vec2(x_position_in_lookup, 0.5)).rgb * step(tail_color_threshold, dist);
+		tail_color = texture(tail_color_lookup, vec2(x_position_in_lookup, 0.5)).rgb;
+		vec3 tail_color2 = texture(tail_color_lookup, vec2(0.0, 0.5)).rgb;
+		vec3 outline_color = vec3(0., 0., 0.);
+		if (tail_color2_threshold > 0. && dist < tail_color2_threshold) {
+			// this is some bs math but it ended up being pretty...
+			tail_color = mix(tail_color2, tail_color, (tail_outline_threshold - dist) / (tail_color2_threshold - tail_outline_threshold));
+		}
+		if (-dist < tail_outline_threshold) {
+			tail_color = outline_color;
+		}
 	}
 	COLOR = vec4(tail_color, smoothstep(tail_outline_threshold, -tail_outline_threshold, dist));
 }

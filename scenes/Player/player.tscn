@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=105 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -35,6 +35,8 @@
 [ext_resource type="AudioStream" uid="uid://c3prmoi203db4" path="res://scenes/Projectiles/Audio/shuriken-throw-8.ogg" id="22_jn0uf"]
 [ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="33_cgmen"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="34_fqhit"]
+[ext_resource type="Texture2D" uid="uid://cn2nwwjovjqom" path="res://scenes/Player/tail_texture.tres" id="36_7iww4"]
+[ext_resource type="Gradient" uid="uid://bwlxagisch16x" path="res://scenes/Player/tail_gradient2.tres" id="37_7iww4"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -922,6 +924,7 @@ transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTrans
 graph_offset = Vector2(151.06018, 0)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
+graph_offset = Vector2(243.84024, 111.360016)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
@@ -947,22 +950,224 @@ stream = SubResource("AudioStreamRandomizer_4ni0x")
 maxVoices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
-[sub_resource type="Gradient" id="Gradient_e8txv"]
-offsets = PackedFloat32Array(0.40585774, 0.51882845)
-colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2u3nc"]
-gradient = SubResource("Gradient_e8txv")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iww4"]
 shader = ExtResource("34_fqhit")
-shader_parameter/tail_color_threshold = 0.01
-shader_parameter/tail_outline_threshold = 0.03
+shader_parameter/tail_color_threshold = 0.01000000373487999
+shader_parameter/tail_color2_threshold = 0.04500000539738
+shader_parameter/tail_outline_threshold = 0.010000000475
 shader_parameter/smooth_tail = false
-shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
+shader_parameter/tail_color_lookup = ExtResource("36_7iww4")
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_fqhit"]
+_limits = [2.0, 25.0, 0.0, 1.0]
+bake_resolution = 8
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.25, 6), 0.0, 9.0, 0, 0, Vector2(0.375, 15), 0.0, 9.999999, 0, 0, Vector2(0.5, 25), 0.0, 0.0, 0, 0, Vector2(0.6303419, 25), 0.0, 0.0, 0, 0, Vector2(0.75, 25), 0.0, 0.0, 0, 0, Vector2(0.875, 20), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_fqhit"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_e6s7e"]
+resource_name = "down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, -10, -20, -20, -35, -30, -60, -40, -75, -50, -95, -60, -115, -70, -150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_e8txv"]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_7iww4"]
+resource_name = "right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, -30, -35, -33, -50, -38, -70, -48, -90, -68, -95, -78, -86, -81, -63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_ploos"]
+resource_name = "up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 10, 3, -1, 13, -13, 27, -26, 25, -44, 2, -54, -7, -46, -11, -22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8txv"]
+_data = {
+&"RESET": SubResource("Animation_fqhit"),
+&"down": SubResource("Animation_e6s7e"),
+&"left": SubResource("Animation_e8txv"),
+&"right": SubResource("Animation_7iww4"),
+&"up": SubResource("Animation_ploos")
+}
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2") groups=["player"]]
 collision_layer = 2
@@ -1049,19 +1254,31 @@ script = ExtResource("14_t6q27")
 cooldown_time_msec = 0.0
 sfx_throw = SubResource("Resource_ihqbe")
 
-[node name="tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
+[node name="Tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
 z_index = -1
 position = Vector2(-4, -18)
 script = ExtResource("33_cgmen")
 attachement = NodePath("..")
 tail_start_offset = Vector2(0, -30)
 
-[node name="display" type="ColorRect" parent="tail"]
+[node name="DisplaySurface" type="ColorRect" parent="Tail"]
 material = SubResource("ShaderMaterial_7iww4")
 offset_left = -200.0
 offset_top = -50.0
 offset_right = -200.0
 offset_bottom = -50.0
 
-[connection signal="direction_changed" from="." to="tail" method="_on_player_direction_changed"]
-[connection signal="shuriken_throw" from="Shiruken ActionState" to="tail" method="_on_player_shuriken_throw"]
+[node name="TargetPoints" type="Line2D" parent="Tail"]
+points = PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)
+width = 2.0
+width_curve = SubResource("Curve_fqhit")
+default_color = Color(0.8901961, 0.34901962, 0.25882354, 1)
+gradient = ExtResource("37_7iww4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tail"]
+libraries = {
+&"": SubResource("AnimationLibrary_e8txv")
+}
+
+[connection signal="direction_changed" from="." to="Tail" method="_on_player_direction_changed"]
+[connection signal="shuriken_throw" from="Shiruken ActionState" to="Tail" method="_on_player_shuriken_throw"]

@@ -10,7 +10,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
-	print("```")
 	var dead_voices = []
 	for voice in active_voices:
 		#print("voice ", voice)

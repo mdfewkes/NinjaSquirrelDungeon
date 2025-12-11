@@ -6,6 +6,10 @@ extends Node2D
 @export var tail_start_offset: Vector2 = Vector2()
 @export var tail_motion_strength: float = 120.
 
+@onready var target_line: Line2D = $TargetPoints
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var display_surface: ColorRect = $DisplaySurface
+
 # Direction index values
 enum Direction {
 	LEFT = 0,
@@ -21,6 +25,13 @@ const direction_to_index_lut = [
 	[Direction.RIGHT, Direction.RIGHT, Direction.RIGHT],
 	[Direction.LEFT, Direction.LEFT, Direction.LEFT],
 ]
+
+const anim_by_dir = {
+	Direction.LEFT: "left",
+	Direction.RIGHT: "right",
+	Direction.UP: "up",
+	Direction.DOWN: "down",
+}
 
 """
 The relative position of each tail segment at the given direction index values.
@@ -47,24 +58,50 @@ func _ready() -> void:
 	call_deferred("create_shapes")
 
 func create_shapes():
-	for segment in tail_poses[selected_pose]:
-		var shape = CollisionShape2D.new()
-		shape.position = segment.position
-		shape.shape = CircleShape2D.new()
-		shape.shape.radius = segment.size
-		tail_shape.push_back(shape)
-		# the shapes need to be outside the player node so they
-		# can trail behind a little bit
-		get_parent().get_parent().add_child(shape)
+	target_line.hide()
+	if not FeatureFlags.is_enabled("old_tail_pose"):
+		for i in range(len(target_line.points)):
+			var shape = CollisionShape2D.new()
+			shape.position = to_global(target_line.get_point_position(i))
+			shape.shape = CircleShape2D.new()
+			shape.shape.radius = _get_size(i)
+			tail_shape.push_back(shape)
+			# the shapes need to be outside the player node so they
+			# can trail behind a little bit
+			get_parent().get_parent().add_child(shape)
+	else:
+		for segment in tail_poses[selected_pose]:
+			var shape = CollisionShape2D.new()
+			shape.position = to_global(segment.position)
+			shape.shape = CircleShape2D.new()
+			shape.shape.radius = segment.size
+			tail_shape.push_back(shape)
+			# the shapes need to be outside the player node so they
+			# can trail behind a little bit
+			get_parent().get_parent().add_child(shape)
+
+
+func _get_size(i: int) -> float:
+	return target_line.width_curve.get_point_position(i).y
+
 
 func calculate_segment(i: int, target_position: Vector2) -> Vector2:
-	var ideal_position = target_position + tail_poses[selected_pose][i].position
-	var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
-	var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
-	if not editing:
-		tail_shape[i].set_global_position(result_position)
-		tail_shape[i].shape.radius = tail_poses[selected_pose][i].size * clamp(distance_modifier, 0.7, 1.3)
-	return result_position
+	if FeatureFlags.is_enabled("new_tail_pose"):
+		var ideal_position = target_position + target_line.get_point_position(i) - target_line.get_point_position(i - 1)
+		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
+		var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
+		if not editing:
+			tail_shape[i].set_global_position(result_position)
+			tail_shape[i].shape.radius = _get_size(i) * clamp(distance_modifier, 0.7, 1.3)
+		return result_position
+	else:
+		var ideal_position = target_position + tail_poses[selected_pose][i].position
+		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
+		var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
+		if not editing:
+			tail_shape[i].set_global_position(result_position)
+			tail_shape[i].shape.radius = tail_poses[selected_pose][i].size * clamp(distance_modifier, 0.7, 1.3)
+		return result_position
 
 @export var editing = false
 @export var print_pose = false
@@ -106,18 +143,21 @@ func _process(_delta: float) -> void:
 		shader_data.append(Vector3(normalized_position.x, normalized_position.y, tail_segment.shape.radius / normalizer.x))
 	
 	# Set display data for the tail segments
-	$display.set_global_position(min_pos)
-	$display.set_size(max_pos - min_pos)
-	$display.material.set_shader_parameter("points", shader_data)
+	display_surface.set_global_position(min_pos)
+	display_surface.set_size(max_pos - min_pos)
+	display_surface.material.set_shader_parameter("points", shader_data)
 
 func _on_player_direction_changed(new_direction: Variant) -> void:
 	selected_pose = direction_to_index_lut[round(new_direction.x)][round(new_direction.y)]
 	direction = Vector2(new_direction.x, -new_direction.y)
-	match selected_pose:
-		Direction.UP:
-			z_index = 1
-		Direction.LEFT, Direction.RIGHT, Direction.DOWN:
-			z_index = -1
+	if not FeatureFlags.is_enabled("old_tail_pose"):
+		animation_player.play(anim_by_dir[selected_pose])
+	else:
+		match selected_pose:
+			Direction.UP:
+				z_index = 1
+			Direction.LEFT, Direction.RIGHT, Direction.DOWN:
+				z_index = -1
 
 
 func _on_player_shuriken_throw() -> void:
