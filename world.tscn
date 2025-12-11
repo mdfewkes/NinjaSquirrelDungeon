@@ -1,6 +1,7 @@
-[gd_scene load_steps=63 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=70 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
+[ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="2_aqk2v"]
@@ -18,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="20_26xuy"]
+[ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="20_bc84e"]
+
+[sub_resource type="Gradient" id="Gradient_26xuy"]
+offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
+colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -624,6 +630,18 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 1936, -440, 1888, 1720)])
 source_geometry_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26xuy"]
+size = Vector2(1048, 536)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc84e"]
+size = Vector2(704, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wukud"]
+size = Vector2(520, 1400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il2jm"]
+size = Vector2(1312, 344)
+
 [sub_resource type="Resource" id="Resource_wse8f"]
 script = ExtResource("10_wse8f")
 duration = 5.0
@@ -650,6 +668,9 @@ metadata/_custom_type_script = "uid://btp4qrx8g0uin"
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_cbp6q")
+lighting_gradient = SubResource("Gradient_26xuy")
+metadata/_custom_type_script = "uid://8a5snm317mpn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60052365, 0.52271074, 0.8287144, 1)
@@ -673,6 +694,7 @@ offset_right = 1280.0
 offset_bottom = 768.0
 texture = ExtResource("1_aqk2v")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Wall TileMapLayer" type="TileMapLayer" parent="GroundLayer" groups=["navigation_polygon_source_geometry_group"]]
 light_mask = 3
@@ -688,104 +710,6 @@ navigation_polygon = SubResource("NavigationPolygon_wse8f")
 z_index = 10
 position = Vector2(582, 574)
 
-[node name="Bush" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, 376)
-
-[node name="Bush2" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, 440)
-
-[node name="Bush3" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, 304)
-
-[node name="Bush4" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(672, -144)
-
-[node name="Bush5" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(672, -80)
-
-[node name="Bush6" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(672, -216)
-
-[node name="Bush7" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(744, -136)
-
-[node name="Bush8" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(744, -72)
-
-[node name="Bush9" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(744, -208)
-
-[node name="Bush10" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(800, -128)
-
-[node name="Bush11" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(800, -64)
-
-[node name="Bush12" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(800, -200)
-
-[node name="Bush13" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(864, -136)
-
-[node name="Bush14" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(864, -72)
-
-[node name="Bush15" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(864, -208)
-
-[node name="Bush16" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(928, -120)
-
-[node name="Bush17" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(928, -56)
-
-[node name="Bush18" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(928, -192)
-
-[node name="Bush19" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(992, -128)
-
-[node name="Bush20" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(992, -64)
-
-[node name="Bush21" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(992, -200)
-
-[node name="Bush22" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, -136)
-
-[node name="Bush23" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, -72)
-
-[node name="Bush24" parent="." instance=ExtResource("3_tlwt5")]
-position = Vector2(1056, -208)
-
-[node name="Bat" parent="." instance=ExtResource("5_036b0")]
-position = Vector2(1392, 346)
-
-[node name="Bat2" parent="." instance=ExtResource("5_036b0")]
-position = Vector2(1632, 354)
-
-[node name="Light" parent="." instance=ExtResource("8_gbfbk")]
-position = Vector2(1510, 311)
-
-[node name="Light2" parent="." instance=ExtResource("8_gbfbk")]
-position = Vector2(1743, 135)
-
-[node name="Light3" parent="." instance=ExtResource("8_gbfbk")]
-position = Vector2(863, 251)
-
-[node name="Light4" parent="." instance=ExtResource("8_gbfbk")]
-position = Vector2(504, 375)
-
-[node name="Light5" parent="." instance=ExtResource("8_gbfbk")]
-position = Vector2(1175, -155)
-
-[node name="PatrollingEnemy" parent="." instance=ExtResource("9_ioo17")]
-position = Vector2(1184, -16)
-patrol_point_radius = 5
-patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wse8f"), SubResource("Resource_ic0uy"), SubResource("Resource_k3n1d"), SubResource("Resource_2o6r5")])
-
 [node name="SmallKey" parent="." instance=ExtResource("13_2o6r5")]
 position = Vector2(699, 137)
 
@@ -799,68 +723,232 @@ required_key_value = 1
 [node name="ButtonDoor" parent="." node_paths=PackedStringArray("switches") instance=ExtResource("16_2u3nc")]
 position = Vector2(576, 1634)
 close_after_seconds = 2.0
-switches = [NodePath("../ButtonDoorSwitch1"), NodePath("../ButtonDoorSwitch2")]
+switches = [NodePath("../Rooms/TrapRooms/Environment/ButtonDoorSwitch1"), NodePath("../Rooms/TrapRooms/Environment/ButtonDoorSwitch2")]
 
 [node name="GreenDoor" parent="." instance=ExtResource("16_2u3nc")]
 modulate = Color(0.2713101, 0.8626709, 0.4886579, 1)
 position = Vector2(575, 1219)
 required_key_value = 2
 
-[node name="DartTrap" parent="." instance=ExtResource("17_udxuc")]
-position = Vector2(382, 989)
+[node name="Rooms" type="Node2D" parent="."]
 
-[node name="DartTrap2" parent="." instance=ExtResource("17_udxuc")]
-position = Vector2(417, 1312)
-rotation = 1.5707964
-fire_wait_time = 5.0
+[node name="StartRoom" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("20_bc84e")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
-[node name="DartTrap3" parent="." instance=ExtResource("17_udxuc")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
+position = Vector2(572, 316)
+shape = SubResource("RectangleShape2D_26xuy")
+
+[node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
+
+[node name="Light3" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("8_gbfbk")]
+position = Vector2(863, 251)
+
+[node name="Light4" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("8_gbfbk")]
+position = Vector2(504, 375)
+
+[node name="Enemies" type="Node2D" parent="Rooms/StartRoom"]
+
+[node name="Environment" type="Node2D" parent="Rooms/StartRoom"]
+
+[node name="Bush" parent="Rooms/StartRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, 376)
+
+[node name="Bush2" parent="Rooms/StartRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, 440)
+
+[node name="Bush3" parent="Rooms/StartRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, 304)
+
+[node name="DartTrap3" parent="Rooms/StartRoom/Environment" instance=ExtResource("17_udxuc")]
 position = Vector2(694, 287)
-rotation = 3.1415927
+rotation = -3.1415925
 fire_wait_time = 2.0
 
-[node name="ButtonDoorSwitch1" parent="." instance=ExtResource("18_ikiii")]
-position = Vector2(574, 2081)
+[node name="BatRoom" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("20_bc84e")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
-[node name="ButtonDoorSwitch2" parent="." instance=ExtResource("18_ikiii")]
-position = Vector2(581, 1405)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/BatRoom"]
+position = Vector2(1512, 320)
+shape = SubResource("RectangleShape2D_bc84e")
 
-[node name="TrapSwitch1" parent="." instance=ExtResource("18_ikiii")]
-position = Vector2(579, 1884)
+[node name="Lights" type="Node2D" parent="Rooms/BatRoom"]
 
-[node name="ButtonTrap1" parent="." node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
-position = Vector2(734, 1759)
-rotation = -3.8397243
-fire_wait_time = 0.0
-switches = [NodePath("../TrapSwitch1")]
+[node name="Light" parent="Rooms/BatRoom/Lights" instance=ExtResource("8_gbfbk")]
+position = Vector2(1510, 311)
 
-[node name="ButtonTrap2" parent="." node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
-position = Vector2(418, 2016.9998)
-rotation = -6.981317
-fire_wait_time = 0.0
-switches = [NodePath("../TrapSwitch1")]
+[node name="Light2" parent="Rooms/BatRoom/Lights" instance=ExtResource("8_gbfbk")]
+position = Vector2(1743, 135)
 
-[node name="ButtonTrap3" parent="." node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
-position = Vector2(421, 1756.9998)
-rotation = -5.5850534
-fire_wait_time = 0.0
-switches = [NodePath("../TrapSwitch1")]
+[node name="Enemies" type="Node2D" parent="Rooms/BatRoom"]
 
-[node name="ButtonTrap4" parent="." node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
-position = Vector2(736, 2017.9998)
-rotation = -2.443461
-fire_wait_time = 0.0
-switches = [NodePath("../TrapSwitch1")]
+[node name="Bat" parent="Rooms/BatRoom/Enemies" instance=ExtResource("5_036b0")]
+position = Vector2(1392, 346)
 
-[node name="SwingingTrap" parent="." node_paths=PackedStringArray("triggers") instance=ExtResource("9_cbp6q")]
+[node name="Bat2" parent="Rooms/BatRoom/Enemies" instance=ExtResource("5_036b0")]
+position = Vector2(1632, 354)
+
+[node name="Environment" type="Node2D" parent="Rooms/BatRoom"]
+
+[node name="SwingingTrap" parent="Rooms/BatRoom/Environment" node_paths=PackedStringArray("triggers") instance=ExtResource("9_cbp6q")]
 position = Vector2(1509, -148)
 triggers = [NodePath("../RockTrigger1"), NodePath("../RockTrigger2")]
 
-[node name="RockTrigger1" parent="." instance=ExtResource("18_ikiii")]
+[node name="RockTrigger1" parent="Rooms/BatRoom/Environment" instance=ExtResource("18_ikiii")]
 position = Vector2(1510, 312)
 scale = Vector2(3, 3)
 invisible = true
 
-[node name="RockTrigger2" parent="." instance=ExtResource("20_26xuy")]
+[node name="RockTrigger2" parent="Rooms/BatRoom/Environment" instance=ExtResource("20_26xuy")]
 position = Vector2(1376, 576)
 rotation = 1.5707964
+
+[node name="TrapRooms" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("20_bc84e")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
+
+[node name="Lights" type="Node2D" parent="Rooms/TrapRooms"]
+
+[node name="Enemies" type="Node2D" parent="Rooms/TrapRooms"]
+
+[node name="Environment" type="Node2D" parent="Rooms/TrapRooms"]
+
+[node name="DartTrap" parent="Rooms/TrapRooms/Environment" instance=ExtResource("17_udxuc")]
+position = Vector2(382, 989)
+
+[node name="DartTrap2" parent="Rooms/TrapRooms/Environment" instance=ExtResource("17_udxuc")]
+position = Vector2(417, 1312)
+rotation = 1.5707964
+fire_wait_time = 5.0
+
+[node name="ButtonDoorSwitch1" parent="Rooms/TrapRooms/Environment" instance=ExtResource("18_ikiii")]
+position = Vector2(574, 2081)
+
+[node name="ButtonDoorSwitch2" parent="Rooms/TrapRooms/Environment" instance=ExtResource("18_ikiii")]
+position = Vector2(581, 1405)
+
+[node name="TrapSwitch1" parent="Rooms/TrapRooms/Environment" instance=ExtResource("18_ikiii")]
+position = Vector2(579, 1884)
+
+[node name="ButtonTrap1" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
+position = Vector2(734, 1759)
+rotation = 2.443461
+fire_wait_time = 0.0
+switches = [NodePath("../TrapSwitch1")]
+
+[node name="ButtonTrap2" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
+position = Vector2(418, 2016.9998)
+rotation = -0.69813174
+fire_wait_time = 0.0
+switches = [NodePath("../TrapSwitch1")]
+
+[node name="ButtonTrap3" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
+position = Vector2(421, 1756.9998)
+rotation = 0.6981319
+fire_wait_time = 0.0
+switches = [NodePath("../TrapSwitch1")]
+
+[node name="ButtonTrap4" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("17_udxuc")]
+position = Vector2(736.0001, 2015.9998)
+rotation = -2.443461
+fire_wait_time = 0.0
+switches = [NodePath("../TrapSwitch1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/TrapRooms"]
+position = Vector2(580, 1444)
+shape = SubResource("RectangleShape2D_wukud")
+
+[node name="PatrolRoom" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("20_bc84e")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/PatrolRoom"]
+position = Vector2(1264, -140)
+shape = SubResource("RectangleShape2D_il2jm")
+
+[node name="Lights" type="Node2D" parent="Rooms/PatrolRoom"]
+
+[node name="Light5" parent="Rooms/PatrolRoom/Lights" instance=ExtResource("8_gbfbk")]
+position = Vector2(1175, -155)
+
+[node name="Enemies" type="Node2D" parent="Rooms/PatrolRoom"]
+
+[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" instance=ExtResource("9_ioo17")]
+position = Vector2(1184, -16)
+patrol_point_radius = 5
+patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wse8f"), SubResource("Resource_ic0uy"), SubResource("Resource_k3n1d"), SubResource("Resource_2o6r5")])
+
+[node name="Environment" type="Node2D" parent="Rooms/PatrolRoom"]
+
+[node name="Bush4" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(672, -144)
+
+[node name="Bush5" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(672, -80)
+
+[node name="Bush6" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(672, -216)
+
+[node name="Bush7" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(744, -136)
+
+[node name="Bush8" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(744, -72)
+
+[node name="Bush9" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(744, -208)
+
+[node name="Bush10" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(800, -128)
+
+[node name="Bush11" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(800, -64)
+
+[node name="Bush12" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(800, -200)
+
+[node name="Bush13" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(864, -136)
+
+[node name="Bush14" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(864, -72)
+
+[node name="Bush15" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(864, -208)
+
+[node name="Bush16" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(928, -120)
+
+[node name="Bush17" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(928, -56)
+
+[node name="Bush18" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(928, -192)
+
+[node name="Bush19" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(992, -128)
+
+[node name="Bush20" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(992, -64)
+
+[node name="Bush21" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(992, -200)
+
+[node name="Bush22" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, -136)
+
+[node name="Bush23" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, -72)
+
+[node name="Bush24" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
+position = Vector2(1056, -208)
