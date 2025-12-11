@@ -38,7 +38,6 @@ stream_7/stream = ExtResource("10_5i1t2")
 [sub_resource type="Resource" id="Resource_3r4p1"]
 script = ExtResource("2_502sn")
 stream = SubResource("AudioStreamRandomizer_sbvqm")
-maxVoices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2s7nv"]
@@ -57,7 +56,7 @@ stream_7/stream = ExtResource("18_yfbux")
 [sub_resource type="Resource" id="Resource_w8csu"]
 script = ExtResource("2_502sn")
 stream = SubResource("AudioStreamRandomizer_2s7nv")
-maxVoices = 2
+max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhjwi"]
