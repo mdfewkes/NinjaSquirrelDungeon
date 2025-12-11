@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d20pn8vvxkruw"]
+[gd_scene load_steps=3 format=3 uid="uid://d20pn8vvxkruw"]
 
 [ext_resource type="Script" uid="uid://bcu8yo1vqybs5" path="res://scenes/AudioManager/audio_manager.gd" id="1_kr7s0"]
+[ext_resource type="Texture2D" uid="uid://cnkairp1wrcsd" path="res://scenes/Player/Art/tail-segment-2.png" id="2_1gfwg"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_kr7s0")
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_1gfwg")

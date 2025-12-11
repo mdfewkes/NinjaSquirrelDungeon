@@ -29,7 +29,7 @@ var fading := false
 func _ready() -> void:
 	# start off at the default speed in the direction indicated by our current rotation
 	#set_speed(default_speed)
-	AudioManager.PlaySFX(sfx_on_launch, self)
+	AudioManager.call_deferred("PlaySFX", sfx_on_launch, self)
 
 
 func set_speed(speed: float) -> void:

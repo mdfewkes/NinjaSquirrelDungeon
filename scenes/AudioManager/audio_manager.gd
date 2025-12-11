@@ -1,6 +1,7 @@
 extends Node
 
 @export var listening_range: float = 1000.0
+@onready var texture_rect: Sprite2D = $TextureRect
 
 var active_voices = {} # Dict AudioSFX : Array[AudioStreamPlayback]
 
@@ -45,8 +46,8 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 		return null
 	
 	var freshAudioSource = AudioStreamPlayer2D.new()
-	freshAudioSource.global_position = target.global_position
 	target.add_child(freshAudioSource)
+	freshAudioSource.global_position = target.global_position
 	
 	freshAudioSource.bus = "SFX"
 	freshAudioSource.volume_db = sfx.volume_dB
@@ -56,6 +57,8 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	_add_voice(sfx, freshAudioSource)
 	
 	freshAudioSource.finished.connect(freshAudioSource.queue_free)
+	
+	texture_rect.global_position = freshAudioSource.global_position
 	
 	return freshAudioSource
 
