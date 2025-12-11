@@ -15,6 +15,9 @@ extends Node2D
 ## If true, the node will rotate to face the direction it's headed (including after a bounce)
 @export var rotate_with_direction := true
 
+@export var sfx_on_launch: AudioSFX
+@export var sfx_on_bounce: AudioSFX
+
 @onready var sparks: CPUParticles2D = $Sparks
 @onready var wall_detector: RayCast2D = $WallDetector
 @onready var hit_box: HitBox = $HitBox
@@ -26,7 +29,7 @@ var fading := false
 func _ready() -> void:
 	# start off at the default speed in the direction indicated by our current rotation
 	#set_speed(default_speed)
-	pass
+	AudioManager.PlaySFX(sfx_on_launch, self)
 
 
 func set_speed(speed: float) -> void:
@@ -86,6 +89,8 @@ func _handle_wall_collision(collision_point: Vector2, wall_normal: Vector2):
 		wall_detector.enabled = false
 		await get_tree().create_timer(0.05).timeout
 		wall_detector.enabled = !fading
+		
+		AudioManager.PlaySFX(sfx_on_bounce, self)
 
 
 func _fade_and_free():

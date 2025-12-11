@@ -137,7 +137,7 @@ func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
-	sfx_hurt.play(self)
+	AudioManager.PlaySFX(sfx_hurt, self)
 
 	if current_hp <= 0:
 		call_deferred("_die")  # extra safe; now definitely outside physics

@@ -9,6 +9,3 @@ extends Resource
 @export var cooldown_time_msec: float = 10
 
 var last_play_time:float = 0
-
-func play(target: Node2D) -> AudioStreamPlayer2D:
-	return AudioManager.PlaySFX(self, target)

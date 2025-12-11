@@ -1,15 +1,72 @@
-[gd_scene load_steps=7 format=3 uid="uid://ea3lunwfspsx"]
+[gd_scene load_steps=28 format=3 uid="uid://ea3lunwfspsx"]
 
 [ext_resource type="Script" uid="uid://b8ng18c01fsy8" path="res://scenes/Projectiles/projectile.gd" id="1_x53je"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_ciyhp"]
 [ext_resource type="Texture2D" uid="uid://cih5onscjg41g" path="res://scenes/Projectiles/Art/shuriken.png" id="2_n65al"]
 [ext_resource type="Script" uid="uid://c2v35he0ge0kq" path="res://code/Spin.gd" id="3_ciyhp"]
+[ext_resource type="AudioStream" uid="uid://cdmuw8y2xo1uv" path="res://scenes/Projectiles/Audio/shuriken-throw-1.ogg" id="3_y42ke"]
 [ext_resource type="PackedScene" uid="uid://dp3y7pkypo3a4" path="res://scenes/Effects/sparks.tscn" id="4_imat3"]
+[ext_resource type="AudioStream" uid="uid://csaoym8uj4ls4" path="res://scenes/Projectiles/Audio/shuriken-throw-2.ogg" id="4_ymrry"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="5_1j77e"]
+[ext_resource type="AudioStream" uid="uid://ntcf3v05vbo1" path="res://scenes/Projectiles/Audio/shuriken-throw-3.ogg" id="5_rgubn"]
+[ext_resource type="AudioStream" uid="uid://brakemjef537r" path="res://scenes/Projectiles/Audio/shuriken-throw-4.ogg" id="6_rowjl"]
+[ext_resource type="AudioStream" uid="uid://cyhyqv0b8grym" path="res://scenes/Projectiles/Audio/shuriken-throw-5.ogg" id="7_4caio"]
+[ext_resource type="AudioStream" uid="uid://r61rkw66knct" path="res://scenes/Projectiles/Audio/shuriken-throw-6.ogg" id="8_p708d"]
+[ext_resource type="AudioStream" uid="uid://c68q2owgo5ro" path="res://scenes/Projectiles/Audio/shuriken-throw-7.ogg" id="9_k3boo"]
+[ext_resource type="AudioStream" uid="uid://c3prmoi203db4" path="res://scenes/Projectiles/Audio/shuriken-throw-8.ogg" id="10_cbdk7"]
+[ext_resource type="AudioStream" uid="uid://db3nbngpjf3jp" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-1.ogg" id="11_r58w7"]
+[ext_resource type="AudioStream" uid="uid://duxdw4dwjgplo" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-2.ogg" id="12_wc7yj"]
+[ext_resource type="AudioStream" uid="uid://d1s1omxto3xwc" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-3.ogg" id="13_e0uke"]
+[ext_resource type="AudioStream" uid="uid://d23h52x8uxcih" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-4.ogg" id="14_0mbvn"]
+[ext_resource type="AudioStream" uid="uid://cgbi8h8anfggx" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-5.ogg" id="15_2ynyp"]
+[ext_resource type="AudioStream" uid="uid://dfh207naqih8o" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-6.ogg" id="16_catin"]
+[ext_resource type="AudioStream" uid="uid://c817s4j15gjm" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-7.ogg" id="17_4xw44"]
+[ext_resource type="AudioStream" uid="uid://cd4wnpmkmmh6v" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-8.ogg" id="18_b2tcd"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sbvqm"]
+random_pitch = 1.5
+random_volume_offset_db = 1.0
+streams_count = 8
+stream_0/stream = ExtResource("3_y42ke")
+stream_1/stream = ExtResource("4_ymrry")
+stream_2/stream = ExtResource("5_rgubn")
+stream_3/stream = ExtResource("6_rowjl")
+stream_4/stream = ExtResource("7_4caio")
+stream_5/stream = ExtResource("8_p708d")
+stream_6/stream = ExtResource("9_k3boo")
+stream_7/stream = ExtResource("10_cbdk7")
+
+[sub_resource type="Resource" id="Resource_imat3"]
+script = ExtResource("2_ciyhp")
+stream = SubResource("AudioStreamRandomizer_sbvqm")
+maxVoices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2s7nv"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 8
+stream_0/stream = ExtResource("11_r58w7")
+stream_1/stream = ExtResource("12_wc7yj")
+stream_2/stream = ExtResource("13_e0uke")
+stream_3/stream = ExtResource("14_0mbvn")
+stream_4/stream = ExtResource("15_2ynyp")
+stream_5/stream = ExtResource("16_catin")
+stream_6/stream = ExtResource("17_4xw44")
+stream_7/stream = ExtResource("18_b2tcd")
+
+[sub_resource type="Resource" id="Resource_jkg7x"]
+script = ExtResource("2_ciyhp")
+stream = SubResource("AudioStreamRandomizer_2s7nv")
+maxVoices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0w2d3"]
 
 [node name="ShurikenProjectile" type="Node2D"]
 script = ExtResource("1_x53je")
+sfx_on_launch = SubResource("Resource_imat3")
+sfx_on_bounce = SubResource("Resource_jkg7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_n65al")
