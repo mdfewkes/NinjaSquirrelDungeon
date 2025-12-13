@@ -20,7 +20,7 @@ colors = PackedColorArray(0.13884798, 0.25109413, 0.061012454, 1, 0.43529412, 0.
 gradient = SubResource("Gradient_wukud")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fvi4"]
-radius = 80.0
+radius = 50.0
 
 [node name="Bush" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 script = ExtResource("1_28u5p")

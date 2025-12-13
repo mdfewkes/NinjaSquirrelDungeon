@@ -22,6 +22,7 @@ var last_input_vector: Vector2 = Vector2.DOWN
 
 var cloak_wait_seconds := 5.0
 var cloak_gradient: GradientTexture2D
+var cloak_area_counter := 0
 var last_action_time: float
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -170,12 +171,16 @@ func set_cloakable_gradient(gradient: GradientTexture2D, wait_time: float) -> vo
 	cloak_gradient = gradient
 	cloak_wait_seconds = wait_time
 	tail.set_cloak_gradient(gradient)
+	cloak_area_counter += 1
 
 
 func clear_cloakable_gradient() -> void:
-	_clear_cloaked_state()
-	tail.set_cloak_gradient(null)
-	cloak_gradient = null
+	cloak_area_counter -= 1
+	if cloak_area_counter <= 0:
+		cloak_area_counter = 0
+		_clear_cloaked_state()
+		tail.set_cloak_gradient(null)
+		cloak_gradient = null
 
 
 func _clear_cloaked_state() -> void:
