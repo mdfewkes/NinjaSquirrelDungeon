@@ -57,6 +57,8 @@ func _physics_process(delta: float) -> void:
 			_roll_state()
 		PlayerState.Action:
 			_action_state(delta)
+		PlayerState.Cloaked:
+			_cloaked_state()
 	
 	if input_vector != Vector2.ZERO:
 		_update_blend_positions()
@@ -75,12 +77,7 @@ func _move_state() -> void:
 		_set_roll_state()
 		return
 		
-	if Input.is_action_just_pressed("action_1"):
-		_set_action_state(action_1)
-		return
-	if Input.is_action_just_pressed("action_2"):
-		_set_action_state(action_2)
-		return
+	_check_and_set_action_state()
 
 
 func _action_state(delta: float) -> void:
@@ -95,12 +92,7 @@ func _action_state(delta: float) -> void:
 
 
 func _roll_state() -> void:
-	if Input.is_action_just_pressed("action_1"):
-		_set_action_state(action_1)
-		return
-	if Input.is_action_just_pressed("action_2"):
-		_set_action_state(action_2)
-		return
+	_check_and_set_action_state()
 
 	if Input.is_action_just_pressed("roll"):
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -112,6 +104,8 @@ func _roll_state() -> void:
 		current_state = PlayerState.Move
 		return
 
+func _cloaked_state() -> void:
+	_check_and_set_action_state()
 
 func _die() -> void:
 	var timer = Timer.new()
@@ -144,6 +138,14 @@ func  _set_roll_state() -> void:
 	velocity = last_input_vector * roll_speed
 	playback.travel("RollState")
 	current_state = PlayerState.Roll
+
+func _check_and_set_action_state() -> void:
+	if Input.is_action_just_pressed("action_1"):
+		_set_action_state(action_1)
+		return
+	if Input.is_action_just_pressed("action_2"):
+		_set_action_state(action_2)
+		return
 
 func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
