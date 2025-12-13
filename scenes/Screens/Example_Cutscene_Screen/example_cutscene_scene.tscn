@@ -11,12 +11,12 @@
 [ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="9_2hbkv"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="10_c63qr"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="11_thdil"]
-[ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://scenes/Bat/bat.tscn" id="12_li7ay"]
+[ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="12_oeitu"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="13_5413g"]
-[ext_resource type="PackedScene" uid="uid://bwfrrxhnpgcjm" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="14_h66g8"]
+[ext_resource type="PackedScene" uid="uid://5pbl42y2fb2y" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="14_oeitu"]
 [ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="15_2tggc"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="16_5uw0i"]
-[ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/DartTrap/dart_trap.tscn" id="17_ph1kq"]
+[ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="17_ph1kq"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_gi58u"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
@@ -636,9 +636,11 @@ fill_to = Vector2(0, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
 shader = ExtResource("10_c63qr")
 shader_parameter/tail_color_threshold = 0.01
+shader_parameter/tail_color2_threshold = 0.01
 shader_parameter/tail_outline_threshold = 0.03
 shader_parameter/smooth_tail = false
 shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
+shader_parameter/cloaked_amount = 0.0
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="Resource" id="Resource_wse8f"]
@@ -721,9 +723,7 @@ is_cutscene_squirrel = true
 position = Vector2(579.77, 558.56)
 script = ExtResource("9_2hbkv")
 attachement = NodePath("../Player")
-responsiveness = 0.865
 tail_start_offset = Vector2(0, -30)
-tail_motion_strength = 120.0
 
 [node name="display" type="ColorRect" parent="tail"]
 material = SubResource("ShaderMaterial_2o6r5")
@@ -795,10 +795,10 @@ position = Vector2(1056, -72)
 [node name="Bush24" parent="." instance=ExtResource("11_thdil")]
 position = Vector2(1056, -208)
 
-[node name="Bat" parent="." instance=ExtResource("12_li7ay")]
+[node name="Bat" parent="." instance=ExtResource("12_oeitu")]
 position = Vector2(1392, 346)
 
-[node name="Bat2" parent="." instance=ExtResource("12_li7ay")]
+[node name="Bat2" parent="." instance=ExtResource("12_oeitu")]
 position = Vector2(1632, 354)
 
 [node name="Light" parent="." instance=ExtResource("13_5413g")]
@@ -816,13 +816,9 @@ position = Vector2(504, 375)
 [node name="Light5" parent="." instance=ExtResource("13_5413g")]
 position = Vector2(1175, -155)
 
-[node name="PatrollingEnemy" parent="." instance=ExtResource("14_h66g8")]
+[node name="PatrollingEnemy" parent="." instance=ExtResource("14_oeitu")]
 position = Vector2(1184, -16)
-view_range = 300
-speed = 200
-knockback_friction = 1000
-max_hp = 7
-random_patrol = false
+motion_mode = 1
 patrol_point_radius = 5
 patrol_points = Array[ExtResource("15_2tggc")]([SubResource("Resource_wse8f"), SubResource("Resource_ic0uy"), SubResource("Resource_k3n1d"), SubResource("Resource_2o6r5")])
 

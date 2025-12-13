@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cavfv6dfhfijq"]
+
+[ext_resource type="Script" uid="uid://chhuy70a810pp" path="res://scenes/EnemyBase/enemy_base.gd" id="1_p4led"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_egoki"]
+[ext_resource type="Texture2D" uid="uid://b5gt5vg8i70sv" path="res://scenes/PatrollingEnemy/batshadow.png" id="2_voqne"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_voqne"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3qipq"]
+graph_offset = Vector2(73, -60)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p4led"]
+polygon = PackedVector2Array(-5, -51, 3, -54, 10, -49, 13, -41, 13, -29, 8, -23, 0, -21, -6, -24, -9, -29, -9, -38, -8, -47)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t55fp"]
+height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mmrv"]
+radius = 16.03122
+
+[node name="EnemyBase" type="CharacterBody2D"]
+script = ExtResource("1_p4led")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -6)
+polygon = PackedVector2Array(0, 0, -10, 6, 0, 12, 12, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_voqne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_3qipq")
+advance_expression_base_node = NodePath("..")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -131.0
+offset_right = 29.0
+offset_bottom = -108.0
+text = "health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_p4led")
+occluder_light_mask = 3
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_egoki")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -19)
+shape = SubResource("CapsuleShape2D_t55fp")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_voqne")
+metadata/_custom_type_script = "uid://dtiynebo6fexe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, -17)
+shape = SubResource("CircleShape2D_5mmrv")
