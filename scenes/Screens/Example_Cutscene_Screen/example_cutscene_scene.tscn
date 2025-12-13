@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://dja0888a4cuuv"]
+[gd_scene load_steps=61 format=4 uid="uid://dja0888a4cuuv"]
 
 [ext_resource type="Script" uid="uid://eua6r5rvs72l" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_scene.gd" id="1_oeitu"]
 [ext_resource type="Script" uid="uid://btvv25p1gc2i7" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_director.gd" id="2_csqcs"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="6_3887w"]
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="7_gvkdj"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="8_ferbx"]
-[ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="9_2hbkv"]
-[ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="10_c63qr"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="11_thdil"]
 [ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="12_oeitu"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="13_5413g"]
@@ -624,25 +622,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 1936, -440, 1888, 1720)])
 source_geometry_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_k3n1d"]
-offsets = PackedFloat32Array(0.40585774, 0.51882845)
-colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2u3nc"]
-gradient = SubResource("Gradient_k3n1d")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
-shader = ExtResource("10_c63qr")
-shader_parameter/tail_color_threshold = 0.01
-shader_parameter/tail_color2_threshold = 0.01
-shader_parameter/tail_outline_threshold = 0.03
-shader_parameter/smooth_tail = false
-shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2u3nc")
-shader_parameter/cloaked_amount = 0.0
-shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
 [sub_resource type="Resource" id="Resource_wse8f"]
 script = ExtResource("15_2tggc")
 duration = 5.0
@@ -718,19 +697,6 @@ navigation_polygon = SubResource("NavigationPolygon_wse8f")
 z_index = 10
 position = Vector2(582, 574)
 is_cutscene_squirrel = true
-
-[node name="tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
-position = Vector2(579.77, 558.56)
-script = ExtResource("9_2hbkv")
-attachement = NodePath("../Player")
-tail_start_offset = Vector2(0, -30)
-
-[node name="display" type="ColorRect" parent="tail"]
-material = SubResource("ShaderMaterial_2o6r5")
-offset_left = -200.0
-offset_top = -50.0
-offset_right = -200.0
-offset_bottom = -50.0
 
 [node name="Bush4" parent="." instance=ExtResource("11_thdil")]
 position = Vector2(672, -144)
@@ -883,4 +849,3 @@ fire_wait_time = 0.0
 switches = [NodePath("../TrapSwitch1")]
 
 [connection signal="player_directed" from="CutsceneDirector" to="Player" method="_on_player_directed"]
-[connection signal="direction_changed" from="Player" to="tail" method="_on_player_direction_changed"]
