@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dplx8gnuq04lk"]
+[gd_scene load_steps=11 format=3 uid="uid://dplx8gnuq04lk"]
 
 [ext_resource type="Texture2D" uid="uid://cv4ea8acqc1s3" path="res://temp assets/bush-temp.png" id="1_8cy4n"]
 [ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_28u5p"]
 [ext_resource type="PackedScene" uid="uid://dq1l63ht8k17e" path="res://temp assets/grasseffect.tscn" id="2_txick"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_fktey"]
+[ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_8yp1n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cy4n"]
 radius = 20.0
@@ -11,6 +12,15 @@ height = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilexf"]
 radius = 17.117243
+
+[sub_resource type="Gradient" id="Gradient_wukud"]
+colors = PackedColorArray(0.13884798, 0.25109413, 0.061012454, 1, 0.43529412, 0.49411765, 0.13333334, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8yp1n"]
+gradient = SubResource("Gradient_wukud")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fvi4"]
+radius = 80.0
 
 [node name="Bush" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 script = ExtResource("1_28u5p")
@@ -34,3 +44,13 @@ metadata/_custom_type_script = "uid://jrn1snxemt88"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ilexf")
+
+[node name="TailCloakArea" type="Area2D" parent="."]
+position = Vector2(-4, -40)
+script = ExtResource("5_8yp1n")
+tail_gradient = SubResource("GradientTexture2D_8yp1n")
+metadata/_custom_type_script = "uid://8wwkar2rentt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailCloakArea"]
+shape = SubResource("CircleShape2D_2fvi4")
+debug_color = Color(0.7159706, 0.34293634, 0.8576906, 0.41960785)

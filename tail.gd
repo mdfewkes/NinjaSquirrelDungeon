@@ -1,3 +1,4 @@
+class_name Tail
 extends Node2D
 
 @export var attachement: CharacterBody2D
@@ -7,7 +8,7 @@ extends Node2D
 @export var tail_motion_strength: float = 120.
 
 @onready var target_line: Line2D = $TargetPoints
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $TailAnimationPlayer
 @onready var display_surface: ColorRect = $DisplaySurface
 
 # Direction index values
@@ -150,9 +151,7 @@ func _process(_delta: float) -> void:
 func _on_player_direction_changed(new_direction: Variant) -> void:
 	selected_pose = direction_to_index_lut[round(new_direction.x)][round(new_direction.y)]
 	direction = Vector2(new_direction.x, -new_direction.y)
-	if not FeatureFlags.is_enabled("old_tail_pose"):
-		animation_player.play(anim_by_dir[selected_pose])
-	else:
+	if FeatureFlags.is_enabled("old_tail_pose"):
 		match selected_pose:
 			Direction.UP:
 				z_index = 1
@@ -165,3 +164,12 @@ func _on_player_shuriken_throw() -> void:
 	for i in range(1, segment_throwing_shuriken):
 		var wave_strength = tail_motion_strength * (1. - float(i)/segment_throwing_shuriken)
 		create_tween().tween_property(tail_shape[i], "position", tail_shape[i].get_position() + direction * wave_strength, 0.1)
+
+
+func set_cloak_gradient(gradient: GradientTexture2D) -> void:
+	display_surface.material.set_shader_parameter("cloaked_color_lookup", gradient)
+
+
+func set_cloak_amount(value: float) -> void:
+	var cur_val = display_surface.material.get_shader_parameter("cloaked_amount")
+	display_surface.material.set_shader_parameter("cloaked_amount", value)

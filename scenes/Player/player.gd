@@ -14,11 +14,15 @@ var current_hp: int = max_hp
 @export var action_2: ActionState
 var current_action_state = null
 
-enum PlayerState {Move, Roll, Action}
+enum PlayerState {Move, Roll, Action, Cloaked}
 var current_state = PlayerState.Move
 
 var input_vector: Vector2 = Vector2.ZERO
 var last_input_vector: Vector2 = Vector2.DOWN
+
+var cloak_wait_seconds := 5.0
+var cloak_gradient: GradientTexture2D
+var last_action_time: float
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
@@ -26,6 +30,7 @@ var last_input_vector: Vector2 = Vector2.DOWN
 @onready var hit_box: HitBox = $HitBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var shuriken_spawn: Node2D = $ShurikenSpawn
+@onready var tail: Tail = $Tail
 
 const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
@@ -34,6 +39,7 @@ signal player_death
 signal direction_changed(new_direction)
 
 func _ready() -> void:
+	animation_tree.active = true
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
 	player_death.connect(_on_player_death)
@@ -53,7 +59,11 @@ func _physics_process(delta: float) -> void:
 	
 	if input_vector != Vector2.ZERO:
 		_update_blend_positions()
+		_clear_cloaked_state()
 		last_input_vector = input_vector
+	else:
+		_process_cloaking(delta)
+
 	move_and_slide()
 
 
@@ -76,7 +86,7 @@ func _action_state(delta: float) -> void:
 	if current_action_state == null: 
 		current_state = PlayerState.Move
 		return
-	
+
 	if current_action_state.process_state(self, delta): 
 		current_action_state.exit_state(self)
 		current_action_state = null
@@ -125,6 +135,7 @@ func _update_blend_positions() -> void:
 func _set_action_state(state: ActionState) -> void:
 	if state == null: return
 	
+	_clear_cloaked_state()
 	current_action_state = state
 	current_action_state.enter_state(self)
 
@@ -153,3 +164,35 @@ func _on_player_death() -> void:
 
 func _on_player_directed(vector: Vector2) -> void:
 	input_vector = vector
+
+
+func set_cloakable_gradient(gradient: GradientTexture2D, wait_time: float) -> void:
+	cloak_gradient = gradient
+	cloak_wait_seconds = wait_time
+	tail.set_cloak_gradient(gradient)
+
+
+func clear_cloakable_gradient() -> void:
+	_clear_cloaked_state()
+	tail.set_cloak_gradient(null)
+	cloak_gradient = null
+
+
+func _clear_cloaked_state() -> void:
+	last_action_time = Time.get_ticks_msec()
+	tail.set_cloak_amount(0.0)
+	if current_state == PlayerState.Cloaked:
+		current_state = PlayerState.Move
+
+
+func _process_cloaking(_delta:float) -> void:
+	if current_state != PlayerState.Cloaked and cloak_gradient:
+		var idle_seconds: float = (Time.get_ticks_msec() - last_action_time) / 1000.0
+		if idle_seconds < cloak_wait_seconds:
+			tail.set_cloak_amount(idle_seconds / cloak_wait_seconds)
+		elif current_state != PlayerState.Cloaked:
+			tail.set_cloak_amount(1.0)
+			current_state = PlayerState.Cloaked
+
+func is_cloaked() -> bool:
+	return current_state == PlayerState.Cloaked

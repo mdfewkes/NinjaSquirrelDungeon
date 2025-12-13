@@ -67,6 +67,8 @@ func can_see_player() -> bool:
 		return false
 	if player == null:
 		return false
+	if player.is_cloaked():
+		return false
 
 	ray_cast_2d.target_position = player.global_position - global_position
 	return not ray_cast_2d.is_colliding()
