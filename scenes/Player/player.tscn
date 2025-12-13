@@ -135,10 +135,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [26]
+"values": [7, 26]
 }
 
 [sub_resource type="Animation" id="Animation_p5o4e"]
@@ -193,10 +193,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [20]
+"values": [5, 20]
 }
 
 [sub_resource type="Animation" id="Animation_dkpta"]
@@ -1180,10 +1180,6 @@ _data = {
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
-is_cutscene_squirrel = null
-speed = null
-roll_speed = null
-max_hp = null
 sfx_hurt = SubResource("Resource_cgmen")
 action_1 = NodePath("Katana ActionState")
 action_2 = NodePath("Shiruken ActionState")
