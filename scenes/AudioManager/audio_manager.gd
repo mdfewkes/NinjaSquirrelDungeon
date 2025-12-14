@@ -52,6 +52,7 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	freshAudioSource.bus = "SFX"
 	freshAudioSource.volume_db = sfx.volume_dB
 	freshAudioSource.stream = sfx.stream
+	freshAudioSource.process_mode = Node.PROCESS_MODE_ALWAYS
 	freshAudioSource.play()
 	
 	_add_voice(sfx, freshAudioSource)
