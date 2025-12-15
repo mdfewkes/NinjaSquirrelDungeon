@@ -7,9 +7,16 @@ extends Node2D
 @export var tail_start_offset: Vector2 = Vector2()
 @export var tail_motion_strength: float = 120.
 
+@export var cloak_gradient: GradientTexture2D : set=set_cloak_gradient, get=get_cloak_gradient
+@export var cloak_amount: float : set=set_cloak_amount, get=get_cloak_amount
+@export var second_gradient_modifier: float : set=set_second_gradient_modifier, get=get_second_gradient_modifier
+@export var quick_snap_mode: bool = false
+@export var quick_snap_responsiveness: float = 0.5
+
 @onready var target_line: Line2D = $TargetPoints
 @onready var animation_player: AnimationPlayer = $TailAnimationPlayer
 @onready var display_surface: ColorRect = $DisplaySurface
+@onready var blade: Node2D = $Blade
 
 # Direction index values
 enum Direction {
@@ -87,13 +94,17 @@ func _get_size(i: int) -> float:
 
 
 func calculate_segment(i: int, target_position: Vector2) -> Vector2:
-	if FeatureFlags.is_enabled("new_tail_pose"):
+	if not FeatureFlags.is_enabled("old_tail_pose"):
 		var ideal_position = target_position + target_line.get_point_position(i) - target_line.get_point_position(i - 1)
-		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), responsiveness)
+		if i == len(target_line.points) - 1 and fixed_tip_position != Vector2.INF:
+			ideal_position = fixed_tip_position
+		var rval = responsiveness
+		if quick_snap_mode: 
+			rval = quick_snap_responsiveness
+		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), rval)
 		var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
-		if not editing:
-			tail_shape[i].set_global_position(result_position)
-			tail_shape[i].shape.radius = _get_size(i) * clamp(distance_modifier, 0.7, 1.3)
+		tail_shape[i].set_global_position(result_position)
+		tail_shape[i].shape.radius = _get_size(i) * clamp(distance_modifier, 0.7, 1.3)
 		return result_position
 	else:
 		var ideal_position = target_position + tail_poses[selected_pose][i].position
@@ -136,6 +147,8 @@ func _process(_delta: float) -> void:
 		max_pos.x = max(max_pos.x, target_position.x + tail_shape[i].shape.radius + display_padding)
 		max_pos.y = max(max_pos.y, target_position.y + tail_shape[i].shape.radius + display_padding)
 
+	blade.global_position = tail_shape[len(tail_shape) - 1].global_position
+
 	# Collect display data for the tail
 	var shader_data: PackedVector3Array = []
 	for tail_segment in tail_shape:
@@ -165,11 +178,36 @@ func _on_player_shuriken_throw() -> void:
 		var wave_strength = tail_motion_strength * (1. - float(i)/segment_throwing_shuriken)
 		create_tween().tween_property(tail_shape[i], "position", tail_shape[i].get_position() + direction * wave_strength, 0.1)
 
-
+func set_second_gradient_modifier(v: float):
+	if display_surface:
+		display_surface.material.set_shader_parameter("tail_color2_threshold", v)
+	
+func get_second_gradient_modifier() -> float:
+	if display_surface:
+		display_surface.material.get_shader_parameter("tail_color2_threshold")
+	return 0.0
+	
+func get_cloak_gradient() -> GradientTexture2D:
+	if display_surface:
+		return display_surface.material.get_shader_parameter("cloaked_color_lookup")
+	return null
+	
 func set_cloak_gradient(gradient: GradientTexture2D) -> void:
-	display_surface.material.set_shader_parameter("cloaked_color_lookup", gradient)
+	if display_surface:
+		display_surface.material.set_shader_parameter("cloaked_color_lookup", gradient)
 
+func get_cloak_amount() -> float:
+	if display_surface:
+		return display_surface.material.get_shader_parameter("cloaked_amount")
+	return 0.0
 
 func set_cloak_amount(value: float) -> void:
-	var cur_val = display_surface.material.get_shader_parameter("cloaked_amount")
-	display_surface.material.set_shader_parameter("cloaked_amount", value)
+	if display_surface:
+		display_surface.material.set_shader_parameter("cloaked_amount", value)
+
+var fixed_tip_position: Vector2 = Vector2.INF
+func set_tip_position(pos: Vector2) -> void:
+	fixed_tip_position = pos
+
+func clear_tip_position() -> void:
+	fixed_tip_position = Vector2.INF

@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=118 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -24,6 +24,10 @@
 [ext_resource type="AudioStream" uid="uid://vf3lhh41we2h" path="res://scenes/Player/Audio/hero_hurt_07.ogg" id="15_ipg72"]
 [ext_resource type="AudioStream" uid="uid://cf22s14gxnerv" path="res://scenes/Player/Audio/hero_hurt_08.ogg" id="16_mro02"]
 [ext_resource type="AudioStream" uid="uid://5dgthyehtcq3" path="res://scenes/Player/Audio/hero_hurt_09.ogg" id="17_34uhp"]
+[ext_resource type="Script" uid="uid://tfabbyx4daf2" path="res://scenes/Player/TailWhipActionState.gd" id="25_jn0uf"]
+[ext_resource type="Curve" uid="uid://jx236lws5xq8" path="res://scenes/Player/tail_width_curve.tres" id="29_kp55c"]
+[ext_resource type="Curve" uid="uid://b26b5y7p881rj" path="res://scenes/Player/tail_whip_widths.tres" id="31_32uah"]
+[ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="32_32uah"]
 [ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="33_cgmen"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="34_fqhit"]
 [ext_resource type="Texture2D" uid="uid://cn2nwwjovjqom" path="res://scenes/Player/tail_texture.tres" id="36_7iww4"]
@@ -96,7 +100,7 @@ tracks/3/path = NodePath("Tail/TailAnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": PackedStringArray("left"),
+"clips": PackedStringArray("RESET"),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "value"
@@ -659,6 +663,32 @@ tracks/1/keys = {
 "values": [19]
 }
 
+[sub_resource type="Animation" id="Animation_kp55c"]
+resource_name = "tail_whip_left"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("whip_left_3"),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lfmf2"]
 _data = {
 &"RESET": SubResource("Animation_gwnis"),
@@ -678,7 +708,8 @@ _data = {
 &"roll_down": SubResource("Animation_4ntmi"),
 &"roll_left": SubResource("Animation_lfmf2"),
 &"roll_right": SubResource("Animation_pisgm"),
-&"roll_up": SubResource("Animation_b1ygp")
+&"roll_up": SubResource("Animation_b1ygp"),
+&"tail_whip_left": SubResource("Animation_kp55c")
 }
 
 [sub_resource type="Animation" id="Animation_n471f"]
@@ -870,6 +901,29 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_hshwv")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jn0uf"]
+animation = &"tail_whip_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ni0x"]
+animation = &"tail_whip_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kp55c"]
+animation = &"tail_whip_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32uah"]
+animation = &"tail_whip_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jn0uf"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jn0uf")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_4ni0x")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kp55c")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_32uah")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lfmf2"]
 advance_mode = 2
 
@@ -891,17 +945,27 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ntmi"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ni0x"]
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kp55c"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pisgm"]
 states/ActionState/node = SubResource("AnimationNodeBlendSpace2D_gu6f8")
-states/ActionState/position = Vector2(601.5, 256.5)
+states/ActionState/position = Vector2(601, 255.5)
 states/MoveState/node = SubResource("AnimationNodeStateMachine_dkpta")
 states/MoveState/position = Vector2(441, 100)
 states/RollState/node = SubResource("AnimationNodeBlendSpace2D_gpjlu")
 states/RollState/position = Vector2(612, -17.5)
-transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "ActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "ActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "ActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi")]
-graph_offset = Vector2(93.09002, -83.78246)
+states/TailWhipAction/node = SubResource("AnimationNodeBlendSpace2D_jn0uf")
+states/TailWhipAction/position = Vector2(315.19543, 267.5826)
+transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "ActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "ActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "ActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi"), "MoveState", "TailWhipAction", SubResource("AnimationNodeStateMachineTransition_4ni0x"), "TailWhipAction", "MoveState", SubResource("AnimationNodeStateMachineTransition_kp55c")]
+graph_offset = Vector2(-120.74865, 149.17537)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
+graph_offset = Vector2(211.19998, 37.019085)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
@@ -911,6 +975,8 @@ node_connections = [&"output", 0, &"StateMachine"]
 radius = 31.0
 
 [sub_resource type="Gradient" id="Gradient_nbg44"]
+offsets = PackedFloat32Array(0.11377245, 0.18862276, 0.9730539)
+colors = PackedColorArray(0.8627451, 0.40392157, 0.30588236, 1, 0.65882355, 0.13725491, 0.16862746, 1, 0.17528966, 0.013860011, 0.02030225, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jn0uf"]
 gradient = SubResource("Gradient_nbg44")
@@ -926,14 +992,9 @@ shader_parameter/cloaked_color_lookup = SubResource("GradientTexture2D_jn0uf")
 shader_parameter/cloaked_amount = 0.0
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-[sub_resource type="Curve" id="Curve_fqhit"]
-_limits = [2.0, 25.0, 0.0, 1.0]
-bake_resolution = 8
-_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.25, 6), 0.0, 9.0, 0, 0, Vector2(0.375, 15), 0.0, 9.999999, 0, 0, Vector2(0.5, 25), 0.0, 0.0, 0, 0, Vector2(0.6303419, 25), 0.0, 0.0, 0, 0, Vector2(0.75, 25), 0.0, 0.0, 0, 0, Vector2(0.875, 20), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
-point_count = 8
-
 [sub_resource type="Animation" id="Animation_fqhit"]
 resource_name = "RESET"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -970,9 +1031,106 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -30)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:quick_snap_mode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TargetPoints:width_curve")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("29_kp55c")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blade:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Blade:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, -50)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Blade:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707963267948966]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/path = NodePath(".:cloak_amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/path = NodePath(".:cloak_gradient")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:second_gradient_modifier")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.045]
+}
 
 [sub_resource type="Animation" id="Animation_nbg44"]
 resource_name = "cloaked"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1012,6 +1170,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_e6s7e"]
 resource_name = "down"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1051,6 +1210,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_e8txv"]
 resource_name = "left"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1090,6 +1250,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7iww4"]
 resource_name = "right"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1129,6 +1290,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ploos"]
 resource_name = "up"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1166,6 +1328,263 @@ tracks/2/keys = {
 "values": [Vector2(-3, -20)]
 }
 
+[sub_resource type="Animation" id="Animation_4ni0x"]
+resource_name = "whip_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(1, 2.143547, 2, 3, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63), PackedVector2Array(0, 0, 50, -35, 60, -50, 80, -70, 76, -90, 55, -95, 50, -105, 20, -125), PackedVector2Array(0, 0, -15, -35, -60, -45, -100, -55, 35, -75, 45, -85, 50, -135, 50, -175), PackedVector2Array(0, 0, -15, -35, -60, -35, -80, -40, -100, -40, -130, -45, -150, -45, -360, -35), PackedVector2Array(0, 0, -15, -35, -60, -45, -100, -55, 35, -75, 45, -85, 50, -95, 50, -105)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:quick_snap_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.43333334, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TargetPoints:width_curve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("29_kp55c"), ExtResource("31_32uah"), ExtResource("29_kp55c")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Blade:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [Vector2(50, -170), Vector2(-380, -40), Vector2(44, -94)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blade:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [4.7280969436526386, 3.1276300195738393, 6.236061417375739]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Tail Whip ActionState")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [Vector2(-1, 0)],
+"method": &"cast_hook_ray"
+}, {
+"args": [],
+"method": &"start_hook_pull"
+}, {
+"args": [],
+"method": &"release_hook"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_32uah"]
+resource_name = "whip_left_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.1332, 0.3996, 0.4662, 0.5328, 0.5994),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63), PackedVector2Array(0, 0, 40, -35, 42, -50, 50, -70, 55, -90, 55, -95, 50, -95, 20, -105), PackedVector2Array(0, 0, -15, -35, -60, -45, -130, -55, 35, -75, 45, -85, 50, -95, 50, -105), PackedVector2Array(0, 0, -15, -35, -60, -45, -130, -55, -235, -65, -355, -75, -390, -85, -510, -65), PackedVector2Array(0, 0, -15, -35, -70, -45, -150, -55, -295, -65, -405, -75, -470, -85, -550, -135), PackedVector2Array(0, 0, -15, -35, -60, -45, -140, -55, -175, -65, -425, -75, -470, -105, -440, -155), PackedVector2Array(0, 0, -15, -35, -60.39952, -45, -80.4, -45, -149.794, -55, -424.201, -55, -420, -74.201, -344.395, -114.201)]
+}
+
+[sub_resource type="Curve" id="Curve_32uah"]
+_limits = [2.0, 50.0, 0.0, 1.0]
+bake_resolution = 8
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.2317073, 16.084621), 0.0, 9.0, 0, 0, Vector2(0.3434959, 25.958721), 0.0, 9.999999, 0, 0, Vector2(0.4715447, 29.393188), 0.0, 0.0, 0, 0, Vector2(0.64634144, 26.066048), 0.0, 0.0, 0, 0, Vector2(0.7743902, 25.63674), 0.0, 0.0, 0, 0, Vector2(0.9004065, 27.89061), 0.0, 0.0, 0, 0, Vector2(0.99999994, 6.103199), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Gradient" id="Gradient_32uah"]
+offsets = PackedFloat32Array(0, 0.5527638, 0.67839193)
+colors = PackedColorArray(0, 0, 0, 1, 0.32373908, 0.21468797, 0.46230513, 1, 0.19757289, 0.12326864, 0.29131985, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ihqbe"]
+gradient = SubResource("Gradient_32uah")
+
+[sub_resource type="Animation" id="Animation_ihqbe"]
+resource_name = "whip_left_3"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(0.3298769, 1, 5.2249856, 3.0314329, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63), PackedVector2Array(0, 0, 50, -35, 60, -50, 80, -70, 76, -90, 55, -95, 50, -105, 20, -125), PackedVector2Array(0, 0, -15, -35, -60, -45, -100, -55, 35, -75, 45, -85, 50, -135, 50, -175), PackedVector2Array(0, 0, -15, -35, -60, -35, -80, -40, -100, -40, -130, -45, -150, -45, -360, -25), PackedVector2Array(0, 0, -15, -35, -60, -45, -50, -55, 35, -75, 45, -85, 50, -95, 50, -145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:quick_snap_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TargetPoints:width_curve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 3.2490091, 1),
+"update": 0,
+"values": [ExtResource("29_kp55c"), SubResource("Curve_32uah"), ExtResource("29_kp55c")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Blade:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [Vector2(50, -170), Vector2(-380, -40), Vector2(44, -94)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blade:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [4.7280969436526386, 3.1276300195738393, 6.236061417375739]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Tail Whip ActionState")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [Vector2(-1, 0)],
+"method": &"cast_hook_ray"
+}, {
+"args": [],
+"method": &"start_hook_pull"
+}, {
+"args": [],
+"method": &"release_hook"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath(".:cloak_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.25000003, 2.4622889, 2.1435478),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/path = NodePath(".:cloak_gradient")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_ihqbe")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:second_gradient_modifier")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.045, 0.02, 0.045]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8txv"]
 _data = {
 &"RESET": SubResource("Animation_fqhit"),
@@ -1173,16 +1592,20 @@ _data = {
 &"down": SubResource("Animation_e6s7e"),
 &"left": SubResource("Animation_e8txv"),
 &"right": SubResource("Animation_7iww4"),
-&"up": SubResource("Animation_ploos")
+&"up": SubResource("Animation_ploos"),
+&"whip_left": SubResource("Animation_4ni0x"),
+&"whip_left_2": SubResource("Animation_32uah"),
+&"whip_left_3": SubResource("Animation_ihqbe")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2", "action_3") groups=["player"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
 sfx_hurt = SubResource("Resource_cgmen")
 action_1 = NodePath("Katana ActionState")
 action_2 = NodePath("Shiruken ActionState")
+action_3 = NodePath("Tail Whip ActionState")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
@@ -1220,6 +1643,7 @@ parameters/StateMachine/ActionState/blend_position = Vector2(-0.0013279915, -0.2
 parameters/StateMachine/MoveState/IdleState/blend_position = Vector2(-0.48511165, -0.0014727116)
 parameters/StateMachine/MoveState/RunState/blend_position = Vector2(-0.028535962, -0.5699558)
 parameters/StateMachine/RollState/blend_position = Vector2(0.27047145, 0.1929307)
+parameters/StateMachine/TailWhipAction/blend_position = Vector2(-1, -0.012500048)
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2
@@ -1252,12 +1676,22 @@ script = ExtResource("13_jxtnq")
 script = ExtResource("14_t6q27")
 cooldown_time_msec = 0.0
 
+[node name="TailHookTargetRay" type="RayCast2D" parent="."]
+position = Vector2(0, -50)
+target_position = Vector2(-40, 0)
+collision_mask = 5
+
+[node name="Tail Whip ActionState" type="Node" parent="."]
+script = ExtResource("25_jn0uf")
+metadata/_custom_type_script = "uid://tfabbyx4daf2"
+
 [node name="Tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
 z_index = -1
-position = Vector2(-25, -18)
+position = Vector2(0, -25)
 script = ExtResource("33_cgmen")
 attachement = NodePath("..")
 tail_start_offset = Vector2(0, -30)
+second_gradient_modifier = 0.045
 
 [node name="DisplaySurface" type="ColorRect" parent="Tail"]
 material = SubResource("ShaderMaterial_7iww4")
@@ -1269,14 +1703,21 @@ offset_bottom = -50.0
 [node name="TargetPoints" type="Line2D" parent="Tail"]
 points = PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)
 width = 2.0
-width_curve = SubResource("Curve_fqhit")
+width_curve = ExtResource("29_kp55c")
 default_color = Color(0.8901961, 0.34901962, 0.25882354, 1)
 gradient = ExtResource("37_7iww4")
 
 [node name="TailAnimationPlayer" type="AnimationPlayer" parent="Tail"]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_e8txv")
 }
+
+[node name="Blade" type="Sprite2D" parent="Tail"]
+visible = false
+position = Vector2(80, -50)
+rotation = 1.5707964
+texture = ExtResource("32_32uah")
 
 [connection signal="direction_changed" from="." to="Tail" method="_on_player_direction_changed"]
 [connection signal="shuriken_throw" from="Shiruken ActionState" to="Tail" method="_on_player_shuriken_throw"]

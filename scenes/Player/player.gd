@@ -12,6 +12,7 @@ var current_hp: int = max_hp
 
 @export var action_1: ActionState
 @export var action_2: ActionState
+@export var action_3: ActionState
 var current_action_state = null
 
 enum PlayerState {Move, Roll, Action, Cloaked}
@@ -81,6 +82,9 @@ func _move_state() -> void:
 	if Input.is_action_just_pressed("action_2"):
 		_set_action_state(action_2)
 		return
+	if Input.is_action_just_pressed("action_3"):
+		_set_action_state(action_3)
+		return
 
 
 func _action_state(delta: float) -> void:
@@ -100,6 +104,9 @@ func _roll_state() -> void:
 		return
 	if Input.is_action_just_pressed("action_2"):
 		_set_action_state(action_2)
+		return
+	if Input.is_action_just_pressed("action_3"):
+		_set_action_state(action_3)
 		return
 
 	if Input.is_action_just_pressed("roll"):
@@ -137,6 +144,7 @@ func _set_action_state(state: ActionState) -> void:
 	if state == null: return
 	
 	_clear_cloaked_state()
+	current_state = PlayerState.Action
 	current_action_state = state
 	current_action_state.enter_state(self)
 
