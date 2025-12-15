@@ -139,10 +139,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [26]
+"values": [7, 26]
 }
 
 [sub_resource type="Animation" id="Animation_p5o4e"]
@@ -197,10 +197,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [20]
+"values": [5, 20]
 }
 
 [sub_resource type="Animation" id="Animation_dkpta"]

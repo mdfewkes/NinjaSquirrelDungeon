@@ -7,19 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="3_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="3_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://c4kwsiasl0gw1" path="res://scenes/Bat/bat.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="9_cbp6q"]
-[ext_resource type="PackedScene" uid="uid://bwfrrxhnpgcjm" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="9_ioo17"]
 [ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="10_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bfsjclbxrvnhr" path="res://scenes/Items/small_key.tscn" id="13_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="13_bc84e"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="14_70uel"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="16_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="20_26xuy"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="20_bc84e"]
+[ext_resource type="PackedScene" uid="uid://5pbl42y2fb2y" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="21_bc84e"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -642,25 +642,25 @@ size = Vector2(520, 1400)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_il2jm"]
 size = Vector2(1312, 344)
 
-[sub_resource type="Resource" id="Resource_wse8f"]
+[sub_resource type="Resource" id="Resource_wukud"]
 script = ExtResource("10_wse8f")
 duration = 5.0
 coordinates = Vector2(1184, -16)
 metadata/_custom_type_script = "uid://btp4qrx8g0uin"
 
-[sub_resource type="Resource" id="Resource_ic0uy"]
+[sub_resource type="Resource" id="Resource_il2jm"]
 script = ExtResource("10_wse8f")
 duration = 5.0
 coordinates = Vector2(1184, -208)
 metadata/_custom_type_script = "uid://btp4qrx8g0uin"
 
-[sub_resource type="Resource" id="Resource_k3n1d"]
+[sub_resource type="Resource" id="Resource_wjb0r"]
 script = ExtResource("10_wse8f")
 duration = 5.0
 coordinates = Vector2(1824, -208)
 metadata/_custom_type_script = "uid://btp4qrx8g0uin"
 
-[sub_resource type="Resource" id="Resource_2o6r5"]
+[sub_resource type="Resource" id="Resource_mc2jv"]
 script = ExtResource("10_wse8f")
 duration = 5.0
 coordinates = Vector2(1824, -16)
@@ -788,10 +788,10 @@ position = Vector2(1743, 135)
 
 [node name="Enemies" type="Node2D" parent="Rooms/BatRoom"]
 
-[node name="Bat" parent="Rooms/BatRoom/Enemies" instance=ExtResource("5_036b0")]
+[node name="Bat" parent="Rooms/BatRoom/Enemies" instance=ExtResource("13_bc84e")]
 position = Vector2(1392, 346)
 
-[node name="Bat2" parent="Rooms/BatRoom/Enemies" instance=ExtResource("5_036b0")]
+[node name="Bat2" parent="Rooms/BatRoom/Enemies" instance=ExtResource("13_bc84e")]
 position = Vector2(1632, 354)
 
 [node name="Environment" type="Node2D" parent="Rooms/BatRoom"]
@@ -883,10 +883,11 @@ position = Vector2(1175, -155)
 
 [node name="Enemies" type="Node2D" parent="Rooms/PatrolRoom"]
 
-[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" instance=ExtResource("9_ioo17")]
+[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" instance=ExtResource("21_bc84e")]
 position = Vector2(1184, -16)
+motion_mode = 1
 patrol_point_radius = 5
-patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wse8f"), SubResource("Resource_ic0uy"), SubResource("Resource_k3n1d"), SubResource("Resource_2o6r5")])
+patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wukud"), SubResource("Resource_il2jm"), SubResource("Resource_wjb0r"), SubResource("Resource_mc2jv")])
 
 [node name="Environment" type="Node2D" parent="Rooms/PatrolRoom"]
 
