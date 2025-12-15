@@ -194,6 +194,7 @@ func clear_cloakable_gradient() -> void:
 func _clear_cloaked_state() -> void:
 	last_action_time = Time.get_ticks_msec()
 	tail.set_cloak_amount(0.0)
+	modulate = Color.WHITE
 	if current_state == PlayerState.Cloaked:
 		current_state = PlayerState.Move
 
@@ -203,6 +204,7 @@ func _process_cloaking(_delta:float) -> void:
 		var idle_seconds: float = (Time.get_ticks_msec() - last_action_time) / 1000.0
 		if idle_seconds < cloak_wait_seconds:
 			tail.set_cloak_amount(idle_seconds / cloak_wait_seconds)
+			modulate = lerp(Color.WHITE, cloak_gradient.gradient.colors[0].lightened(0.4), idle_seconds/cloak_wait_seconds)
 		elif current_state != PlayerState.Cloaked:
 			tail.set_cloak_amount(1.0)
 			current_state = PlayerState.Cloaked
