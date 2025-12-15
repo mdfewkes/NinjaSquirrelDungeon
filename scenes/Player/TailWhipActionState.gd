@@ -41,7 +41,14 @@ func start_hook_pull() -> void:
 			hook_obj = obj
 			player.velocity = player.global_position.direction_to(hook_point) * 500.0
 			tail.set_tip_position(hook_point)
+			var smoke: CPUParticles2D = player.get_node("TailHookSmoke")
+			smoke.global_position = hook_point
+			smoke.rotation = ray.get_collision_normal().angle()
+			smoke.emitting = true
 
 
 func release_hook() -> void:
 	tail.clear_tip_position()
+	var sparks: CPUParticles2D = player.get_node("TailHookSparks")
+	sparks.global_position = hook_point
+	sparks.emitting = true
