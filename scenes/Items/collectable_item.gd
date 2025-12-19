@@ -25,6 +25,9 @@ signal item_collected(node: CollectableItem)
 ## If true, the item will be added to the player's inventory. If not, the "item_collected" signal will still be emitted and the item removed. Single use item behaviors can be connected to the signal.
 @export var add_to_inventory := true
 
+## If non-zero this item can be pulled with the tail whip
+@export var pull_speed_coefficient := 1.0
+
 @onready var sprite: Sprite2D = $Sprite2D
 
 # randomized to make sure items don't all bounce in lockstep
@@ -51,3 +54,9 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		trigger_collection()
+
+
+func can_be_pulled() -> Node:
+	if pull_speed_coefficient != 0.0:
+		return self
+	return null

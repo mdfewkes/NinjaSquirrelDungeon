@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cupx5ww4yp6ut"]
+[gd_scene load_steps=19 format=3 uid="uid://cupx5ww4yp6ut"]
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_8na5a"]
 [ext_resource type="Script" uid="uid://5bl7u31arv8t" path="res://scenes/Bat/bat.gd" id="2_u4rq4"]
 [ext_resource type="Texture2D" uid="uid://b6a5kj3o7b6ep" path="res://scenes/Bat/Art/bat.png" id="3_or75x"]
+[ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="4_0siu8"]
 
 [sub_resource type="Animation" id="Animation_6um7f"]
 length = 0.001
@@ -137,13 +138,16 @@ states/idleState/position = Vector2(411, 100)
 states/knockbackState/node = SubResource("AnimationNodeAnimation_rwquk")
 states/knockbackState/position = Vector2(617, 100)
 transitions = ["Start", "idleState", SubResource("AnimationNodeStateMachineTransition_6um7f"), "knockbackState", "idleState", SubResource("AnimationNodeStateMachineTransition_if6b6"), "idleState", "chaseState", SubResource("AnimationNodeStateMachineTransition_1wwtj"), "chaseState", "idleState", SubResource("AnimationNodeStateMachineTransition_u4rq4")]
-graph_offset = Vector2(-210, -34)
+graph_offset = Vector2(-229.48502, 25.849987)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0qmk6"]
-graph_offset = Vector2(-536, 6)
+graph_offset = Vector2(-344.6401, 96.000015)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_b8j2l")
 nodes/StateMachine/position = Vector2(-200, 120)
 node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0w3qu"]
+height = 60.0
 
 [node name="Bat" instance=ExtResource("1_8na5a")]
 collision_layer = 4
@@ -181,3 +185,15 @@ offset_left = -24.0
 offset_top = -75.0
 offset_right = 26.0
 offset_bottom = -52.0
+
+[node name="GrabBox" type="Area2D" parent="." index="11"]
+collision_layer = 8
+collision_mask = 0
+priority = 2
+script = ExtResource("4_0siu8")
+metadata/_custom_type_script = "uid://bvqjs8a0h3dyi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabBox" index="0"]
+position = Vector2(0, -30)
+shape = SubResource("CapsuleShape2D_0w3qu")
+debug_color = Color(0.81955034, 0.29340324, 0.7034943, 0.41960785)

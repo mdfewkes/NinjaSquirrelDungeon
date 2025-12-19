@@ -712,9 +712,11 @@ position = Vector2(582, 574)
 
 [node name="SmallKey" parent="." instance=ExtResource("13_2o6r5")]
 position = Vector2(699, 137)
+collision_layer = 8
 
 [node name="GreenKey" parent="." instance=ExtResource("14_70uel")]
 position = Vector2(339, 164)
+collision_layer = 8
 
 [node name="Door" parent="." instance=ExtResource("16_2u3nc")]
 position = Vector2(575, 780)

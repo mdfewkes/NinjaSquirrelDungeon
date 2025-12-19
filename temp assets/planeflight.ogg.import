@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tjvs5qtb7mx3"
+path="res://.godot/imported/planeflight.ogg-e1cf454aef32b758abb0600d72335132.oggvorbisstr"
+
+[deps]
+
+source_file="res://temp assets/planeflight.ogg"
+dest_files=["res://.godot/imported/planeflight.ogg-e1cf454aef32b758abb0600d72335132.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
