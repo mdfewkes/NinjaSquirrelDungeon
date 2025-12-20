@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crinfo1plaque"]
 
-[ext_resource type="Script" uid="uid://cinfoplaquegds" path="res://scenes/DialogueMuseum/info_plaque.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://d4np7627111q2" path="res://scenes/DialogueMuseum/info_plaque.gd" id="1_script"]
 
 [node name="InfoPlaque" type="Control"]
 custom_minimum_size = Vector2(220, 0)

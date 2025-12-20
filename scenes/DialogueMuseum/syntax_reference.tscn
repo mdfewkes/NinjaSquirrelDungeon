@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://va7ncsqbltm7"]
 
-[ext_resource type="Script" uid="uid://csyntaxrefgd" path="res://scenes/DialogueMuseum/syntax_reference.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://crmdjk044i1ri" path="res://scenes/DialogueMuseum/syntax_reference.gd" id="1_script"]
 
 [node name="SyntaxReference" type="Control"]
 custom_minimum_size = Vector2(700, 280)
