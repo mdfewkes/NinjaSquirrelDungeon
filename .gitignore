@@ -15,7 +15,7 @@ export_credentials.cfg
 
 # IDE
 .vscode/
-.claude/settings.local.json
+.claude/
 
 # Local project documentation
 CLAUDE.md

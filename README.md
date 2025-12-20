@@ -30,3 +30,17 @@ code/         Shared reusable scripts
 src/          Source assets (images, audio)
 temp assets/  Placeholder assets
 ```
+
+## Design Notes
+
+## Backstory
+
+A band of rodents has stolen the magic acorn that keeps your woodlands safe. To protect your woodland kin, you must venture into their sewer fortress and retrieve the acorn!
+
+A single Zelda-like dungeon starting a squirrel ninja.
+
+Acorns for health
+
+Sample/recording based SFX
+
+Prefer non-chiptune music
