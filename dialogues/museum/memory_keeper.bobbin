@@ -1,0 +1,18 @@
+save shrine_offering = "absolutely nothing"
+
+I am the Memory Keeper.
+I guard offerings for eternity.
+My shrine currently holds: {shrine_offering}
+
+- Offer a flower
+    set shrine_offering = "a delicate flower"
+    Your flower will remain in my shrine forever.
+
+- Offer a coin
+    set shrine_offering = "a golden coin"
+    Your coin will remain in my shrine forever.
+
+- Offer nothing
+    Perhaps another time, traveler.
+
+Feel free to return and see what is kept in the shrine.

@@ -1,0 +1,5 @@
+extern player_health
+
+I sense your life force...
+You have {player_health} health remaining.
+Take care of yourself, traveler.
