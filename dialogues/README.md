@@ -68,12 +68,39 @@ You have {gold} gold coins.
 
 ## Adding Dialogues to Your Game
 
+### Using DialogueTrigger (player-activated)
+
+Best for NPCs and interactive objects:
+
 1. Create a `.bobbin` file in an appropriate folder
 2. Add a `DialogueTrigger` node to your scene
 3. Set the `dialogue_file` property to your `.bobbin` path
 4. (Optional) Pass `host_state` for extern variables
 
-See `scenes/DialogueTrigger/` for the trigger component and `scenes/DialogueBox/` for the UI.
+See `scenes/DialogueTrigger/` for the trigger component.
+
+### Triggering from Code (cutscenes, events)
+
+For story beats, cutscenes, or any programmatic trigger, call `DialogueBox` directly:
+
+```gdscript
+# Simple trigger
+DialogueBox.show_dialogue("res://dialogues/intro.bobbin")
+
+# With game variables for extern access
+DialogueBox.show_dialogue("res://dialogues/boss_defeated.bobbin", {
+    "boss_name": "Shadow King",
+    "player_level": player.level
+})
+
+# Async version - waits for dialogue to complete before continuing
+await DialogueBox.show_dialogue_async("res://dialogues/cutscene.bobbin")
+print("Dialogue finished, continue with next scene...")
+```
+
+Use `show_dialogue_async()` when you need to wait for the dialogue to finish before executing more code (common in cutscenes and scripted sequences).
+
+See `scenes/DialogueBox/` for the UI implementation.
 
 ## Testing Dialogues
 

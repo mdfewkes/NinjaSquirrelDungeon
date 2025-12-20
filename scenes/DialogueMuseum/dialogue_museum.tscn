@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgmlxe2wjhyfl"]
+[gd_scene load_steps=7 format=3 uid="uid://cgmlxe2wjhyfl"]
 
 [ext_resource type="Script" uid="uid://b230mmkjysfiv" path="res://scenes/DialogueMuseum/dialogue_museum.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://qffe4xl1su4e" path="res://scenes/DialogueMuseum/museum_npc.tscn" id="3_npc"]
 [ext_resource type="PackedScene" uid="uid://crinfo1plaque" path="res://scenes/DialogueMuseum/info_plaque.tscn" id="4_info_plaque"]
+[ext_resource type="PackedScene" uid="uid://va7ncsqbltm7" path="res://scenes/DialogueMuseum/syntax_reference.tscn" id="5_syntax_reference"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(1600, 32)
@@ -19,37 +20,45 @@ offset_bottom = 1790.0
 color = Color(0.15, 0.12, 0.2, 1)
 metadata/_edit_lock_ = true
 
+[node name="GuidePath" type="Line2D" parent="."]
+points = PackedVector2Array(-78, -136, -886, -533, -965, -750, -6, -715, 999, -719, 1020, -87, 1040, 279, 612, 172)
+width = 80.0
+default_color = Color(0.35, 0.3, 0.4, 0.6)
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
 [node name="Player" parent="." instance=ExtResource("2_player")]
 position = Vector2(0, 100)
 
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="SyntaxGuide" parent="NPCs" instance=ExtResource("3_npc")]
-position = Vector2(0, -150)
+position = Vector2(0, -93)
 npc_name = "Syntax Guide"
 description = "Interactive tutorial"
 dialogue_file = "res://dialogues/museum/syntax_guide.bobbin"
 
 [node name="Storyteller" parent="NPCs" instance=ExtResource("3_npc")]
-position = Vector2(-425, -471)
+position = Vector2(-1033, -787)
 npc_name = "Storyteller"
 description = "Multi-line dialogue"
 dialogue_file = "res://dialogues/museum/storyteller.bobbin"
 
 [node name="Merchant" parent="NPCs" instance=ExtResource("3_npc")]
-position = Vector2(498, -504)
+position = Vector2(-2, -812)
 npc_name = "Merchant"
 description = "Choice branching"
 dialogue_file = "res://dialogues/museum/merchant.bobbin"
 
 [node name="MemoryKeeper" parent="NPCs" instance=ExtResource("3_npc")]
-position = Vector2(-445, 428)
+position = Vector2(995, -835)
 npc_name = "Memory Keeper"
 description = "save/set variables"
 dialogue_file = "res://dialogues/museum/memory_keeper.bobbin"
 
 [node name="Oracle" parent="NPCs" instance=ExtResource("3_npc")]
-position = Vector2(429, 431)
+position = Vector2(1090, -81)
 npc_name = "Oracle"
 description = "extern host state"
 dialogue_file = "res://dialogues/museum/oracle.bobbin"
@@ -59,10 +68,10 @@ dialogue_file = "res://dialogues/museum/oracle.bobbin"
 [node name="SyntaxGuidePlaque" parent="InfoPlaques" instance=ExtResource("4_info_plaque")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -303.0
-offset_top = -201.0
-offset_right = -83.0
-offset_bottom = -81.0
+offset_left = 187.0
+offset_top = -160.0
+offset_right = 407.0
+offset_bottom = -40.0
 title = "Syntax Guide"
 content = "Start here! An interactive tutorial
 that teaches Bobbin syntax through
@@ -76,10 +85,10 @@ metadata/_edit_use_anchors_ = true
 [node name="StorytellerPlaque" parent="InfoPlaques" instance=ExtResource("4_info_plaque")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -720.0
-offset_top = -655.0
-offset_right = -490.0
-offset_bottom = -535.0
+offset_left = -1366.0
+offset_top = -750.0
+offset_right = -1136.0
+offset_bottom = -630.0
 title = "Multi-line Dialogue"
 content = "The simplest Bobbin feature:
 plain text lines.
@@ -90,10 +99,10 @@ No special syntax needed."
 [node name="MerchantPlaque" parent="InfoPlaques" instance=ExtResource("4_info_plaque")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 188.0
-offset_top = -708.0
-offset_right = 418.0
-offset_bottom = -588.0
+offset_left = -383.0
+offset_top = -1050.0
+offset_right = -153.0
+offset_bottom = -930.0
 title = "Choice Branching"
 content = "Use [code]-[/code] to create choices.
 Indent responses below each choice.
@@ -104,10 +113,10 @@ Great for dialogue trees."
 [node name="MemoryKeeperPlaque" parent="InfoPlaques" instance=ExtResource("4_info_plaque")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -744.0
-offset_top = 389.0
-offset_right = -514.0
-offset_bottom = 509.0
+offset_left = 624.0
+offset_top = -1047.0
+offset_right = 854.0
+offset_bottom = -927.0
 title = "Persistent Variables"
 content = "[code]save[/code] declares variables that
 persist between conversations.
@@ -119,10 +128,10 @@ Talk twice to see it remember!"
 [node name="OraclePlaque" parent="InfoPlaques" instance=ExtResource("4_info_plaque")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 107.0
-offset_top = 411.0
-offset_right = 337.0
-offset_bottom = 531.0
+offset_left = 742.0
+offset_top = -318.0
+offset_right = 972.0
+offset_bottom = -198.0
 title = "Host State (extern)"
 content = "[code]extern[/code] accesses variables
 passed from your game code.
@@ -130,10 +139,20 @@ passed from your game code.
 This NPC reads [code]player_health[/code]
 from the Player node."
 
+[node name="SyntaxReference" parent="." instance=ExtResource("5_syntax_reference")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 694.0
+offset_top = 335.0
+offset_right = 1394.0
+offset_bottom = 615.0
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="TopWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(0, -772)
+position = Vector2(6, -1187)
+scale = Vector2(1.8399997, 1)
+metadata/_edit_group_ = true
 
 [node name="Visual" type="ColorRect" parent="Walls/TopWall"]
 offset_left = -800.0
@@ -147,7 +166,9 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="BottomWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(0, 730)
+position = Vector2(6, 1168)
+scale = Vector2(1.8800015, 1)
+metadata/_edit_group_ = true
 
 [node name="Visual" type="ColorRect" parent="Walls/BottomWall"]
 offset_left = -800.0
@@ -160,8 +181,10 @@ color = Color(0.08, 0.06, 0.12, 1)
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="LeftWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(-768, 0)
+position = Vector2(-1466, -2)
 rotation = 1.5708
+scale = Vector2(1.5199993, 1)
+metadata/_edit_group_ = true
 
 [node name="Visual" type="ColorRect" parent="Walls/LeftWall"]
 offset_left = -800.0
@@ -174,8 +197,10 @@ color = Color(0.08, 0.06, 0.12, 1)
 shape = SubResource("RectangleShape2D_wall")
 
 [node name="RightWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(768, 0)
+position = Vector2(1478, 4)
 rotation = 1.5708
+scale = Vector2(1.519999, 1)
+metadata/_edit_group_ = true
 
 [node name="Visual" type="ColorRect" parent="Walls/RightWall"]
 offset_left = -800.0
