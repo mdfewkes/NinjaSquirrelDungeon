@@ -1,0 +1,55 @@
+save last_topic = "nothing yet"
+
+Welcome to the Bobbin Syntax Guide!
+I'll teach you how to write dialogue scripts.
+Your last topic was: {last_topic}
+What would you like to learn about?
+
+- Basic text lines
+    set last_topic = "text lines"
+    The simplest thing in Bobbin is plain text.
+    Each line becomes one dialogue box.
+    Like this! Three lines, three boxes.
+    That's all there is to basic dialogue!
+
+- Choices with the - symbol
+    set last_topic = "choices"
+    Choices start with a dash and a space.
+    Everything indented under a choice happens when selected.
+    Let me show you a nested example...
+    Pick a color:
+    - Red
+        You chose red! Bold choice.
+    - Blue
+        Blue it is! A calming selection.
+    Nested choices work the same way!
+
+- The save keyword
+    set last_topic = "save keyword"
+    Use "save" to declare persistent variables.
+    Example: save gold = 100
+    These remember their value between conversations!
+    I'm using save to remember your last topic.
+    Talk to the Memory Keeper to see another example.
+
+- The set keyword
+    set last_topic = "set keyword"
+    Use "set" to change a variable's value.
+    Example: set mood = "happy"
+    I just used set to update your last topic!
+    Come back and you'll see it remembered.
+
+- The extern keyword
+    set last_topic = "extern keyword"
+    Use "extern" to access game variables.
+    Example: extern player_health
+    The game passes these in via host_state.
+    Talk to the Oracle to see this in action!
+
+- Display variables with curly braces
+    set last_topic = "variable display"
+    Put variable names in curly braces to show their value.
+    Your current topic is: {last_topic}
+    This works with save, set, and extern variables!
+
+Come back anytime to review. Happy writing!
