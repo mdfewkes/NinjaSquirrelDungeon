@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://01w3xxvbl744"]
+
+[ext_resource type="Script" path="res://scenes/DialogueTrigger/dialogue_trigger.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_default"]
+radius = 48.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.85, 0.6, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="DialogueTrigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_default")
+
+[node name="PromptContainer" type="PanelContainer" parent="."]
+offset_left = -40.0
+offset_top = -55.0
+offset_right = 40.0
+offset_bottom = -30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="PromptLabel" type="Label" parent="PromptContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Press E"
+horizontal_alignment = 1
+vertical_alignment = 1
