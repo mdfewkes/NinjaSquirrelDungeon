@@ -29,7 +29,7 @@ var _input_cooldown: float = 0.0
 var _awaiting_completion: bool = false
 
 const INPUT_COOLDOWN_TIME: float = 0.1
-const CONTINUE_PROMPT: String = "Press E to continue"
+const CONTINUE_PROMPT: String = "Press X to continue"
 const CHOICE_BUTTON_FONT_SIZE: int = 30
 
 # Persistent storage for dialogue "save" variables (keyed by dialogue path).
@@ -63,13 +63,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action_pressed("move_down"):
 			_navigate_choices(1)
 			get_viewport().set_input_as_handled()
-		# Select choice with interact key (E)
-		elif event.is_action_pressed("interact"):
+		# Select choice with action key
+		elif event.is_action_pressed("action_1"):
 			_select_focused_choice()
 			get_viewport().set_input_as_handled()
 	else:
-		# Advance dialogue with interact key
-		if event.is_action_pressed("interact"):
+		# Advance dialogue with action key
+		if event.is_action_pressed("action_1"):
 			_advance()
 			get_viewport().set_input_as_handled()
 

@@ -20,7 +20,7 @@ signal interaction_finished
 @export var host_state: Dictionary = {}
 
 @export_group("Prompt")
-@export var prompt_text: String = "Press E":
+@export var prompt_text: String = "Press X":
 	set(value):
 		prompt_text = value
 		_update_prompt()
@@ -86,7 +86,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not _player_in_range or _is_interacting:
 		return
 
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("action_1"):
 		_start_interaction()
 		get_viewport().set_input_as_handled()
 
