@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8gyht6yjpui1"]
+[gd_scene load_steps=28 format=3 uid="uid://8gyht6yjpui1"]
 
 [ext_resource type="Script" uid="uid://b8ng18c01fsy8" path="res://scenes/Projectiles/projectile.gd" id="1_yvpcq"]
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_502sn"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dfh207naqih8o" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-6.ogg" id="16_5tlc4"]
 [ext_resource type="AudioStream" uid="uid://c817s4j15gjm" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-7.ogg" id="17_vw0xx"]
 [ext_resource type="AudioStream" uid="uid://cd4wnpmkmmh6v" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-8.ogg" id="18_yfbux"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="22_l5d40"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sbvqm"]
 random_pitch = 1.5
@@ -86,3 +87,14 @@ script = ExtResource("4_e2cde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_rhjwi")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("22_l5d40")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_rhjwi")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt"]

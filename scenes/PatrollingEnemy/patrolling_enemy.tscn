@@ -289,12 +289,11 @@ scale = Vector2(3.894, 3.642)
 [node name="PatrolTimer" type="Timer" parent="." index="10"]
 autostart = true
 
-[node name="GrabBox" type="Area2D" parent="." index="11" node_paths=PackedStringArray("pulled_object")]
+[node name="GrabBox" type="Area2D" parent="." index="11"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("5_qc4yg")
 pull_speed_coefficient = -1.0
-pulled_object = NodePath("..")
 metadata/_custom_type_script = "uid://bvqjs8a0h3dyi"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabBox" index="0"]

@@ -6,6 +6,11 @@ class_name HitBox extends Area2D
 
 signal hit(hurtbox: HurtBox)
 
+## Primarily used for the player's sword. But could also be used for anything that might
+## cause a projectile to ricochet or otherwise have a directional affect (maybe knockback too?)
+@export var reflection_direction: Vector2 = Vector2.ZERO
+
+
 func  _ready() -> void:
 	area_entered.connect(_on_area_entered)
 

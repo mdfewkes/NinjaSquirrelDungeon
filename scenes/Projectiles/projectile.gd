@@ -57,45 +57,55 @@ func _physics_process(delta: float) -> void:
 
 
 func _handle_wall_collision(collision_point: Vector2, wall_normal: Vector2):
-		var new_speed := velocity.length()
-		var new_direction := velocity.normalized().bounce(wall_normal)
-		
-		# If we're striking the wall at approximately a right angle, the
-		# projectile stops immediately. Otherwise we slow a little bit 
-		# on each bounce and fade at a certain threshold (the defaults give
-		# it 3 bounces).
-		if new_direction.is_equal_approx(wall_normal):
-			new_speed = stop_speed
-		else:
-			new_speed *= slow_on_bounce
+	var new_direction := velocity.normalized().bounce(wall_normal)
+	var new_speed := velocity.length()
 
-		# we don't need to update the wall_detector here, because we're changing
-		# the rotation of the whole node, so it'll rotate as well
-		# we move immediately to the collision point so it doesn't look like the bounce
-		# happens away from the wall. this can be a little jumpy at times. we may want
-		# to set a very short timer here or something, but I think it's ok as is for now
-		position = collision_point
-		velocity = new_direction * new_speed
+	# If we're striking the wall at approximately a right angle, the
+	# projectile stops immediately. Otherwise we slow a little bit 
+	# on each bounce and fade at a certain threshold (the defaults give
+	# it 3 bounces).
+	if new_direction.is_equal_approx(wall_normal):
+		new_speed = stop_speed
+	else:
+		new_speed *= slow_on_bounce
+
+	# we don't need to update the wall_detector here, because we're changing
+	# the rotation of the whole node, so it'll rotate as well
+	# we move immediately to the collision point so it doesn't look like the bounce
+	# happens away from the wall. this can be a little jumpy at times. we may want
+	# to set a very short timer here or something, but I think it's ok as is for now
+	position = collision_point
+	velocity = new_direction * new_speed
+	_point_at(new_direction)
+	
+	if sparks:
+		sparks.emitting = true
+	if new_speed <= stop_speed:
+		_fade_and_free()
+
+	# Temporarily disable bouncing so we don't risk glitching back and forth
+	# right around the moment of the bounce. I saw this happen in different
+	# configurations of tiles around the bounce point.
+	wall_detector.enabled = false
+	await get_tree().create_timer(0.05).timeout
+	wall_detector.enabled = !fading
+	
+	AudioManager.PlaySFX(sfx_on_bounce, self)
+
+
+func _on_hurt(hb: HitBox) -> void:
+	var new_direction: Vector2 = hb.reflection_direction
+	if new_direction != Vector2.ZERO:
+		velocity = new_direction * velocity.length()
 		_point_at(new_direction)
-		
+		AudioManager.PlaySFX(sfx_on_bounce, self)
 		if sparks:
 			sparks.emitting = true
-		if new_speed <= stop_speed:
-			_fade_and_free()
-
-		# Temporarily disable bouncing so we don't risk glitching back and forth
-		# right around the moment of the bounce. I saw this happen in different
-		# configurations of tiles around the bounce point.
-		wall_detector.enabled = false
-		await get_tree().create_timer(0.05).timeout
-		wall_detector.enabled = !fading
-		
-		AudioManager.PlaySFX(sfx_on_bounce, self)
 
 
 func _fade_and_free():
 	fading = true
-	hit_box.monitoring = false
+	hit_box.signal_disabled = true
 	if wall_detector:
 		wall_detector.enabled = false
 	if fade_speed > 0.0:
