@@ -108,3 +108,18 @@ The Dialogue Museum (`scenes/DialogueMuseum/dialogue_museum.tscn`) is your testi
 - See all Bobbin features demonstrated
 - Test your own dialogues by temporarily swapping file paths
 - Learn patterns from working examples
+
+## Developer Tools
+
+### View Source Button
+
+When running from the editor (F5/F6), a **View Source** button appears in the DialogueBox. Clicking it opens the current `.bobbin` file directly in the editor.
+
+**To enable this feature:**
+
+1. Go to **Project → Project Settings → Plugins**
+2. Find **Dialogue Tools** and check **Enable**
+
+Once enabled, clicking "View Source" instantly opens the file. If the plugin isn't enabled, the button still works — it copies the file path to your clipboard so you can open it with Ctrl+P.
+
+> **Note:** The View Source button is automatically hidden in exported builds.

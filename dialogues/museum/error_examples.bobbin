@@ -1,0 +1,35 @@
+save visited_errors = false
+
+Welcome to the Error Examples exhibit!
+I'll help you understand common Bobbin mistakes.
+
+- Indentation errors
+    The most common issue: using TABS instead of SPACES.
+    Bobbin requires spaces for indentation.
+    In Godot: Edit > Indentation > Convert Indent to Spaces
+    Check the bottom-right corner of the editor for current mode.
+
+- Undefined variables
+    If you see a variable show as blank or cause an error...
+    Make sure you declared it with save, temp, or extern FIRST.
+    Declaration must come BEFORE any usage in the file.
+
+- Missing extern values
+    If an extern variable shows as empty or undefined...
+    Check that host_state is being passed when starting dialogue.
+    The Oracle NPC shows the correct pattern for this.
+
+- Dialogue not advancing
+    If dialogue seems stuck, check the console for errors.
+    Common cause: runtime failed to load due to syntax error.
+    Also check: is the .bobbin file path correct?
+
+- Choices not appearing
+    Make sure choices use dash-space: "- Choice text"
+    And responses are indented with SPACES below.
+    Each choice needs at least one line of response.
+
+set visited_errors = true
+
+Remember: Check the Godot console for error messages!
+They usually point to the exact line with the problem.

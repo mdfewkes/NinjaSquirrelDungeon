@@ -21,6 +21,7 @@ signal dialogue_finished(path: String)
 @onready var choices_container: VBoxContainer = $Panel/VBox/ChoicesContainer
 @onready var prompt_label: Label = $PromptLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var view_source_button: Button = $ViewSourceButton
 
 # Private state (underscore prefix = internal use only)
 var _runtime: BobbinRuntime = null
@@ -31,6 +32,7 @@ var _awaiting_completion: bool = false
 const INPUT_COOLDOWN_TIME: float = 0.1
 const CONTINUE_PROMPT: String = "Press X to continue"
 const CHOICE_BUTTON_FONT_SIZE: int = 30
+const VIEW_SOURCE_NOTIFICATION_TIME: float = 2.0
 
 # Persistent storage for dialogue "save" variables (keyed by dialogue path).
 # Survives across conversations but not game restarts. Call clear_saved_state()
@@ -41,6 +43,44 @@ var _variable_storage: Dictionary = {}
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_hide_ui()
+	_setup_view_source_button()
+
+
+func _setup_view_source_button() -> void:
+	# Only show View Source button when running from editor (not in exported builds)
+	if not OS.has_feature("editor"):
+		view_source_button.hide()
+		return
+
+	view_source_button.pressed.connect(_on_view_source_pressed)
+
+
+func _on_view_source_pressed() -> void:
+	if _current_path.is_empty():
+		return
+
+	var opened_in_editor := false
+
+	# Try to open in editor via debugger plugin (if plugin is enabled)
+	if EngineDebugger.is_active():
+		EngineDebugger.send_message("dialogue_tools:open_file", [_current_path])
+		opened_in_editor = true
+
+	# Always copy to clipboard as fallback
+	DisplayServer.clipboard_set(_current_path)
+
+	# Show notification
+	var original_text = view_source_button.text
+	if opened_in_editor:
+		view_source_button.text = "Opened!"
+	else:
+		view_source_button.text = "Copied!"
+	view_source_button.disabled = true
+
+	# Restore after delay
+	await get_tree().create_timer(VIEW_SOURCE_NOTIFICATION_TIME).timeout
+	view_source_button.text = original_text
+	view_source_button.disabled = false
 
 
 func _process(delta: float) -> void:

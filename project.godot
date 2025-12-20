@@ -31,6 +31,10 @@ DialogueBox="*res://scenes/DialogueBox/dialogue_box.tscn"
 
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_tools/plugin.cfg")
+
 [global_group]
 
 player=""
