@@ -20,7 +20,10 @@ godot --path .
 | Roll | K / Z | A |
 | Katana | L / X | B |
 | Shuriken | J / C | Y |
+| Tail Whip | V | X |
 | Pause | P | Start |
+
+(Note: we'll probably remove the "V" action in the future and make the tail whip swappable with one of the other actions)
 
 ## Project Structure
 

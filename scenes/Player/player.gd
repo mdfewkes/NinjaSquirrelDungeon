@@ -127,6 +127,8 @@ func _update_blend_positions() -> void:
 	animation_tree.set("parameters/StateMachine/ActionState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/TailWhipAction/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/RollState/blend_position", direction_vector)
+	if input_vector != Vector2.ZERO:
+		hit_box.reflection_direction = input_vector.normalized()
 	direction_changed.emit(direction_vector)
 
 func _set_action_state(state: ActionState) -> void:
