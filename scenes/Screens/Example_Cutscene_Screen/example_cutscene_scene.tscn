@@ -673,9 +673,6 @@ navigation_polygon = SubResource("NavigationPolygon_wse8f")
 z_index = 10
 position = Vector2(582, 574)
 is_cutscene_squirrel = true
-speed = 300.0
-roll_speed = 600.0
-max_hp = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(2526, 546)

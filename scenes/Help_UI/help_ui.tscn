@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://s2wiif7o71tk"]
+
+[sub_resource type="GDScript" id="GDScript_16lmw"]
+script/source = "extends Control
+
+@onready var panel = $Panel
+
+func _on_button_pressed() -> void:
+	panel.visible = !panel.visible
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5p7gr"]
+font_size = 32
+
+[node name="HelpUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = SubResource("GDScript_16lmw")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1102.0
+offset_top = 5.0
+offset_right = 1146.0
+offset_bottom = 36.0
+text = "Help"
+
+[node name="Panel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 92.0
+offset_top = 79.0
+offset_right = 1092.0
+offset_bottom = 579.0
+color = Color(0.67499995, 0.84375, 0.9, 0.49803922)
+
+[node name="Header" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 45.0
+text = "Controls"
+label_settings = SubResource("LabelSettings_5p7gr")
+
+[node name="Body" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 84.0
+offset_right = 61.0
+offset_bottom = 107.0
+text = "Move: Arrow keys or WASD
+Roll: Z or K
+Sword: X or L
+Shuriken: C or J
+Tail Whip: V
+
+Pause: P
+Mute Audio: M"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
