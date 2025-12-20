@@ -6,10 +6,9 @@ extends Node
 var active_voices = {} # Dict AudioSFX : Array[AudioStreamPlayback]
 
 func _unhandled_input(event: InputEvent) -> void:
-	if FeatureFlags.is_enabled("mute_toggle"):
-		if event.is_action_pressed("mute"):
-			toggle_mute()
-			get_viewport().set_input_as_handled()
+	if event.is_action_pressed("mute"):
+		toggle_mute()
+		get_viewport().set_input_as_handled()
 
 func _process(_delta: float) -> void:
 	var dead_voices = []

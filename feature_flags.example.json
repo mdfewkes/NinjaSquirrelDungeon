@@ -4,10 +4,5 @@
 	"example_feature": {
 		"enabled": false,
 		"description": "Example flag - replace with your own"
-	},
-
-	"mute_toggle": {
-		"enabled": false,
-		"description": "Adds M key to toggle audio mute on/off"
 	}
 }
