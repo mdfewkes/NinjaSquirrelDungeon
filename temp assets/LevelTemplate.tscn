@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://dbqiaf3etxnrx"]
+[gd_scene load_steps=55 format=4 uid="uid://dbqiaf3etxnrx"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_725xx"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_3t5ti"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="9_il3og"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="10_uq25o"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="11_0xyog"]
-[ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="12_46dvn"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -623,10 +622,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 193
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhtrk"]
-size = Vector2(1048, 536)
+size = Vector2(1073, 595)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d76gu"]
-size = Vector2(704, 512)
+size = Vector2(926, 566)
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_725xx")
@@ -682,7 +681,7 @@ script = ExtResource("9_il3og")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
-position = Vector2(572, 316)
+position = Vector2(584.5, 345.5)
 shape = SubResource("RectangleShape2D_dhtrk")
 
 [node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
@@ -713,7 +712,7 @@ script = ExtResource("9_il3og")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/BatRoom"]
-position = Vector2(1512, 320)
+position = Vector2(1592, 319)
 shape = SubResource("RectangleShape2D_d76gu")
 
 [node name="Lights" type="Node2D" parent="Rooms/BatRoom"]
@@ -725,11 +724,5 @@ position = Vector2(1510, 311)
 position = Vector2(1743, 135)
 
 [node name="Enemies" type="Node2D" parent="Rooms/BatRoom"]
-
-[node name="Bat" parent="Rooms/BatRoom/Enemies" instance=ExtResource("12_46dvn")]
-position = Vector2(1392, 346)
-
-[node name="Bat2" parent="Rooms/BatRoom/Enemies" instance=ExtResource("12_46dvn")]
-position = Vector2(1632, 354)
 
 [node name="Environment" type="Node2D" parent="Rooms/BatRoom"]

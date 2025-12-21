@@ -1,9 +1,11 @@
 class_name Room
 extends Area2D
 
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var lights_parent_node = $Lights
 @onready var enemies_parent_node = $Enemies
 @onready var environment_parent_node = $Environment
+
 
 var lights: Array
 var has_had_player = false
@@ -19,6 +21,13 @@ func set_as_current_room() -> void:
 	for light in lights:
 		light.point_light_2d.enabled = light.lit
 		light.add_to_group("present_lights")
+	
+	var camera = get_viewport().get_camera_2d()
+	var shape = collision_shape_2d.shape.get_rect()
+	camera.limit_top = collision_shape_2d.global_position.y - shape.size.y/2
+	camera.limit_bottom = collision_shape_2d.global_position.y + shape.size.y/2
+	camera.limit_left = collision_shape_2d.global_position.x - shape.size.x/2
+	camera.limit_right = collision_shape_2d.global_position.x + shape.size.x/2
 	
 	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 	environment_parent_node.process_mode = Node.PROCESS_MODE_INHERIT

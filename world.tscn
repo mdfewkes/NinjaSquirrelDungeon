@@ -632,16 +632,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 193
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26xuy"]
-size = Vector2(1048, 536)
+size = Vector2(1128, 666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc84e"]
-size = Vector2(704, 512)
+size = Vector2(1027, 585)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wukud"]
-size = Vector2(520, 1400)
+size = Vector2(520, 1501)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_il2jm"]
-size = Vector2(1312, 344)
+size = Vector2(1312, 592)
 
 [sub_resource type="Resource" id="Resource_wukud"]
 script = ExtResource("10_wse8f")
@@ -742,7 +742,7 @@ script = ExtResource("20_bc84e")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
-position = Vector2(572, 316)
+position = Vector2(580, 331)
 shape = SubResource("RectangleShape2D_26xuy")
 
 [node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
@@ -778,7 +778,7 @@ script = ExtResource("20_bc84e")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/BatRoom"]
-position = Vector2(1512, 320)
+position = Vector2(1614.5, 305.5)
 shape = SubResource("RectangleShape2D_bc84e")
 
 [node name="Lights" type="Node2D" parent="Rooms/BatRoom"]
@@ -866,7 +866,7 @@ fire_wait_time = 0.0
 switches = [NodePath("../TrapSwitch1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/TrapRooms"]
-position = Vector2(580, 1444)
+position = Vector2(580, 1393.5)
 shape = SubResource("RectangleShape2D_wukud")
 
 [node name="PatrolRoom" type="Area2D" parent="Rooms"]
@@ -876,7 +876,7 @@ script = ExtResource("20_bc84e")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/PatrolRoom"]
-position = Vector2(1264, -140)
+position = Vector2(1264, -264)
 shape = SubResource("RectangleShape2D_il2jm")
 
 [node name="Lights" type="Node2D" parent="Rooms/PatrolRoom"]
