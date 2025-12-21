@@ -1,6 +1,6 @@
 [gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://cn2nwwjovjqom"]
 
-[ext_resource type="Gradient" uid="uid://bwlxagisch16x" path="res://scenes/Player/tail_gradient2.tres" id="1_eufh6"]
+[ext_resource type="Gradient" uid="uid://bwlxagisch16x" path="res://scenes/Player/Tail/tail_gradient2.tres" id="1_eufh6"]
 
 [resource]
 gradient = ExtResource("1_eufh6")
