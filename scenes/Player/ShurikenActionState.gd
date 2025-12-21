@@ -1,6 +1,7 @@
 extends ActionState
 
-@export var cooldown_time_msec := 500.0
+@export var cooldown_time_sec: float = 0.5
+var cooldown_time_msec: int = int(cooldown_time_sec * 1000)
 
 const shuriken_projectile_scene = preload("res://scenes/Projectiles/shuriken.tscn")
 var last_throw_time = 0.0
