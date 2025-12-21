@@ -1,6 +1,8 @@
 extends Node
 
 @export var listening_range: float = 1000.0
+@onready var sfx_template: AudioStreamPlayer2D = $SFXTemplate
+@onready var ui_template: AudioStreamPlayer = $UITemplate
 @onready var texture_rect: Sprite2D = $TextureRect
 
 var active_voices = {} # Dict AudioSFX : Array[AudioStreamPlayback]
@@ -16,10 +18,10 @@ func _process(_delta: float) -> void:
 		var dead_source = []
 		for i in range(active_voices[voice].size()):
 			if not is_instance_valid(active_voices[voice][i]):
-				dead_source.push_front(i)
+				dead_source.push_front(active_voices[voice][i])
 				
 		for i in range(dead_source.size()):
-			active_voices[voice].remove_at(i)
+			active_voices[voice].erase(dead_source[i])
 			
 		if active_voices[voice].size() == 0:
 			dead_voices.push_back(voice)
@@ -44,14 +46,12 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	if not _open_voice_available(sfx):
 		return null
 	
-	var freshAudioSource = AudioStreamPlayer2D.new()
+	var freshAudioSource = sfx_template.duplicate()
 	target.add_child(freshAudioSource)
 	freshAudioSource.global_position = target.global_position
 	
-	freshAudioSource.bus = "SFX"
 	freshAudioSource.volume_db = sfx.volume_dB
 	freshAudioSource.stream = sfx.stream
-	freshAudioSource.process_mode = Node.PROCESS_MODE_ALWAYS
 	freshAudioSource.play()
 	
 	_add_voice(sfx, freshAudioSource)
@@ -59,6 +59,25 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	freshAudioSource.finished.connect(freshAudioSource.queue_free)
 	
 	texture_rect.global_position = freshAudioSource.global_position
+	
+	return freshAudioSource
+
+func PlayUI(sfx: AudioSFX) -> AudioStreamPlayer:
+	if sfx == null:
+		return null
+	if not _open_voice_available(sfx):
+		return null
+	
+	var freshAudioSource = ui_template.duplicate()
+	add_child(freshAudioSource)
+	
+	freshAudioSource.volume_db = sfx.volume_dB
+	freshAudioSource.stream = sfx.stream
+	freshAudioSource.play()
+	
+	_add_voice(sfx, freshAudioSource)
+	
+	freshAudioSource.finished.connect(freshAudioSource.queue_free)
 	
 	return freshAudioSource
 

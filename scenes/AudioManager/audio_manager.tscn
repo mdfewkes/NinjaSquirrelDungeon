@@ -12,7 +12,18 @@ visible = false
 texture = ExtResource("2_1gfwg")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_e10ti")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="SFXTemplate" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+max_distance = 1500.0
+attenuation = 1.5
+bus = &"SFX"
+
+[node name="UITemplate" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+bus = &"UI"

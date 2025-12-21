@@ -127,6 +127,7 @@ stream_12/stream = ExtResource("24_ksjgv")
 
 [sub_resource type="Resource" id="Resource_dbgf5"]
 script = ExtResource("14_ihqbe")
+volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_pka5o")
 max_voices = 1
 metadata/_custom_type_script = "uid://0c6lrocedisf"
@@ -144,6 +145,7 @@ stream_5/stream = ExtResource("38_ilugj")
 
 [sub_resource type="Resource" id="Resource_pka5o"]
 script = ExtResource("14_ihqbe")
+volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_svyyo")
 max_voices = 1
 metadata/_custom_type_script = "uid://0c6lrocedisf"
@@ -165,6 +167,7 @@ stream_9/stream = ExtResource("48_xpxgn")
 
 [sub_resource type="Resource" id="Resource_klqur"]
 script = ExtResource("14_ihqbe")
+volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_mjssr")
 max_voices = 1
 metadata/_custom_type_script = "uid://0c6lrocedisf"
@@ -1948,7 +1951,6 @@ sfx = SubResource("Resource_pnj8v")
 
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
-cooldown_time_msec = 0.0
 
 [node name="Tail Whip ActionState" type="Node" parent="."]
 script = ExtResource("25_jn0uf")
