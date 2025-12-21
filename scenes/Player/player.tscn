@@ -1033,7 +1033,6 @@ advance_mode = 2
 advance_expression = "input_vector.length() > 0.01"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gu6f8"]
-xfade_time = 0.1
 advance_mode = 2
 advance_expression = "input_vector.length() <= 0.01"
 
@@ -1053,7 +1052,7 @@ states/RunState/position = Vector2(484.75, 221)
 states/cloaked/node = SubResource("AnimationNodeAnimation_nbg44")
 states/cloaked/position = Vector2(715.6497, 79.24)
 transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_5htga"), "IdleState", "RunState", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "RunState", "IdleState", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "IdleState", "cloaked", SubResource("AnimationNodeStateMachineTransition_jn0uf"), "cloaked", "IdleState", SubResource("AnimationNodeStateMachineTransition_nbg44")]
-graph_offset = Vector2(133.64972, -4.259999)
+graph_offset = Vector2(66.82473, 10.049998)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o28un"]
 animation = &"roll_left"
@@ -1113,10 +1112,8 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mwp6"]
-xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qemgg"]
-xfade_time = 0.1
 switch_mode = 2
 advance_mode = 2
 
@@ -1143,9 +1140,10 @@ states/RollState/position = Vector2(612, -17.5)
 states/TailWhipAction/node = SubResource("AnimationNodeBlendSpace2D_jn0uf")
 states/TailWhipAction/position = Vector2(528.19543, 316.0826)
 transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "ActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "ActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "ActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi"), "MoveState", "TailWhipAction", SubResource("AnimationNodeStateMachineTransition_4ni0x"), "TailWhipAction", "MoveState", SubResource("AnimationNodeStateMachineTransition_kp55c"), "TailWhipAction", "ActionState", SubResource("AnimationNodeStateMachineTransition_cgmen"), "TailWhipAction", "RollState", SubResource("AnimationNodeStateMachineTransition_fqhit")]
-graph_offset = Vector2(-94.018425, -1.3645494)
+graph_offset = Vector2(173.28154, 16.52296)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
+graph_offset = Vector2(65.27999, 39.35998)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
