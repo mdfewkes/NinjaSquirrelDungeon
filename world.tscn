@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=74 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -20,9 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="20_26xuy"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="20_bc84e"]
-[ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/wall_spikes.tscn" id="20_il2jm"]
-[ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="20_wukud"]
 [ext_resource type="PackedScene" uid="uid://5pbl42y2fb2y" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="21_bc84e"]
+[ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="21_il2jm"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -639,11 +638,8 @@ size = Vector2(1103, 650)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc84e"]
 size = Vector2(1004, 568)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2jv"]
-size = Vector2(200, 8)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wukud"]
-size = Vector2(1400, 1400)
+size = Vector2(1400, 1478)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjb0r"]
 size = Vector2(32, 392)
@@ -820,21 +816,6 @@ invisible = true
 position = Vector2(1376, 576)
 rotation = 1.5707964
 
-[node name="WallSpikes" parent="Rooms/BatRoom" instance=ExtResource("20_il2jm")]
-position = Vector2(1858, 468)
-rotation = -1.5707964
-
-[node name="HitBox" parent="Rooms/BatRoom/WallSpikes" index="0"]
-damage = 3
-knockback = 100
-
-[node name="CollisionShape2D" parent="Rooms/BatRoom/WallSpikes/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_mc2jv")
-
-[node name="TextureRect" parent="Rooms/BatRoom/WallSpikes" index="1"]
-offset_left = -100.0
-offset_right = 112.0
-
 [node name="TrapRooms" type="Area2D" parent="Rooms"]
 collision_layer = 0
 collision_mask = 2
@@ -842,7 +823,7 @@ script = ExtResource("20_bc84e")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/TrapRooms"]
-position = Vector2(1050, 1484)
+position = Vector2(1050, 1394)
 shape = SubResource("RectangleShape2D_wukud")
 
 [node name="Lights" type="Node2D" parent="Rooms/TrapRooms"]
@@ -904,7 +885,7 @@ rotation = -2.443461
 fire_wait_time = 0.0
 switches = [NodePath("../TrapSwitch1")]
 
-[node name="FloorSpikes2" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes2" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1147, 1414)
 active = false
 toggle_interval = 2.0
@@ -918,7 +899,7 @@ offset_top = -194.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="FloorSpikes3" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes3" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1217, 1414)
 active = false
 toggle_interval = 2.0
@@ -933,7 +914,7 @@ offset_top = -194.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="FloorSpikes4" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes4" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1287, 1414)
 active = false
 toggle_interval = 2.0
@@ -947,7 +928,7 @@ offset_top = -194.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="FloorSpikes5" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes5" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1356, 1414)
 active = false
 toggle_interval = 2.0
@@ -964,7 +945,7 @@ offset_right = 33.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="FloorSpikes6" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes6" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1424, 1414)
 active = false
 toggle_interval = 2.0
@@ -978,7 +959,7 @@ offset_top = -194.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="FloorSpikes7" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes7" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1493, 1414)
 active = false
 toggle_interval = 2.0
@@ -992,7 +973,7 @@ shape = SubResource("RectangleShape2D_wjb0r")
 offset_top = -194.0
 offset_bottom = 191.0
 
-[node name="FloorSpikes8" parent="Rooms/TrapRooms/Environment" instance=ExtResource("20_wukud")]
+[node name="FloorSpikes8" parent="Rooms/TrapRooms/Environment" instance=ExtResource("21_il2jm")]
 position = Vector2(1563, 1414)
 active = false
 toggle_interval = 2.0
@@ -1006,14 +987,15 @@ offset_top = -194.0
 offset_bottom = 191.0
 expand_mode = 0
 
-[node name="SwitchedFloorSpikes" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("20_wukud")]
-position = Vector2(1044, 1412)
+[node name="FloorSpikesWithSwitch" parent="Rooms/TrapRooms/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("21_il2jm")]
+position = Vector2(1045, 1417)
 active = false
+hide_when_inactive = true
 deactivate_delay = 0.4
-switches = [NodePath("FloorSwitch")]
+switches = [NodePath("../FloorSwitch")]
 
-[node name="FloorSwitch" parent="Rooms/TrapRooms/Environment/SwitchedFloorSpikes" instance=ExtResource("18_ikiii")]
-position = Vector2(1, 7)
+[node name="FloorSwitch" parent="Rooms/TrapRooms/Environment" instance=ExtResource("18_ikiii")]
+position = Vector2(1045, 1419)
 invisible = true
 
 [node name="PatrolRoom" type="Area2D" parent="Rooms"]
@@ -1104,7 +1086,6 @@ position = Vector2(1056, -72)
 [node name="Bush24" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
 position = Vector2(1056, -208)
 
-[editable path="Rooms/BatRoom/WallSpikes"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes2"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes3"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes4"]
