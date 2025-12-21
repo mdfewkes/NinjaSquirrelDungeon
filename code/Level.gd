@@ -21,7 +21,9 @@ func _process(_delta: float) -> void:
 			lights_lit += 1.0
 	light_level = lights_lit / lights.size()
 	
-	canvas_modulate.color = lighting_gradient.sample(light_level)
+	var tween := create_tween()
+	tween.tween_property(canvas_modulate, "color", lighting_gradient.sample(light_level), 0.5)
+	#canvas_modulate.color = lighting_gradient.sample(light_level)
 
 func _setup() -> void:
 	for child in rooms_parent_node.get_children():
