@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=75 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="18_ikiii"]
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="20_26xuy"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="20_bc84e"]
+[ext_resource type="PackedScene" uid="uid://dfsk2ubkhnubj" path="res://scenes/Traps/wall_spikes.tscn" id="20_il2jm"]
 [ext_resource type="PackedScene" uid="uid://5pbl42y2fb2y" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="21_il2jm"]
 
@@ -638,6 +639,9 @@ size = Vector2(1103, 650)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc84e"]
 size = Vector2(1004, 568)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2jv"]
+size = Vector2(212, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wukud"]
 size = Vector2(1400, 1478)
 
@@ -815,6 +819,17 @@ invisible = true
 [node name="RockTrigger2" parent="Rooms/BatRoom/Environment" instance=ExtResource("20_26xuy")]
 position = Vector2(1376, 576)
 rotation = 1.5707964
+
+[node name="WallSpikes" parent="Rooms/BatRoom/Environment" instance=ExtResource("20_il2jm")]
+position = Vector2(1856, 472)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" parent="Rooms/BatRoom/Environment/WallSpikes/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_mc2jv")
+
+[node name="TextureRect" parent="Rooms/BatRoom/Environment/WallSpikes" index="3"]
+offset_left = -106.0
+offset_right = 106.0
 
 [node name="TrapRooms" type="Area2D" parent="Rooms"]
 collision_layer = 0
@@ -1086,6 +1101,7 @@ position = Vector2(1056, -72)
 [node name="Bush24" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
 position = Vector2(1056, -208)
 
+[editable path="Rooms/BatRoom/Environment/WallSpikes"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes2"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes3"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes4"]
