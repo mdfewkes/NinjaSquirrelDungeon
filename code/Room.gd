@@ -30,6 +30,7 @@ func set_as_current_room() -> void:
 	camera.limit_right = collision_shape_2d.global_position.x + shape.size.x/2
 	
 	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
+	enemies_parent_node.visible = true
 	environment_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 
 func remove_as_current_room() -> void:
@@ -38,6 +39,7 @@ func remove_as_current_room() -> void:
 		light.remove_from_group("present_lights")
 	
 	enemies_parent_node.process_mode = Node.PROCESS_MODE_DISABLED
+	enemies_parent_node.visible = false
 	environment_parent_node.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_body_entered(body: Node2D):
