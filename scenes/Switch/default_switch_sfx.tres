@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AudioSFX" load_steps=5 format=3 uid="uid://iuju4skefbc1"]
+
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="1_tu4nf"]
+[ext_resource type="AudioStream" uid="uid://cvh44604bbng2" path="res://scenes/Switch/Audio/switch1sound.ogg" id="2_jw43s"]
+[ext_resource type="AudioStream" uid="uid://d31byv420y6lw" path="res://scenes/Switch/Audio/switch2sound.ogg" id="3_a067e"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u41ts"]
+streams_count = 2
+stream_0/stream = ExtResource("2_jw43s")
+stream_1/stream = ExtResource("3_a067e")
+
+[resource]
+script = ExtResource("1_tu4nf")
+stream = SubResource("AudioStreamRandomizer_u41ts")
+metadata/_custom_type_script = "uid://0c6lrocedisf"

@@ -10,11 +10,13 @@ extends Node2D
 ## Start out coming from the left? (subsequent triggers will alternate)
 @export var from_left: bool = true
 
-@onready var player: AnimationPlayer = $AnimationPlayer
+@export var sfx_on_trigger: AudioSFX
+
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
-	player.play("RESET")
+	anim_player.play("RESET")
 	hide()
 	for trigger in triggers:
 		trigger.connect("triggered", _on_triggered)
@@ -36,11 +38,13 @@ func _on_triggered(_switch: SwitchTrigger) -> void:
 
 func swing() -> void:
 	show()
-	if player.is_playing():
+	if anim_player.is_playing():
 		return
+	if sfx_on_trigger:
+		AudioManager.PlaySFX(sfx_on_trigger, self)
 	if from_left:
-		player.play("swing")
+		anim_player.play("swing")
 		from_left = false
 	else:
-		player.play_backwards("swing")
+		anim_player.play_backwards("swing")
 		from_left = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=129 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -24,11 +24,15 @@
 [ext_resource type="AudioStream" uid="uid://vf3lhh41we2h" path="res://scenes/Player/Audio/hero_hurt_07.ogg" id="15_ipg72"]
 [ext_resource type="AudioStream" uid="uid://cf22s14gxnerv" path="res://scenes/Player/Audio/hero_hurt_08.ogg" id="16_mro02"]
 [ext_resource type="AudioStream" uid="uid://5dgthyehtcq3" path="res://scenes/Player/Audio/hero_hurt_09.ogg" id="17_34uhp"]
+[ext_resource type="AudioStream" uid="uid://cclsghsh6as2l" path="res://scenes/Player/Audio/sword-slash-1.ogg" id="24_7iww4"]
 [ext_resource type="PackedScene" uid="uid://ckfyuwake6yu8" path="res://scenes/Effects/smoke_burst.tscn" id="25_cgmen"]
 [ext_resource type="Script" uid="uid://tfabbyx4daf2" path="res://scenes/Player/TailWhipActionState.gd" id="25_jn0uf"]
+[ext_resource type="AudioStream" uid="uid://b372mi6tlcp5y" path="res://scenes/Player/Audio/sword-slash-2.ogg" id="25_ploos"]
+[ext_resource type="AudioStream" uid="uid://bbao4teep4xoq" path="res://scenes/Player/Audio/sword-slash-3.ogg" id="26_e6s7e"]
 [ext_resource type="PackedScene" uid="uid://dp3y7pkypo3a4" path="res://scenes/Effects/sparks.tscn" id="26_fqhit"]
 [ext_resource type="Curve" uid="uid://jx236lws5xq8" path="res://scenes/Player/tail_width_curve.tres" id="29_kp55c"]
 [ext_resource type="Curve" uid="uid://b26b5y7p881rj" path="res://scenes/Player/tail_whip_widths.tres" id="31_32uah"]
+[ext_resource type="AudioStream" uid="uid://cve7sv5w2ei34" path="res://temp assets/flameattack1.ogg" id="31_ploos"]
 [ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="32_32uah"]
 [ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://tail.gd" id="33_cgmen"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://tail_display.gdshader" id="34_fqhit"]
@@ -1150,6 +1154,22 @@ node_connections = [&"output", 0, &"StateMachine"]
 [sub_resource type="CircleShape2D" id="CircleShape2D_hshwv"]
 radius = 31.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gb22u"]
+streams_count = 3
+stream_0/stream = ExtResource("24_7iww4")
+stream_1/stream = ExtResource("25_ploos")
+stream_2/stream = ExtResource("26_e6s7e")
+
+[sub_resource type="Resource" id="Resource_pnj8v"]
+script = ExtResource("14_ihqbe")
+stream = SubResource("AudioStreamRandomizer_gb22u")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="Resource" id="Resource_e6s7e"]
+script = ExtResource("14_ihqbe")
+stream = ExtResource("31_ploos")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [sub_resource type="Gradient" id="Gradient_nbg44"]
 offsets = PackedFloat32Array(0.11377245, 0.18862276, 0.9730539)
 colors = PackedColorArray(0.8627451, 0.40392157, 0.30588236, 1, 0.65882355, 0.13725491, 0.16862746, 1, 0.17528966, 0.013860011, 0.02030225, 1)
@@ -1826,9 +1846,12 @@ shape = SubResource("CircleShape2D_hshwv")
 position = Vector2(0, -31)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -6.0
+bus = &"SFX"
 
 [node name="Katana ActionState" type="Node" parent="."]
 script = ExtResource("13_jxtnq")
+sfx = SubResource("Resource_pnj8v")
 
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
@@ -1851,6 +1874,7 @@ collide_with_areas = true
 
 [node name="Tail Whip ActionState" type="Node" parent="."]
 script = ExtResource("25_jn0uf")
+sfx_on_start = SubResource("Resource_e6s7e")
 metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="Tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]

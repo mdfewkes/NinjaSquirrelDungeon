@@ -28,6 +28,8 @@ signal item_collected(node: CollectableItem)
 ## If non-zero this item can be pulled with the tail whip
 @export var pull_speed_coefficient := 1.0
 
+@export var sfx_on_collect: AudioSFX = preload("res://scenes/Items/default_collect_sfx.tres")
+
 @onready var sprite: Sprite2D = $Sprite2D
 
 # randomized to make sure items don't all bounce in lockstep
@@ -35,6 +37,9 @@ var bounce_differentiator: float
 
 
 func trigger_collection() -> void:
+	if sfx_on_collect:
+		# if we emit the sound with self as the target, the item gets freed before the sound can play
+		AudioManager.PlaySFX(sfx_on_collect, get_tree().get_first_node_in_group("player"))
 	if add_to_inventory:
 		InventoryManager.add_item(self)
 	InventoryManager.emit_item_collected(self)

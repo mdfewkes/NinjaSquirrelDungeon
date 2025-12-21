@@ -1,5 +1,9 @@
 extends ActionState
 
+@export var sfx_on_start: AudioSFX
+@export var sfx_on_pull_wall: AudioSFX
+@export var sfx_on_pull_obj: AudioSFX
+
 var wall_ray: RayCast2D
 var obj_ray: RayCast2D
 var tail: Tail
@@ -45,6 +49,8 @@ func _action_enter(_player: Player) -> void:
 	obj_ray = player.get_node("TailHookObjectRay")
 	tail = player.tail
 	player.playback.travel("TailWhipAction")
+	if sfx_on_start:
+		AudioManager.call_deferred("PlaySFX", sfx_on_start, player)
 
 
 func _action_exit(_player: Player) -> void:
@@ -79,6 +85,9 @@ func start_hook_pull() -> void:
 		smoke.rotation = wall_ray.get_collision_normal().angle()
 		smoke.emitting = true
 
+		if sfx_on_pull_wall:
+			AudioManager.call_deferred("PlaySFX", sfx_on_pull_wall, player)
+
 	if is_obj:
 		var obj = obj_ray.get_collider()
 		if obj.has_method("can_be_pulled") and obj.can_be_pulled():
@@ -91,6 +100,8 @@ func start_hook_pull() -> void:
 		smoke.rotation = obj_ray.get_collision_normal().angle()
 		smoke.emitting = true
 
+		if sfx_on_pull_obj:
+			AudioManager.call_deferred("PlaySFX", sfx_on_pull_obj, player)
 
 
 func release_hook() -> void:

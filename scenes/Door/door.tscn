@@ -1,7 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4rtepymi3alj"]
+[gd_scene load_steps=13 format=3 uid="uid://b4rtepymi3alj"]
 
 [ext_resource type="Script" uid="uid://bykcl0f78l5la" path="res://scenes/Door/door.gd" id="1_sik3a"]
 [ext_resource type="Texture2D" uid="uid://5bdjgah2bktf" path="res://temp assets/temp-door.png" id="2_choqv"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_y0mve"]
+[ext_resource type="AudioStream" uid="uid://qiubekdp3kbc" path="res://scenes/Door/Audio/angrydooropen.ogg" id="3_mwu56"]
+[ext_resource type="AudioStream" uid="uid://dt0uxb5kn34sd" path="res://scenes/Door/Audio/gentledooropening.ogg" id="4_lreon"]
+
+[sub_resource type="Resource" id="Resource_choin"]
+script = ExtResource("2_y0mve")
+stream = ExtResource("3_mwu56")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="Resource" id="Resource_0yfhr"]
+script = ExtResource("2_y0mve")
+stream = ExtResource("4_lreon")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_jl38d"]
 length = 0.001
@@ -95,6 +108,8 @@ size = Vector2(128, 32)
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_sik3a")
+sfx_on_open = SubResource("Resource_choin")
+sfx_on_close = SubResource("Resource_0yfhr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

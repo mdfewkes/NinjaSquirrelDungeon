@@ -24,6 +24,9 @@ extends StaticBody2D
 ## If one or more switches is linked, they open the door instead of the normal unlock area
 @export var switches: Array[SwitchTrigger] = []
 
+@export var sfx_on_open: AudioSFX
+@export var sfx_on_close: AudioSFX
+
 @onready var sprite := $Sprite2D
 @onready var blocker := $Blocker
 @onready var anim := $AnimationPlayer
@@ -52,12 +55,16 @@ func _ready() -> void:
 func open():
 	if not is_open:
 		anim.play("open")
+		if sfx_on_open:
+			AudioManager.PlaySFX(sfx_on_open, self)
 	is_open = true
 
 
 func close():
 	if is_open:
 		anim.play_backwards("open")
+		if sfx_on_close:
+			AudioManager.PlaySFX(sfx_on_close, self)
 	is_open = false
 
 

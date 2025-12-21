@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioSFX" load_steps=3 format=3 uid="uid://bejxp5swa1kbg"]
+
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="1_48gfx"]
+[ext_resource type="AudioStream" uid="uid://bch1c8cs6w43x" path="res://scenes/Items/Audio/object grab.ogg" id="2_r3me7"]
+
+[resource]
+script = ExtResource("1_48gfx")
+stream = ExtResource("2_r3me7")
+metadata/_custom_type_script = "uid://0c6lrocedisf"

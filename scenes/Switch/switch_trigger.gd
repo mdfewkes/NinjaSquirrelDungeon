@@ -15,6 +15,8 @@ signal triggered(trigger: SwitchTrigger)
 ## If checked, there will be no visible indication of a switch
 @export var invisible := false
 
+@export var sfx_on_trigger: AudioSFX = preload("res://scenes/Switch/default_switch_sfx.tres")
+
 @onready var reset_timer: Timer = $ResetTimer
 
 
@@ -45,6 +47,8 @@ func _on_reset_timeout():
 func trigger() -> void:
 	disable()
 	emit_signal("triggered", self)
+	if sfx_on_trigger:
+		AudioManager.PlaySFX(sfx_on_trigger, self)
 
 
 func enable():
