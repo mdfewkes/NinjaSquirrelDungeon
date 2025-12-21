@@ -5,12 +5,15 @@ extends CharacterBody2D
 @export var is_cutscene_squirrel = false
 @export var speed: float = 300
 @export var roll_speed: float = 600
-@export var max_hp: int = 4
-var current_hp: int = max_hp
+@export var max_hp = 4
+var current_hp = max_hp
 
 enum PlayerSFX {hurt, footstep, effort}
 @export var sfx_hurt: AudioSFX
 @export var sfx_footstep: AudioSFX
+@export var sfx_effort_low: AudioSFX
+@export var sfx_effort_medium: AudioSFX
+@export var sfx_effort_high: AudioSFX
 
 @export var action_1: ActionState
 @export var action_2: ActionState
@@ -99,6 +102,7 @@ func _roll_state() -> void:
 
 	if Input.is_action_just_pressed("roll"):
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		play_sfx_effort()
 		if input_vector != Vector2.ZERO:
 			velocity = input_vector * velocity.length()
 		return
@@ -145,6 +149,7 @@ func  _set_roll_state() -> void:
 	velocity = last_input_vector * roll_speed
 	playback.travel("RollState")
 	current_state = PlayerState.Roll
+	play_sfx_effort()
 
 func _check_and_set_action_state() -> void:
 	if Input.is_action_just_pressed("action_1"):
@@ -223,7 +228,15 @@ func _play_sfx(player_sfx: PlayerSFX) -> void:
 		PlayerSFX.footstep:
 			AudioManager.PlaySFX(sfx_footstep, self)
 		PlayerSFX.effort:
-			pass
+			if float(current_hp) / float(max_hp) <= 0.25:
+				AudioManager.PlaySFX(sfx_effort_high, self)
+			elif float(current_hp) / float(max_hp) <= 0.5:
+				AudioManager.PlaySFX(sfx_effort_medium, self)
+			else:
+				AudioManager.PlaySFX(sfx_effort_low, self)
 
 func play_sfx_footstep() -> void:
 	_play_sfx(PlayerSFX.footstep)
+
+func play_sfx_effort() -> void:
+	_play_sfx(PlayerSFX.effort)

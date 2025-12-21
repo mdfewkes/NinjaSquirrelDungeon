@@ -9,5 +9,6 @@ func process_state(player :Player, _delta: float) -> bool:
 func _action_enter(player :Player) -> void:
 	player.velocity = Vector2.ZERO
 	player.playback.travel("ActionState")
+	player.play_sfx_effort()
 	if sfx:
 		AudioManager.call_deferred("PlaySFX", sfx, player)

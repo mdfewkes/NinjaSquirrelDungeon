@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var speed := 200
 @export var knockback_multiply := 1
 @export var knockback_friction := 1000
-@export var max_hp := 7
+@export var max_hp := 2
 
 ## On Ready Variables
 @onready var sprite_2d: Sprite2D = $Sprite2D
