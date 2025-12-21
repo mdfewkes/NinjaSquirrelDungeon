@@ -245,122 +245,6 @@ tracks/5/keys = {
 "values": [Vector2(0, -30)]
 }
 
-[sub_resource type="Animation" id="Animation_5htga"]
-resource_name = "action_down"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, 0, 56, 64, 0, 96, -72, 64), PackedVector2Array()]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [7, 26]
-}
-
-[sub_resource type="Animation" id="Animation_p5o4e"]
-resource_name = "action_left"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, 40, -96, 0, -64, -70), PackedVector2Array()]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [22, 23]
-}
-
-[sub_resource type="Animation" id="Animation_gu6f8"]
-resource_name = "action_right"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, 0, 72, -40, 112, 0, 64, 40), PackedVector2Array()]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [5, 20]
-}
-
-[sub_resource type="Animation" id="Animation_dkpta"]
-resource_name = "action_up"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, -40, 0, -100, 56, -48), PackedVector2Array()]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.13860506),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [28, 29]
-}
-
 [sub_resource type="Animation" id="Animation_jn0uf"]
 resource_name = "cloaked"
 length = 0.5
@@ -962,18 +846,134 @@ tracks/2/keys = {
 "values": [Vector2(-15, -30)]
 }
 
+[sub_resource type="Animation" id="Animation_5htga"]
+resource_name = "katana_down"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, 56, 64, 0, 96, -72, 64), PackedVector2Array()]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 26]
+}
+
+[sub_resource type="Animation" id="Animation_p5o4e"]
+resource_name = "katana_left"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, 40, -96, 0, -64, -70), PackedVector2Array()]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_gu6f8"]
+resource_name = "katana_right"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, 72, -40, 112, 0, 64, 40), PackedVector2Array()]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 20]
+}
+
+[sub_resource type="Animation" id="Animation_dkpta"]
+resource_name = "katana_up"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(0, 0, -64, -40, 0, -100, 56, -48), PackedVector2Array()]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13860506),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 29]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lfmf2"]
 _data = {
 &"RESET": SubResource("Animation_gwnis"),
-&"action_down": SubResource("Animation_5htga"),
-&"action_left": SubResource("Animation_p5o4e"),
-&"action_right": SubResource("Animation_gu6f8"),
-&"action_up": SubResource("Animation_dkpta"),
 &"cloaked": SubResource("Animation_jn0uf"),
 &"idle_down": SubResource("Animation_vtle1"),
 &"idle_left": SubResource("Animation_btcbx"),
 &"idle_right": SubResource("Animation_fhl08"),
 &"idle_up": SubResource("Animation_k53q1"),
+&"katana_down": SubResource("Animation_5htga"),
+&"katana_left": SubResource("Animation_p5o4e"),
+&"katana_right": SubResource("Animation_gu6f8"),
+&"katana_up": SubResource("Animation_dkpta"),
 &"move_down": SubResource("Animation_00tjw"),
 &"move_left": SubResource("Animation_x3vf3"),
 &"move_right": SubResource("Animation_od3ui"),
@@ -1049,16 +1049,16 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fhl08"]
-animation = &"action_left"
+animation = &"katana_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apopc"]
-animation = &"action_up"
+animation = &"katana_up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5htga"]
-animation = &"action_right"
+animation = &"katana_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5o4e"]
-animation = &"action_down"
+animation = &"katana_down"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gu6f8"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_fhl08")
@@ -1228,19 +1228,19 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fqhit"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pisgm"]
-states/ActionState/node = SubResource("AnimationNodeBlendSpace2D_gu6f8")
-states/ActionState/position = Vector2(758.5, 173)
+states/KatanaActionState/node = SubResource("AnimationNodeBlendSpace2D_gu6f8")
+states/KatanaActionState/position = Vector2(758.5, 173)
 states/MoveState/node = SubResource("AnimationNodeStateMachine_dkpta")
 states/MoveState/position = Vector2(441, 100)
 states/RollState/node = SubResource("AnimationNodeBlendSpace2D_gpjlu")
 states/RollState/position = Vector2(612, -17.5)
 states/TailWhipAction/node = SubResource("AnimationNodeBlendSpace2D_jn0uf")
 states/TailWhipAction/position = Vector2(528.19543, 316.0826)
-transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "ActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "ActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "ActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi"), "MoveState", "TailWhipAction", SubResource("AnimationNodeStateMachineTransition_4ni0x"), "TailWhipAction", "MoveState", SubResource("AnimationNodeStateMachineTransition_kp55c"), "TailWhipAction", "ActionState", SubResource("AnimationNodeStateMachineTransition_cgmen"), "TailWhipAction", "RollState", SubResource("AnimationNodeStateMachineTransition_fqhit")]
-graph_offset = Vector2(173.28154, 16.52296)
+transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "KatanaActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi"), "MoveState", "TailWhipAction", SubResource("AnimationNodeStateMachineTransition_4ni0x"), "TailWhipAction", "MoveState", SubResource("AnimationNodeStateMachineTransition_kp55c"), "TailWhipAction", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_cgmen"), "TailWhipAction", "RollState", SubResource("AnimationNodeStateMachineTransition_fqhit")]
+graph_offset = Vector2(138.28154, 35.522964)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
-graph_offset = Vector2(65.27999, 39.35998)
+graph_offset = Vector2(219, 87)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
@@ -1917,7 +1917,7 @@ callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeBlendTree_b1ygp")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/StateMachine/ActionState/blend_position = Vector2(0, 0.9812646)
+parameters/StateMachine/KatanaActionState/blend_position = Vector2(0.008807063, -1.3544304)
 parameters/StateMachine/MoveState/IdleState/blend_position = Vector2(-0.48511165, -0.0014727116)
 parameters/StateMachine/MoveState/RunState/blend_position = Vector2(-0.028535962, -0.5699558)
 parameters/StateMachine/RollState/blend_position = Vector2(0.27047145, 0.1929307)

@@ -130,7 +130,7 @@ func _update_blend_positions() -> void:
 	var direction_vector := Vector2(input_vector.x, -input_vector.y)
 	animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
-	animation_tree.set("parameters/StateMachine/ActionState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/KatanaActionState/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/TailWhipAction/blend_position", direction_vector)
 	animation_tree.set("parameters/StateMachine/RollState/blend_position", direction_vector)
 	if input_vector != Vector2.ZERO:
