@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=130 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -59,6 +59,23 @@ script = ExtResource("14_ihqbe")
 stream = SubResource("AudioStreamRandomizer_wwtew")
 max_voices = 2
 cooldown_time_msec = 200.0
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tayva"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 5
+stream_0/stream = ExtResource("6_7tfl1")
+stream_1/stream = ExtResource("7_jxtnq")
+stream_2/stream = ExtResource("8_t6q27")
+stream_3/stream = ExtResource("9_wyey8")
+stream_4/stream = ExtResource("10_1bwnf")
+
+[sub_resource type="Resource" id="Resource_ploos"]
+script = ExtResource("14_ihqbe")
+volume_dB = -12.0
+stream = SubResource("AudioStreamRandomizer_tayva")
+max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_gwnis"]
@@ -446,16 +463,6 @@ tracks/2/keys = {
 "values": [Vector2(-3, -21), Vector2(-3, -18)]
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tayva"]
-random_pitch = 1.5
-random_volume_offset_db = 2.0
-streams_count = 5
-stream_0/stream = ExtResource("6_7tfl1")
-stream_1/stream = ExtResource("7_jxtnq")
-stream_2/stream = ExtResource("8_t6q27")
-stream_3/stream = ExtResource("9_wyey8")
-stream_4/stream = ExtResource("10_1bwnf")
-
 [sub_resource type="Animation" id="Animation_00tjw"]
 resource_name = "move_down"
 length = 0.3
@@ -472,42 +479,41 @@ tracks/0/keys = {
 "update": 1,
 "values": [10, 11]
 }
-tracks/1/type = "audio"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_tayva")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/1/use_blend = true
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tail/TailAnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": PackedStringArray("down"),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tail:tail_start_offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5, -20), Vector2(-5, -30)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sfx_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
@@ -526,42 +532,41 @@ tracks/0/keys = {
 "update": 1,
 "values": [12, 13]
 }
-tracks/1/type = "audio"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_tayva")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/1/use_blend = true
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tail/TailAnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": PackedStringArray("left"),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tail:tail_start_offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -30), Vector2(-5, -20)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sfx_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_od3ui"]
@@ -580,49 +585,48 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9]
 }
-tracks/1/type = "audio"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_tayva")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/1/use_blend = true
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tail/TailAnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": PackedStringArray("right"),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tail:tail_start_offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-15, -30), Vector2(10, -20)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sfx_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_apopc"]
 resource_name = "move_up"
 length = 0.3
 loop_mode = 1
-step = 0.06666667
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -635,42 +639,41 @@ tracks/0/keys = {
 "update": 1,
 "values": [14, 15]
 }
-tracks/1/type = "audio"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_tayva")
-}],
-"times": PackedFloat32Array(0.1)
-}
-tracks/1/use_blend = true
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tail/TailAnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": PackedStringArray("up"),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tail:tail_start_offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-5, -33), Vector2(5, -33)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sfx_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
@@ -1779,6 +1782,7 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_onrkg")
 sfx_hurt = SubResource("Resource_cgmen")
+sfx_footstep = SubResource("Resource_ploos")
 action_1 = NodePath("Katana ActionState")
 action_2 = NodePath("Shiruken ActionState")
 action_3 = NodePath("Tail Whip ActionState")
@@ -1843,10 +1847,6 @@ shape = SubResource("CircleShape2D_hshwv")
 [node name="ShurikenSpawn" type="Node2D" parent="."]
 position = Vector2(0, -31)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = -6.0
-bus = &"SFX"
-
 [node name="Katana ActionState" type="Node" parent="."]
 script = ExtResource("13_jxtnq")
 sfx = SubResource("Resource_pnj8v")
@@ -1854,6 +1854,11 @@ sfx = SubResource("Resource_pnj8v")
 [node name="Shiruken ActionState" type="Node" parent="."]
 script = ExtResource("14_t6q27")
 cooldown_time_msec = 0.0
+
+[node name="Tail Whip ActionState" type="Node" parent="."]
+script = ExtResource("25_jn0uf")
+sfx_on_start = SubResource("Resource_e6s7e")
+metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="TailHookWallRay" type="RayCast2D" parent="."]
 position = Vector2(0, -50)
@@ -1869,11 +1874,6 @@ collide_with_areas = true
 [node name="TailHookSmoke" parent="." instance=ExtResource("25_cgmen")]
 
 [node name="TailHookSparks" parent="." instance=ExtResource("26_fqhit")]
-
-[node name="Tail Whip ActionState" type="Node" parent="."]
-script = ExtResource("25_jn0uf")
-sfx_on_start = SubResource("Resource_e6s7e")
-metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="Tail" type="Node2D" parent="." node_paths=PackedStringArray("attachement")]
 z_index = -1

@@ -8,7 +8,9 @@ extends CharacterBody2D
 @export var max_hp: int = 4
 var current_hp: int = max_hp
 
+enum PlayerSFX {hurt, footstep, effort}
 @export var sfx_hurt: AudioSFX
+@export var sfx_footstep: AudioSFX
 
 @export var action_1: ActionState
 @export var action_2: ActionState
@@ -159,7 +161,7 @@ func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
-	AudioManager.PlaySFX(sfx_hurt, self)
+	_play_sfx(PlayerSFX.hurt)
 
 	if current_hp <= 0:
 		call_deferred("_die")  # extra safe; now definitely outside physics
@@ -213,3 +215,15 @@ func _process_cloaking(_delta:float) -> void:
 
 func is_cloaked() -> bool:
 	return current_state == PlayerState.Cloaked
+
+func _play_sfx(player_sfx: PlayerSFX) -> void:
+	match player_sfx:
+		PlayerSFX.hurt:
+			AudioManager.PlaySFX(sfx_hurt, self)
+		PlayerSFX.footstep:
+			AudioManager.PlaySFX(sfx_footstep, self)
+		PlayerSFX.effort:
+			pass
+
+func play_sfx_footstep() -> void:
+	_play_sfx(PlayerSFX.footstep)
