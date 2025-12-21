@@ -85,7 +85,6 @@ func _move_state() -> void:
 		
 	_check_and_set_action_state()
 
-
 func _action_state(delta: float) -> void:
 	if current_action_state == null: 
 		current_state = PlayerState.Move
@@ -95,7 +94,6 @@ func _action_state(delta: float) -> void:
 		current_action_state.exit_state(self)
 		current_action_state = null
 		current_state = PlayerState.Move
-
 
 func _roll_state() -> void:
 	_check_and_set_action_state()
@@ -162,11 +160,12 @@ func _check_and_set_action_state() -> void:
 		_set_action_state(action_3)
 		return
 
+
 func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
-	_play_sfx(PlayerSFX.hurt)
+	play_sfx_hurt()
 
 	if current_hp <= 0:
 		call_deferred("_die")  # extra safe; now definitely outside physics
@@ -190,7 +189,6 @@ func set_cloakable_gradient(gradient: GradientTexture2D, wait_time: float) -> vo
 	tail.set_cloak_gradient(gradient)
 	cloak_area_counter += 1
 
-
 func clear_cloakable_gradient() -> void:
 	cloak_area_counter -= 1
 	if cloak_area_counter <= 0:
@@ -199,14 +197,12 @@ func clear_cloakable_gradient() -> void:
 		tail.set_cloak_gradient(null)
 		cloak_gradient = null
 
-
 func _clear_cloaked_state() -> void:
 	last_action_time = Time.get_ticks_msec()
 	tail.set_cloak_amount(0.0)
 	modulate = Color.WHITE
 	if current_state == PlayerState.Cloaked:
 		current_state = PlayerState.Move
-
 
 func _process_cloaking(_delta:float) -> void:
 	if current_state != PlayerState.Cloaked and cloak_gradient:
@@ -221,6 +217,7 @@ func _process_cloaking(_delta:float) -> void:
 func is_cloaked() -> bool:
 	return current_state == PlayerState.Cloaked
 
+
 func _play_sfx(player_sfx: PlayerSFX) -> void:
 	match player_sfx:
 		PlayerSFX.hurt:
@@ -234,6 +231,9 @@ func _play_sfx(player_sfx: PlayerSFX) -> void:
 				AudioManager.PlaySFX(sfx_effort_medium, self)
 			else:
 				AudioManager.PlaySFX(sfx_effort_low, self)
+
+func play_sfx_hurt() -> void:
+	_play_sfx(PlayerSFX.hurt)
 
 func play_sfx_footstep() -> void:
 	_play_sfx(PlayerSFX.footstep)
