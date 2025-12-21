@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="3_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://s2wiif7o71tk" path="res://scenes/Help_UI/help_ui.tscn" id="5_bc84e"]
-[ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://scenes/Pause_UI/pause_menu.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="9_cbp6q"]
 [ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="10_wse8f"]

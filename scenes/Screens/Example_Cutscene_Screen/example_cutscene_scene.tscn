@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://btvv25p1gc2i7" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_director.gd" id="2_csqcs"]
 [ext_resource type="Script" uid="uid://2jf823q8gctc" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_script.gd" id="2_djkdp"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="3_pp56n"]
-[ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://pause_menu.tscn" id="4_5w1dg"]
+[ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://scenes/Pause_UI/pause_menu.tscn" id="4_5w1dg"]
 [ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="5_joy62"]
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="6_3887w"]
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="7_gvkdj"]
