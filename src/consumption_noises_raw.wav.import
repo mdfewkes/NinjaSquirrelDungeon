@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bht1kbdm0dcvi"
-path="res://.godot/imported/consumption_noises_raw.wav-5a70bb5825b5337ddd730e38d80621a0.sample"
+path="res://.godot/imported/consumption_noises_raw.wav-58ed1760450cef5f3848aac475ede129.sample"
 
 [deps]
 
-source_file="res://consumption_noises_raw.wav"
-dest_files=["res://.godot/imported/consumption_noises_raw.wav-5a70bb5825b5337ddd730e38d80621a0.sample"]
+source_file="res://src/consumption_noises_raw.wav"
+dest_files=["res://.godot/imported/consumption_noises_raw.wav-58ed1760450cef5f3848aac475ede129.sample"]
 
 [params]
 

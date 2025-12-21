@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dibkqrtek4vya"
-path="res://.godot/imported/hurts_raw.wav-5faa8f3b007e529b081d25390351d389.sample"
+path="res://.godot/imported/hurts_raw.wav-60d05fe0cbc2271b45f07e322a8c0010.sample"
 
 [deps]
 
-source_file="res://hurts_raw.wav"
-dest_files=["res://.godot/imported/hurts_raw.wav-5faa8f3b007e529b081d25390351d389.sample"]
+source_file="res://src/hurts_raw.wav"
+dest_files=["res://.godot/imported/hurts_raw.wav-60d05fe0cbc2271b45f07e322a8c0010.sample"]
 
 [params]
 
