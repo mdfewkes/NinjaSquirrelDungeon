@@ -57,6 +57,7 @@ func _action_exit(_player: Player) -> void:
 	hook_point = Vector2.INF
 	hook_obj = null
 	tail.clear_tip_position()
+	player.set_collision_mask_value(8, true)
 
 
 func cast_hook_ray(dir: Vector2) -> void:
@@ -79,6 +80,7 @@ func start_hook_pull() -> void:
 		hook_point = wall_ray.get_collision_point()
 		player.velocity = player.global_position.direction_to(hook_point - wall_ray.position) * PULL_VELOCITY
 		tail.set_tip_position(hook_point)
+		player.set_collision_mask_value(8, false)
 
 		var smoke: CPUParticles2D = player.get_node("TailHookSmoke")
 		smoke.global_position = hook_point

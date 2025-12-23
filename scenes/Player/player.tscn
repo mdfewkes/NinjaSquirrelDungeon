@@ -1873,6 +1873,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2", "action_3") groups=["player"]]
 collision_layer = 2
+collision_mask = 129
 motion_mode = 1
 script = ExtResource("1_onrkg")
 sfx_hurt = SubResource("Resource_cgmen")
