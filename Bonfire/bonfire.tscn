@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwkfo0fdexbrh"]
+
+[ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://Bonfire/Trashcan.png" id="1_s8pws"]
+[ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://Bonfire/TrashHole.png" id="2_buw6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
+size = Vector2(50, 67)
+
+[node name="Bonfire" type="StaticBody2D"]
+collision_mask = 3
+
+[node name="TrashHole" type="Sprite2D" parent="."]
+position = Vector2(1, -10)
+scale = Vector2(0.3863538, 0.3863538)
+texture = ExtResource("2_buw6a")
+
+[node name="Trashcan" type="Sprite2D" parent="."]
+position = Vector2(1, -10)
+scale = Vector2(0.3863538, 0.3863538)
+texture = ExtResource("1_s8pws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10.5)
+shape = SubResource("RectangleShape2D_buw6a")

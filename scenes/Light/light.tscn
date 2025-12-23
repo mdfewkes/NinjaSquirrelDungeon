@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://idvuu5pv2ejg"]
 
 [ext_resource type="Script" uid="uid://cesdgy7wcnuis" path="res://scenes/Light/light.gd" id="1_5qqhr"]
-[ext_resource type="Texture2D" uid="uid://b4l1wybno7p36" path="res://icon.svg" id="1_hdgcg"]
+[ext_resource type="Texture2D" uid="uid://chfxph1wtlkx3" path="res://scenes/Light/lamp_sprite.png" id="2_lak6k"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_njlvs"]
 
 [sub_resource type="Gradient" id="Gradient_pkg7o"]
@@ -20,12 +20,12 @@ fill_to = Vector2(0, 0)
 script = ExtResource("1_5qqhr")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.265, 0.265)
-texture = ExtResource("1_hdgcg")
+scale = Vector2(0.38072696, 0.38072693)
+texture = ExtResource("2_lak6k")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(7.3500004, 7.3500004)
-color = Color(1, 0.88100004, 0.49, 1)
+color = Color(0.99999994, 0.8895572, 0.32861587, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 5

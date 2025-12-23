@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bn1sk2hcp5ds6"
+path="res://.godot/imported/dart trap.ogg-54138d5a09ba7689ec6464ce1a935299.oggvorbisstr"
+
+[deps]
+
+source_file="res://dart trap.ogg"
+dest_files=["res://.godot/imported/dart trap.ogg-54138d5a09ba7689ec6464ce1a935299.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
