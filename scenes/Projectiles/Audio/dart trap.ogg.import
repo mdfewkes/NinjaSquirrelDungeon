@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bjo8pmx7lv5st"
+path="res://.godot/imported/dart trap.ogg-737bfbb0d303d4bc4d83d6b28d821113.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/Projectiles/Audio/dart trap.ogg"
+dest_files=["res://.godot/imported/dart trap.ogg-737bfbb0d303d4bc4d83d6b28d821113.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
