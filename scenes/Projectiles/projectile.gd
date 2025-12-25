@@ -43,6 +43,17 @@ func set_direction(dir: Vector2) -> void:
 	_point_at(dir)
 
 
+## Initializes and launches the projectile toward a direction.
+## Call this after adding to scene tree.
+func launch(origin: Vector2, direction: Vector2, speed: float = default_speed) -> void:
+	global_position = origin
+	rotation = direction.angle()
+	velocity = direction * speed
+	hit_box.monitoring = true
+	hit_box.monitorable = true
+	show()
+
+
 func _point_at(dir: Vector2) -> void:
 	if rotate_with_direction:
 		rotation = dir.angle()
