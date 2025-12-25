@@ -34,9 +34,13 @@ extends EnemyBase
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
 
-enum State {IDLE, MOVE, ATTACK, STUN}
+enum State {IDLE, MOVE, REPOSITION, ATTACK, STUN}
 var current_state: State = State.IDLE
 var _is_repositioning: bool = false # Hysteresis state for smooth settling
+
+## Debug visualization
+@export var debug_draw: bool = true
+var _debug_nav_path: PackedVector2Array = []
 
 
 func _ready() -> void:
@@ -47,6 +51,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	_update_debug_label()
 
 	match current_state:
 		State.IDLE:
@@ -55,11 +60,21 @@ func _physics_process(delta: float) -> void:
 		State.MOVE:
 			if not is_player_in_range():
 				current_state = State.IDLE
+			elif not can_see_player():
+				current_state = State.REPOSITION
 			else:
 				_do_boids_movement(delta)
 				# Transition to ATTACK when settled and can see player
-				if not _is_repositioning and can_see_player():
+				if not _is_repositioning:
 					_enter_attack_state()
+		State.REPOSITION:
+			if not is_player_in_range():
+				current_state = State.IDLE
+			elif can_see_player():
+				current_state = State.MOVE
+				_is_repositioning = true  # Force movement re-evaluation
+			else:
+				_do_reposition_movement(delta)
 		State.ATTACK:
 			_do_attack_state(delta)
 		State.STUN:
@@ -120,6 +135,19 @@ func _do_boids_movement(_delta: float) -> void:
 			velocity = combined.normalized() * speed
 		else:
 			velocity = Vector2.ZERO
+	move_and_slide()
+
+
+## Navigate directly toward player to regain line of sight
+func _do_reposition_movement(_delta: float) -> void:
+	if player == null:
+		return
+
+	# Navigate directly to player position
+	nav_agent.target_position = player.global_position
+	var nav_direction: Vector2 = global_position.direction_to(nav_agent.get_next_path_position())
+
+	velocity = nav_direction * speed
 	move_and_slide()
 
 
@@ -184,5 +212,60 @@ func _on_hurt(hit_box: HitBox) -> void:
 	velocity = hit_box.global_position.direction_to(global_position) * hit_box.knockback * knockback_multiply
 	current_state = State.STUN
 	attack_timer.stop() # Interrupt attack
+
+#endregion
+
+
+#region Debug
+## Debug Visualization Guide:
+##
+## LABEL (above enemy):
+##   Line 1: Current state (IDLE, MOVE, REPOSITION, ATTACK, STUN)
+##   Line 2: LOS status (true = can see player, false = blocked)
+##
+## YELLOW LINES: Navigation path the enemy is following
+##   - Shows the complete path from current position to target
+##   - Path should curve around walls if agent_radius is set on NavigationPolygon
+##
+## RED CIRCLE: Target position
+##   - In MOVE state: ideal_distance circle around player
+##   - In REPOSITION state: player's position (trying to regain LOS)
+##
+## GREEN CIRCLE: Next waypoint
+##   - The immediate point the enemy is moving toward
+##   - Enemy moves to this, then advances to the next waypoint
+
+func _update_debug_label() -> void:
+	if not OS.is_debug_build() or not debug_draw:
+		return
+	var label: Label = $Label
+	if label:
+		var state_name: String = State.keys()[current_state]
+		label.text = "%s\nLOS:%s" % [state_name, can_see_player()]
+
+	# Cache nav path for drawing
+	_debug_nav_path = nav_agent.get_current_navigation_path()
+	queue_redraw()
+
+
+func _draw() -> void:
+	if not OS.is_debug_build() or not debug_draw:
+		return
+
+	# Yellow lines: Full navigation path from current position to target
+	if _debug_nav_path.size() > 1:
+		for i in range(_debug_nav_path.size() - 1):
+			var from_local := to_local(_debug_nav_path[i])
+			var to_local_pos := to_local(_debug_nav_path[i + 1])
+			draw_line(from_local, to_local_pos, Color.YELLOW, 2.0)
+
+	# Red circle: Final target position (where we ultimately want to be)
+	var target_local := to_local(nav_agent.target_position)
+	draw_circle(target_local, 8.0, Color.RED)
+
+	# Green circle: Next waypoint (immediate movement target)
+	if nav_agent.is_navigation_finished() == false:
+		var next_local := to_local(nav_agent.get_next_path_position())
+		draw_circle(next_local, 5.0, Color.GREEN)
 
 #endregion

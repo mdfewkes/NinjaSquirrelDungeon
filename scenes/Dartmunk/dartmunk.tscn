@@ -57,6 +57,10 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_hurtbox")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+avoidance_enabled = true
+radius = 20.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
