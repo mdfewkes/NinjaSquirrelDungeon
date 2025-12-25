@@ -18,7 +18,7 @@ height = 52.0
 collision_layer = 4
 script = ExtResource("1_dartmunk")
 dart_scene = ExtResource("3_dart")
-view_range = 700
+view_range = 1000
 speed = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

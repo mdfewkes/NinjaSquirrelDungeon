@@ -29,7 +29,11 @@ extends EnemyBase
 ## Multiplier on move_threshold when deciding to leave ATTACK state.
 ## Higher = attacking Dartmunks are more "sticky" and won't reposition as easily.
 ## Example: 2.0 means force must be 2x stronger to interrupt an attack than to start moving.
-@export_range(1.0, 20.0, 0.5, "or_greater") var attack_exit_multiplier: float = 7.5
+@export_range(1.0, 20.0, 0.5, "or_greater") var attack_exit_multiplier: float = 8.5
+## Number of prediction iterations (higher = more accurate, 2-3 recommended)
+@export_range(0, 5, 1) var prediction_iterations: int = 3
+## Random spread applied to aim direction (degrees). 0 = perfect aim.
+@export_range(0.0, 45.0, 1.0) var aim_spread_degrees: float = 0.0
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
@@ -72,7 +76,7 @@ func _physics_process(delta: float) -> void:
 				current_state = State.IDLE
 			elif can_see_player():
 				current_state = State.MOVE
-				_is_repositioning = true  # Force movement re-evaluation
+				_is_repositioning = true # Force movement re-evaluation
 			else:
 				_do_reposition_movement(delta)
 		State.ATTACK:
@@ -180,13 +184,32 @@ func _do_attack_state(_delta: float) -> void:
 func _fire_dart() -> void:
 	if dart_scene == null or player == null:
 		return
-	var direction := global_position.direction_to(player.global_position)
+	var aim_point := _calculate_predicted_position()
+	var direction := global_position.direction_to(aim_point)
 	if direction == Vector2.ZERO:
 		direction = Vector2.RIGHT # Fallback
+
+	# Apply random spread
+	if aim_spread_degrees > 0.0:
+		var spread := randf_range(-aim_spread_degrees, aim_spread_degrees)
+		direction = direction.rotated(deg_to_rad(spread))
 
 	var dart: Projectile = dart_scene.instantiate()
 	get_parent().add_child(dart)
 	dart.launch(global_position + direction * dart_spawn_distance, direction, dart_speed)
+
+
+## Calculate predicted aim point using iterative refinement.
+## Each iteration improves accuracy by accounting for updated travel time.
+func _calculate_predicted_position() -> Vector2:
+	if player == null or prediction_iterations == 0:
+		return player.global_position
+
+	var predicted_pos: Vector2 = player.global_position
+	for i in prediction_iterations:
+		var time_to_target := global_position.distance_to(predicted_pos) / dart_speed
+		predicted_pos = player.global_position + player.velocity * time_to_target
+	return predicted_pos
 
 
 func _on_attack_timer_timeout() -> void:
