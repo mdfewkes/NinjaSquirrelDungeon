@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=4 uid="uid://d0wn7q6mxh3jp"]
+
+[ext_resource type="Script" uid="uid://byt2m0sloc54f" path="res://scenes/TestArena/test_arena.gd" id="1_arena"]
+[ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="3_player"]
+[ext_resource type="Texture2D" uid="uid://denh52bnlpwqc" path="res://scenes/Tileset/Auto_tile_Sewer.png" id="4_walls"]
+[ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="5_room"]
+[ext_resource type="PackedScene" uid="uid://dm6k8pltw5ycl" path="res://scenes/Dartmunk/dartmunk.tscn" id="6_dartmunk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_walls"]
+texture = ExtResource("4_walls")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_arena"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_walls")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ibmsd"]
+vertices = PackedVector2Array(2550, 2486, 74, 2486, 74, 74, 2550, 74)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(64, 64, 2560, 64, 2560, 2496, 64, 2496)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arena"]
+size = Vector2(2624, 2560)
+
+[node name="TestArena" type="Node2D"]
+script = ExtResource("1_arena")
+arena_width = 41
+arena_height = 40
+
+[node name="GroundLayer" type="Node2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="GroundLayer"]
+offset_right = 2624.0
+offset_bottom = 2560.0
+texture = ExtResource("2_bg")
+stretch_mode = 1
+
+[node name="WallTileMapLayer" type="TileMapLayer" parent="GroundLayer"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAAAAA0AAAABAAEAAAAAAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAABAAAAABAAEAAAAAABEAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAANAAAAAAABAAEAAAAOAAAAAAABAAEAAAAPAAAAAAABAAEAAAAQAAAAAAABAAEAAAARAAAAAAABAAEAAAASAAAAAAABAAEAAAATAAAAAAABAAEAAAAUAAAAAAABAAEAAAAVAAAAAAABAAEAAAAWAAAAAAABAAEAAAAXAAAAAAABAAEAAAAYAAAAAAABAAEAAAAZAAAAAAABAAEAAAAaAAAAAAABAAEAAAAbAAAAAAABAAEAAAAAABUAAAABAAEAAAAAABcAAAABAAEAAAAAABgAAAABAAEAAAAAABkAAAABAAEAAAAAABoAAAABAAEAAAAcAAAAAAABAAEAAAAdAAAAAAABAAEAAAAeAAAAAAABAAEAAAAfAAAAAAABAAEAAAAgAAAAAAABAAEAAAAhAAAAAAABAAEAAAAiAAAAAAABAAEAAAAjAAAAAAABAAEAAAAkAAAAAAABAAEAAAAlAAAAAAABAAEAAAAmAAAAAAABAAEAAAAnAAAAAAABAAEAAAAAABsAAAABAAEAAAAAABwAAAABAAEAAAAAAB0AAAABAAEAAAAAAB4AAAABAAEAAAAAAB8AAAABAAEAAAAAACAAAAABAAEAAAAAACEAAAABAAEAAAAAACIAAAABAAEAAAAAACMAAAABAAEAAAAAACQAAAABAAEAAAAAACUAAAABAAEAAAAAACYAAAABAAEAAAAAACcAAAABAAEAAAABACcAAAABAAEAAAACACcAAAABAAEAAAADACcAAAABAAEAAAAEACcAAAABAAEAAAAFACcAAAABAAEAAAAGACcAAAABAAEAAAAHACcAAAABAAEAAAAIACcAAAABAAEAAAAJACcAAAABAAEAAAAKACcAAAABAAEAAAALACcAAAABAAEAAAAMACcAAAABAAEAAAANACcAAAABAAEAAAAOACcAAAABAAEAAAAPACcAAAABAAEAAAAQACcAAAABAAEAAAARACcAAAABAAEAAAASACcAAAABAAEAAAATACcAAAABAAEAAAAUACcAAAABAAEAAAAVACcAAAABAAEAAAAWACcAAAABAAEAAAAXACcAAAABAAEAAAAYACcAAAABAAEAAAAZACcAAAABAAEAAAAaACcAAAABAAEAAAAbACcAAAABAAEAAAAcACcAAAABAAEAAAAdACcAAAABAAEAAAAeACcAAAABAAEAAAAfACcAAAABAAEAAAAgACcAAAABAAEAAAAhACcAAAABAAEAAAAiACcAAAABAAEAAAAjACcAAAABAAEAAAAkACcAAAABAAEAAAAlACcAAAABAAEAAAAmACcAAAABAAEAAAAnACcAAAABAAEAAAAoAAAAAAABAAEAAAAoAAEAAAABAAEAAAAoAAIAAAABAAEAAAAoAAMAAAABAAEAAAAoAAQAAAABAAEAAAAoAAUAAAABAAEAAAAoAAYAAAABAAEAAAAoAAcAAAABAAEAAAAoAAgAAAABAAEAAAAoAAkAAAABAAEAAAAoAAoAAAABAAEAAAAoAAsAAAABAAEAAAAoAAwAAAABAAEAAAAoAA0AAAABAAEAAAAoAA4AAAABAAEAAAAoAA8AAAABAAEAAAAoABAAAAABAAEAAAAoABEAAAABAAEAAAAoABIAAAABAAEAAAAoABMAAAABAAEAAAAoABQAAAABAAEAAAAoABUAAAABAAEAAAAoABYAAAABAAEAAAAoABcAAAABAAEAAAAoABgAAAABAAEAAAAoABkAAAABAAEAAAAoABoAAAABAAEAAAAoABsAAAABAAEAAAAoABwAAAABAAEAAAAoAB0AAAABAAEAAAAoAB4AAAABAAEAAAAoAB8AAAABAAEAAAAoACAAAAABAAEAAAAoACEAAAABAAEAAAAoACIAAAABAAEAAAAoACMAAAABAAEAAAAoACQAAAABAAEAAAAoACUAAAABAAEAAAAoACYAAAABAAEAAAAoACcAAAABAAEAAAAAABIAAAABAAEAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABYAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_arena")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ibmsd")
+
+[node name="Room" type="Area2D" parent="."]
+script = ExtResource("5_room")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room"]
+position = Vector2(1312, 1280)
+shape = SubResource("RectangleShape2D_arena")
+
+[node name="Lights" type="Node2D" parent="Room"]
+
+[node name="Enemies" type="Node2D" parent="Room"]
+
+[node name="Dartmunk1" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
+position = Vector2(690, 1111)
+
+[node name="Dartmunk2" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
+position = Vector2(688, 1394)
+
+[node name="Dartmunk3" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
+position = Vector2(697, 1251)
+
+[node name="Environment" type="Node2D" parent="Room"]
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+z_index = 10
+position = Vector2(1312, 1280)

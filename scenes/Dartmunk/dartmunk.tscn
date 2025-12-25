@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm6k8pltw5ycl"]
+
+[ext_resource type="Script" uid="uid://b8ihjmnf56mes" path="res://scenes/Dartmunk/dartmunk.gd" id="1_dartmunk"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_hurtbox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dartmunk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hurtbox"]
+radius = 18.0
+height = 52.0
+
+[node name="Dartmunk" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_dartmunk")
+view_range = 700
+speed = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.9, 0.9, 0.9, 1)
+polygon = PackedVector2Array(-16, -48, 16, -48, 16, 0, -16, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_dartmunk")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -80.0
+offset_right = 20.0
+offset_bottom = -60.0
+text = "HP"
+horizontal_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_hurtbox")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
