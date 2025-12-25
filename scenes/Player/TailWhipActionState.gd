@@ -14,7 +14,7 @@ var hook_obj: Node
 var hook_obj_pull_factor: float
 
 # this controls how far away you can grab the wall
-const RAY_LENGTH = 600.0
+const RAY_LENGTH = Vector2(450.0, 350.0)
 # this is the initial speed once you start pulling
 const PULL_VELOCITY = 500.0
 # this is the acceleration (px/sec) over the course of the pull
@@ -60,9 +60,20 @@ func _action_exit(_player: Player) -> void:
 	player.set_collision_mask_value(8, true)
 
 
-func cast_hook_ray(dir: Vector2) -> void:
+func cast_hook_ray(_dir: Vector2) -> void:
+	# The original version of this only allowed the tail whip
+	# in the 4 cardinal directions. This version instead casts the
+	# ray in the direction the player was moving. This will allow
+	# more expressive movement but may be too funky or allow the
+	# player to get into too many weird out of bounds spots. If we
+	# need to go back to just the 4 directions, comment out the below
+	# two lines and use the passed in _dir param instead.
+	var dir: Vector2 = player.animation_tree.get("parameters/StateMachine/TailWhipAction/blend_position")
+	dir.y = -dir.y
+	
 	wall_ray.target_position = dir * RAY_LENGTH
 	obj_ray.target_position = dir * RAY_LENGTH
+
 
 func start_hook_pull() -> void:
 	var is_wall = wall_ray.is_colliding()

@@ -42,8 +42,8 @@ void fragment() {
 	vec2 cell_uv = get_cell_uv(UV, TEXTURE_PIXEL_SIZE);
 	
 	// create two secondary noise values to simulate the shifting currents
-	vec2 noise_uv = cell_uv + sin(TIME) * speed;
-	vec2 noise_uv2 = cell_uv - sin(TIME * 1.5) * speed;
+	vec2 noise_uv = cell_uv + sin(TIME * speed) * 2.0;
+	vec2 noise_uv2 = cell_uv - sin(TIME * 1.5 * speed) * 8.0;
 	vec2 noise = 2.0 * texture(noise2_texture, noise_uv).rg - 1.0;
 	vec2 noise2 = 2.0 * texture(noise2_texture, noise_uv2).rg - 1.0;
 
