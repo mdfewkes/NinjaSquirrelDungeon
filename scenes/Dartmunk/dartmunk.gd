@@ -37,10 +37,14 @@ extends EnemyBase
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
+@onready var sprite: Sprite2D = $Sprite2D
 
 enum State {IDLE, MOVE, REPOSITION, ATTACK, STUN}
 var current_state: State = State.IDLE
 var _is_repositioning: bool = false # Hysteresis state for smooth settling
+var _facing_direction: Vector2 = Vector2.DOWN
+var _anim_timer: float = 0.0
+const ANIM_FRAME_DURATION: float = 0.5  # Time per frame in seconds
 
 ## Debug visualization
 @export var debug_draw: bool = true
@@ -83,6 +87,8 @@ func _physics_process(delta: float) -> void:
 			_do_attack_state(delta)
 		State.STUN:
 			_do_stun_state(delta)
+
+	_update_animation()
 
 
 ## Returns combined boids force (radial + separation)
@@ -235,6 +241,53 @@ func _on_hurt(hit_box: HitBox) -> void:
 	velocity = hit_box.global_position.direction_to(global_position) * hit_box.knockback * knockback_multiply
 	current_state = State.STUN
 	attack_timer.stop() # Interrupt attack
+
+#endregion
+
+
+#region Animation
+
+## Maps facing direction to base sprite frame index
+## Frame layout: 0-1=Down, 2-3=Up, 4-5=Left, 6-7=Right
+func _get_direction_base_frame() -> int:
+	# Determine primary direction (use largest component)
+	if abs(_facing_direction.x) > abs(_facing_direction.y):
+		# Horizontal dominant
+		return 4 if _facing_direction.x < 0 else 6  # Left or Right
+	else:
+		# Vertical dominant
+		return 0 if _facing_direction.y > 0 else 2  # Down or Up
+
+
+func _update_animation() -> void:
+	# Update facing direction from velocity
+	if velocity.length() > 10:
+		_facing_direction = velocity.normalized()
+
+	var base_frame := _get_direction_base_frame()
+
+	# Determine if we should cycle frames (Idle and Attack states)
+	var should_cycle := current_state in [State.IDLE, State.ATTACK]
+
+	if should_cycle:
+		_anim_timer += get_physics_process_delta_time()
+		if _anim_timer >= ANIM_FRAME_DURATION:
+			_anim_timer = 0.0
+		# Alternate between base frame and base+1
+		sprite.frame = base_frame + (1 if _anim_timer >= ANIM_FRAME_DURATION / 2.0 else 0)
+	else:
+		# Static frame for Move, Reposition, Stun
+		sprite.frame = base_frame
+		_anim_timer = 0.0
+
+	# Apply state-based color tinting
+	match current_state:
+		State.IDLE, State.MOVE, State.REPOSITION:
+			sprite.modulate = Color.WHITE
+		State.ATTACK:
+			sprite.modulate = Color(1.0, 0.6, 0.6)  # Red tint
+		State.STUN:
+			sprite.modulate = Color(1.0, 1.0, 0.6)  # Yellow tint
 
 #endregion
 

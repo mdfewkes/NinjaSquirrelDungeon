@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm6k8pltw5ycl"]
+[gd_scene load_steps=8 format=3 uid="uid://dm6k8pltw5ycl"]
 
 [ext_resource type="Script" uid="uid://b8ihjmnf56mes" path="res://scenes/Dartmunk/dartmunk.gd" id="1_dartmunk"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_hurtbox"]
 [ext_resource type="PackedScene" uid="uid://cx5ftmfkycn22" path="res://scenes/Projectiles/dart.tscn" id="3_dart"]
+[ext_resource type="Texture2D" uid="uid://c1o4jd4x8iyvj" path="res://scenes/Dartmunk/dartmunk_placeholder.png" id="4_sprite"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
 radius = 16.0
@@ -26,10 +27,15 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_body")
 
 [node name="Visual" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.9, 0.9, 0.9, 1)
 polygon = PackedVector2Array(-16, -48, 16, -48, 16, 0, -16, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_sprite")
+offset = Vector2(0, -50)
+hframes = 2
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -37,6 +43,7 @@ polygon = PackedVector2Array(-16, -48, 16, -48, 16, 0, -16, 0)
 tree_root = SubResource("AnimationNodeStateMachine_dartmunk")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -80.0
 offset_right = 20.0
