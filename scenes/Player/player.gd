@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 ## Set this to true to make this a non-interactable version for use in cutscenes.
 @export var is_cutscene_squirrel = false
+## God mode - player takes no damage when enabled
+@export var god_mode: bool = false
 @export var speed: float = 300
 @export var roll_speed: float = 600
 @export var max_hp = 4
@@ -162,6 +164,8 @@ func _check_and_set_action_state() -> void:
 
 
 func _on_hurt(hitbox: HitBox) -> void:
+	if god_mode:
+		return
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
