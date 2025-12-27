@@ -1,15 +1,13 @@
-[gd_scene load_steps=52 format=4 uid="uid://dja0888a4cuuv"]
+[gd_scene load_steps=49 format=4 uid="uid://dja0888a4cuuv"]
 
 [ext_resource type="Script" uid="uid://eua6r5rvs72l" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_scene.gd" id="1_oeitu"]
-[ext_resource type="Script" uid="uid://btvv25p1gc2i7" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_director.gd" id="2_csqcs"]
-[ext_resource type="Script" uid="uid://2jf823q8gctc" path="res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_script.gd" id="2_djkdp"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="3_pp56n"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://scenes/Pause_UI/pause_menu.tscn" id="4_5w1dg"]
 [ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="5_joy62"]
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="6_3887w"]
 [ext_resource type="Texture2D" uid="uid://b70yh1tjvamtp" path="res://temp assets/autotileexamp1.png" id="7_gvkdj"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="8_ferbx"]
-[ext_resource type="Script" uid="uid://du3enxo6mbd5j" path="res://scenes/Screens/Example_Cutscene_Screen/cutscene_player_trigger.gd" id="14_psk6g"]
+[ext_resource type="PackedScene" uid="uid://dnxd6bdx6nat6" path="res://scenes/Screens/Lore_Screen/CommandTile/command_tile.tscn" id="10_a4aow"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -616,18 +614,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(104, 1752, 0, -448, 1936, -440, 1888, 1720)])
 source_geometry_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_royyr"]
-size = Vector2(64, 64)
-
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_oeitu")
-
-[node name="CutsceneScript" type="Node" parent="."]
-script = ExtResource("2_djkdp")
-
-[node name="CutsceneDirector" type="Node" parent="CutsceneScript"]
-script = ExtResource("2_csqcs")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60052365, 0.52271074, 0.8287144, 1)
@@ -674,52 +663,28 @@ z_index = 10
 position = Vector2(582, 574)
 is_cutscene_squirrel = true
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(2526, 546)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("14_psk6g")
-trigger_direction = Vector2(0, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_royyr")
-debug_color = Color(1, 0, 0, 0.41960785)
-
-[node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(2527, 351)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("14_psk6g")
+[node name="CommandTile0" parent="." instance=ExtResource("10_a4aow")]
+position = Vector2(579, 565)
 trigger_direction = Vector2(1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource("RectangleShape2D_royyr")
-debug_color = Color(1, 0, 0, 0.41960785)
+[node name="CommandTile1" parent="." instance=ExtResource("10_a4aow")]
+position = Vector2(2526, 546)
+trigger_direction = Vector2(0, -1)
 
-[node name="Area2D3" type="Area2D" parent="."]
+[node name="CommandTile2" parent="." instance=ExtResource("10_a4aow")]
+position = Vector2(2527, 351)
+trigger_direction = Vector2(1, 0)
+
+[node name="CommandTile3" parent="." instance=ExtResource("10_a4aow")]
 position = Vector2(2957, 347)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("14_psk6g")
 trigger_direction = Vector2(0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-shape = SubResource("RectangleShape2D_royyr")
-debug_color = Color(1, 0, 0, 0.41960785)
-
-[node name="Area2D4" type="Area2D" parent="."]
+[node name="CommandTile4" parent="." instance=ExtResource("10_a4aow")]
 position = Vector2(2960, 547)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("14_psk6g")
 trigger_direction = Vector2(-1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-shape = SubResource("RectangleShape2D_royyr")
-debug_color = Color(1, 0, 0, 0.41960785)
-
-[connection signal="player_directed" from="CutsceneScript/CutsceneDirector" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="Area2D" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="Area2D2" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="Area2D3" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="Area2D4" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTile0" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTile1" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTile2" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTile3" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTile4" to="Player" method="_on_player_directed"]

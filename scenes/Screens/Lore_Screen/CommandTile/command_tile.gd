@@ -1,4 +1,4 @@
-class_name CutscenePlayerTrigger
+class_name CommandTile
 extends Area2D
 
 signal player_directed(input_vector: Vector2)
