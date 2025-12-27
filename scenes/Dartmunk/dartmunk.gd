@@ -38,13 +38,12 @@ extends EnemyBase
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-enum State {IDLE, MOVE, REPOSITION, ATTACK, STUN}
+enum State {IDLE, MOVE, REPOSITION, ATTACK, STUN, DEATH}
 var current_state: State = State.IDLE
 var _is_repositioning: bool = false # Hysteresis state for smooth settling
 var _facing_direction: Vector2 = Vector2.DOWN
-var _anim_timer: float = 0.0
-const ANIM_FRAME_DURATION: float = 0.5  # Time per frame in seconds
 
 ## Debug visualization
 @export var debug_draw: bool = true
@@ -208,7 +207,9 @@ func _fire_dart() -> void:
 ## Calculate predicted aim point using iterative refinement.
 ## Each iteration improves accuracy by accounting for updated travel time.
 func _calculate_predicted_position() -> Vector2:
-	if player == null or prediction_iterations == 0:
+	if player == null:
+		return global_position  # Safe fallback when no player
+	if prediction_iterations == 0:
 		return player.global_position
 
 	var predicted_pos: Vector2 = player.global_position
@@ -238,6 +239,8 @@ func _do_stun_state(delta: float) -> void:
 
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
+	if current_state == State.DEATH:
+		return  # Already dead, don't apply knockback
 	velocity = hit_box.global_position.direction_to(global_position) * hit_box.knockback * knockback_multiply
 	current_state = State.STUN
 	attack_timer.stop() # Interrupt attack
@@ -245,49 +248,47 @@ func _on_hurt(hit_box: HitBox) -> void:
 #endregion
 
 
+#region Death State
+
+func _on_death() -> void:
+	current_state = State.DEATH
+	velocity = Vector2.ZERO
+	attack_timer.stop()
+	# Disable collision so enemy doesn't block player
+	set_collision_layer_value(3, false)  # Layer 3 = Enemy
+	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
+	animation_player.play("death")
+
+#endregion
+
+
 #region Animation
 
-## Maps facing direction to base sprite frame index
-## Frame layout: 0-1=Down, 2-3=Up, 4-5=Left, 6-7=Right
-func _get_direction_base_frame() -> int:
-	# Determine primary direction (use largest component)
-	if abs(_facing_direction.x) > abs(_facing_direction.y):
-		# Horizontal dominant
-		return 4 if _facing_direction.x < 0 else 6  # Left or Right
-	else:
-		# Vertical dominant
-		return 0 if _facing_direction.y > 0 else 2  # Down or Up
-
-
 func _update_animation() -> void:
+	# Death state handles its own animation
+	if current_state == State.DEATH:
+		return
+
 	# Update facing direction from velocity
 	if velocity.length() > 10:
 		_facing_direction = velocity.normalized()
 
-	var base_frame := _get_direction_base_frame()
+	var dir_name := _get_direction_name()
+	var state_name: String = State.keys()[current_state].to_lower()
+	# Reposition uses move animations (visually identical)
+	if state_name == "reposition":
+		state_name = "move"
+	var anim_name := "%s_%s" % [state_name, dir_name]
 
-	# Determine if we should cycle frames (Idle and Attack states)
-	var should_cycle := current_state in [State.IDLE, State.ATTACK]
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
-	if should_cycle:
-		_anim_timer += get_physics_process_delta_time()
-		if _anim_timer >= ANIM_FRAME_DURATION:
-			_anim_timer = 0.0
-		# Alternate between base frame and base+1
-		sprite.frame = base_frame + (1 if _anim_timer >= ANIM_FRAME_DURATION / 2.0 else 0)
+
+func _get_direction_name() -> String:
+	if abs(_facing_direction.x) > abs(_facing_direction.y):
+		return "left" if _facing_direction.x < 0 else "right"
 	else:
-		# Static frame for Move, Reposition, Stun
-		sprite.frame = base_frame
-		_anim_timer = 0.0
-
-	# Apply state-based color tinting
-	match current_state:
-		State.IDLE, State.MOVE, State.REPOSITION:
-			sprite.modulate = Color.WHITE
-		State.ATTACK:
-			sprite.modulate = Color(1.0, 0.6, 0.6)  # Red tint
-		State.STUN:
-			sprite.modulate = Color(1.0, 1.0, 0.6)  # Yellow tint
+		return "down" if _facing_direction.y > 0 else "up"
 
 #endregion
 
@@ -312,15 +313,25 @@ func _update_animation() -> void:
 ##   - Enemy moves to this, then advances to the next waypoint
 
 func _update_debug_label() -> void:
-	if not OS.is_debug_build() or not debug_draw:
-		return
 	var label: Label = $Label
-	if label:
-		var state_name: String = State.keys()[current_state]
-		label.text = "%s\nLOS:%s" % [state_name, can_see_player()]
+	var should_show := OS.is_debug_build() and debug_draw
 
-	# Cache nav path for drawing
-	_debug_nav_path = nav_agent.get_current_navigation_path()
+	if label:
+		label.visible = should_show
+		if should_show:
+			var state_name: String = State.keys()[current_state]
+			label.text = "%s\nLOS:%s" % [state_name, can_see_player()]
+			# Ensure label is properly sized and positioned
+			label.reset_size()  # Auto-size to fit content
+
+	if should_show:
+		# Cache nav path for drawing
+		_debug_nav_path = nav_agent.get_current_navigation_path()
+	else:
+		# Clear cached path when debug is off
+		_debug_nav_path.clear()
+
+	# Always redraw to clear or update debug visuals
 	queue_redraw()
 
 

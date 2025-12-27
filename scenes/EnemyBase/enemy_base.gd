@@ -14,7 +14,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
-@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_tree: AnimationTree = get_node_or_null("AnimationTree")
 
 ## Class variables
 var current_hp := max_hp
@@ -24,7 +24,8 @@ var player = null
 func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 	$Label.text = str(current_hp)
-	player = get_tree().get_nodes_in_group("player")[0]
+	var players := get_tree().get_nodes_in_group("player")
+	player = players[0] if players.size() > 0 else null
 
 func _physics_process(_delta: float) -> void:
 	$Label.text = str(current_hp)
@@ -52,3 +53,10 @@ func can_see_player() -> bool:
 ## Events
 func _on_hurt(hit_box: HitBox) -> void:
 	current_hp -= hit_box.damage
+	if current_hp <= 0:
+		_on_death()
+
+
+## Called when HP reaches 0. Override in subclasses for custom death behavior.
+func _on_death() -> void:
+	queue_free()
