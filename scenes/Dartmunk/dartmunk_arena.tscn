@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://d0wn7q6mxh3jp"]
+[gd_scene load_steps=12 format=4 uid="uid://65hrgf6rji84"]
 
-[ext_resource type="Script" uid="uid://byt2m0sloc54f" path="res://scenes/TestArena/test_arena.gd" id="1_arena"]
+[ext_resource type="Script" uid="uid://cijlrru243tfb" path="res://scenes/Dartmunk/dartmunk_arena.gd" id="1_arena"]
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="2_bg"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://denh52bnlpwqc" path="res://scenes/Tileset/Auto_tile_Sewer.png" id="4_walls"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="5_room"]
 [ext_resource type="PackedScene" uid="uid://dm6k8pltw5ycl" path="res://scenes/Dartmunk/dartmunk.tscn" id="6_dartmunk"]
+[ext_resource type="PackedScene" uid="uid://cwjetvwfhrn1h" path="res://scenes/Dartmunk/dartmunk_spawn_button.tscn" id="7_spawnbutton"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ibmsd"]
 vertices = PackedVector2Array(1074, 1778, 2126, 2126, 114, 2126, 782, 1778, 910, 1486, 910, 1614, 882, 1586, 882, 1422, 782, 1614, 754, 1586, 754, 1650, 2126, 114, 1074, 1486, 882, 1330, 882, 782, 114, 114, 718, 782, 590, 1422, 590, 1650, 718, 1330)
@@ -50,7 +51,7 @@ sources/0 = SubResource("TileSetAtlasSource_walls")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arena"]
 size = Vector2(2240, 2240)
 
-[node name="TestArena" type="Node2D"]
+[node name="DartmunkArena" type="Node2D"]
 script = ExtResource("1_arena")
 
 [node name="GroundLayer" type="Node2D" parent="."]
@@ -79,17 +80,22 @@ shape = SubResource("RectangleShape2D_arena")
 
 [node name="Enemies" type="Node2D" parent="Room"]
 
-[node name="Dartmunk1" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
-position = Vector2(562, 931)
-
-[node name="Dartmunk2" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
-position = Vector2(560, 1214)
-
-[node name="Dartmunk3" parent="Room/Enemies" instance=ExtResource("6_dartmunk")]
-position = Vector2(569, 1071)
-
 [node name="Environment" type="Node2D" parent="Room"]
+
+[node name="DartmunkSpawnButton" parent="Room/Environment" instance=ExtResource("7_spawnbutton")]
+position = Vector2(904, 1067)
+dartmunk_scene = ExtResource("6_dartmunk")
+pressed_color = Color(0.57925874, 0, 0, 1)
+normal_color = Color(1, 0, 0, 1)
+
+[node name="DartmunkMannequin" parent="Room/Environment/DartmunkSpawnButton" index="2"]
+position = Vector2(0, -81)
+
+[node name="SpawnPoint" parent="Room/Environment/DartmunkSpawnButton" index="3"]
+position = Vector2(156, -89)
 
 [node name="Player" parent="." instance=ExtResource("3_player")]
 z_index = 10
 position = Vector2(1120, 1120)
+
+[editable path="Room/Environment/DartmunkSpawnButton"]

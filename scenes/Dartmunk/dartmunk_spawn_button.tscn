@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwjetvwfhrn1h"]
+
+[ext_resource type="Script" uid="uid://dqct8akn7k2nj" path="res://scenes/Dartmunk/dartmunk_spawn_button.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dm6k8pltw5ycl" path="res://scenes/Dartmunk/dartmunk.tscn" id="2_dartmunk"]
+[ext_resource type="Script" uid="uid://bimv7au34ikvp" path="res://scenes/Dartmunk/dartmunk_mannequin.gd" id="3_mannequin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_button"]
+radius = 64.0
+
+[node name="DartmunkSpawnButton" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "Spawn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_button")
+
+[node name="DartmunkMannequin" parent="." instance=ExtResource("2_dartmunk")]
+position = Vector2(0, -150)
+script = ExtResource("3_mannequin")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(100, -150)
