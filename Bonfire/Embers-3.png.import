@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://butr43kegt43t"
-path="res://.godot/imported/Yellow_Fire.png-3faf8153cb6d185e7b930d6143a987b2.ctex"
+uid="uid://8g51unenjudn"
+path="res://.godot/imported/Embers-3.png-e84400715336a306fb4aa9c8439b531f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/Yellow_Fire.png"
-dest_files=["res://.godot/imported/Yellow_Fire.png-3faf8153cb6d185e7b930d6143a987b2.ctex"]
+source_file="res://Bonfire/Embers-3.png"
+dest_files=["res://.godot/imported/Embers-3.png-e84400715336a306fb4aa9c8439b531f.ctex"]
 
 [params]
 

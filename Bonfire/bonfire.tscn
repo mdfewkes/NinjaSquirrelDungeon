@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwkfo0fdexbrh"]
+[gd_scene load_steps=6 format=3 uid="uid://cwkfo0fdexbrh"]
 
+[ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://Bonfire/bonfire.gd" id="1_70l5l"]
 [ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://Bonfire/Trashcan.png" id="1_s8pws"]
+[ext_resource type="PackedScene" uid="uid://cdf1eo5u4dhu4" path="res://Bonfire/fire_efx.tscn" id="2_70l5l"]
 [ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://Bonfire/TrashHole.png" id="2_buw6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
@@ -8,11 +10,16 @@ size = Vector2(50, 67)
 
 [node name="Bonfire" type="StaticBody2D"]
 collision_mask = 3
+script = ExtResource("1_70l5l")
 
 [node name="TrashHole" type="Sprite2D" parent="."]
 position = Vector2(1, -10)
 scale = Vector2(0.3863538, 0.3863538)
 texture = ExtResource("2_buw6a")
+
+[node name="FireEFX" parent="." instance=ExtResource("2_70l5l")]
+position = Vector2(7.1054274e-15, -43)
+scale = Vector2(0.49924463, 0.49924463)
 
 [node name="Trashcan" type="Sprite2D" parent="."]
 position = Vector2(1, -10)
