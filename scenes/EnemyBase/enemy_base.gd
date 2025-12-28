@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 ## Exported (Instance) Variables
 @export_category("Enemy Details")
-@export var view_range := 300
+@export var view_range: float = 300
 @export var speed := 200
 @export var knockback_multiply := 1
 @export var knockback_friction := 1000
@@ -36,8 +36,8 @@ func is_player_in_range() -> bool:
 		return false
 
 	var distance := global_position.distance_to(player.global_position)
-
-	return distance <= view_range * Level.light_level
+	var max_range = view_range * Level.light_level if Level.light_level > 0.0 else 20.0
+	return distance <= max_range
 
 func can_see_player() -> bool:
 	if not is_player_in_range():

@@ -8,7 +8,7 @@ extends Node2D
 
 var rooms: Array[Room]
 var current_room: Room = null
-static var light_level = 1
+static var light_level: float = 1
 
 func _ready() -> void:
 	call_deferred("_setup")
