@@ -28,7 +28,7 @@ func _ready() -> void:
 	player = players[0] if players.size() > 0 else null
 
 func _physics_process(_delta: float) -> void:
-	$Label.text = str(current_hp)
+	$Label.text = str(view_range * Level.light_level)
 
 ## Common Functions
 func is_player_in_range() -> bool:
@@ -37,7 +37,7 @@ func is_player_in_range() -> bool:
 
 	var distance := global_position.distance_to(player.global_position)
 
-	return distance <= view_range
+	return distance <= view_range * Level.light_level
 
 func can_see_player() -> bool:
 	if not is_player_in_range():

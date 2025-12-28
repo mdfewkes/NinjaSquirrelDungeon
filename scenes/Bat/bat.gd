@@ -44,8 +44,13 @@ func die() -> void:
 		destroy_effect_inastance.global_position = global_position
 	queue_free()
 
-func can_see_player() -> bool:
-	return super.can_see_player()
+func is_player_in_range() -> bool:
+	if player == null:
+		return false
+
+	var distance := global_position.distance_to(player.global_position)
+
+	return distance <= view_range * (1.0 - Level.light_level)
 
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)

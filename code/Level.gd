@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	for light in lights:
 		if light.lit:
 			lights_lit += 1.0
-	light_level = lights_lit / lights.size()
+	light_level = lights_lit / (lights.size() + 1)
 	
 	var tween := create_tween()
 	tween.tween_property(canvas_modulate, "color", lighting_gradient.sample(light_level), 0.5)

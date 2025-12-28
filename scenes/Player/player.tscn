@@ -958,6 +958,68 @@ tracks/1/keys = {
 "values": [19]
 }
 
+[sub_resource type="Animation" id="Animation_23nhs"]
+resource_name = "tail_whip_down"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 6]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail/TailAnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("whip_down_3"),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:tail_start_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(3, 0.3, 1),
+"update": 0,
+"values": [0.4, 1.0, 0.4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D:texture_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [7.0, 15.0, 7.0]
+}
+
 [sub_resource type="Animation" id="Animation_kp55c"]
 resource_name = "tail_whip_left"
 length = 0.65
@@ -1105,68 +1167,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": PackedStringArray("whip_up_3"),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tail:tail_start_offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -30)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PointLight2D:energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(3, 0.3, 1),
-"update": 0,
-"values": [0.4, 1.0, 0.4]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PointLight2D:texture_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [7.0, 15.0, 7.0]
-}
-
-[sub_resource type="Animation" id="Animation_23nhs"]
-resource_name = "tail_whip_down"
-length = 0.65
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.43333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [6, 7, 6]
-}
-tracks/1/type = "animation"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tail/TailAnimationPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": PackedStringArray("whip_down_3"),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "value"
@@ -1770,6 +1770,132 @@ tracks/1/keys = {
 "values": [1]
 }
 
+[sub_resource type="Curve" id="Curve_32uah"]
+_limits = [2.0, 50.0, 0.0, 1.0]
+bake_resolution = 8
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.2317073, 16.084621), 0.0, 9.0, 0, 0, Vector2(0.3434959, 25.958721), 0.0, 9.999999, 0, 0, Vector2(0.4715447, 29.393188), 0.0, 0.0, 0, 0, Vector2(0.64634144, 26.066048), 0.0, 0.0, 0, 0, Vector2(0.7743902, 25.63674), 0.0, 0.0, 0, 0, Vector2(0.9004065, 27.89061), 0.0, 0.0, 0, 0, Vector2(0.99999994, 6.103199), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_d7mgq"]
+resource_name = "whip_down_3"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(0.3298769, 1, 4.548613, 3.2490084, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, -10, -20, -20, -35, -30, -60, -40, -75, -50, -95, -60, -115, -70, -150), PackedVector2Array(0, 0, -10, -20, -30, -45, -60, -100, -60, -115, -60, -125, -80, -145, -70, -130), PackedVector2Array(0, 0, -10, -20, -60, -25, -74, 20, -77, 85, -80, 35, -80, -45, -70, -100), PackedVector2Array(0, 0, -10, -20, -40, -25, -74, 20, -77, 85, -80, 125, -60, 175, -30, 250), PackedVector2Array(0, 0, -10, -20, -20, -25, -44, 20, -57, 95, -60, 35, -60, -45, -70, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:quick_snap_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TargetPoints:width_curve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 3.2490091, 1),
+"update": 0,
+"values": [ExtResource("29_kp55c"), SubResource("Curve_32uah"), ExtResource("29_kp55c")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Blade:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [Vector2(50, -170), Vector2(-380, -40), Vector2(44, -94)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blade:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
+"transitions": PackedFloat32Array(2, 3, 1),
+"update": 0,
+"values": [4.7280969436526386, 3.1276300195738393, 6.236061417375739]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Tail Whip ActionState")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [Vector2(0, 1)],
+"method": &"cast_hook_ray"
+}, {
+"args": [],
+"method": &"start_hook_pull"
+}, {
+"args": [],
+"method": &"release_hook"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:second_gradient_modifier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.045, 0.02, 0.045]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
 [sub_resource type="Animation" id="Animation_4ni0x"]
 resource_name = "whip_left"
 length = 0.6
@@ -1881,12 +2007,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63), PackedVector2Array(0, 0, 40, -35, 42, -50, 50, -70, 55, -90, 55, -95, 50, -95, 20, -105), PackedVector2Array(0, 0, -15, -35, -60, -45, -130, -55, 35, -75, 45, -85, 50, -95, 50, -105), PackedVector2Array(0, 0, -15, -35, -60, -45, -130, -55, -235, -65, -355, -75, -390, -85, -510, -65), PackedVector2Array(0, 0, -15, -35, -70, -45, -150, -55, -295, -65, -405, -75, -470, -85, -550, -135), PackedVector2Array(0, 0, -15, -35, -60, -45, -140, -55, -175, -65, -425, -75, -470, -105, -440, -155), PackedVector2Array(0, 0, -15, -35, -60.39952, -45, -80.4, -45, -149.794, -55, -424.201, -55, -420, -74.201, -344.395, -114.201)]
 }
-
-[sub_resource type="Curve" id="Curve_32uah"]
-_limits = [2.0, 50.0, 0.0, 1.0]
-bake_resolution = 8
-_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.2317073, 16.084621), 0.0, 9.0, 0, 0, Vector2(0.3434959, 25.958721), 0.0, 9.999999, 0, 0, Vector2(0.4715447, 29.393188), 0.0, 0.0, 0, 0, Vector2(0.64634144, 26.066048), 0.0, 0.0, 0, 0, Vector2(0.7743902, 25.63674), 0.0, 0.0, 0, 0, Vector2(0.9004065, 27.89061), 0.0, 0.0, 0, 0, Vector2(0.99999994, 6.103199), 0.0, 0.0, 0, 0]
-point_count = 8
 
 [sub_resource type="Animation" id="Animation_ihqbe"]
 resource_name = "whip_left_3"
@@ -2222,126 +2342,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_d7mgq"]
-resource_name = "whip_down_3"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TargetPoints:points")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.26666668, 0.53333336),
-"transitions": PackedFloat32Array(0.3298769, 1, 4.548613, 3.2490084, 1),
-"update": 0,
-"values": [PackedVector2Array(0, 0, -10, -20, -20, -35, -30, -60, -40, -75, -50, -95, -60, -115, -70, -150), PackedVector2Array(0, 0, -10, -20, -30, -45, -60, -100, -60, -115, -60, -125, -80, -145, -70, -130), PackedVector2Array(0, 0, -10, -20, -60, -25, -74, 20, -77, 85, -80, 35, -80, -45, -70, -100), PackedVector2Array(0, 0, -10, -20, -40, -25, -74, 20, -77, 85, -80, 125, -60, 175, -30, 250), PackedVector2Array(0, 0, -10, -20, -20, -25, -44, 20, -57, 95, -60, 35, -60, -45, -70, -100)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:quick_snap_mode")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TargetPoints:width_curve")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6),
-"transitions": PackedFloat32Array(1, 3.2490091, 1),
-"update": 0,
-"values": [ExtResource("29_kp55c"), SubResource("Curve_32uah"), ExtResource("29_kp55c")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blade:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.53333336),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, false, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("Blade:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
-"transitions": PackedFloat32Array(2, 3, 1),
-"update": 0,
-"values": [Vector2(50, -170), Vector2(-380, -40), Vector2(44, -94)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Blade:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.13333334, 0.26666668, 0.53333336),
-"transitions": PackedFloat32Array(2, 3, 1),
-"update": 0,
-"values": [4.7280969436526386, 3.1276300195738393, 6.236061417375739]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Tail Whip ActionState")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.13333334, 0.26666668, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [Vector2(0, 1)],
-"method": &"cast_hook_ray"
-}, {
-"args": [],
-"method": &"start_hook_pull"
-}, {
-"args": [],
-"method": &"release_hook"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".:second_gradient_modifier")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.6),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [0.045, 0.02, 0.045]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".:z_index")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8txv"]
