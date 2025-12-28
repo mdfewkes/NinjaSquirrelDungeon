@@ -33,5 +33,5 @@ func turn_on_light() -> void:
 	lit = true
 
 func _on_hurt(hit_box: HitBox) -> void:
-	if hit_box.damage > 0: return
-	turn_off_light()
+	if hit_box.affect_lanterns:
+		turn_off_light()

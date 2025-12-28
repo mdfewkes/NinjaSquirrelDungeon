@@ -2427,6 +2427,7 @@ parameters/StateMachine/TailWhipAction/blend_position = Vector2(0, 1.892683)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("3_btcbx")
+affect_lanterns = false
 metadata/_custom_type_script = "uid://dtiynebo6fexe"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
