@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvpy28pera2f6"
+path="res://.godot/imported/bat call 3.ogg-840b35d52be276aa3d08c4582b844c0f.oggvorbisstr"
+
+[deps]
+
+source_file="res://bat call 3.ogg"
+dest_files=["res://.godot/imported/bat call 3.ogg-840b35d52be276aa3d08c4582b844c0f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

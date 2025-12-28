@@ -32,5 +32,6 @@ func turn_on_light() -> void:
 	point_light_2d.enabled = true
 	lit = true
 
-func _on_hurt(_hitbox: HitBox) -> void:
+func _on_hurt(hit_box: HitBox) -> void:
+	if hit_box.damage > 0: return
 	turn_off_light()
