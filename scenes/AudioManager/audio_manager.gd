@@ -62,6 +62,18 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	
 	return freshAudioSource
 
+func PlaySFX_at_position(sfx: AudioSFX, position: Vector2) -> AudioStreamPlayer2D:
+	var freshNode = Node2D.new()
+	add_child(freshNode)
+	freshNode.global_position = position
+	
+	var freshAudioSource = PlaySFX(sfx, freshNode)
+	
+	if freshAudioSource != null:
+		freshAudioSource.finished.connect(freshNode.queue_free)
+	
+	return freshAudioSource
+
 func PlayUI(sfx: AudioSFX) -> AudioStreamPlayer:
 	if sfx == null:
 		return null
@@ -104,7 +116,7 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 		if sfx.voice_stealling:
 			match sfx.steal_strategy:
 				AudioSFX.StealStrategy.Oldest:
-					active_voices[sfx].pop_front().stop()
+					active_voices[sfx].pop_front().emit_signal("finished")
 					active_voices[sfx].push_back(source)
 				AudioSFX.StealStrategy.Furthest:
 					active_voices[sfx].push_back(source)
@@ -117,7 +129,7 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 						if distance > furthest_distance:
 							furthest_playback = playback
 							furthest_distance = distance
-					active_voices[sfx][furthest_playback].stop()
+					active_voices[sfx][furthest_playback].emit_signal("finished")
 					active_voices[sfx].remove_at(furthest_playback)
 	else:
 		active_voices[sfx] = []

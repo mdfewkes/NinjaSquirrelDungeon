@@ -227,7 +227,7 @@ func _play_sfx(player_sfx: PlayerSFX) -> void:
 		PlayerSFX.hurt:
 			AudioManager.PlaySFX(sfx_hurt, self)
 		PlayerSFX.footstep:
-			AudioManager.PlaySFX(sfx_footstep, self)
+			AudioManager.PlaySFX_at_position(sfx_footstep, global_position)
 		PlayerSFX.effort:
 			if float(current_hp) / float(max_hp) <= 0.25:
 				AudioManager.PlaySFX(sfx_effort_high, self)
