@@ -5,7 +5,7 @@ extends Node
 @onready var ui_template: AudioStreamPlayer = $UITemplate
 @onready var texture_rect: Sprite2D = $TextureRect
 
-var active_voices = {} # Dict AudioSFX : Array[AudioStreamPlayback]
+var active_voices = {} # Dict String : Array[AudioStreamPlayback]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mute"):
@@ -97,8 +97,10 @@ func _open_voice_available(sfx: AudioSFX) -> bool:
 	if Time.get_ticks_msec() - sfx.last_play_time < sfx.cooldown_time_msec:
 		return false
 	
-	if active_voices.has(sfx):
-		if sfx.max_voices > active_voices[sfx].size() or sfx.voice_stealling:
+	var group = sfx.resource_path if sfx.concurrency_group.is_empty() else sfx.concurrency_group
+	
+	if active_voices.has(group):
+		if sfx.max_voices > active_voices[group].size() or sfx.voice_stealling:
 			return true
 		else:
 			return false
@@ -108,32 +110,34 @@ func _open_voice_available(sfx: AudioSFX) -> bool:
 func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 	sfx.last_play_time = Time.get_ticks_msec()
 	
-	if active_voices.has(sfx):
-		if active_voices[sfx].size() < sfx.max_voices:
-			active_voices[sfx].push_back(source)
+	var group = sfx.resource_path if sfx.concurrency_group.is_empty() else sfx.concurrency_group
+	
+	if active_voices.has(group):
+		if active_voices[group].size() < sfx.max_voices:
+			active_voices[group].push_back(source)
 			return
 			
 		if sfx.voice_stealling:
 			match sfx.steal_strategy:
 				AudioSFX.StealStrategy.Oldest:
-					active_voices[sfx].pop_front().emit_signal("finished")
-					active_voices[sfx].push_back(source)
+					active_voices[group].pop_front().emit_signal("finished")
+					active_voices[group].push_back(source)
 				AudioSFX.StealStrategy.Furthest:
-					active_voices[sfx].push_back(source)
+					active_voices[group].push_back(source)
 					
 					var center = _get_listening_center()
 					var furthest_playback = -1
 					var furthest_distance = center.distance_to(source.global_position)
-					for playback in range(active_voices[sfx].size()):
-						var distance = center.distance_to(active_voices[sfx][playback].global_position)
+					for playback in range(active_voices[group].size()):
+						var distance = center.distance_to(active_voices[group][playback].global_position)
 						if distance > furthest_distance:
 							furthest_playback = playback
 							furthest_distance = distance
-					active_voices[sfx][furthest_playback].emit_signal("finished")
-					active_voices[sfx].remove_at(furthest_playback)
+					active_voices[group][furthest_playback].emit_signal("finished")
+					active_voices[group].remove_at(furthest_playback)
 	else:
-		active_voices[sfx] = []
-		active_voices[sfx].push_back(source)
+		active_voices[group] = []
+		active_voices[group].push_back(source)
 
 func _get_listening_center() -> Vector2:
 	var center = Vector2.ZERO

@@ -88,6 +88,7 @@ script = ExtResource("14_ihqbe")
 stream = SubResource("AudioStreamRandomizer_wwtew")
 max_voices = 2
 cooldown_time_msec = 200.0
+concurrency_group = "player_voice"
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tayva"]
@@ -130,6 +131,7 @@ script = ExtResource("14_ihqbe")
 volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_pka5o")
 max_voices = 1
+concurrency_group = "player_voice"
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_svyyo"]
@@ -148,6 +150,7 @@ script = ExtResource("14_ihqbe")
 volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_svyyo")
 max_voices = 1
+concurrency_group = "player_voice"
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mjssr"]
@@ -170,6 +173,7 @@ script = ExtResource("14_ihqbe")
 volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_mjssr")
 max_voices = 1
+concurrency_group = "player_voice"
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_gwnis"]

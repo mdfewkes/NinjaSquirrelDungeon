@@ -11,5 +11,6 @@ enum StealStrategy {Oldest, Furthest}
 @export var steal_strategy: StealStrategy = StealStrategy.Oldest
 @export var cooldown_time_msec: float = 10
 @export var trigger_when_out_of_range:bool = false
+@export var concurrency_group:String = ""
 
 var last_play_time:float = 0
