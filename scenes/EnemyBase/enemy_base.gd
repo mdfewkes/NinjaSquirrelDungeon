@@ -55,6 +55,8 @@ func _on_hurt(hit_box: HitBox) -> void:
 	current_hp -= hit_box.damage
 	if current_hp <= 0:
 		_on_death()
+	
+	velocity = hit_box.global_position.direction_to(global_position).normalized() * hit_box.knockback * knockback_multiply
 
 
 ## Called when HP reaches 0. Override in subclasses for custom death behavior.

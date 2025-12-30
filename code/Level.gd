@@ -7,7 +7,7 @@ extends Node2D
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 var rooms: Array[Room]
-var current_room: Room = null
+static var current_room: Room = null
 static var light_level: float = 1
 
 func _ready() -> void:

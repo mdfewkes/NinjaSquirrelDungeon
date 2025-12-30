@@ -55,5 +55,4 @@ func is_player_in_range() -> bool:
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
 	
-	velocity = hit_box.global_position.direction_to(global_position).normalized() * hit_box.knockback * knockback_multiply
 	playback.start("knockbackState")
