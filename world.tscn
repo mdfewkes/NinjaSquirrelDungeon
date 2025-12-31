@@ -1684,36 +1684,37 @@ position = Vector2(1056, -72)
 [node name="Bush24" parent="Rooms/PatrolRoom/Environment" instance=ExtResource("3_tlwt5")]
 position = Vector2(1056, -208)
 
-[node name="Room" type="Area2D" parent="Rooms"]
+[node name="WaterRoom" type="Area2D" parent="Rooms"]
 position = Vector2(-492, 347)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("20_bc84e")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/WaterRoom"]
+visible = false
 position = Vector2(-28, 0)
 shape = SubResource("RectangleShape2D_bo7i5")
 
-[node name="Lights" type="Node2D" parent="Rooms/Room"]
+[node name="Lights" type="Node2D" parent="Rooms/WaterRoom"]
 position = Vector2(492, -347)
 
-[node name="Light" parent="Rooms/Room/Lights" instance=ExtResource("8_gbfbk")]
+[node name="Light" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
 position = Vector2(-520, 195)
 
-[node name="Light2" parent="Rooms/Room/Lights" instance=ExtResource("8_gbfbk")]
+[node name="Light2" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
 position = Vector2(-512, 521)
 
-[node name="Light3" parent="Rooms/Room/Lights" instance=ExtResource("8_gbfbk")]
+[node name="Light3" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
 position = Vector2(-184, 181)
 
-[node name="Light4" parent="Rooms/Room/Lights" instance=ExtResource("8_gbfbk")]
+[node name="Light4" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
 position = Vector2(-183, 527)
 
-[node name="Enemies" type="Node2D" parent="Rooms/Room"]
+[node name="Enemies" type="Node2D" parent="Rooms/WaterRoom"]
 position = Vector2(492, -347)
 
-[node name="Environment" type="Node2D" parent="Rooms/Room"]
+[node name="Environment" type="Node2D" parent="Rooms/WaterRoom"]
 position = Vector2(492, -347)
 
 [editable path="Rooms/BatRoom/Environment/WallSpikes"]

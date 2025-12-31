@@ -11,6 +11,10 @@ uniform float lightness = 0.9;
 uniform float outline_width = 2.0;
 uniform vec4 outline_color: source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
+uniform float rise_fall_speed = 1.4;
+uniform float rise_fall_amount = 1.6;
+
+
 // The size of each square cell normalized for uv
 const float tile_size = 1.0 / 64.0;
 
@@ -56,7 +60,10 @@ void fragment() {
 	COLOR *= lightness;
 
 	// take the alpha value from the tile texture, so we can give firm edges to the water
-	vec2 texture_uv = UV + noise2 * edge_distortion_amount;
+	vec2 rise_fall_modifier = (sin(TIME * rise_fall_speed) * 2.0 - 1.0) * rise_fall_amount * TEXTURE_PIXEL_SIZE;
+	if (cell_uv.x < 0.5) rise_fall_modifier.x *= -1.0;
+	if (cell_uv.y < 0.5) rise_fall_modifier.y *= -1.0;
+	vec2 texture_uv = UV + noise2 * edge_distortion_amount + rise_fall_modifier;
 	COLOR.a = texture(TEXTURE, texture_uv).a;
 	
 	// finally, if there's an outline, we check if the next pixel over would be transparent and use the outline color if so
