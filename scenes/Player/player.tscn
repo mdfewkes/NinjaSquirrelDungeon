@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=172 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -67,6 +67,7 @@
 [ext_resource type="AudioStream" uid="uid://2m2ci3x0bkr0" path="res://scenes/Player/Audio/hero_effort_big_08.ogg" id="46_4bupc"]
 [ext_resource type="AudioStream" uid="uid://bijevpd38ruyb" path="res://scenes/Player/Audio/hero_effort_big_09.ogg" id="47_5y20s"]
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
+[ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -1490,7 +1491,7 @@ transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTrans
 graph_offset = Vector2(98.18659, 210.82051)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
-graph_offset = Vector2(262.08023, 27.840065)
+graph_offset = Vector2(282, 58)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
@@ -2375,6 +2376,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2", "action_3") groups=["player"]]
+position = Vector2(539, 298)
 collision_layer = 2
 collision_mask = 129
 motion_mode = 1
@@ -2473,7 +2475,10 @@ target_position = Vector2(-40, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="TailHookSmoke" parent="." instance=ExtResource("25_cgmen")]
+[node name="TailHookSmoke_old" parent="." instance=ExtResource("25_cgmen")]
+visible = false
+
+[node name="TailHookSmoke" parent="." instance=ExtResource("60_f8f8k")]
 
 [node name="TailHookSparks" parent="." instance=ExtResource("26_fqhit")]
 
