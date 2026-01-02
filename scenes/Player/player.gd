@@ -255,16 +255,25 @@ func play_sfx_effort() -> void:
 func can_fall(_area: Area2D) -> bool:
 	return not current_action_state
 
+
 func _on_fall_start(_pit: Area2D) -> void:
 	current_state = PlayerState.Falling
+	# it looks better if we rotate so the player's head points
+	# in the direction they were moving. that way they're more
+	# likely to be firmly inside the pit and not overlapping the
+	# outside edges
+	rotation = input_vector.angle() + PI / 2.0
 	velocity = Vector2.ZERO
 	input_vector = Vector2.ZERO
+	tail.hide()
 	if not fall_detector.sfx_on_fall:
 		play_sfx_hurt()
 
 
 func _on_fall_complete() -> void:
 	current_state = PlayerState.Move
+	rotation = 0
+	tail.show()
 	if god_mode:
 		return
 	current_hp -= 1
