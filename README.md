@@ -48,7 +48,7 @@ Sample/recording based SFX
 
 Prefer non-chiptune music
 
-##Lore
+## Lore
 
 Check out this file for more story ideas:
 [Lore Document](https://github.com/mdfewkes/NinjaSquirrelDungeon/blob/5d2fad5e696f5528131e1a9ab5811f957c188c7f/lore.md)
