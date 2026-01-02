@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=179 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -30,7 +30,6 @@
 [ext_resource type="AudioStream" uid="uid://7rfh0s6na6cl" path="res://scenes/Player/Audio/hero_effort_low_12.ogg" id="23_j0f1q"]
 [ext_resource type="AudioStream" uid="uid://cclsghsh6as2l" path="res://scenes/Player/Audio/sword-slash-1.ogg" id="24_7iww4"]
 [ext_resource type="AudioStream" uid="uid://ctft1kjpriox6" path="res://scenes/Player/Audio/hero_effort_low_13.ogg" id="24_ksjgv"]
-[ext_resource type="PackedScene" uid="uid://ckfyuwake6yu8" path="res://scenes/Effects/smoke_burst.tscn" id="25_cgmen"]
 [ext_resource type="Script" uid="uid://tfabbyx4daf2" path="res://scenes/Player/TailWhipActionState.gd" id="25_jn0uf"]
 [ext_resource type="AudioStream" uid="uid://cffk64qcw8m2x" path="res://scenes/Player/Audio/hero_effort_low_03.ogg" id="25_l5jmw"]
 [ext_resource type="AudioStream" uid="uid://b372mi6tlcp5y" path="res://scenes/Player/Audio/sword-slash-2.ogg" id="25_ploos"]
@@ -67,7 +66,8 @@
 [ext_resource type="AudioStream" uid="uid://2m2ci3x0bkr0" path="res://scenes/Player/Audio/hero_effort_big_08.ogg" id="46_4bupc"]
 [ext_resource type="AudioStream" uid="uid://bijevpd38ruyb" path="res://scenes/Player/Audio/hero_effort_big_09.ogg" id="47_5y20s"]
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
-[ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
+[ext_resource type="PackedScene" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
+[ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -273,6 +273,42 @@ tracks/7/keys = {
 "update": 0,
 "values": [7.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite2D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.34994298, 0.34994298)]
+}
 
 [sub_resource type="Animation" id="Animation_jn0uf"]
 resource_name = "cloaked"
@@ -311,6 +347,79 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_kxlis"]
+resource_name = "falling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.4822044, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.923358, 3.0314329),
+"update": 0,
+"values": [0.0, 1.5760323145508799]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3789289, 3.2490091),
+"update": 0,
+"values": [Vector2(0.34994298, 0.34994298), Vector2(0.01, 0.01)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail/TailAnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("hidden"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.35355327, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vtle1"]
@@ -1215,6 +1324,7 @@ tracks/4/keys = {
 _data = {
 &"RESET": SubResource("Animation_gwnis"),
 &"cloaked": SubResource("Animation_jn0uf"),
+&"falling": SubResource("Animation_kxlis"),
 &"idle_down": SubResource("Animation_vtle1"),
 &"idle_left": SubResource("Animation_btcbx"),
 &"idle_right": SubResource("Animation_fhl08"),
@@ -1372,6 +1482,9 @@ sync = true
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nbg44"]
 animation = &"cloaked"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f8f8k"]
+animation = &"falling"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5htga"]
 advance_mode = 2
 
@@ -1392,6 +1505,19 @@ advance_expression = "current_state == PlayerState.Cloaked"
 advance_mode = 2
 advance_expression = "current_state != PlayerState.Cloaked"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d7mgq"]
+advance_mode = 2
+advance_expression = "current_state == PlayerState.Falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_23nhs"]
+priority = 2
+advance_mode = 2
+advance_expression = "current_state == PlayerState.Falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxlis"]
+advance_mode = 2
+advance_expression = "current_state != PlayerState.Falling"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dkpta"]
 states/IdleState/node = SubResource("AnimationNodeBlendSpace2D_fhl08")
 states/IdleState/position = Vector2(483.65625, 68)
@@ -1399,7 +1525,9 @@ states/RunState/node = SubResource("AnimationNodeBlendSpace2D_apopc")
 states/RunState/position = Vector2(484.75, 221)
 states/cloaked/node = SubResource("AnimationNodeAnimation_nbg44")
 states/cloaked/position = Vector2(715.6497, 79.24)
-transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_5htga"), "IdleState", "RunState", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "RunState", "IdleState", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "IdleState", "cloaked", SubResource("AnimationNodeStateMachineTransition_jn0uf"), "cloaked", "IdleState", SubResource("AnimationNodeStateMachineTransition_nbg44")]
+states/falling/node = SubResource("AnimationNodeAnimation_f8f8k")
+states/falling/position = Vector2(692.3247, 195.05)
+transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_5htga"), "IdleState", "RunState", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "RunState", "IdleState", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "IdleState", "cloaked", SubResource("AnimationNodeStateMachineTransition_jn0uf"), "cloaked", "IdleState", SubResource("AnimationNodeStateMachineTransition_nbg44"), "RunState", "falling", SubResource("AnimationNodeStateMachineTransition_d7mgq"), "IdleState", "falling", SubResource("AnimationNodeStateMachineTransition_23nhs"), "falling", "IdleState", SubResource("AnimationNodeStateMachineTransition_kxlis")]
 graph_offset = Vector2(66.82473, 10.049998)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o28un"]
@@ -1488,10 +1616,10 @@ states/RollState/position = Vector2(612, -17.5)
 states/TailWhipAction/node = SubResource("AnimationNodeBlendSpace2D_jn0uf")
 states/TailWhipAction/position = Vector2(528.19543, 316.0826)
 transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "MoveState", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_dkpta"), "KatanaActionState", "MoveState", SubResource("AnimationNodeStateMachineTransition_pisgm"), "MoveState", "RollState", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "RollState", "MoveState", SubResource("AnimationNodeStateMachineTransition_qemgg"), "RollState", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_4ntmi"), "MoveState", "TailWhipAction", SubResource("AnimationNodeStateMachineTransition_4ni0x"), "TailWhipAction", "MoveState", SubResource("AnimationNodeStateMachineTransition_kp55c"), "TailWhipAction", "KatanaActionState", SubResource("AnimationNodeStateMachineTransition_cgmen"), "TailWhipAction", "RollState", SubResource("AnimationNodeStateMachineTransition_fqhit")]
-graph_offset = Vector2(98.18659, 210.82051)
+graph_offset = Vector2(-8.732811, 5.23059)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b1ygp"]
-graph_offset = Vector2(282, 58)
+graph_offset = Vector2(240.96034, 63.259094)
 nodes/output/position = Vector2(1020, 140)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pisgm")
 nodes/StateMachine/position = Vector2(675.92456, 85.259094)
@@ -2349,11 +2477,27 @@ tracks/8/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_bbyvq"]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-100]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e8txv"]
 _data = {
 &"RESET": SubResource("Animation_fqhit"),
 &"cloaked": SubResource("Animation_nbg44"),
 &"down": SubResource("Animation_e6s7e"),
+&"hidden": SubResource("Animation_bbyvq"),
 &"left": SubResource("Animation_e8txv"),
 &"right": SubResource("Animation_7iww4"),
 &"up": SubResource("Animation_ploos"),
@@ -2374,6 +2518,8 @@ gradient = SubResource("Gradient_1r7mf")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1r7mf"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("action_1", "action_2", "action_3") groups=["player"]]
 position = Vector2(539, 298)
@@ -2475,9 +2621,6 @@ target_position = Vector2(-40, 0)
 collision_mask = 8
 collide_with_areas = true
 
-[node name="TailHookSmoke_old" parent="." instance=ExtResource("25_cgmen")]
-visible = false
-
 [node name="TailHookSmoke" parent="." instance=ExtResource("60_f8f8k")]
 
 [node name="TailHookSparks" parent="." instance=ExtResource("26_fqhit")]
@@ -2523,5 +2666,20 @@ energy = 0.4
 texture = SubResource("GradientTexture2D_f8f8k")
 texture_scale = 7.0
 
+[node name="FallDetector" type="Area2D" parent="."]
+position = Vector2(-2, -7)
+collision_layer = 0
+collision_mask = 64
+monitorable = false
+script = ExtResource("68_f8f8k")
+default_animation_enabled = false
+fall_time = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+position = Vector2(-3, -19)
+shape = SubResource("CircleShape2D_1r7mf")
+
 [connection signal="direction_changed" from="." to="Tail" method="_on_player_direction_changed"]
 [connection signal="shuriken_throw" from="Shiruken ActionState" to="Tail" method="_on_player_shuriken_throw"]
+[connection signal="area_entered" from="FallDetector" to="FallDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="FallDetector" to="FallDetector" method="_on_area_exited"]

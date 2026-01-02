@@ -1,0 +1,98 @@
+class_name FallDetector
+extends Area2D
+
+signal entered_pit(pit: Area2D)
+signal exited_pit(pit: Area2D)
+signal fell_into_pit
+
+const FALL_ROTATE = 0.0
+const FALL_SHRINK = 0.2
+const FALL_COLOR = Color.BLACK
+
+## If this is detecting falls for something other than its parent node, you can set it here
+@export var target: Node2D
+
+## If enabled, the parent will be spun and shrunk and darkened, then hit and then returned to its last position before falling
+@export var default_animation_enabled: bool = true
+
+## If enabled, the signals will be sent even if falling is disabled
+@export var signals_enabled: bool = true
+
+## If enabled, the target's position will be tracked and restored after a fall
+@export var position_tracking_enabled: bool = true
+
+## If set, this will be played when the target falls
+@export var sfx_on_fall: AudioSFX
+
+## If set, the target will be moved towards the center of the pit (whether the default animation is enabled or not)
+@export var move_toward_center: bool = true
+
+## How long before the position is reset and the fall signal sent after entering the area
+@export var fall_time: float = 1.0
+
+var falling := false
+var pit_center: Vector2
+
+var last_safe_position: Vector2
+var last_safe_time: int
+
+
+func _ready() -> void:
+	if not target:
+		target = get_parent()
+
+
+func _process(delta: float) -> void:
+	var now = Time.get_ticks_msec()
+	if not falling and now > last_safe_time + 1000:
+		last_safe_time = now
+		last_safe_position = target.position
+	if falling and move_toward_center and pit_center:
+		var d = target.position.distance_to(pit_center)
+		target.position.x = move_toward(target.position.x, pit_center.x, delta * d)
+		target.position.y = move_toward(target.position.y, pit_center.y, delta * d)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if falling:
+		return
+	if target.has_method("can_fall") and not target.can_fall(area):
+		return
+	falling = true
+	if signals_enabled:
+		emit_signal("entered_pit", area)
+	if default_animation_enabled:
+		call_deferred("_start_target_falling")
+	if sfx_on_fall:
+		AudioManager.PlaySFX(sfx_on_fall, target)
+	pit_center = target.get_parent().to_local(area.global_position)
+
+	await get_tree().create_timer(fall_time).timeout
+
+	target.position = last_safe_position
+	falling = false
+	if signals_enabled:
+		emit_signal("fell_into_pit")
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if signals_enabled:
+		emit_signal("exited_pit", area)
+
+
+func _start_target_falling() -> void:
+	var original_modulate: Color = target.modulate
+	var original_scale: Vector2 = target.scale
+	var original_rotation_degrees: float = target.rotation_degrees
+	
+	var t = create_tween()
+	t.set_ease(Tween.EASE_IN)
+	t.parallel().tween_property(target, "modulate", FALL_COLOR, fall_time)
+	t.parallel().tween_property(target, "rotation_degrees", original_rotation_degrees + FALL_ROTATE, fall_time)
+	t.parallel().tween_property(target, "scale", original_scale * FALL_SHRINK, fall_time)
+
+	await t.finished
+	
+	target.scale = original_scale
+	target.modulate = original_modulate
+	target.rotation_degrees = original_rotation_degrees

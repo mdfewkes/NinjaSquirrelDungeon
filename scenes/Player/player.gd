@@ -22,7 +22,7 @@ enum PlayerSFX {hurt, footstep, effort}
 @export var action_3: ActionState
 var current_action_state = null
 
-enum PlayerState {Move, Roll, Action, Cloaked}
+enum PlayerState {Move, Roll, Action, Cloaked, Falling}
 var current_state = PlayerState.Move
 
 var input_vector: Vector2 = Vector2.ZERO
@@ -40,6 +40,7 @@ var last_action_time: float
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var shuriken_spawn: Node2D = $ShurikenSpawn
 @onready var tail: Tail = $Tail
+@onready var fall_detector: FallDetector = $FallDetector
 
 const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
@@ -52,12 +53,16 @@ func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
 	player_death.connect(_on_player_death)
+	fall_detector.entered_pit.connect(_on_fall_start)
+	fall_detector.fell_into_pit.connect(_on_fall_complete)
 	InventoryManager.reset()
 
 func _physics_process(delta: float) -> void:
 	if not is_cutscene_squirrel:
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	
+	if current_state == PlayerState.Falling:
+		return
+
 	match current_state:
 		PlayerState.Move:
 			_move_state()
@@ -218,6 +223,7 @@ func _process_cloaking(_delta:float) -> void:
 			tail.set_cloak_amount(1.0)
 			current_state = PlayerState.Cloaked
 
+
 func is_cloaked() -> bool:
 	return current_state == PlayerState.Cloaked
 
@@ -244,3 +250,26 @@ func play_sfx_footstep() -> void:
 
 func play_sfx_effort() -> void:
 	_play_sfx(PlayerSFX.effort)
+
+
+func can_fall(_area: Area2D) -> bool:
+	return not current_action_state
+
+func _on_fall_start(_pit: Area2D) -> void:
+	current_state = PlayerState.Falling
+	velocity = Vector2.ZERO
+	input_vector = Vector2.ZERO
+	if not fall_detector.sfx_on_fall:
+		play_sfx_hurt()
+
+
+func _on_fall_complete() -> void:
+	current_state = PlayerState.Move
+	if god_mode:
+		return
+	current_hp -= 1
+	update_health.emit(current_hp, max_hp)
+	effect_animation_player.play("blink")
+	if current_hp <= 0:
+		call_deferred("_die")  # extra safe; now definitely outside physics
+	

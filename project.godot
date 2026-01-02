@@ -123,6 +123,9 @@ action_3={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Items"
+2d_physics/layer_7="Death Hole"
+2d_physics/layer_8="Water"
 
 [rendering]
 
