@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cftc8wnrrad1q"]
+
+[ext_resource type="Script" uid="uid://bdvc3gmrqukax" path="res://scenes/Screens/Lore_Screen/CommandTile/multi_command_tile.gd" id="1_3qira"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aidko"]
+size = Vector2(64, 64)
+
+[node name="MultiCommandTile" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3qira")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aidko")
+debug_color = Color(0.24412006, 0.51185817, 0.980342, 0.41960785)
