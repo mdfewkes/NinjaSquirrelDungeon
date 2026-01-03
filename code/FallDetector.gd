@@ -1,8 +1,8 @@
 class_name FallDetector
 extends Area2D
 
-signal entered_pit(pit: Area2D)
-signal exited_pit(pit: Area2D)
+signal entered_pit(pit: Node2D)
+signal exited_pit(pit: Node2D)
 signal fell_into_pit
 
 const FALL_ROTATE = 0.0
@@ -40,6 +40,10 @@ var last_safe_time: int
 func _ready() -> void:
 	if not target:
 		target = get_parent()
+	connect("area_entered", _on_area_entered)
+	connect("area_exited", _on_area_exited)
+	connect("body_entered", _on_body_entered)
+	connect("body_exited", _on_body_exited)
 
 
 func _process(delta: float) -> void:
@@ -54,18 +58,22 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	_on_entered(area)
+
+
+func _on_entered(area_or_body: Node2D) -> void:
 	if falling:
 		return
-	if target.has_method("can_fall") and not target.can_fall(area):
+	if target.has_method("can_fall") and not target.can_fall(area_or_body):
 		return
 	falling = true
 	if signals_enabled:
-		emit_signal("entered_pit", area)
+		emit_signal("entered_pit", area_or_body)
 	if default_animation_enabled:
 		call_deferred("_start_target_falling")
 	if sfx_on_fall:
 		AudioManager.PlaySFX(sfx_on_fall, target)
-	pit_center = target.get_parent().to_local(area.global_position)
+	pit_center = target.get_parent().to_local(area_or_body.global_position)
 
 	await get_tree().create_timer(fall_time).timeout
 
@@ -96,3 +104,12 @@ func _start_target_falling() -> void:
 	target.scale = original_scale
 	target.modulate = original_modulate
 	target.rotation_degrees = original_rotation_degrees
+
+
+func _on_body_entered(body) -> void:
+	_on_entered(body)
+
+
+func _on_body_exited(body) -> void:
+	if signals_enabled:
+		emit_signal("exited_pit", body)

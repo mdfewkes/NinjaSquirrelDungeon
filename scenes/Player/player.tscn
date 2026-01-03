@@ -2644,17 +2644,16 @@ texture_scale = 7.0
 
 [node name="FallDetector" type="Area2D" parent="."]
 position = Vector2(-5, -12)
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
-monitorable = false
 script = ExtResource("68_f8f8k")
 default_animation_enabled = false
-fall_time = 2.0
+move_toward_center = false
+fall_time = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
 shape = SubResource("CircleShape2D_1r7mf")
+debug_color = Color(0.7484302, 0.29314187, 0.885395, 0.41960785)
 
 [connection signal="direction_changed" from="." to="Tail" method="_on_player_direction_changed"]
 [connection signal="shuriken_throw" from="Shiruken ActionState" to="Tail" method="_on_player_shuriken_throw"]
-[connection signal="area_entered" from="FallDetector" to="FallDetector" method="_on_area_entered"]
-[connection signal="area_exited" from="FallDetector" to="FallDetector" method="_on_area_exited"]
