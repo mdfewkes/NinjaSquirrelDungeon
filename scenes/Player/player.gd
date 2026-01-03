@@ -46,6 +46,7 @@ const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
 signal update_health(current_health, max_health)
 signal player_death
+var is_dying: bool = false
 signal direction_changed(new_direction)
 
 func _ready() -> void:
@@ -120,12 +121,19 @@ func _cloaked_state() -> void:
 	_check_and_set_action_state()
 
 func _die() -> void:
+	var tween = get_tree().create_tween()
+	if last_input_vector.x < 0:
+		tween.tween_property(self, "skew", deg_to_rad(-90), 0.75)
+	else: 
+		tween.tween_property(self, "skew", deg_to_rad(90), 0.75)
+	await tween.finished
 	var timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1.0
+	timer.wait_time = 1.5
 	timer.one_shot = true
 	timer.start()
 	await timer.timeout
+	
 	emit_signal("player_death")
 	# later you can add queue_free or disable collisions here
 
@@ -171,12 +179,15 @@ func _check_and_set_action_state() -> void:
 func _on_hurt(hitbox: HitBox) -> void:
 	if god_mode:
 		return
+	if is_dying:
+		return
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
 	play_sfx_hurt()
 
 	if current_hp <= 0:
+		is_dying = true
 		call_deferred("_die")  # extra safe; now definitely outside physics
 
 func _on_hit(hurtbox: HurtBox):
