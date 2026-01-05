@@ -86,7 +86,10 @@ func chase_state():
 		state = States.IDLE
 
 func get_num_patrol_points() -> int:
-	return max(patrol_points.size(), patrol_path.curve.point_count)
+	if patrol_path:
+		return patrol_path.curve.point_count
+	else:
+		return patrol_points.size()
 
 func get_patrol_point_coords(idx: int) -> Vector2:
 	if patrol_path:
