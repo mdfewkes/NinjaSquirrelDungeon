@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbesap02l5gow"
+path="res://.godot/imported/bat death sound.ogg-3aa1e6c3db78db42d2c3eb1f831925f1.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/Bat/Audio/bat death sound.ogg"
+dest_files=["res://.godot/imported/bat death sound.ogg-3aa1e6c3db78db42d2c3eb1f831925f1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

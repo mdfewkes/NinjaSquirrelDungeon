@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ba8d6nkfa0su0"
+path="res://.godot/imported/bat call 4.ogg-77ae7abefb159109dd36899f62ca7b4c.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/Bat/Audio/bat call 4.ogg"
+dest_files=["res://.godot/imported/bat call 4.ogg-77ae7abefb159109dd36899f62ca7b4c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
