@@ -40,6 +40,9 @@ var current_patrol_point := 0:
 func _ready() -> void:
 	super._ready()
 	
+	if get_parent() is Path2D and not patrol_path:
+		patrol_path = get_parent()
+
 	patrol_timer.wait_time = get_patrol_wait_time(current_patrol_point)
 	animation_tree.active = true
 	
