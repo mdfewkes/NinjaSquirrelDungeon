@@ -242,9 +242,9 @@ height = 46.0
 radius = 40.0
 height = 100.79
 
-[node name="PatrollingEnemy_New" instance=ExtResource("1_xy51q")]
-collision_layer = 0
-collision_mask = 7
+[node name="PatrollingEnemy" instance=ExtResource("1_xy51q")]
+collision_layer = 4
+collision_mask = 135
 script = ExtResource("2_6d2yr")
 random_patrol = false
 patrol_point_radius = 10

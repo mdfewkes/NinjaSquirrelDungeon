@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=42 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://denh52bnlpwqc" path="res://scenes/Tileset/Auto_tile_Sewer.png" id="8_wjb0r"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="9_cbp6q"]
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="10_bo7i5"]
-[ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="10_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bfsjclbxrvnhr" path="res://scenes/Items/small_key.tscn" id="13_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="13_bc84e"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="14_70uel"]
@@ -141,29 +140,11 @@ size = Vector2(32, 392)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_il2jm"]
 size = Vector2(1312, 587)
 
-[sub_resource type="Resource" id="Resource_wukud"]
-script = ExtResource("10_wse8f")
-duration = 5.0
-coordinates = Vector2(1184, -16)
-metadata/_custom_type_script = "uid://btp4qrx8g0uin"
-
-[sub_resource type="Resource" id="Resource_il2jm"]
-script = ExtResource("10_wse8f")
-duration = 5.0
-coordinates = Vector2(1184, -208)
-metadata/_custom_type_script = "uid://btp4qrx8g0uin"
-
-[sub_resource type="Resource" id="Resource_wjb0r"]
-script = ExtResource("10_wse8f")
-duration = 5.0
-coordinates = Vector2(1824, -208)
-metadata/_custom_type_script = "uid://btp4qrx8g0uin"
-
-[sub_resource type="Resource" id="Resource_mc2jv"]
-script = ExtResource("10_wse8f")
-duration = 5.0
-coordinates = Vector2(1824, -16)
-metadata/_custom_type_script = "uid://btp4qrx8g0uin"
+[sub_resource type="Curve2D" id="Curve2D_o3ebs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1186, -202, 0, 0, 0, 0, 1823, -199, 0, 0, 0, 0, 1827, -15, 0, 0, 0, 0, 1182, -18)
+}
+point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo7i5"]
 size = Vector2(1079, 1000)
@@ -538,11 +519,16 @@ position = Vector2(1175, -155)
 
 [node name="Enemies" type="Node2D" parent="Rooms/PatrolRoom"]
 
-[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" instance=ExtResource("21_bc84e")]
+[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" node_paths=PackedStringArray("patrol_path") instance=ExtResource("21_bc84e")]
 position = Vector2(1184, -16)
 motion_mode = 1
 patrol_point_radius = 5
-patrol_points = Array[ExtResource("10_wse8f")]([SubResource("Resource_wukud"), SubResource("Resource_il2jm"), SubResource("Resource_wjb0r"), SubResource("Resource_mc2jv")])
+default_wait_time = 5.0
+patrol_path = NodePath("../PatrolPath")
+patrol_wait_times = Array[float]([])
+
+[node name="PatrolPath" type="Path2D" parent="Rooms/PatrolRoom/Enemies"]
+curve = SubResource("Curve2D_o3ebs")
 
 [node name="Environment" type="Node2D" parent="Rooms/PatrolRoom"]
 
