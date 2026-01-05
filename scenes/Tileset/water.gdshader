@@ -32,6 +32,13 @@ vec2 get_cell_uv(vec2 uv, vec2 pixel_size) {
 	return ut;
 }
 
+vec2 get_cell(vec2 uv, vec2 pixel_size) {
+	vec2 ut = uv;
+	ut.x = mod(1.0 - uv.x, pixel_size.x / tile_size) / pixel_size.x * tile_size;
+	ut.y = mod(1.0 - uv.y, pixel_size.y / tile_size) / pixel_size.y * tile_size;
+	return ut;
+}
+
 bool is_edge_point(vec2 uv, vec2 pixel_size) {
 	return false;
 }
@@ -60,10 +67,11 @@ void fragment() {
 	COLOR *= lightness;
 
 	// take the alpha value from the tile texture, so we can give firm edges to the water
-	vec2 rise_fall_modifier = (sin(TIME * rise_fall_speed) * 2.0 - 1.0) * rise_fall_amount * TEXTURE_PIXEL_SIZE;
+	vec2 rise_fall_modifier = (sin(TIME * rise_fall_speed) * 2.0 - 1.0) * rise_fall_amount * (TEXTURE_PIXEL_SIZE * tile_size);
 	if (cell_uv.x < 0.5) rise_fall_modifier.x *= -1.0;
 	if (cell_uv.y < 0.5) rise_fall_modifier.y *= -1.0;
 	vec2 texture_uv = UV + noise2 * edge_distortion_amount + rise_fall_modifier;
+	
 	COLOR.a = texture(TEXTURE, texture_uv).a;
 	
 	// finally, if there's an outline, we check if the next pixel over would be transparent and use the outline color if so
