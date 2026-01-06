@@ -45,36 +45,45 @@ start_with_focus = true
 
 [node name="TestSneak" type="Button" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 154.0
-offset_right = 240.0
-offset_bottom = 218.0
+offset_left = 63.0
+offset_top = 53.0
+offset_right = 247.0
+offset_bottom = 117.0
 text = "Test Sneaking"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://boss_test1.tscn"
 
 [node name="TestDialog" type="Button" parent="."]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 334.0
-offset_right = 242.0
-offset_bottom = 398.0
+offset_left = 927.0
+offset_top = 42.0
+offset_right = 1111.0
+offset_bottom = 106.0
 text = "Test Dialog System"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/DialogueMuseum/dialogue_museum.tscn"
-start_with_focus = true
 
 [node name="TestDartmunk" type="Button" parent="."]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 242.0
-offset_right = 241.0
-offset_bottom = 306.0
+offset_left = 64.0
+offset_top = 141.0
+offset_right = 248.0
+offset_bottom = 205.0
 text = "Test Dartmunks
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dartmunk/dartmunk_arena.tscn"
-start_with_focus = true
+
+[node name="TestCutscene" type="Button" parent="."]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 135.0
+offset_right = 1111.0
+offset_bottom = 199.0
+text = "Test Cutscene
+"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_scene.tscn"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 0
