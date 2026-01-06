@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=180 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -68,6 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
 [ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
+[ext_resource type="Texture2D" uid="uid://dwk7dp54yxm2o" path="res://scenes/Player/Art/blob-shadow.png" id="69_d7mgq"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -2511,6 +2512,12 @@ sfx_effort_high = SubResource("Resource_klqur")
 action_1 = NodePath("Katana ActionState")
 action_2 = NodePath("Shiruken ActionState")
 action_3 = NodePath("Tail Whip ActionState")
+
+[node name="BlobShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.50980395)
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("69_d7mgq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
