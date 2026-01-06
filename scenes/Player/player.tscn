@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=181 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -177,6 +177,9 @@ stream = SubResource("AudioStreamRandomizer_mjssr")
 max_voices = 1
 concurrency_group = "player_voice"
 metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="Gradient" id="Gradient_d7mgq"]
+colors = PackedColorArray(0, 0, 0, 0.50980395, 0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 length = 0.001
@@ -2518,6 +2521,17 @@ modulate = Color(1, 1, 1, 0.50980395)
 z_index = -1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("69_d7mgq")
+
+[node name="Footprints" type="CPUParticles2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+amount = 16
+texture = ExtResource("69_d7mgq")
+lifetime = 4.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.08
+scale_amount_max = 0.08
+color_ramp = SubResource("Gradient_d7mgq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
