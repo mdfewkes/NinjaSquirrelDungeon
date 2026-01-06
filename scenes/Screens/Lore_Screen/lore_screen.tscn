@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://betelkdbjb1w1"]
+[gd_scene load_steps=64 format=4 uid="uid://betelkdbjb1w1"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_6lrmm"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_my32b"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="7_pqsbu"]
 [ext_resource type="Script" uid="uid://butma5vktn1g3" path="res://scenes/Screens/Lore_Screen/Lore_UI/lore_control.gd" id="7_unxxd"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="8_q0m04"]
-[ext_resource type="PackedScene" uid="uid://dnxd6bdx6nat6" path="res://scenes/Screens/Lore_Screen/CommandTile/command_tile.tscn" id="9_2e27m"]
 [ext_resource type="PackedScene" uid="uid://cftc8wnrrad1q" path="res://scenes/Screens/Lore_Screen/CommandTile/multi_command_tile.tscn" id="13_q0m04"]
 [ext_resource type="Script" uid="uid://cb6b58u1edskd" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/stop_command.gd" id="14_51g28"]
 [ext_resource type="Script" uid="uid://bhlle456v6wqw" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_right_command.gd" id="15_4l6ql"]
+[ext_resource type="Script" uid="uid://b8xqcwgg7umb4" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_up_command.gd" id="16_51g28"]
+[ext_resource type="Script" uid="uid://tgsqlmentxs2" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_down_command.gd" id="16_vfml2"]
+[ext_resource type="Script" uid="uid://dy0qluae44kso" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_left_command.gd" id="17_gjre2"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -1036,30 +1038,6 @@ shape = SubResource("RectangleShape2D_vfml2")
 
 [node name="CommandTiles" type="Node2D" parent="."]
 
-[node name="CommandTile" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(570, 337)
-trigger_direction = Vector2(1, 0)
-
-[node name="CommandTile2" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(1376, 356)
-trigger_direction = Vector2(0, -1)
-
-[node name="CommandTile3" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(1376, 225)
-trigger_direction = Vector2(1, 0)
-
-[node name="CommandTile4" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(1635, 225)
-trigger_direction = Vector2(0, 1)
-
-[node name="CommandTile5" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(1633, 485)
-trigger_direction = Vector2(-1, 0)
-
-[node name="CommandTile6" parent="CommandTiles" instance=ExtResource("9_2e27m")]
-position = Vector2(1376, 485)
-trigger_direction = Vector2(0, -1)
-
 [node name="MultiCommandTile" parent="CommandTiles" instance=ExtResource("13_q0m04")]
 position = Vector2(844, 340)
 
@@ -1072,11 +1050,53 @@ metadata/_custom_type_script = "uid://cb6b58u1edskd"
 script = ExtResource("15_4l6ql")
 metadata/_custom_type_script = "uid://bhlle456v6wqw"
 
-[connection signal="player_directed" from="CommandTiles/CommandTile" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="CommandTiles/CommandTile2" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="CommandTiles/CommandTile3" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="CommandTiles/CommandTile4" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="CommandTiles/CommandTile5" to="Player" method="_on_player_directed"]
-[connection signal="player_directed" from="CommandTiles/CommandTile6" to="Player" method="_on_player_directed"]
+[node name="MultiCommandTile2" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(570, 337)
+
+[node name="MoveRightCommand" type="Node" parent="CommandTiles/MultiCommandTile2"]
+script = ExtResource("15_4l6ql")
+metadata/_custom_type_script = "uid://bhlle456v6wqw"
+
+[node name="MultiCommandTile3" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(1376, 356)
+
+[node name="MoveUpCommand" type="Node" parent="CommandTiles/MultiCommandTile3"]
+script = ExtResource("16_51g28")
+metadata/_custom_type_script = "uid://b8xqcwgg7umb4"
+
+[node name="MultiCommandTile4" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(1376, 225)
+
+[node name="MoveRightCommand" type="Node" parent="CommandTiles/MultiCommandTile4"]
+script = ExtResource("15_4l6ql")
+metadata/_custom_type_script = "uid://bhlle456v6wqw"
+
+[node name="MultiCommandTile5" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(1635, 225)
+
+[node name="MoveDownCommand" type="Node" parent="CommandTiles/MultiCommandTile5"]
+script = ExtResource("16_vfml2")
+metadata/_custom_type_script = "uid://tgsqlmentxs2"
+
+[node name="MultiCommandTile6" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(1633, 485)
+
+[node name="MoveLeftCommand" type="Node" parent="CommandTiles/MultiCommandTile6"]
+script = ExtResource("17_gjre2")
+metadata/_custom_type_script = "uid://dy0qluae44kso"
+
+[node name="MultiCommandTile7" parent="CommandTiles" instance=ExtResource("13_q0m04")]
+position = Vector2(1376, 485)
+
+[node name="MoveUpCommand" type="Node" parent="CommandTiles/MultiCommandTile7"]
+script = ExtResource("16_51g28")
+metadata/_custom_type_script = "uid://b8xqcwgg7umb4"
+
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile/StopCommand" to="Player" method="_on_player_directed"]
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile/MoveRightCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile2/MoveRightCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile3/MoveUpCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile4/MoveRightCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile5/MoveDownCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile6/MoveLeftCommand" to="Player" method="_on_player_directed"]
+[connection signal="player_directed" from="CommandTiles/MultiCommandTile7/MoveUpCommand" to="Player" method="_on_player_directed"]
