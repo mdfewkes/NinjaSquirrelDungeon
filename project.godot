@@ -26,6 +26,7 @@ AudioManager="*res://scenes/AudioManager/audio_manager.tscn"
 InventoryManager="*res://code/InventoryManager.gd"
 FeatureFlags="*res://code/FeatureFlags.gd"
 DialogueBox="*res://scenes/DialogueBox/dialogue_box.tscn"
+ImpactEffects="*res://code/ImpactEffects.gd"
 
 [display]
 
