@@ -1,10 +1,13 @@
+class_name PatrollingEnemy
 extends EnemyBase
+
+signal started_chase
+signal started_first_chase
 
 ## Enums for state
 enum States {IDLE, PATROL, CHASE, STUN}
 
 ## Exports
-@export_group("Patrol")
 ## Whether the patrolling is random. if false, then it is cyclical
 @export var random_patrol := false
 ## How close the enemy gets to its destination patrol point to stop moving
@@ -17,6 +20,11 @@ enum States {IDLE, PATROL, CHASE, STUN}
 @export var patrol_wait_times: Array[float] = []
 ## You can specify the points this way instead of using a path. If you do, make sure that you make each point unique when duplicating the enemy.
 @export var patrol_points : Array[PatrolPointData] = [] 
+## If this is set, a dartmunk will be summoned to each of these marker points the first time the enemy sees you
+@export var dartmunk_summon_markers: Array[Marker2D] = []
+const DartmunkScene = preload("res://scenes/Dartmunk/dartmunk.tscn")
+## If set, this sound will be played when the enemy sees you
+@export var sfx_on_chase : AudioSFX
 
 ## Onready Variables
 @onready var patrol_timer: Timer = $PatrolTimer
@@ -25,6 +33,7 @@ enum States {IDLE, PATROL, CHASE, STUN}
 var state := States.IDLE
 var chase:  bool
 var patrol: bool
+var is_first_chase := true
 
 ## Properties
 var current_patrol_point := 0:
@@ -75,7 +84,7 @@ func idle_state():
 	if current_hp <= 0:
 		queue_free()
 	if can_see_player():
-		state = States.CHASE
+		_start_chasing()
 	elif not at_patrol_point():
 		state = States.PATROL
 
@@ -121,9 +130,25 @@ func patrol_state():
 		#sprite_2d.scale.x = sign(velocity.x)
 		move_and_slide()
 	if can_see_player():
-		state = States.CHASE
+		_start_chasing()
 	elif at_patrol_point():
 		state = States.IDLE
+
+func _start_chasing():
+	state = States.CHASE
+	if is_first_chase:
+		is_first_chase = false
+		emit_signal("started_first_chase")
+		for marker in dartmunk_summon_markers:
+			_summon_dartmunk(marker)
+	emit_signal("started_chase")
+	if sfx_on_chase:
+		AudioManager.PlaySFX(sfx_on_chase, self)
+
+func _summon_dartmunk(marker: Marker2D):
+	var obj = DartmunkScene.instantiate()
+	obj.position = marker.position
+	marker.get_parent().add_child(obj)
 
 func knockback_state(delta):
 	if current_hp <= 0:

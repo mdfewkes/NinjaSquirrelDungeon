@@ -117,6 +117,10 @@ physics_layer_1/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lec38"]
+vertices = PackedVector2Array(2925.0313, 104.78906, 2936.961, 3117.0938, 27.078125, 3145.8906, 51.90625, 43.210938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2935, 95, 2947, 3127, 17, 3156, 42, 33)])
+cell_size = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lec38"]
 size = Vector2(1285, 2529)
@@ -246,6 +250,7 @@ tile_set = SubResource("TileSet_k83mh")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_lec38")
+navigation_layers = 193
 
 [node name="Player" parent="." instance=ExtResource("11_q05mv")]
 z_index = 10
@@ -283,64 +288,82 @@ position = Vector2(813, 2553)
 [node name="PatrolRoute1" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_lv0xs")
 
-[node name="PatrollingEnemy" parent="Rooms/Room1/Enemies/PatrolRoute1" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room1/Enemies/PatrolRoute1" node_paths=PackedStringArray("patrol_path", "dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(265, 2660)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_path = NodePath("..")
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../LowerDartmunkSummonPoint")]
+sfx_on_chase = null
 view_range = 350.0
 
 [node name="PatrolRoute2" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x20lp")
 
-[node name="PatrollingEnemy2" parent="Rooms/Room1/Enemies/PatrolRoute2" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy2" parent="Rooms/Room1/Enemies/PatrolRoute2" node_paths=PackedStringArray("patrol_path", "dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(514, 2380)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_path = NodePath("..")
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../LowerDartmunkSummonPoint")]
+sfx_on_chase = null
 view_range = 350.0
 
 [node name="PatrolRoute3" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x6y5w")
 
-[node name="PatrollingEnemy3" parent="Rooms/Room1/Enemies/PatrolRoute3" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy3" parent="Rooms/Room1/Enemies/PatrolRoute3" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(1025, 1834)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
+sfx_on_chase = null
 view_range = 350.0
 
 [node name="PatrolRoute4" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_u646x")
 
-[node name="PatrollingEnemy4" parent="Rooms/Room1/Enemies/PatrolRoute4" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy4" parent="Rooms/Room1/Enemies/PatrolRoute4" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(1029, 1179)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
+sfx_on_chase = null
 view_range = 350.0
 
 [node name="PatrolRoute5" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_ci84x")
 
-[node name="PatrollingEnemy5" parent="Rooms/Room1/Enemies/PatrolRoute5" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy5" parent="Rooms/Room1/Enemies/PatrolRoute5" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(562, 1848)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
+sfx_on_chase = null
 view_range = 350.0
 
 [node name="PatrolRoute6" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_1ts70")
 
-[node name="PatrollingEnemy6" parent="Rooms/Room1/Enemies/PatrolRoute6" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy6" parent="Rooms/Room1/Enemies/PatrolRoute6" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(267, 1199)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
+sfx_on_chase = null
 view_range = 350.0
+
+[node name="LowerDartmunkSummonPoint" type="Marker2D" parent="Rooms/Room1/Enemies"]
+position = Vector2(1023, 3469)
+
+[node name="UpperDartmunkSummonPoint2" type="Marker2D" parent="Rooms/Room1/Enemies"]
+position = Vector2(653, 908)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room1"]
 
@@ -410,26 +433,41 @@ position = Vector2(2189, 539)
 [node name="PatrolRoute7" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_lec38")
 
-[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute7" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute7" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(1213, 287)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../LowerDartmunkSpawn")]
+sfx_on_chase = null
 
 [node name="PatrolRoute8" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_t42gl")
 
-[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute8" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute8" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(2302, 405)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSpawn")]
+sfx_on_chase = null
 
 [node name="PatrolRoute9" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_fwu7s")
 
-[node name="PatrollingEnemy2" parent="Rooms/Room2/Enemies/PatrolRoute9" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy2" parent="Rooms/Room2/Enemies/PatrolRoute9" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(2644, 268)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSpawn"), NodePath("../../UpperDartmunkSpawn2")]
+sfx_on_chase = null
+
+[node name="UpperDartmunkSpawn" type="Marker2D" parent="Rooms/Room2/Enemies"]
+position = Vector2(2656, 537)
+
+[node name="UpperDartmunkSpawn2" type="Marker2D" parent="Rooms/Room2/Enemies"]
+position = Vector2(2717, 749)
+
+[node name="LowerDartmunkSpawn" type="Marker2D" parent="Rooms/Room2/Enemies"]
+position = Vector2(646, 1044)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room2"]
 
@@ -483,17 +521,27 @@ position = Vector2(1619, 1415)
 [node name="RandomPatrol1" type="Path2D" parent="Rooms/Room3/Enemies"]
 curve = SubResource("Curve2D_c1igs")
 
-[node name="PatrollingEnemy5" parent="Rooms/Room3/Enemies/RandomPatrol1" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy5" parent="Rooms/Room3/Enemies/RandomPatrol1" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(1859, 2543)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../LowerDartmunkSpawn")]
+sfx_on_chase = null
 
-[node name="PatrollingEnemy3" parent="Rooms/Room3/Enemies/RandomPatrol1" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy3" parent="Rooms/Room3/Enemies/RandomPatrol1" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(1852, 2288)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSpawn")]
+sfx_on_chase = null
+
+[node name="LowerDartmunkSpawn" type="Marker2D" parent="Rooms/Room3/Enemies"]
+position = Vector2(2216, 2953)
+
+[node name="UpperDartmunkSpawn" type="Marker2D" parent="Rooms/Room3/Enemies"]
+position = Vector2(1668, 1742)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room3"]
 
@@ -532,17 +580,27 @@ position = Vector2(2494, 1849)
 [node name="RandomPatrol2" type="Path2D" parent="Rooms/Room4/Enemies"]
 curve = SubResource("Curve2D_2xyrl")
 
-[node name="PatrollingEnemy4" parent="Rooms/Room4/Enemies/RandomPatrol2" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy4" parent="Rooms/Room4/Enemies/RandomPatrol2" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(2626, 2283)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSpawn"), NodePath("../../LowerDartmunkSpawn")]
+sfx_on_chase = null
 
-[node name="PatrollingEnemy" parent="Rooms/Room4/Enemies/RandomPatrol2" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room4/Enemies/RandomPatrol2" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("27_sbn5w")]
 position = Vector2(2361, 2029)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = [NodePath("../../UpperDartmunkSpawn")]
+sfx_on_chase = null
+
+[node name="UpperDartmunkSpawn" type="Marker2D" parent="Rooms/Room4/Enemies"]
+position = Vector2(2488, 1489)
+
+[node name="LowerDartmunkSpawn" type="Marker2D" parent="Rooms/Room4/Enemies"]
+position = Vector2(2713, 2661)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room4"]
 
