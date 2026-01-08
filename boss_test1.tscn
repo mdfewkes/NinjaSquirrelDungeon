@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dp0jbkeddja53"]
+[gd_scene load_steps=34 format=4 uid="uid://dp0jbkeddja53"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_7f0qg"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_7qvis"]
@@ -118,8 +118,8 @@ sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lec38"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6pob"]
-size = Vector2(3133, 3624.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lec38"]
+size = Vector2(1285, 2529)
 
 [sub_resource type="Curve2D" id="Curve2D_lv0xs"]
 _data = {
@@ -157,6 +157,9 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x20lp"]
+size = Vector2(3133, 1096.5)
+
 [sub_resource type="Curve2D" id="Curve2D_lec38"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1213, 285, 0, 0, 0, 0, 260, 295, 0, 0, 0, 0, 260, 850, 0, 0, 0, 0, 1041, 850, 0, 0, 0, 0, 1035, 578, 0, 0, 0, 0, 1021, 848, 0, 0, 0, 0, 256, 848, 0, 0, 0, 0, 260, 295)
@@ -175,11 +178,17 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv0xs"]
+size = Vector2(762, 2229)
+
 [sub_resource type="Curve2D" id="Curve2D_c1igs"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1653, 2100, 0, 0, 0, 0, 1849, 2246, 0, 0, 0, 0, 2056, 2112, 0, 0, 0, 0, 2060, 2382, 0, 0, 0, 0, 1860, 2512, 0, 0, 0, 0, 1665, 2368, 0, 0, 0, 0, 1664, 2634, 0, 0, 0, 0, 1859, 2770, 0, 0, 0, 0, 2060, 2636, 0, 0, 0, 0, 2068, 2963, 0, 0, 0, 0, 1658, 2960)
 }
 point_count = 11
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6y5w"]
+size = Vector2(900, 2229)
 
 [sub_resource type="Curve2D" id="Curve2D_2xyrl"]
 _data = {
@@ -245,86 +254,36 @@ god_mode = true
 
 [node name="Rooms" type="Node2D" parent="."]
 
-[node name="StartRoom" type="Area2D" parent="Rooms"]
+[node name="Room1" type="Area2D" parent="Rooms"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("15_wx7ea")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
-visible = false
-position = Vector2(1497.5, 1699.75)
-shape = SubResource("RectangleShape2D_o6pob")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room1"]
+position = Vector2(573.5, 2247.5)
+shape = SubResource("RectangleShape2D_lec38")
 
-[node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
+[node name="Lights" type="Node2D" parent="Rooms/Room1"]
 
-[node name="Light18" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-z_index = 1
-position = Vector2(641, 707)
-
-[node name="Light19" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(635, 360)
-
-[node name="Light10" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
+[node name="Light10" parent="Rooms/Room1/Lights" instance=ExtResource("16_ev4qo")]
 position = Vector2(462, 1973)
 
-[node name="Light11" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(467, 2396)
+[node name="Light20" parent="Rooms/Room1/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(467, 2397)
 
-[node name="Light20" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(467, 2396)
-
-[node name="Light14" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
+[node name="Light14" parent="Rooms/Room1/Lights" instance=ExtResource("16_ev4qo")]
 position = Vector2(642, 1457)
 
-[node name="Light15" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(744, 984)
-
-[node name="Light16" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(534, 981)
-
-[node name="Light8" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
+[node name="Light8" parent="Rooms/Room1/Lights" instance=ExtResource("16_ev4qo")]
 position = Vector2(813, 2553)
 
-[node name="Light" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2497, 2111)
+[node name="Enemies" type="Node2D" parent="Rooms/Room1"]
 
-[node name="Light2" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2497, 2368)
-
-[node name="Light3" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(1622, 2873)
-
-[node name="Light12" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(1619, 2367)
-
-[node name="Light9" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2088, 2617)
-
-[node name="Light13" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2092, 2105)
-
-[node name="Light4" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2741, 1492)
-
-[node name="Light17" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(1619, 1415)
-
-[node name="Light5" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2494, 1849)
-
-[node name="Light6" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(1759, 535)
-
-[node name="Light7" parent="Rooms/StartRoom/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(2189, 539)
-
-[node name="Enemies" type="Node2D" parent="Rooms/StartRoom"]
-
-[node name="PatrolRoute1" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute1" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_lv0xs")
 
-[node name="PatrollingEnemy" parent="Rooms/StartRoom/Enemies/PatrolRoute1" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room1/Enemies/PatrolRoute1" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
 position = Vector2(265, 2660)
 patrol_point_radius = 5
 default_wait_time = 5.0
@@ -332,10 +291,10 @@ patrol_path = NodePath("..")
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute2" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute2" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x20lp")
 
-[node name="PatrollingEnemy2" parent="Rooms/StartRoom/Enemies/PatrolRoute2" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy2" parent="Rooms/Room1/Enemies/PatrolRoute2" node_paths=PackedStringArray("patrol_path") instance=ExtResource("27_sbn5w")]
 position = Vector2(514, 2380)
 patrol_point_radius = 5
 default_wait_time = 5.0
@@ -343,164 +302,258 @@ patrol_path = NodePath("..")
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute3" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute3" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x6y5w")
 
-[node name="PatrollingEnemy3" parent="Rooms/StartRoom/Enemies/PatrolRoute3" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy3" parent="Rooms/Room1/Enemies/PatrolRoute3" instance=ExtResource("27_sbn5w")]
 position = Vector2(1025, 1834)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute4" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute4" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_u646x")
 
-[node name="PatrollingEnemy4" parent="Rooms/StartRoom/Enemies/PatrolRoute4" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy4" parent="Rooms/Room1/Enemies/PatrolRoute4" instance=ExtResource("27_sbn5w")]
 position = Vector2(1029, 1179)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute5" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute5" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_ci84x")
 
-[node name="PatrollingEnemy5" parent="Rooms/StartRoom/Enemies/PatrolRoute5" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy5" parent="Rooms/Room1/Enemies/PatrolRoute5" instance=ExtResource("27_sbn5w")]
 position = Vector2(562, 1848)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute6" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute6" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_1ts70")
 
-[node name="PatrollingEnemy6" parent="Rooms/StartRoom/Enemies/PatrolRoute6" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy6" parent="Rooms/Room1/Enemies/PatrolRoute6" instance=ExtResource("27_sbn5w")]
 position = Vector2(267, 1199)
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 view_range = 350.0
 
-[node name="PatrolRoute7" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="Environment" type="Node2D" parent="Rooms/Room1"]
+
+[node name="Bush6" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(980, 3080)
+
+[node name="Bush5" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(223, 2045)
+
+[node name="Bush7" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(218, 2545)
+
+[node name="Bush14" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(220, 2102)
+
+[node name="Bush13" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(217, 2168)
+
+[node name="Bush12" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(214, 2233)
+
+[node name="Bush11" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(213, 2297)
+
+[node name="Bush10" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(214, 2358)
+
+[node name="Bush9" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(217, 2417)
+
+[node name="Bush8" parent="Rooms/Room1/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(218, 2486)
+
+[node name="Room2" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("15_wx7ea")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room2"]
+position = Vector2(1497.5, 435.75)
+shape = SubResource("RectangleShape2D_x20lp")
+
+[node name="Lights" type="Node2D" parent="Rooms/Room2"]
+
+[node name="Light18" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+z_index = 1
+position = Vector2(641, 707)
+
+[node name="Light19" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(635, 360)
+
+[node name="Light15" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(744, 984)
+
+[node name="Light16" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(534, 981)
+
+[node name="Light6" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(1759, 535)
+
+[node name="Light7" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2189, 539)
+
+[node name="Enemies" type="Node2D" parent="Rooms/Room2"]
+
+[node name="PatrolRoute7" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_lec38")
 
-[node name="PatrollingEnemy" parent="Rooms/StartRoom/Enemies/PatrolRoute7" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute7" instance=ExtResource("27_sbn5w")]
 position = Vector2(1213, 287)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="PatrolRoute8" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute8" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_t42gl")
 
-[node name="PatrollingEnemy" parent="Rooms/StartRoom/Enemies/PatrolRoute8" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy" parent="Rooms/Room2/Enemies/PatrolRoute8" instance=ExtResource("27_sbn5w")]
 position = Vector2(2302, 405)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="PatrolRoute9" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="PatrolRoute9" type="Path2D" parent="Rooms/Room2/Enemies"]
 curve = SubResource("Curve2D_fwu7s")
 
-[node name="PatrollingEnemy" parent="Rooms/StartRoom/Enemies/PatrolRoute9" instance=ExtResource("27_sbn5w")]
-position = Vector2(2361, 2029)
-random_patrol = true
+[node name="PatrollingEnemy2" parent="Rooms/Room2/Enemies/PatrolRoute9" instance=ExtResource("27_sbn5w")]
+position = Vector2(2644, 268)
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="Path2D" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="Environment" type="Node2D" parent="Rooms/Room2"]
+
+[node name="Bush" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(602, 697)
+
+[node name="Bush3" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(603, 466)
+
+[node name="Bush4" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(683, 466)
+
+[node name="Bush2" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(686, 695)
+
+[node name="Bush22" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(1840, 579)
+
+[node name="Bush23" parent="Rooms/Room2/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(2116, 579)
+
+[node name="Room3" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("15_wx7ea")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room3"]
+position = Vector2(1796, 2083.5)
+shape = SubResource("RectangleShape2D_lv0xs")
+
+[node name="Lights" type="Node2D" parent="Rooms/Room3"]
+
+[node name="Light3" parent="Rooms/Room3/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(1622, 2873)
+
+[node name="Light12" parent="Rooms/Room3/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(1619, 2367)
+
+[node name="Light9" parent="Rooms/Room3/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2088, 2617)
+
+[node name="Light13" parent="Rooms/Room3/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2092, 2105)
+
+[node name="Light17" parent="Rooms/Room3/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(1619, 1415)
+
+[node name="Enemies" type="Node2D" parent="Rooms/Room3"]
+
+[node name="RandomPatrol1" type="Path2D" parent="Rooms/Room3/Enemies"]
 curve = SubResource("Curve2D_c1igs")
 
-[node name="PatrollingEnemy5" parent="Rooms/StartRoom/Enemies/Path2D" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy5" parent="Rooms/Room3/Enemies/RandomPatrol1" instance=ExtResource("27_sbn5w")]
 position = Vector2(1859, 2543)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="PatrollingEnemy3" parent="Rooms/StartRoom/Enemies/Path2D" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy3" parent="Rooms/Room3/Enemies/RandomPatrol1" instance=ExtResource("27_sbn5w")]
 position = Vector2(1852, 2288)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="Path2D2" type="Path2D" parent="Rooms/StartRoom/Enemies"]
+[node name="Environment" type="Node2D" parent="Rooms/Room3"]
+
+[node name="Bush18" parent="Rooms/Room3/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(1895, 1839)
+
+[node name="Bush19" parent="Rooms/Room3/Environment" instance=ExtResource("18_doi46")]
+position = Vector2(1810, 1835)
+
+[node name="Room4" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("15_wx7ea")
+metadata/_custom_type_script = "uid://cdx7hdljg4psy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room4"]
+position = Vector2(2614, 2083.5)
+shape = SubResource("RectangleShape2D_x6y5w")
+
+[node name="Lights" type="Node2D" parent="Rooms/Room4"]
+
+[node name="Light" parent="Rooms/Room4/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2497, 2111)
+
+[node name="Light2" parent="Rooms/Room4/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2497, 2368)
+
+[node name="Light4" parent="Rooms/Room4/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2741, 1492)
+
+[node name="Light5" parent="Rooms/Room4/Lights" instance=ExtResource("16_ev4qo")]
+position = Vector2(2494, 1849)
+
+[node name="Enemies" type="Node2D" parent="Rooms/Room4"]
+
+[node name="RandomPatrol2" type="Path2D" parent="Rooms/Room4/Enemies"]
 curve = SubResource("Curve2D_2xyrl")
 
-[node name="PatrollingEnemy4" parent="Rooms/StartRoom/Enemies/Path2D2" instance=ExtResource("27_sbn5w")]
+[node name="PatrollingEnemy4" parent="Rooms/Room4/Enemies/RandomPatrol2" instance=ExtResource("27_sbn5w")]
 position = Vector2(2626, 2283)
 random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="PatrollingEnemy2" parent="Rooms/StartRoom/Enemies/Path2D2" instance=ExtResource("27_sbn5w")]
-position = Vector2(2644, 268)
+[node name="PatrollingEnemy" parent="Rooms/Room4/Enemies/RandomPatrol2" instance=ExtResource("27_sbn5w")]
+position = Vector2(2361, 2029)
+random_patrol = true
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 
-[node name="Environment" type="Node2D" parent="Rooms/StartRoom"]
+[node name="Environment" type="Node2D" parent="Rooms/Room4"]
 
-[node name="Bush" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(602, 697)
-
-[node name="Bush3" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(603, 466)
-
-[node name="Bush4" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(683, 466)
-
-[node name="Bush2" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(686, 695)
-
-[node name="Bush6" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(980, 3080)
-
-[node name="Bush5" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(223, 2045)
-
-[node name="Bush7" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(218, 2545)
-
-[node name="Bush14" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(220, 2102)
-
-[node name="Bush13" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(217, 2168)
-
-[node name="Bush12" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(214, 2233)
-
-[node name="Bush11" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(213, 2297)
-
-[node name="Bush10" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(214, 2358)
-
-[node name="Bush9" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(217, 2417)
-
-[node name="Bush8" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(218, 2486)
-
-[node name="Bush15" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
+[node name="Bush15" parent="Rooms/Room4/Environment" instance=ExtResource("18_doi46")]
 position = Vector2(2730, 2567)
 
-[node name="Bush16" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
+[node name="Bush16" parent="Rooms/Room4/Environment" instance=ExtResource("18_doi46")]
 position = Vector2(2726, 1726)
 
-[node name="Bush18" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(1895, 1839)
-
-[node name="Bush19" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(1810, 1835)
-
-[node name="Bush20" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
+[node name="Bush20" parent="Rooms/Room4/Environment" instance=ExtResource("18_doi46")]
 position = Vector2(2278, 1734)
 
-[node name="Bush21" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
+[node name="Bush21" parent="Rooms/Room4/Environment" instance=ExtResource("18_doi46")]
 position = Vector2(2264, 2566)
-
-[node name="Bush22" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(1840, 579)
-
-[node name="Bush23" parent="Rooms/StartRoom/Environment" instance=ExtResource("18_doi46")]
-position = Vector2(2116, 579)
