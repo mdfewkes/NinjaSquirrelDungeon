@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/dialogue_tools/plugin.cfg")
 player=""
 navigation_polygon_source_geometry_group=""
 present_lights=""
+world_environment=""
 
 [input]
 

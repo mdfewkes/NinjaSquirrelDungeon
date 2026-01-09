@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=43 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -31,6 +31,14 @@
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
 colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_4h6ng"]
+background_mode = 3
+ambient_light_source = 1
+reflected_light_source = 1
+glow_enabled = true
+fog_light_energy = 16.0
+adjustment_enabled = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mc2jv"]
 texture = ExtResource("8_wjb0r")
@@ -158,6 +166,9 @@ metadata/_custom_type_script = "uid://8a5snm317mpn"
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60052365, 0.52271074, 0.8287144, 1)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["world_environment"]]
+environment = SubResource("Environment_4h6ng")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("1_dwbse")]
@@ -196,7 +207,6 @@ tile_map_data = PackedByteArray("AAD5/wIAAQAAAAEAAAD6/wIAAQABAAEAAAD7/wIAAQACAAE
 tile_set = SubResource("TileSet_k83mh")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_wse8f")
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
@@ -519,13 +529,15 @@ position = Vector2(1175, -155)
 
 [node name="Enemies" type="Node2D" parent="Rooms/PatrolRoom"]
 
-[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" node_paths=PackedStringArray("patrol_path") instance=ExtResource("21_bc84e")]
+[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" node_paths=PackedStringArray("patrol_path", "dartmunk_summon_markers") instance=ExtResource("21_bc84e")]
 position = Vector2(1184, -16)
 motion_mode = 1
 patrol_point_radius = 5
 default_wait_time = 5.0
 patrol_path = NodePath("../PatrolPath")
 patrol_wait_times = Array[float]([])
+dartmunk_summon_markers = Array[float]([])
+sfx_on_chase = null
 
 [node name="PatrolPath" type="Path2D" parent="Rooms/PatrolRoom/Enemies"]
 curve = SubResource("Curve2D_o3ebs")

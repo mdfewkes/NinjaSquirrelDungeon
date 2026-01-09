@@ -184,6 +184,7 @@ func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
+	ImpactEffects.hit(0.7, 0.3)
 	play_sfx_hurt()
 
 	if current_hp <= 0:
@@ -277,6 +278,7 @@ func _on_fall_start(_pit: Node2D) -> void:
 	velocity = Vector2.ZERO
 	input_vector = Vector2.ZERO
 	tail.hide()
+	ImpactEffects.shake(0.5, 0.2)
 	if not fall_detector.sfx_on_fall:
 		play_sfx_hurt()
 

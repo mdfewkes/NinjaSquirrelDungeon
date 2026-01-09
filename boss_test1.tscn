@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dp0jbkeddja53"]
+[gd_scene load_steps=35 format=4 uid="uid://dp0jbkeddja53"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_7f0qg"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_7qvis"]
@@ -18,6 +18,14 @@
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
 colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_lec38"]
+background_mode = 3
+ambient_light_source = 1
+reflected_light_source = 1
+glow_enabled = true
+fog_light_energy = 16.0
+adjustment_enabled = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3ebs"]
 texture = ExtResource("10_aak3j")
@@ -208,6 +216,9 @@ metadata/_custom_type_script = "uid://8a5snm317mpn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60052365, 0.52271074, 0.8287144, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["world_environment"]]
+environment = SubResource("Environment_lec38")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
