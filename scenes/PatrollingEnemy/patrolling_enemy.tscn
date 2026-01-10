@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
-[ext_resource type="Script" uid="uid://btp4qrx8g0uin" path="res://scenes/PatrollingEnemy/patrol_point_data.gd" id="3_qm14r"]
 [ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/raccoon_sprite_sheet.png" id="4_kw6ql"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="5_qc4yg"]
+[ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="5_ukvp4"]
 
 [sub_resource type="Animation" id="Animation_cwiwr"]
 length = 0.001
@@ -242,13 +242,17 @@ height = 46.0
 radius = 40.0
 height = 100.79
 
-[node name="PatrollingEnemy" instance=ExtResource("1_xy51q")]
+[node name="PatrollingEnemy" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("1_xy51q")]
 collision_layer = 4
 collision_mask = 135
 script = ExtResource("2_6d2yr")
 random_patrol = false
 patrol_point_radius = 10
-patrol_points = Array[ExtResource("3_qm14r")]([])
+default_wait_time = 5.0
+patrol_wait_times = Array[float]([])
+patrol_points = Array[float]([])
+dartmunk_summon_markers = Array[float]([])
+sfx_on_chase = null
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(4, -54)
@@ -300,5 +304,8 @@ metadata/_custom_type_script = "uid://bvqjs8a0h3dyi"
 position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_ukvp4")
 debug_color = Color(0.7777905, 0.31842506, 0.7667915, 0.41960785)
+
+[node name="ShockWave" parent="." index="12" instance=ExtResource("5_ukvp4")]
+position = Vector2(0, -50)
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

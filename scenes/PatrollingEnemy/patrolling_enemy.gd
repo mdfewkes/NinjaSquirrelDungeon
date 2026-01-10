@@ -28,6 +28,7 @@ const DartmunkScene = preload("res://scenes/Dartmunk/dartmunk.tscn")
 
 ## Onready Variables
 @onready var patrol_timer: Timer = $PatrolTimer
+@onready var shockwave: ShockWave = $ShockWave
 
 ## Class variables
 var state := States.IDLE
@@ -142,12 +143,14 @@ func _start_chasing():
 		for marker in dartmunk_summon_markers:
 			_summon_dartmunk(marker)
 	emit_signal("started_chase")
+	shockwave.fire()
 	if sfx_on_chase:
 		AudioManager.PlaySFX(sfx_on_chase, self)
 
 func _summon_dartmunk(marker: Marker2D):
-	var obj = DartmunkScene.instantiate()
+	var obj: Dartmunk = DartmunkScene.instantiate()
 	obj.position = marker.position
+	obj.view_range = 10000
 	marker.get_parent().add_child(obj)
 
 func knockback_state(delta):

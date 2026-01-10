@@ -43,8 +43,8 @@ func flash(intensity: float, seconds: float, type: FlashType) ->void:
 		if flash_tween and flash_tween.is_running():
 			flash_tween.stop()
 		flash_tween = create_tween()
-		flash_tween.set_parallel(true)
 		flash_tween.set_ease(Tween.EASE_OUT)
+		flash_tween.set_parallel(true)
 		env.environment.glow_bloom = intensity
 		match type:
 			FlashType.Light:
