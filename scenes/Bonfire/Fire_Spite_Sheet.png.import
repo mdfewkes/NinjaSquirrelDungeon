@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8g51unenjudn"
-path="res://.godot/imported/Embers-3.png-e84400715336a306fb4aa9c8439b531f.ctex"
+uid="uid://bqaedberyob7f"
+path="res://.godot/imported/Fire_Spite_Sheet.png-939cd0c0941ffd19dea6ebd318c5a9b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/Embers-3.png"
-dest_files=["res://.godot/imported/Embers-3.png-e84400715336a306fb4aa9c8439b531f.ctex"]
+source_file="res://scenes/Bonfire/Fire_Spite_Sheet.png"
+dest_files=["res://.godot/imported/Fire_Spite_Sheet.png-939cd0c0941ffd19dea6ebd318c5a9b8.ctex"]
 
 [params]
 

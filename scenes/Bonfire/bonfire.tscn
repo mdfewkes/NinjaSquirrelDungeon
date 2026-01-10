@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwkfo0fdexbrh"]
 
-[ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://Bonfire/bonfire.gd" id="1_70l5l"]
-[ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://Bonfire/Trashcan.png" id="1_s8pws"]
-[ext_resource type="PackedScene" uid="uid://cdf1eo5u4dhu4" path="res://Bonfire/fire_efx.tscn" id="2_70l5l"]
-[ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://Bonfire/TrashHole.png" id="2_buw6a"]
+[ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://scenes/Bonfire/bonfire.gd" id="1_70l5l"]
+[ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://scenes/Bonfire/Trashcan.png" id="1_s8pws"]
+[ext_resource type="PackedScene" uid="uid://cdf1eo5u4dhu4" path="res://scenes/Bonfire/fire_efx.tscn" id="2_70l5l"]
+[ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://scenes/Bonfire/TrashHole.png" id="2_buw6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
 size = Vector2(50, 67)

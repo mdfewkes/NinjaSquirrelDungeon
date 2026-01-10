@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqaedberyob7f"
-path="res://.godot/imported/Fire_Spite_Sheet.png-d4dac2b1a0499622453de808bf0b9755.ctex"
+uid="uid://cea7g4q4inn77"
+path="res://.godot/imported/FireDistortion.png-763db8eb0ca0ceb8b783faf7873672df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/Fire_Spite_Sheet.png"
-dest_files=["res://.godot/imported/Fire_Spite_Sheet.png-d4dac2b1a0499622453de808bf0b9755.ctex"]
+source_file="res://scenes/Bonfire/FireDistortion.png"
+dest_files=["res://.godot/imported/FireDistortion.png-763db8eb0ca0ceb8b783faf7873672df.ctex"]
 
 [params]
 

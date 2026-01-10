@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rsk7gk3cs0md"
-path="res://.godot/imported/Embers-1.png-f0d52b23feef789d3bd0e35642b370f5.ctex"
+uid="uid://urrml4k4jt15"
+path="res://.godot/imported/TrashHole.png-0b49f9f2a0d7e03b00a3f1a471ef2e2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/Embers-1.png"
-dest_files=["res://.godot/imported/Embers-1.png-f0d52b23feef789d3bd0e35642b370f5.ctex"]
+source_file="res://scenes/Bonfire/TrashHole.png"
+dest_files=["res://.godot/imported/TrashHole.png-0b49f9f2a0d7e03b00a3f1a471ef2e2b.ctex"]
 
 [params]
 

@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dfsk2ubkhnubj" path="res://scenes/Traps/wall_spikes.tscn" id="20_il2jm"]
 [ext_resource type="PackedScene" uid="uid://5pbl42y2fb2y" path="res://scenes/PatrollingEnemy/patrolling_enemy.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="21_il2jm"]
-[ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://Bonfire/bonfire.tscn" id="25_mc2jv"]
+[ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="25_mc2jv"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)

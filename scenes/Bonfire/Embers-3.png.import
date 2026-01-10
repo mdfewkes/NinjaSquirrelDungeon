@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://briylnswuyobk"
-path="res://.godot/imported/Trashcan.png-6457671a6af5e81bc8d0ba30f30d3c7c.ctex"
+uid="uid://8g51unenjudn"
+path="res://.godot/imported/Embers-3.png-67df428cb541ee720883ab68ae65d69d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/Trashcan.png"
-dest_files=["res://.godot/imported/Trashcan.png-6457671a6af5e81bc8d0ba30f30d3c7c.ctex"]
+source_file="res://scenes/Bonfire/Embers-3.png"
+dest_files=["res://.godot/imported/Embers-3.png-67df428cb541ee720883ab68ae65d69d.ctex"]
 
 [params]
 

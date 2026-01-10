@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cea7g4q4inn77"
-path="res://.godot/imported/FireDistortion.png-3624b0b00d40d5fefb68d418d3bf45c4.ctex"
+uid="uid://rsk7gk3cs0md"
+path="res://.godot/imported/Embers-1.png-fcf21f822aa73fc7ee277fd4fa5724fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bonfire/FireDistortion.png"
-dest_files=["res://.godot/imported/FireDistortion.png-3624b0b00d40d5fefb68d418d3bf45c4.ctex"]
+source_file="res://scenes/Bonfire/Embers-1.png"
+dest_files=["res://.godot/imported/Embers-1.png-fcf21f822aa73fc7ee277fd4fa5724fa.ctex"]
 
 [params]
 
