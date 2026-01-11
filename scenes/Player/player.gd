@@ -21,6 +21,7 @@ enum PlayerSFX {hurt, footstep, effort}
 @export var action_2: ActionState
 @export var action_3: ActionState
 var current_action_state = null
+var action_selected_by_cutscene = null
 
 enum PlayerState {Move, Roll, Action, Cloaked, Falling}
 var current_state = PlayerState.Move
@@ -151,6 +152,7 @@ func _update_blend_positions() -> void:
 	direction_changed.emit(direction_vector)
 
 func _set_action_state(state: ActionState) -> void:
+	action_selected_by_cutscene = null
 	if state == null: return
 	
 	_clear_cloaked_state()
@@ -165,13 +167,13 @@ func  _set_roll_state() -> void:
 	play_sfx_effort()
 
 func _check_and_set_action_state() -> void:
-	if Input.is_action_just_pressed("action_1"):
+	if Input.is_action_just_pressed("action_1") or action_selected_by_cutscene == "action_1":
 		_set_action_state(action_1)
 		return
-	if Input.is_action_just_pressed("action_2"):
+	if Input.is_action_just_pressed("action_2") or action_selected_by_cutscene == "action_2":
 		_set_action_state(action_2)
 		return
-	if Input.is_action_just_pressed("action_3"):
+	if Input.is_action_just_pressed("action_3") or action_selected_by_cutscene == "action_3":
 		_set_action_state(action_3)
 		return
 
@@ -203,6 +205,8 @@ func _on_player_death() -> void:
 func _on_player_directed(vector: Vector2) -> void:
 	input_vector = vector
 
+func _on_action_selected(action: String) -> void:
+	action_selected_by_cutscene = action
 
 func set_cloakable_gradient(gradient: GradientTexture2D, wait_time: float) -> void:
 	cloak_gradient = gradient

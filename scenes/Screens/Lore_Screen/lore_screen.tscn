@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://betelkdbjb1w1"]
+[gd_scene load_steps=67 format=4 uid="uid://betelkdbjb1w1"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_6lrmm"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_my32b"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://butma5vktn1g3" path="res://scenes/Screens/Lore_Screen/Lore_UI/lore_control.gd" id="7_unxxd"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="8_q0m04"]
 [ext_resource type="PackedScene" uid="uid://cftc8wnrrad1q" path="res://scenes/Screens/Lore_Screen/CommandTile/multi_command_tile.tscn" id="13_q0m04"]
+[ext_resource type="Script" uid="uid://dggqlc84q3e26" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/throw_shuriken_command.gd" id="14_0x34b"]
 [ext_resource type="Script" uid="uid://cb6b58u1edskd" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/stop_command.gd" id="14_51g28"]
+[ext_resource type="Script" uid="uid://cl58uraeq48eo" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/wait_command.gd" id="14_gjre2"]
 [ext_resource type="Script" uid="uid://bhlle456v6wqw" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_right_command.gd" id="15_4l6ql"]
 [ext_resource type="Script" uid="uid://b8xqcwgg7umb4" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_up_command.gd" id="16_51g28"]
 [ext_resource type="Script" uid="uid://tgsqlmentxs2" path="res://scenes/Screens/Lore_Screen/CommandTile/Commands/move_down_command.gd" id="16_vfml2"]
@@ -1062,8 +1064,17 @@ position = Vector2(844, 340)
 
 [node name="StopCommand" type="Node" parent="CommandTiles/MultiCommandTile"]
 script = ExtResource("14_51g28")
-amount_of_time_to_wait = 2.0
+amount_of_time_to_wait = 0.5
 metadata/_custom_type_script = "uid://cb6b58u1edskd"
+
+[node name="ThrowShurikenCommand" type="Node" parent="CommandTiles/MultiCommandTile"]
+script = ExtResource("14_0x34b")
+metadata/_custom_type_script = "uid://dggqlc84q3e26"
+
+[node name="WaitCommand" type="Node" parent="CommandTiles/MultiCommandTile"]
+script = ExtResource("14_gjre2")
+amount_of_time_to_wait = 0.5
+metadata/_custom_type_script = "uid://cl58uraeq48eo"
 
 [node name="MoveRightCommand" type="Node" parent="CommandTiles/MultiCommandTile"]
 script = ExtResource("15_4l6ql")
@@ -1112,6 +1123,7 @@ script = ExtResource("16_51g28")
 metadata/_custom_type_script = "uid://b8xqcwgg7umb4"
 
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile/StopCommand" to="Player" method="_on_player_directed"]
+[connection signal="action_selected" from="CommandTiles/MultiCommandTile/ThrowShurikenCommand" to="Player" method="_on_action_selected"]
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile/MoveRightCommand" to="Player" method="_on_player_directed"]
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile2/MoveRightCommand" to="Player" method="_on_player_directed"]
 [connection signal="player_directed" from="CommandTiles/MultiCommandTile3/MoveUpCommand" to="Player" method="_on_player_directed"]
