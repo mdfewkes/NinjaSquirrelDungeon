@@ -18,8 +18,6 @@ enum States {IDLE, PATROL, CHASE, STUN}
 @export var patrol_path: Path2D
 ## Should have one entry per point in the path. Only use this if you need the enemy to wait for different amounts of time at each point.
 @export var patrol_wait_times: Array[float] = []
-## You can specify the points this way instead of using a path. If you do, make sure that you make each point unique when duplicating the enemy.
-@export var patrol_points : Array[PatrolPointData] = [] 
 ## If this is set, a dartmunk will be summoned to each of these marker points the first time the enemy sees you
 @export var dartmunk_summon_markers: Array[Marker2D] = []
 const DartmunkScene = preload("res://scenes/Dartmunk/dartmunk.tscn")
@@ -99,23 +97,15 @@ func chase_state():
 		state = States.IDLE
 
 func get_num_patrol_points() -> int:
-	if patrol_path:
-		return patrol_path.curve.point_count
-	else:
-		return patrol_points.size()
+	return patrol_path.curve.point_count
 
 func get_patrol_point_coords(idx: int) -> Vector2:
-	if patrol_path:
-		return patrol_path.curve.get_point_position(idx)
-	else:
-		return patrol_points.get(idx).coordinates
+	return patrol_path.curve.get_point_position(idx)
 
 func get_patrol_wait_time(idx: int) -> float:
 	var t := 0.0
 	if len(patrol_wait_times) > idx:
 		t = patrol_wait_times[idx]
-	elif len(patrol_points) > idx:
-		t = patrol_points.get(idx).duration
 	if t > 0.0:
 		return t
 	return default_wait_time
@@ -151,7 +141,10 @@ func _summon_dartmunk(marker: Marker2D):
 	var obj: Dartmunk = DartmunkScene.instantiate()
 	obj.position = marker.position
 	obj.view_range = 10000
+	obj.modulate = Color.TRANSPARENT
 	marker.get_parent().add_child(obj)
+	var fade_in := create_tween()
+	fade_in.tween_property(obj, "modulate", Color.WHITE, 0.4)
 
 func knockback_state(delta):
 	if current_hp <= 0:

@@ -250,7 +250,6 @@ random_patrol = false
 patrol_point_radius = 10
 default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
-patrol_points = Array[float]([])
 dartmunk_summon_markers = Array[float]([])
 sfx_on_chase = null
 

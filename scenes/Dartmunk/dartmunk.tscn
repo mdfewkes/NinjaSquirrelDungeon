@@ -370,6 +370,7 @@ height = 84.0
 
 [node name="Dartmunk" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 193
 script = ExtResource("1_dartmunk")
 dart_scene = ExtResource("3_dart")
 view_range = 1000

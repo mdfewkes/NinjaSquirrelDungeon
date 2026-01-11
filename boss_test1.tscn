@@ -410,10 +410,10 @@ position = Vector2(641, 707)
 position = Vector2(635, 360)
 
 [node name="Light15" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(744, 984)
+position = Vector2(1070, 861)
 
 [node name="Light16" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
-position = Vector2(534, 981)
+position = Vector2(214, 858)
 
 [node name="Light6" parent="Rooms/Room2/Lights" instance=ExtResource("16_ev4qo")]
 position = Vector2(1759, 535)
