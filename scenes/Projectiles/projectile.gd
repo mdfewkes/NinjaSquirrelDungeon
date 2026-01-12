@@ -112,6 +112,11 @@ func _on_hurt(hb: HitBox) -> void:
 		AudioManager.PlaySFX(sfx_on_bounce, self)
 		if sparks:
 			sparks.emitting = true
+	# after deflecting a project with the sword, it needs to be
+	# able to hit the owner and not just the player. if we set it
+	# this way immediately it hurts the owner when fired
+	hit_box.set_collision_mask_value(3, true)
+	hit_box.set_collision_layer_value(2, true)
 
 
 func _fade_and_free():

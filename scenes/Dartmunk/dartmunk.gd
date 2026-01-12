@@ -319,7 +319,7 @@ func _update_debug_label() -> void:
 		label.visible = should_show
 		if should_show:
 			var state_name: String = State.keys()[current_state]
-			label.text = "%s\nLOS:%s" % [state_name, can_see_player()]
+			label.text = "%s\nLOS:%s\nHP:%s" % [state_name, can_see_player(), current_hp]
 			# Ensure label is properly sized and positioned
 			label.reset_size()  # Auto-size to fit content
 
