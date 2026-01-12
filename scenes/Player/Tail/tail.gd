@@ -7,6 +7,7 @@ extends Node2D
 @export var tail_start_offset: Vector2 = Vector2()
 @export var tail_motion_strength: float = 120.
 
+@export var death_gradient: GradientTexture2D
 @export var cloak_gradient: GradientTexture2D : set=set_cloak_gradient, get=get_cloak_gradient
 @export var cloak_amount: float : set=set_cloak_amount, get=get_cloak_amount
 @export var second_gradient_modifier: float : set=set_second_gradient_modifier, get=get_second_gradient_modifier
@@ -14,7 +15,6 @@ extends Node2D
 @export var quick_snap_responsiveness: float = 0.5
 
 @onready var target_line: Line2D = $TargetPoints
-@onready var animation_player: AnimationPlayer = $TailAnimationPlayer
 @onready var display_surface: ColorRect = $DisplaySurface
 @onready var blade: Node2D = $Blade
 

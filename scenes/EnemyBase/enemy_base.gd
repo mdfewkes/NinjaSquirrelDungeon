@@ -15,6 +15,9 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var animation_tree: AnimationTree = get_node_or_null("AnimationTree")
+@onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+
+var animation_tree_playback: AnimationNodeStateMachinePlayback
 
 ## Class variables
 var current_hp := max_hp
@@ -26,9 +29,11 @@ func _ready() -> void:
 	$Label.text = str(current_hp)
 	var players := get_tree().get_nodes_in_group("player")
 	player = players[0] if players.size() > 0 else null
+	if animation_tree:
+		animation_tree_playback = animation_tree.get("parameters/StateMachine/playback")
 
 func _physics_process(_delta: float) -> void:
-	$Label.text = str(view_range * Level.light_level)
+	$Label.text = "HP:" + str(current_hp) + ", View:" + str(view_range * Level.light_level)
 
 ## Common Functions
 func is_player_in_range() -> bool:
@@ -61,4 +66,15 @@ func _on_hurt(hit_box: HitBox) -> void:
 
 ## Called when HP reaches 0. Override in subclasses for custom death behavior.
 func _on_death() -> void:
+	if $HitBox:
+		$HitBox.monitoring = false
+		$HitBox.monitorable = false
+	if animation_tree_playback and animation_tree.get("parameters/StateMachine/death"):
+		var timeout := 120
+		while animation_tree_playback.get_current_node() != "death" and timeout > 0:
+			timeout -= 1
+			await get_tree().physics_frame
+	if animation_player and animation_player.has_animation("death"):
+		animation_player.play("death")
+		await animation_player.animation_finished
 	queue_free()

@@ -1,6 +1,6 @@
 extends EnemyBase
 
-enum States {IDLE, HOP, STUN}
+enum States {IDLE, HOP, STUN, DYING}
 
 @export var max_hop_distance = 400
 @export var min_hop_distance = 50
@@ -11,12 +11,13 @@ var state := States.IDLE
 var hop_start:Vector2
 var hop_end:Vector2
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	
+	if current_hp <= 0:
+		return
+
 	match state:
 		States.IDLE:
 			idle_state()
@@ -60,8 +61,13 @@ func stun_state(delta):
 	sprite_2d.flip_h = velocity.x < 0
 	move_and_slide()
 	if velocity.length() <= 0.01:
+		velocity = Vector2.ZERO
 		state = States.IDLE
 
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
 	state = States.STUN
+
+func _on_death() -> void:
+	super._on_death()
+	state = States.DYING

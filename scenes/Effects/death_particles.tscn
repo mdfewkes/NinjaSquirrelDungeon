@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c40ufdur12sa0"]
+
+[sub_resource type="Gradient" id="Gradient_n30v0"]
+offsets = PackedFloat32Array(0.90751445, 0.9219653)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_on82b"]
+gradient = SubResource("Gradient_n30v0")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_ro81a"]
+_data = [Vector2(0.048469387, 0.72951883), 0.0, 1.6119214, 0, 0, Vector2(0.5918367, 0.994365), 0.036211945, 0.036211945, 0, 0, Vector2(1, 0.62808836), -3.0372798, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_5s7vn"]
+offsets = PackedFloat32Array(0.4704142, 0.8698225, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.43575418, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_55f3q"]
+offsets = PackedFloat32Array(0, 0.19526628, 0.65680474, 0.9408284)
+colors = PackedColorArray(1, 1, 1, 1, 0.65, 0.65, 0.65, 1, 0.65, 0.65, 0.65, 1, 0.10934045, 0.10934057, 0.10934054, 1)
+
+[node name="DeathParticles" type="CPUParticles2D"]
+z_index = 20
+emitting = false
+amount = 200
+texture = SubResource("GradientTexture2D_on82b")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 31.53
+direction = Vector2(0, -1)
+spread = 35.0
+gravity = Vector2(0, 128)
+initial_velocity_min = 128.0
+initial_velocity_max = 256.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+linear_accel_min = -128.0
+linear_accel_max = -64.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_ro81a")
+color_ramp = SubResource("Gradient_5s7vn")
+color_initial_ramp = SubResource("Gradient_55f3q")

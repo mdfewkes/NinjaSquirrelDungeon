@@ -48,13 +48,13 @@ func flash(intensity: float, seconds: float, type: FlashType) ->void:
 		env.environment.glow_bloom = intensity
 		match type:
 			FlashType.Light:
-				env.environment.adjustment_brightness = 2.0 * intensity
+				env.environment.adjustment_brightness = 1.0 + 2.0 * intensity
 			FlashType.Dark:
 				env.environment.glow_bloom = 0.0 # bloom doesn't look nice with this one
 				env.environment.adjustment_brightness = 1.0 - intensity * 0.7
 			FlashType.Stark:
-				env.environment.adjustment_contrast = 2.0 * intensity
-				env.environment.adjustment_saturation = 2.0 * intensity
+				env.environment.adjustment_contrast = 1.0 + 2.0 * intensity
+				env.environment.adjustment_saturation = 1.0 - intensity * 0.7
 			FlashType.Bland:
 				env.environment.adjustment_saturation = 1.0 - intensity
 		flash_tween.tween_property(env.environment, "glow_bloom", 0.0, seconds)

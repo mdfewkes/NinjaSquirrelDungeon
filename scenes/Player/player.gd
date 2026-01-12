@@ -23,7 +23,7 @@ enum PlayerSFX {hurt, footstep, effort}
 var current_action_state = null
 var action_selected_by_cutscene = null
 
-enum PlayerState {Move, Roll, Action, Cloaked, Falling}
+enum PlayerState {Move, Roll, Action, Cloaked, Falling, Dying}
 var current_state = PlayerState.Move
 
 var input_vector: Vector2 = Vector2.ZERO
@@ -47,7 +47,6 @@ const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
 
 signal update_health(current_health, max_health)
 signal player_death
-var is_dying: bool = false
 signal direction_changed(new_direction)
 
 func _ready() -> void:
@@ -62,8 +61,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_cutscene_squirrel:
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	if current_state == PlayerState.Falling:
+	if current_state == PlayerState.Falling or current_state == PlayerState.Dying:
 		return
+	if Input.is_action_just_pressed("ui_cancel"):
+		current_state = PlayerState.Dying
+		call_deferred("_die")
 
 	match current_state:
 		PlayerState.Move:
@@ -122,21 +124,15 @@ func _cloaked_state() -> void:
 	_check_and_set_action_state()
 
 func _die() -> void:
-	var tween = get_tree().create_tween()
-	if last_input_vector.x < 0:
-		tween.tween_property(self, "skew", deg_to_rad(-90), 0.75)
-	else: 
-		tween.tween_property(self, "skew", deg_to_rad(90), 0.75)
-	await tween.finished
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = 1.5
-	timer.one_shot = true
-	timer.start()
-	await timer.timeout
-	
+	ImpactEffects.hit(1.5, 1.0, ImpactEffects.FlashType.Stark, 0.2)
+	while playback.get_current_node() != "death":
+		await get_tree().physics_frame
+
+	tail.set_cloak_gradient(tail.death_gradient)
+	create_tween().tween_method(tail.set_cloak_amount, 0.0, 1.0, 1.0)
+
+	await animation_tree.animation_finished
 	emit_signal("player_death")
-	# later you can add queue_free or disable collisions here
 
 func _update_blend_positions() -> void:
 	if input_vector == last_input_vector: return
@@ -179,9 +175,7 @@ func _check_and_set_action_state() -> void:
 
 
 func _on_hurt(hitbox: HitBox) -> void:
-	if god_mode:
-		return
-	if is_dying:
+	if god_mode or current_state == PlayerState.Dying:
 		return
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
@@ -190,7 +184,7 @@ func _on_hurt(hitbox: HitBox) -> void:
 	play_sfx_hurt()
 
 	if current_hp <= 0:
-		is_dying = true
+		current_state = PlayerState.Dying
 		call_deferred("_die")  # extra safe; now definitely outside physics
 
 func _on_hit(hurtbox: HurtBox):
@@ -297,5 +291,6 @@ func _on_fall_complete() -> void:
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
 	if current_hp <= 0:
+		current_state = PlayerState.Dying
 		call_deferred("_die")  # extra safe; now definitely outside physics
 	

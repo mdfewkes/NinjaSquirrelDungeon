@@ -323,6 +323,10 @@ rotation = 1.5707964
 position = Vector2(1856, 472)
 rotation = -1.5707964
 
+[node name="HitBox" parent="Rooms/BatRoom/Environment/WallSpikes" index="2"]
+collision_layer = 6
+collision_mask = 6
+
 [node name="CollisionShape2D" parent="Rooms/BatRoom/Environment/WallSpikes/HitBox" index="0"]
 shape = SubResource("RectangleShape2D_mc2jv")
 
@@ -529,15 +533,11 @@ position = Vector2(1175, -155)
 
 [node name="Enemies" type="Node2D" parent="Rooms/PatrolRoom"]
 
-[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" node_paths=PackedStringArray("patrol_path", "dartmunk_summon_markers") instance=ExtResource("21_bc84e")]
+[node name="PatrollingEnemy" parent="Rooms/PatrolRoom/Enemies" node_paths=PackedStringArray("patrol_path") instance=ExtResource("21_bc84e")]
 position = Vector2(1184, -16)
 motion_mode = 1
 patrol_point_radius = 5
-default_wait_time = 5.0
 patrol_path = NodePath("../PatrolPath")
-patrol_wait_times = Array[float]([])
-dartmunk_summon_markers = Array[float]([])
-sfx_on_chase = null
 
 [node name="PatrolPath" type="Path2D" parent="Rooms/PatrolRoom/Enemies"]
 curve = SubResource("Curve2D_o3ebs")

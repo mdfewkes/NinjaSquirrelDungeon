@@ -3,13 +3,15 @@ extends EnemyBase
 @onready var playback := animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
-const destroy_effect: PackedScene = preload("res://scenes/Effects/hit_effect.tscn")
-
 func _ready() -> void:
 	super._ready()
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+
+	if current_hp <= 0:
+		velocity = Vector2.ZERO
+		return
 
 	var state := playback.get_current_node()
 	match state:
@@ -21,8 +23,7 @@ func _physics_process(delta: float) -> void:
 			knockback_state(delta)
 			
 func idle_state():
-	if current_hp <= 0:
-		die()
+	pass
 
 func chase_state():
 	navigation_agent_2d.target_position = player.global_position
@@ -32,17 +33,8 @@ func chase_state():
 	move_and_slide()
 
 func knockback_state(delta):
-	if current_hp <= 0:
-		die()
 	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	move_and_slide()
-
-func die() -> void:
-	if destroy_effect != null:
-		var destroy_effect_inastance := destroy_effect.instantiate()
-		get_tree().current_scene.add_child(destroy_effect_inastance)
-		destroy_effect_inastance.global_position = global_position
-	queue_free()
 
 func is_player_in_range() -> bool:
 	if player == null:

@@ -38,7 +38,6 @@ extends EnemyBase
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum State {IDLE, MOVE, REPOSITION, ATTACK, STUN, DEATH}
 var current_state: State = State.IDLE

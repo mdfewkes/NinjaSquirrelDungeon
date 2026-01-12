@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://5pbl42y2fb2y"]
+[gd_scene load_steps=33 format=3 uid="uid://5pbl42y2fb2y"]
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
@@ -19,6 +19,54 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DeathParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ShadowSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.394, 0.394)]
 }
 
 [sub_resource type="Animation" id="Animation_kw6ql"]
@@ -157,6 +205,57 @@ tracks/0/keys = {
 "values": [5, 4, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_qc4yg"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShadowSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(0.21763763, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.394, 0.394), Vector2(0.1, 0.1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oh7v8"]
 _data = {
 &"RESET": SubResource("Animation_cwiwr"),
@@ -164,6 +263,7 @@ _data = {
 &"chase_left": SubResource("Animation_xmkcy"),
 &"chase_right": SubResource("Animation_b1g8m"),
 &"chase_up": SubResource("Animation_oh7v8"),
+&"death": SubResource("Animation_qc4yg"),
 &"patrol_down": SubResource("Animation_ttlqe"),
 &"patrol_left": SubResource("Animation_6d2yr"),
 &"patrol_right": SubResource("Animation_qm14r"),
@@ -234,6 +334,7 @@ states/Chase/position = Vector2(403, 157)
 states/Patrol/node = SubResource("AnimationNodeBlendSpace2D_qm14r")
 states/Patrol/position = Vector2(403, 67)
 transitions = ["Patrol", "Chase", SubResource("AnimationNodeStateMachineTransition_kw6ql"), "Chase", "Patrol", SubResource("AnimationNodeStateMachineTransition_ttlqe"), "Start", "Patrol", SubResource("AnimationNodeStateMachineTransition_cwiwr")]
+graph_offset = Vector2(206.32501, 40.6875)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6d2yr"]
 height = 46.0
@@ -271,6 +372,7 @@ libraries = {
 
 [node name="AnimationTree" parent="." index="4"]
 root_node = NodePath("../Sprite2D")
+callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeStateMachine_7l7ke")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_chase = false
@@ -306,5 +408,12 @@ debug_color = Color(0.7777905, 0.31842506, 0.7667915, 0.41960785)
 
 [node name="ShockWave" parent="." index="12" instance=ExtResource("5_ukvp4")]
 position = Vector2(0, -50)
+
+[node name="DeathParticles" parent="." index="13"]
+position = Vector2(0, -47)
+emission_sphere_radius = 50.0
+linear_accel_min = -150.0
+linear_accel_max = -100.0
+scale_amount_max = 2.0
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
