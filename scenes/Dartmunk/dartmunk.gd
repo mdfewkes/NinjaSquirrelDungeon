@@ -170,8 +170,18 @@ func _should_reposition() -> bool:
 func _enter_attack_state() -> void:
 	current_state = State.ATTACK
 	velocity = Vector2.ZERO
-	_fire_dart()
+	_start_attack_animation()
 	attack_timer.start(attack_cooldown)
+
+
+func _start_attack_animation() -> void:
+	if player == null:
+		return
+	# Update facing toward predicted aim point
+	var aim_point := _calculate_predicted_position()
+	_facing_direction = global_position.direction_to(aim_point)
+	var dir_name := _get_direction_name()
+	animation_player.play("attack_%s" % dir_name)
 
 
 func _do_attack_state(_delta: float) -> void:
@@ -220,7 +230,7 @@ func _calculate_predicted_position() -> Vector2:
 
 func _on_attack_timer_timeout() -> void:
 	if current_state == State.ATTACK and can_see_player():
-		_fire_dart()
+		_start_attack_animation()
 		attack_timer.start(attack_cooldown)
 
 #endregion
@@ -268,15 +278,28 @@ func _update_animation() -> void:
 	if current_state == State.DEATH:
 		return
 
-	# Update facing direction from velocity
-	if velocity.length() > 10:
+	# Update facing direction based on state
+	if current_state == State.ATTACK and player != null:
+		# Face toward predicted aim point (same as where darts fire)
+		var aim_point := _calculate_predicted_position()
+		_facing_direction = global_position.direction_to(aim_point)
+	elif velocity.length() > 10:
 		_facing_direction = velocity.normalized()
 
 	var dir_name := _get_direction_name()
 	var state_name: String = State.keys()[current_state].to_lower()
-	# Reposition uses move animations (visually identical)
+
 	if state_name == "reposition":
+		# Reposition uses move animations (visually identical)
 		state_name = "move"
+	elif state_name == "attack":
+		# In attack state, only update to idle if not playing attack animation
+		# Attack animations are triggered explicitly by _start_attack_animation()
+		if not animation_player.current_animation.begins_with("attack_"):
+			state_name = "idle"
+		else:
+			return  # Don't interrupt attack animation
+
 	var anim_name := "%s_%s" % [state_name, dir_name]
 
 	if animation_player.current_animation != anim_name:
