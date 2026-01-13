@@ -55,7 +55,7 @@ occluder_light_mask = 3
 target_position = Vector2(16, 0)
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_egoki")
 metadata/_custom_type_script = "uid://jrn1snxemt88"
@@ -75,4 +75,3 @@ position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_5mmrv")
 
 [node name="DeathParticles" parent="." instance=ExtResource("5_n8qwv")]
-emitting = false

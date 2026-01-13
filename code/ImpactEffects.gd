@@ -92,3 +92,5 @@ func _input(event: InputEvent) -> void:
 				hit(1.0, 0.5, FlashType.Stark)
 			KEY_6:
 				hit(1.0, 0.5, FlashType.Bland)
+			KEY_7:
+				flash(0.4, 0.2, FlashType.Neutral)

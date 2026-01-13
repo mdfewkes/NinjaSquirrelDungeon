@@ -476,7 +476,7 @@ occluder = SubResource("OccluderPolygon2D_vntx1")
 occluder_light_mask = 3
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_gw15p")
 metadata/_custom_type_script = "uid://jrn1snxemt88"
@@ -511,8 +511,6 @@ debug_color = Color(0.81955034, 0.29340324, 0.7034943, 0.41960785)
 
 [node name="DeathParticles" parent="." instance=ExtResource("7_1crdu")]
 position = Vector2(-9, -22)
-emitting = false
-lifetime = 0.8
 gravity = Vector2(0, 164)
 linear_accel_max = -78.81
 color_initial_ramp = SubResource("Gradient_1crdu")

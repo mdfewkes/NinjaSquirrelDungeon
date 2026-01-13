@@ -42,8 +42,7 @@ var last_action_time: float
 @onready var shuriken_spawn: Node2D = $ShurikenSpawn
 @onready var tail: Tail = $Tail
 @onready var fall_detector: FallDetector = $FallDetector
-
-const hit_effect = preload("res://scenes/Effects/hit_effect.tscn")
+@onready var hit_effect: CPUParticles2D = $KatanaHitEffect
 
 signal update_health(current_health, max_health)
 signal player_death
@@ -180,7 +179,7 @@ func _on_hurt(hitbox: HitBox) -> void:
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
 	effect_animation_player.play("blink")
-	ImpactEffects.hit(0.7, 0.3)
+	ImpactEffects.hit(0.7, 0.3, ImpactEffects.FlashType.Bland)
 	play_sfx_hurt()
 
 	if current_hp <= 0:
@@ -188,10 +187,11 @@ func _on_hurt(hitbox: HitBox) -> void:
 		call_deferred("_die")  # extra safe; now definitely outside physics
 
 func _on_hit(hurtbox: HurtBox):
-	if hit_effect != null:
-		var hit_effect_instance = hit_effect.instantiate()
-		get_tree().current_scene.add_child(hit_effect_instance)
-		hit_effect_instance.global_position = hurtbox.global_position
+	if hit_effect:
+		hit_effect.global_position = hurtbox.global_position
+		hit_effect.rotation = last_input_vector.angle()
+		hit_effect.emitting = true
+		
 
 func _on_player_death() -> void:
 	get_tree().reload_current_scene()

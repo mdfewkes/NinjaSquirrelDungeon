@@ -1,6 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c05407r0r140w"]
+[gd_scene load_steps=7 format=3 uid="uid://c05407r0r140w"]
 
 [ext_resource type="Texture2D" uid="uid://cv4ea8acqc1s3" path="res://temp assets/bush-temp.png" id="1_gehfa"]
+
+[sub_resource type="Gradient" id="Gradient_gehfa"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_rd75n"]
+colors = PackedColorArray(0.88, 0.7450667, 0.070399985, 1, 1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gehfa"]
 atlas = ExtResource("1_gehfa")
@@ -24,9 +30,27 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="HitEffect" type="AnimatedSprite2D"]
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+damping_min = 32.0
+damping_max = 64.0
+angle_max = 360.0
+scale_amount_min = 3.0
+scale_amount_max = 8.0
+color_ramp = SubResource("Gradient_gehfa")
+color_initial_ramp = SubResource("Gradient_rd75n")
+
+[node name="HitEffect" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 100
 sprite_frames = SubResource("SpriteFrames_2i520")
 autoplay = "default"
 
-[connection signal="animation_finished" from="." to="." method="queue_free"]
+[connection signal="animation_finished" from="HitEffect" to="HitEffect" method="queue_free"]

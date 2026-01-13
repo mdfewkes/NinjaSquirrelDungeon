@@ -247,8 +247,8 @@ node_connections = [&"output", 0, &"StateMachine"]
 height = 60.0
 
 [sub_resource type="Gradient" id="Gradient_0siu8"]
-offsets = PackedFloat32Array(0, 0.35207102)
-colors = PackedColorArray(0.6637102, 0.5414517, 0.13081169, 1, 0.20396641, 0.012016516, 0.3328734, 1)
+offsets = PackedFloat32Array(0, 0.43195266, 1)
+colors = PackedColorArray(0.6637102, 0.5414517, 0.13081169, 1, 0.297, 0.2475, 0.33, 1, 0.16908067, 0.13678473, 0.19056955, 1)
 
 [node name="Bat" instance=ExtResource("1_8na5a")]
 collision_layer = 4

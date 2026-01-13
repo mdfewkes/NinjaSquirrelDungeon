@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=194 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -66,9 +66,10 @@
 [ext_resource type="AudioStream" uid="uid://2m2ci3x0bkr0" path="res://scenes/Player/Audio/hero_effort_big_08.ogg" id="46_4bupc"]
 [ext_resource type="AudioStream" uid="uid://bijevpd38ruyb" path="res://scenes/Player/Audio/hero_effort_big_09.ogg" id="47_5y20s"]
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
-[ext_resource type="PackedScene" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
+[ext_resource type="PackedScene" uid="uid://d070qkq22qdri" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
 [ext_resource type="Texture2D" uid="uid://dwk7dp54yxm2o" path="res://scenes/Player/Art/blob-shadow.png" id="69_d7mgq"]
+[ext_resource type="PackedScene" uid="uid://c05407r0r140w" path="res://scenes/Effects/hit_effect.tscn" id="70_23nhs"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -2710,13 +2711,13 @@ fill_to = Vector2(0, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1r7mf"]
 
 [sub_resource type="Gradient" id="Gradient_bbyvq"]
-offsets = PackedFloat32Array(0.90751445, 0.9219653)
+offsets = PackedFloat32Array(0.3815029, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hc2s7"]
 gradient = SubResource("Gradient_bbyvq")
-width = 10
-height = 10
+width = 16
+height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
@@ -2726,8 +2727,8 @@ _data = [Vector2(0.048469387, 0.72951883), 0.0, 1.6119214, 0, 0, Vector2(0.59183
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_23nhs"]
-offsets = PackedFloat32Array(0.4704142, 0.8698225, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.43575418, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.12130178, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_kxlis"]
 offsets = PackedFloat32Array(0, 0.75147927, 0.97928995)
@@ -2936,6 +2937,8 @@ scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_bbyvq")
 color_ramp = SubResource("Gradient_23nhs")
 color_initial_ramp = SubResource("Gradient_kxlis")
+
+[node name="KatanaHitEffect" parent="." instance=ExtResource("70_23nhs")]
 
 [connection signal="direction_changed" from="." to="Tail" method="_on_player_direction_changed"]
 [connection signal="shuriken_throw" from="Shiruken ActionState" to="Tail" method="_on_player_shuriken_throw"]

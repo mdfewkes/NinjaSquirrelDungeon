@@ -61,6 +61,7 @@ func _on_hurt(hit_box: HitBox) -> void:
 	if current_hp <= 0:
 		_on_death()
 	
+	ImpactEffects.flash(0.4, 0.3, ImpactEffects.FlashType.Neutral)
 	velocity = hit_box.global_position.direction_to(global_position).normalized() * hit_box.knockback * knockback_multiply
 
 
