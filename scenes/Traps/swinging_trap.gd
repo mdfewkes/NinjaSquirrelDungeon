@@ -40,6 +40,7 @@ func swing() -> void:
 	show()
 	if anim_player.is_playing():
 		return
+	ImpactEffects.shake(0.2, 1.0)
 	if sfx_on_trigger:
 		AudioManager.PlaySFX(sfx_on_trigger, self)
 	if from_left:
