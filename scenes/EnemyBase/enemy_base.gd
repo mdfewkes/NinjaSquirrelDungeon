@@ -4,7 +4,12 @@ extends CharacterBody2D
 
 ## Exported (Instance) Variables
 @export_category("Enemy Details")
+## View range at maximum light
 @export var view_range: float = 300
+## View range with no light
+@export var min_view_range: float = 20
+## 0.0: can't see behind at all (even at min_view_range), 1.0: can see in all directions equally
+@export var peripheral_vision: float = 1.0
 @export var speed := 200
 @export var knockback_multiply := 1
 @export var knockback_friction := 1000
@@ -22,6 +27,7 @@ var animation_tree_playback: AnimationNodeStateMachinePlayback
 ## Class variables
 var current_hp := max_hp
 var player = null
+var facing_direction: Vector2 = Vector2.ZERO
 
 ## Lifecycle Functions
 func _ready() -> void:
@@ -33,15 +39,31 @@ func _ready() -> void:
 		animation_tree_playback = animation_tree.get("parameters/StateMachine/playback")
 
 func _physics_process(_delta: float) -> void:
-	$Label.text = "HP:" + str(current_hp) + ", View:" + str(view_range * Level.light_level)
+	$Label.text = "HP:" + str(current_hp) + ", View:" + str(get_view_range())
 
 ## Common Functions
+
+func get_view_range() -> float:
+	var max_range = view_range * Level.light_level if Level.light_level > 0.0 else min_view_range
+	var peripheral_loss: float = 0.0
+	if facing_direction != Vector2.ZERO:
+		var player_angle := global_position.direction_to(player.global_position)
+		var angle_diff := facing_direction.angle_to(player_angle)
+		# now PI is fully behind us, so if peripheral vision = 0 our range should also be 0 as the angle approaches PI
+		# this value should scale between 0.0 (fully in front) and 1.0 (fully behind)
+		var peripheral_use: float = abs(angle_diff) / PI
+		# this is how much of their range they'll lose
+		peripheral_loss = peripheral_use * (1.0 - peripheral_vision) * max_range
+	return max_range - peripheral_loss
+
+
 func is_player_in_range() -> bool:
 	if player == null:
 		return false
 
 	var distance := global_position.distance_to(player.global_position)
-	var max_range = view_range * Level.light_level if Level.light_level > 0.0 else 20.0
+	var max_range := get_view_range()
+
 	return distance <= max_range
 
 func can_see_player() -> bool:

@@ -267,7 +267,7 @@ tile_set = SubResource("TileSet_k83mh")
 visibility_layer = 2
 z_index = 10
 position = Vector2(1010, 3368)
-god_mode = true
+max_hp = 7
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -305,7 +305,6 @@ position = Vector2(265, 2660)
 patrol_point_radius = 5
 patrol_path = NodePath("..")
 dartmunk_summon_markers = [NodePath("../../LowerDartmunkSummonPoint")]
-view_range = 350.0
 
 [node name="PatrolRoute2" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x20lp")
@@ -315,7 +314,6 @@ position = Vector2(514, 2380)
 patrol_point_radius = 5
 patrol_path = NodePath("..")
 dartmunk_summon_markers = [NodePath("../../LowerDartmunkSummonPoint")]
-view_range = 350.0
 
 [node name="PatrolRoute3" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_x6y5w")
@@ -324,7 +322,6 @@ curve = SubResource("Curve2D_x6y5w")
 position = Vector2(1025, 1834)
 patrol_point_radius = 5
 dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
-view_range = 350.0
 
 [node name="PatrolRoute4" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_u646x")
@@ -333,7 +330,6 @@ curve = SubResource("Curve2D_u646x")
 position = Vector2(1029, 1179)
 patrol_point_radius = 5
 dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
-view_range = 350.0
 
 [node name="PatrolRoute5" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_ci84x")
@@ -342,7 +338,6 @@ curve = SubResource("Curve2D_ci84x")
 position = Vector2(562, 1848)
 patrol_point_radius = 5
 dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
-view_range = 350.0
 
 [node name="PatrolRoute6" type="Path2D" parent="Rooms/Room1/Enemies"]
 curve = SubResource("Curve2D_1ts70")
@@ -351,7 +346,6 @@ curve = SubResource("Curve2D_1ts70")
 position = Vector2(267, 1199)
 patrol_point_radius = 5
 dartmunk_summon_markers = [NodePath("../../UpperDartmunkSummonPoint2")]
-view_range = 350.0
 
 [node name="LowerDartmunkSummonPoint" type="Marker2D" parent="Rooms/Room1/Enemies"]
 position = Vector2(1057, 3341)

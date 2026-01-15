@@ -75,8 +75,10 @@ func _physics_process(delta: float) -> void:
 		animation_tree.set("parameters/conditions/is_chase", false)
 		animation_tree.set("parameters/conditions/is_patrol", true)		
 	
-	animation_tree.set("parameters/Chase/blend_position", velocity.normalized())
-	animation_tree.set("parameters/Patrol/blend_position", velocity.normalized())
+	if velocity != Vector2.ZERO:
+		facing_direction = velocity.normalized()
+		animation_tree.set("parameters/Chase/blend_position", facing_direction)
+		animation_tree.set("parameters/Patrol/blend_position", facing_direction)
 
 ## Functions
 func idle_state():

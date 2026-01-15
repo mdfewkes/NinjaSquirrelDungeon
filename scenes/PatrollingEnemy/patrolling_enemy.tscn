@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5pbl42y2fb2y"]
+[gd_scene load_steps=34 format=3 uid="uid://5pbl42y2fb2y"]
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
@@ -68,6 +68,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0.394, 0.394)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HitBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
 
 [sub_resource type="Animation" id="Animation_kw6ql"]
 resource_name = "chase_down"
@@ -84,6 +96,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [6, 7, 8, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, 47)]
 }
 
 [sub_resource type="Animation" id="Animation_xmkcy"]
@@ -102,6 +126,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [12, 13, 14, 13]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-70, -30)]
+}
 
 [sub_resource type="Animation" id="Animation_b1g8m"]
 resource_name = "chase_right"
@@ -119,6 +155,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [18, 19, 20, 19]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, -30)]
+}
 
 [sub_resource type="Animation" id="Animation_oh7v8"]
 resource_name = "chase_up"
@@ -135,6 +183,69 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, -110)]
+}
+
+[sub_resource type="Animation" id="Animation_qc4yg"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DeathParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShadowSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(0.21763763, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.394, 0.394), Vector2(0.1, 0.1)]
 }
 
 [sub_resource type="Animation" id="Animation_ttlqe"]
@@ -203,57 +314,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [5, 4, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_qc4yg"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../DeathParticles:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../ShadowSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.56666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.56666666),
-"transitions": PackedFloat32Array(0.21763763, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.03333334, 0.53333336),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.394, 0.394), Vector2(0.1, 0.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oh7v8"]
@@ -339,6 +399,9 @@ graph_offset = Vector2(206.32501, 40.6875)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6d2yr"]
 height = 46.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qc4yg"]
+radius = 32.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukvp4"]
 radius = 40.0
 height = 100.79
@@ -353,6 +416,9 @@ default_wait_time = 5.0
 patrol_wait_times = Array[float]([])
 dartmunk_summon_markers = Array[float]([])
 sfx_on_chase = null
+view_range = 500.0
+min_view_range = 50.0
+peripheral_vision = 0.2
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(4, -54)
@@ -388,8 +454,10 @@ scale = Vector2(4.187, 2.309)
 shape = SubResource("CapsuleShape2D_6d2yr")
 
 [node name="HitBox" parent="." index="9"]
-position = Vector2(-2, 17)
-scale = Vector2(3.894, 3.642)
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_qc4yg")
 
 [node name="PatrolTimer" type="Timer" parent="." index="10"]
 autostart = true
