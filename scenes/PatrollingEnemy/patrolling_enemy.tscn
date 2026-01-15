@@ -419,6 +419,8 @@ sfx_on_chase = null
 view_range = 500.0
 min_view_range = 50.0
 peripheral_vision = 0.2
+knockback_friction = 3000
+max_hp = 3
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(4, -54)
@@ -455,6 +457,7 @@ shape = SubResource("CapsuleShape2D_6d2yr")
 
 [node name="HitBox" parent="." index="9"]
 position = Vector2(0, -30)
+knockback = 500
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_qc4yg")

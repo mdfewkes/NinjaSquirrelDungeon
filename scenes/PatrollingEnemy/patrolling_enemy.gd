@@ -82,8 +82,6 @@ func _physics_process(delta: float) -> void:
 
 ## Functions
 func idle_state():
-	if current_hp <= 0:
-		queue_free()
 	if can_see_player():
 		_start_chasing()
 	elif not at_patrol_point():
@@ -91,12 +89,17 @@ func idle_state():
 
 func chase_state():
 	velocity = global_position.direction_to(player.global_position).normalized() * speed
-	#sprite_2d.scale.x = sign(velocity.x)
 	chase = true
 	patrol = false
 	move_and_slide()
 	if not can_see_player():
 		state = States.IDLE
+
+func get_view_range() -> float:
+	var range := super.get_view_range()
+	if state == States.CHASE:
+		return range * 2.0
+	return range
 
 func get_num_patrol_points() -> int:
 	return patrol_path.curve.point_count
@@ -149,11 +152,14 @@ func _summon_dartmunk(marker: Marker2D):
 	fade_in.tween_property(obj, "modulate", Color.WHITE, 0.4)
 
 func knockback_state(delta):
-	if current_hp <= 0:
-		queue_free()
-	
-	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	move_and_slide()
+	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
+	if velocity == Vector2.ZERO:
+		# I think it makes sense to start chasing if someone hits you?
+		#state = States.IDLE
+		facing_direction = global_position.direction_to(player.global_position)
+		_start_chasing()
+		chase_state()
 	
 func at_patrol_point() -> bool:
 	var target_coordinates : Vector2 = get_patrol_point_coords(current_patrol_point)
@@ -162,7 +168,7 @@ func at_patrol_point() -> bool:
 ## Events
 func _on_hurt(hit_box: HitBox):
 	super._on_hurt(hit_box)
-	
+	state = States.STUN
 	velocity = hit_box.global_position.direction_to(global_position) * 1000
 
 func _on_patrol_timer_timeout() -> void:
