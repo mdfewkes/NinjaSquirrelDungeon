@@ -1,56 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://c05407r0r140w"]
+[gd_scene load_steps=5 format=3 uid="uid://c05407r0r140w"]
 
-[ext_resource type="Texture2D" uid="uid://cv4ea8acqc1s3" path="res://temp assets/bush-temp.png" id="1_gehfa"]
+[sub_resource type="Gradient" id="Gradient_2i520"]
+colors = PackedColorArray(0, 0, 0, 0.1882353, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqok6"]
+gradient = SubResource("Gradient_2i520")
+width = 4
+height = 32
+fill = 2
+fill_from = Vector2(0.102564104, 0.08547009)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_gehfa"]
+offsets = PackedFloat32Array(0.22485207, 0.88461536)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_rd75n"]
-colors = PackedColorArray(0.88, 0.7450667, 0.070399985, 1, 1, 1, 1, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gehfa"]
-atlas = ExtResource("1_gehfa")
-region = Rect2(650, 144, 50, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rd75n"]
-atlas = ExtResource("1_gehfa")
-region = Rect2(450, 144, 50, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2i520"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gehfa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rd75n")
-}],
-"loop": false,
-"name": &"default",
-"speed": 15.0
-}]
+offsets = PackedFloat32Array(0.18047337, 0.60650885, 1)
+colors = PackedColorArray(0.46610004, 0.6658383, 0.79, 1, 0.88, 0.7450667, 0.070399985, 1, 1, 1, 1, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 emitting = false
+amount = 12
+texture = SubResource("GradientTexture2D_jqok6")
 lifetime = 0.4
 one_shot = true
-explosiveness = 0.8
-spread = 90.0
+explosiveness = 0.89
+randomness = 0.58
+lifetime_randomness = 0.73
+particle_flag_align_y = true
+spread = 81.5
 gravity = Vector2(0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 200.0
-damping_min = 32.0
-damping_max = 64.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
 angle_max = 360.0
-scale_amount_min = 3.0
-scale_amount_max = 8.0
+scale_amount_min = 0.1
+scale_amount_max = 0.8
 color_ramp = SubResource("Gradient_gehfa")
 color_initial_ramp = SubResource("Gradient_rd75n")
-
-[node name="HitEffect" type="AnimatedSprite2D" parent="."]
-visible = false
-z_index = 100
-sprite_frames = SubResource("SpriteFrames_2i520")
-autoplay = "default"
-
-[connection signal="animation_finished" from="HitEffect" to="HitEffect" method="queue_free"]
