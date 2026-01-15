@@ -7,8 +7,10 @@ extends CharacterBody2D
 @export var god_mode: bool = false
 @export var speed: float = 300
 @export var roll_speed: float = 600
-@export var max_hp = 4
-var current_hp = max_hp
+@export var max_hp: int = 4
+@export var knockback_friction := 1000.0
+
+var current_hp: int
 
 enum PlayerSFX {hurt, footstep, effort}
 @export var sfx_hurt: AudioSFX
@@ -23,7 +25,7 @@ enum PlayerSFX {hurt, footstep, effort}
 var current_action_state = null
 var action_selected_by_cutscene = null
 
-enum PlayerState {Move, Roll, Action, Cloaked, Falling, Dying}
+enum PlayerState {Move, Roll, Action, Cloaked, Falling, Dying, Knockback}
 var current_state = PlayerState.Move
 
 var input_vector: Vector2 = Vector2.ZERO
@@ -48,14 +50,17 @@ signal update_health(current_health, max_health)
 signal player_death
 signal direction_changed(new_direction)
 
-func _ready() -> void:
+func _ready() -> void:	
 	animation_tree.active = true
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
 	player_death.connect(_on_player_death)
 	fall_detector.entered_pit.connect(_on_fall_start)
 	fall_detector.fell_into_pit.connect(_on_fall_complete)
+
 	InventoryManager.reset()
+	current_hp = max_hp
+	update_health.emit(current_hp, max_hp)
 
 func _physics_process(delta: float) -> void:
 	if not is_cutscene_squirrel:
@@ -75,6 +80,8 @@ func _physics_process(delta: float) -> void:
 			_action_state(delta)
 		PlayerState.Cloaked:
 			_cloaked_state()
+		PlayerState.Knockback:
+			_knockback_state(delta)
 	
 	if input_vector != Vector2.ZERO:
 		_update_blend_positions()
@@ -121,6 +128,12 @@ func _roll_state() -> void:
 
 func _cloaked_state() -> void:
 	_check_and_set_action_state()
+
+func _knockback_state(delta: float) -> void:
+	move_and_slide()
+	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
+	if velocity == Vector2.ZERO:
+		current_state = PlayerState.Move
 
 func _die() -> void:
 	ImpactEffects.hit(1.5, 1.0, ImpactEffects.FlashType.Stark, 0.2)
@@ -174,13 +187,18 @@ func _check_and_set_action_state() -> void:
 
 
 func _on_hurt(hitbox: HitBox) -> void:
-	if god_mode or current_state == PlayerState.Dying:
+	if god_mode or current_state == PlayerState.Dying or current_state == PlayerState.Knockback:
 		return
 	current_hp -= hitbox.damage
 	update_health.emit(current_hp, max_hp)
+	
 	effect_animation_player.play("blink")
 	ImpactEffects.hit(0.7, 0.3, ImpactEffects.FlashType.Bland)
 	play_sfx_hurt()
+	
+	var knockback_dir := hitbox.global_position.direction_to(global_position)
+	velocity = knockback_dir * hitbox.knockback
+	current_state = PlayerState.Knockback
 
 	if current_hp <= 0:
 		current_state = PlayerState.Dying

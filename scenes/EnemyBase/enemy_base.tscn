@@ -68,6 +68,7 @@ shape = SubResource("CapsuleShape2D_t55fp")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_voqne")
+knockback = 250
 metadata/_custom_type_script = "uid://dtiynebo6fexe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

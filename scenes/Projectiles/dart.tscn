@@ -64,6 +64,7 @@ target_position = Vector2(8, 0)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_e2cde")
+knockback = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_rhjwi")
