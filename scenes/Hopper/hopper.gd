@@ -67,6 +67,8 @@ func stun_state(delta):
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
 	state = States.STUN
+	if current_hp > 0:
+		animation_player.play("Stun")
 
 func _on_death() -> void:
 	super._on_death()
