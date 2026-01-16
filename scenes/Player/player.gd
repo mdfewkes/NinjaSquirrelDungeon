@@ -27,6 +27,7 @@ var action_selected_by_cutscene = null
 
 enum PlayerState {Move, Roll, Action, Cloaked, Falling, Dying, Knockback}
 var current_state = PlayerState.Move
+var received_roll_command = false
 
 var input_vector: Vector2 = Vector2.ZERO
 var last_input_vector: Vector2 = Vector2.DOWN
@@ -96,7 +97,7 @@ func _physics_process(delta: float) -> void:
 func _move_state() -> void:
 	velocity = input_vector * speed
 
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed("roll") or received_roll_command:
 		_set_roll_state()
 		return
 		
@@ -115,11 +116,12 @@ func _action_state(delta: float) -> void:
 func _roll_state() -> void:
 	_check_and_set_action_state()
 
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed("roll") or received_roll_command:
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		play_sfx_effort()
 		if input_vector != Vector2.ZERO:
 			velocity = input_vector * velocity.length()
+		received_roll_command = false
 		return
 	
 	if playback.get_current_node() != "RollState":
@@ -219,6 +221,9 @@ func _on_player_directed(vector: Vector2) -> void:
 
 func _on_action_selected(action: String) -> void:
 	action_selected_by_cutscene = action
+
+func _on_roll_command_received() -> void:
+	received_roll_command = true
 
 func set_cloakable_gradient(gradient: GradientTexture2D, wait_time: float) -> void:
 	cloak_gradient = gradient
