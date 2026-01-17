@@ -53,6 +53,16 @@ text = "Test Sneaking"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://boss_test1.tscn"
 
+[node name="TestChase" type="Button" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 232.0
+offset_right = 247.0
+offset_bottom = 296.0
+text = "Test Chase"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://boss_test2.tscn"
+
 [node name="TestDialog" type="Button" parent="."]
 layout_mode = 0
 offset_left = 927.0
