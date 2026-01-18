@@ -31,6 +31,7 @@ const FALL_COLOR = Color.BLACK
 @export var fall_time: float = 1.0
 
 var falling := false
+var active_pits: Array[Node2D] = []
 var pit_center: Vector2
 
 var last_safe_position: Vector2
@@ -48,7 +49,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var now = Time.get_ticks_msec()
-	if not falling and now > last_safe_time + 1000:
+	if not falling and not active_pits and now > last_safe_time + 1000:
 		last_safe_time = now
 		last_safe_position = target.position
 	if falling and move_toward_center and pit_center:
@@ -61,7 +62,14 @@ func _on_area_entered(area: Area2D) -> void:
 	_on_entered(area)
 
 
+func refresh_active_pits() -> void:
+	for pit in active_pits:
+		_on_entered(pit)
+
+
 func _on_entered(area_or_body: Node2D) -> void:
+	if area_or_body not in active_pits:
+		active_pits.append(area_or_body)
 	if falling:
 		return
 	if target.has_method("can_fall") and not target.can_fall(area_or_body):
@@ -84,6 +92,7 @@ func _on_entered(area_or_body: Node2D) -> void:
 
 
 func _on_area_exited(area: Area2D) -> void:
+	active_pits.erase(area)
 	if signals_enabled:
 		emit_signal("exited_pit", area)
 
@@ -111,5 +120,6 @@ func _on_body_entered(body) -> void:
 
 
 func _on_body_exited(body) -> void:
+	active_pits.erase(body)
 	if signals_enabled:
 		emit_signal("exited_pit", body)

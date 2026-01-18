@@ -66,7 +66,7 @@
 [ext_resource type="AudioStream" uid="uid://2m2ci3x0bkr0" path="res://scenes/Player/Audio/hero_effort_big_08.ogg" id="46_4bupc"]
 [ext_resource type="AudioStream" uid="uid://bijevpd38ruyb" path="res://scenes/Player/Audio/hero_effort_big_09.ogg" id="47_5y20s"]
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
-[ext_resource type="PackedScene" uid="uid://d070qkq22qdri" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
+[ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
 [ext_resource type="Texture2D" uid="uid://dwk7dp54yxm2o" path="res://scenes/Player/Art/blob-shadow.png" id="69_d7mgq"]
 [ext_resource type="PackedScene" uid="uid://c05407r0r140w" path="res://scenes/Effects/hit_effect.tscn" id="70_23nhs"]

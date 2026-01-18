@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bacx7l8nfuxpv"]
+
+[ext_resource type="Script" uid="uid://c0ieuvc3fjjh8" path="res://scenes/Bridge/bridge.gd" id="1_7kn5w"]
+[ext_resource type="Texture2D" uid="uid://0r2psan67242" path="res://scenes/Bridge/Art/bridge-log.png" id="1_fv7dx"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_b1hcl"]
+[ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="4_nofgo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv7dx"]
+radius = 13.0
+height = 130.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv7dx"]
+size = Vector2(124, 128)
+
+[node name="Bridge" type="Area2D"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_7kn5w")
+
+[node name="TemplateLog" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="TemplateLog"]
+texture = ExtResource("1_fv7dx")
+offset = Vector2(-3, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TemplateLog"]
+position = Vector2(0.5, -1)
+shape = SubResource("CapsuleShape2D_fv7dx")
+debug_color = Color(0.6933419, 0.4900911, 0.22547865, 0.41960785)
+
+[node name="BridgeShape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_fv7dx")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("3_b1hcl")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="DeathParticles" parent="." instance=ExtResource("4_nofgo")]
+emission_shape = 3
+emission_rect_extents = Vector2(11, 71)
+scale_amount_min = 1.0
+scale_amount_max = 1.5

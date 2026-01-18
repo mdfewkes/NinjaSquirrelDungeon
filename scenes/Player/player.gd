@@ -36,6 +36,7 @@ var cloak_wait_seconds := 5.0
 var cloak_gradient: GradientTexture2D
 var cloak_area_counter := 0
 var last_action_time: float
+var is_on_platform := false
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
@@ -286,7 +287,7 @@ func play_sfx_effort() -> void:
 
 
 func can_fall(_area: Node2D) -> bool:
-	return not current_action_state
+	return not is_on_platform and current_action_state != $"Tail Whip ActionState"
 
 
 func _on_fall_start(_pit: Node2D) -> void:
@@ -316,4 +317,10 @@ func _on_fall_complete() -> void:
 	if current_hp <= 0:
 		current_state = PlayerState.Dying
 		call_deferred("_die")  # extra safe; now definitely outside physics
-	
+
+func entered_platform() -> void:
+	is_on_platform = true
+
+func exited_platform() -> void:
+	is_on_platform = false
+	fall_detector.refresh_active_pits()
