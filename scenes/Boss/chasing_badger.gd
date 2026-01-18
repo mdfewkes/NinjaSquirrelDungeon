@@ -2,8 +2,8 @@ extends Node2D
 
 enum State { idle, charging }
 
-@export var charge_seconds := 5.0
-@export var charge_accel := 400.0
+@export var charge_seconds := 2.0
+@export var charge_accel := 600.0
 @export var charge_backoff := 500.0
 @export var starting_point : Marker2D
 

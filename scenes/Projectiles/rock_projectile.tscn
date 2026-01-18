@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://di1nd1rwl435g"]
+
+[ext_resource type="Script" uid="uid://dwgkp8f615p1w" path="res://scenes/Projectiles/rock_projectile.gd" id="1_li84x"]
+[ext_resource type="Texture2D" uid="uid://bvw2fdsmuxvux" path="res://scenes/Traps/Art/rock1.png" id="1_mvjyh"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="2_7nj8i"]
+[ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="3_pm8hv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ydo6"]
+radius = 45.39824
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pm8hv"]
+radius = 44.553337
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_li84x"]
+radius = 30.0
+
+[node name="RockProjectile" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 2.0
+script = ExtResource("1_li84x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mvjyh")
+
+[node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ydo6")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("2_7nj8i")
+damage = 3
+metadata/_custom_type_script = "uid://dtiynebo6fexe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_pm8hv")
+debug_color = Color(0.8895795, 0.29531375, 0.3720221, 0.41960785)
+
+[node name="FallDetector" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("3_pm8hv")
+position_tracking_enabled = false
+reset_after_fall = false
+metadata/_custom_type_script = "uid://dgn2dmvhjwau0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+shape = SubResource("CircleShape2D_li84x")
+debug_color = Color(0.5718091, 0.42447844, 0.9185695, 0.41960785)

@@ -30,6 +30,9 @@ const FALL_COLOR = Color.BLACK
 ## How long before the position is reset and the fall signal sent after entering the area
 @export var fall_time: float = 1.0
 
+## If false, the object is queued for free after falling rather than being reset back to a safe position
+@export var reset_after_fall: bool = true
+
 var falling := false
 var active_pits: Array[Node2D] = []
 var pit_center: Vector2
@@ -85,8 +88,10 @@ func _on_entered(area_or_body: Node2D) -> void:
 
 	await get_tree().create_timer(fall_time).timeout
 
-	target.position = last_safe_position
-	falling = false
+	if reset_after_fall:
+		target.position = last_safe_position
+		falling = false
+		queue_free.call_deferred()
 	if signals_enabled:
 		emit_signal("fell_into_pit")
 
