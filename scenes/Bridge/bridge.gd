@@ -88,8 +88,11 @@ func _on_hurt(hit_box: HitBox) -> void:
 		_on_broken()
 
 func _on_broken():
+	ImpactEffects.shake(0.8, 0.4)
 	death_particles.position = logs[broken_at_index].position
 	death_particles.emitting = true
+	hurt_box.monitorable = false
+	hurt_box.monitoring = false
 	var objs = {}
 	for obj_list in log_objs:
 		for obj in obj_list:

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6414fygx6ytt"]
+
+[ext_resource type="Script" uid="uid://bi2mp27eribvg" path="res://scenes/Boss/chasing_badger.gd" id="1_8hn4e"]
+[ext_resource type="Texture2D" uid="uid://c7g27d54td8ed" path="res://temp assets/temp-badger.png" id="1_d7tvm"]
+[ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_q2chi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hn4e"]
+radius = 181.13531
+
+[node name="ChasingBadger" type="Node2D"]
+script = ExtResource("1_8hn4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 50
+texture = ExtResource("1_d7tvm")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("3_q2chi")
+damage = 10
+knockback = 1000
+metadata/_custom_type_script = "uid://dtiynebo6fexe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(187, -17)
+shape = SubResource("CircleShape2D_8hn4e")
+
+[node name="ChargeTimer" type="Timer" parent="."]
