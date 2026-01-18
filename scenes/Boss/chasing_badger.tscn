@@ -1,18 +1,128 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6414fygx6ytt"]
+[gd_scene load_steps=9 format=3 uid="uid://c6414fygx6ytt"]
 
 [ext_resource type="Script" uid="uid://bi2mp27eribvg" path="res://scenes/Boss/chasing_badger.gd" id="1_8hn4e"]
-[ext_resource type="Texture2D" uid="uid://c7g27d54td8ed" path="res://temp assets/temp-badger.png" id="1_d7tvm"]
+[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/BadgerSpriteFrames.png" id="2_q2chi"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_q2chi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8hn4e"]
 radius = 181.13531
+
+[sub_resource type="Animation" id="Animation_q2chi"]
+resource_name = "Run"
+length = 0.5
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_uvfnk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2uqq1"]
+resource_name = "Stun"
+length = 0.5
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.26229283, 0.42857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4363323129985824, 0.0, -0.4363323129985824]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.07692308),
+"transitions": PackedFloat32Array(1, 0.75785786),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2uqq1"]
+_data = {
+&"RESET": SubResource("Animation_uvfnk"),
+&"Run": SubResource("Animation_q2chi"),
+&"Stun": SubResource("Animation_2uqq1")
+}
 
 [node name="ChasingBadger" type="Node2D"]
 script = ExtResource("1_8hn4e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 50
-texture = ExtResource("1_d7tvm")
+position = Vector2(-145, -156)
+scale = Vector2(0.6700075, 0.6700075)
+texture = ExtResource("2_q2chi")
+hframes = 4
+vframes = 3
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 7
@@ -27,3 +137,9 @@ position = Vector2(187, -17)
 shape = SubResource("CircleShape2D_8hn4e")
 
 [node name="ChargeTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2uqq1")
+}
+autoplay = "Run"

@@ -10,6 +10,9 @@ enum State { idle, charging }
 @onready var hit_box : HitBox = $HitBox
 @onready var charge_timer : Timer = $ChargeTimer
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 var state = State.idle
 var velocity := Vector2.ZERO
 
@@ -57,6 +60,7 @@ func _process_charging(delta: float) -> void:
 func _stop_charging() -> void:
 	print("stop_charging")
 	state = State.idle
+
 
 
 func _on_hit(body: Node2D) -> void:
