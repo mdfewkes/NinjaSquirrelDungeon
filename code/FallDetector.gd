@@ -91,7 +91,8 @@ func _on_entered(area_or_body: Node2D) -> void:
 	if reset_after_fall:
 		target.position = last_safe_position
 		falling = false
-		queue_free.call_deferred()
+	else:
+		target.queue_free.call_deferred()
 	if signals_enabled:
 		emit_signal("fell_into_pit")
 
@@ -115,9 +116,10 @@ func _start_target_falling() -> void:
 
 	await t.finished
 	
-	target.scale = original_scale
-	target.modulate = original_modulate
-	target.rotation_degrees = original_rotation_degrees
+	if reset_after_fall:
+		target.scale = original_scale
+		target.modulate = original_modulate
+		target.rotation_degrees = original_rotation_degrees
 
 
 func _on_body_entered(body) -> void:

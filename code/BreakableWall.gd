@@ -10,6 +10,10 @@ extends HurtBox
 @export var max_speed := 1000.0
 @export var min_degrees := -90.0
 @export var max_degrees := 90.0
+@export var rock_tint := Color.from_string("#499485", Color.WHITE)
+@export var shake_amount := 2.0
+@export var shake_time := 0.3
+@export var sfx_on_break: AudioSFX
 
 const rock_scene = preload("res://scenes/Projectiles/rock_projectile.tscn")
 const death_particles = preload("res://scenes/Effects/death_particles.tscn")
@@ -44,6 +48,8 @@ func _destroy_tiles() -> void:
 	particles.scale_amount_max = 5.0
 	particles.emitting = true
 	
+	ImpactEffects.shake(shake_amount, shake_time)
+	
 	var p1_tile: Vector2 = tilemap_layer.local_to_map(tilemap_layer.to_local(p1_global))
 	var p2_tile: Vector2 = tilemap_layer.local_to_map(tilemap_layer.to_local(p2_global))
 	for x in range(p1_tile.x, p2_tile.x + 1):
@@ -66,5 +72,5 @@ func _launch_rocks() -> void:
 		)
 		rock.linear_velocity = Vector2.from_angle(angle) * speed
 		rock.set_size.call_deferred(scale_factor)
-		print("launching:", [rock.linear_velocity, degrees, scale_factor])
+		rock.set_tint(rock_tint)
 		add_sibling(rock)

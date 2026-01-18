@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://di1nd1rwl435g"]
+[gd_scene load_steps=10 format=3 uid="uid://di1nd1rwl435g"]
 
 [ext_resource type="Script" uid="uid://dwgkp8f615p1w" path="res://scenes/Projectiles/rock_projectile.gd" id="1_li84x"]
 [ext_resource type="Texture2D" uid="uid://bvw2fdsmuxvux" path="res://scenes/Traps/Art/rock1.png" id="1_mvjyh"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="2_7nj8i"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="3_pm8hv"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="5_6ydo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ydo6"]
 radius = 45.39824
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdxbv"]
+radius = 41.59327
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pm8hv"]
 radius = 44.553337
@@ -25,8 +29,17 @@ texture = ExtResource("1_mvjyh")
 [node name="PhysicsCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ydo6")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_6ydo6")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fdxbv")
+
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 6
+collision_layer = 4
 collision_mask = 6
 script = ExtResource("2_7nj8i")
 damage = 3
@@ -37,8 +50,8 @@ shape = SubResource("CircleShape2D_pm8hv")
 debug_color = Color(0.8895795, 0.29531375, 0.3720221, 0.41960785)
 
 [node name="FallDetector" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 64
+collision_layer = 0
+collision_mask = 192
 script = ExtResource("3_pm8hv")
 position_tracking_enabled = false
 reset_after_fall = false

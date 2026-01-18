@@ -322,6 +322,7 @@ position = Vector2(1, -1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("11_rfkyh")
+camera_zoom = 0.8
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room3"]
@@ -363,8 +364,6 @@ position = Vector2(1116.1038, 312.8877)
 [node name="ChasingBadger" parent="Rooms/Room3/Enemies" instance=ExtResource("20_rh62l")]
 visible = false
 position = Vector2(369, 341)
-charge_seconds = 1.0
-charge_accel = 500.0
 
 [node name="Environment" type="Node2D" parent="Rooms/Room3"]
 

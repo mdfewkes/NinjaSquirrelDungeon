@@ -1,6 +1,8 @@
 class_name Room
 extends Area2D
 
+@export var camera_zoom: float = 1.0
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var lights_parent_node = $Lights
 @onready var enemies_parent_node = $Enemies
@@ -28,6 +30,9 @@ func set_as_current_room() -> void:
 	camera.limit_bottom = collision_shape_2d.global_position.y + shape.size.y/2
 	camera.limit_left = collision_shape_2d.global_position.x - shape.size.x/2
 	camera.limit_right = collision_shape_2d.global_position.x + shape.size.x/2
+	
+	var zoom_tween := create_tween()
+	zoom_tween.tween_property(camera, "zoom", Vector2.ONE * camera_zoom, 0.6)
 	
 	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 	enemies_parent_node.visible = true
