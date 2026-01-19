@@ -96,10 +96,10 @@ func chase_state():
 		state = States.IDLE
 
 func get_view_range() -> float:
-	var range := super.get_view_range()
+	var _range := super.get_view_range()
 	if state == States.CHASE:
-		return range * 2.0
-	return range
+		return _range * 2.0
+	return _range
 
 func get_num_patrol_points() -> int:
 	return patrol_path.curve.point_count
@@ -130,17 +130,18 @@ func patrol_state():
 	elif at_patrol_point():
 		state = States.IDLE
 
-func _start_chasing():
+func _start_chasing(from_sneak_attack = false):
 	state = States.CHASE
-	if is_first_chase:
-		is_first_chase = false
-		emit_signal("started_first_chase")
-		for marker in dartmunk_summon_markers:
-			_summon_dartmunk(marker)
 	emit_signal("started_chase")
-	shockwave.fire()
 	if sfx_on_chase:
 		AudioManager.PlaySFX(sfx_on_chase, self)
+	if not from_sneak_attack:
+		shockwave.fire()
+		if is_first_chase:
+			is_first_chase = false
+			emit_signal("started_first_chase")
+			for marker in dartmunk_summon_markers:
+				_summon_dartmunk(marker)
 
 func _summon_dartmunk(marker: Marker2D):
 	var obj: Dartmunk = DartmunkScene.instantiate()
@@ -156,9 +157,11 @@ func knockback_state(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	if velocity == Vector2.ZERO:
 		# I think it makes sense to start chasing if someone hits you?
-		#state = States.IDLE
 		facing_direction = global_position.direction_to(player.global_position)
-		_start_chasing()
+		# passing true here prevents the shockwave and the dartmunk
+		# this way the player isn't punished as much when they sneak attack as they are if they 
+		# get spotted, but they still have to strike and run
+		_start_chasing(true)
 		chase_state()
 	
 func at_patrol_point() -> bool:
