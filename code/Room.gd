@@ -11,7 +11,6 @@ extends Area2D
 
 
 var lights: Array
-var has_had_player = false
 
 signal player_entered_room(room)
 
@@ -25,8 +24,13 @@ func set_as_current_room() -> void:
 		light.point_light_2d.enabled = light.lit
 		light.add_to_group("present_lights")
 	
+	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
+	enemies_parent_node.visible = true
+	environment_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
+	
 	var camera = get_viewport().get_camera_2d()
 	var shape = collision_shape_2d.shape.get_rect()
+	if camera == null or shape == null: return
 	camera.limit_top = collision_shape_2d.global_position.y - shape.size.y/2
 	camera.limit_bottom = collision_shape_2d.global_position.y + shape.size.y/2
 	camera.limit_left = collision_shape_2d.global_position.x - shape.size.x/2
@@ -35,9 +39,6 @@ func set_as_current_room() -> void:
 	var zoom_tween := create_tween()
 	zoom_tween.tween_property(camera, "zoom", Vector2.ONE * camera_zoom, 0.6)
 	
-	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
-	enemies_parent_node.visible = true
-	environment_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 
 func remove_as_current_room() -> void:
 	for light in lights:
@@ -50,5 +51,4 @@ func remove_as_current_room() -> void:
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
-		has_had_player = true
 		player_entered_room.emit(self)
