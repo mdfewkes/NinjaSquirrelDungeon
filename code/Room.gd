@@ -2,6 +2,7 @@ class_name Room
 extends Area2D
 
 @export var camera_zoom: float = 1.0
+@export var light_modifier: float = 1.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var lights_parent_node = $Lights

@@ -10,7 +10,7 @@ extends HurtBox
 @export var max_speed := 1000.0
 @export var min_degrees := -90.0
 @export var max_degrees := 90.0
-@export var rock_tint := Color.from_string("#499485", Color.WHITE)
+@export var rock_tint := Color.from_string("499485", Color.WHITE)
 @export var shake_amount := 2.0
 @export var shake_time := 0.3
 @export var sfx_on_break: AudioSFX
@@ -62,6 +62,7 @@ func _launch_rocks() -> void:
 	var p2_global: Vector2 = p1_global + rect.size
 	for i in range(num_rocks):
 		var rock: RockProjectile = rock_scene.instantiate()
+		add_sibling(rock)
 		var speed := randf_range(min_speed, max_speed)
 		var degrees : = randf_range(min_degrees, max_degrees)
 		var angle : = degrees * PI / 180.0
@@ -73,4 +74,3 @@ func _launch_rocks() -> void:
 		rock.linear_velocity = Vector2.from_angle(angle) * speed
 		rock.set_size.call_deferred(scale_factor)
 		rock.set_tint(rock_tint)
-		add_sibling(rock)

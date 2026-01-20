@@ -38,7 +38,7 @@ func _ready() -> void:
 	var x_scale: float = bridge_rect.size.x / (best_width * num_logs)
 	log_width = best_width * x_scale
 	# find the location of the first log
-	x_start = bridge_rect.position.x + log_width / 2.0
+	x_start = collision_shape.position.x + bridge_rect.position.x + log_width / 2.0
 	x_end = x_start + log_width * num_logs - log_width
 	
 	template.scale = Vector2(x_scale, y_scale)

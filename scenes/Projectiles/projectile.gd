@@ -85,7 +85,7 @@ func _handle_wall_collision(collision_point: Vector2, wall_normal: Vector2):
 	# we move immediately to the collision point so it doesn't look like the bounce
 	# happens away from the wall. this can be a little jumpy at times. we may want
 	# to set a very short timer here or something, but I think it's ok as is for now
-	position = collision_point
+	global_position = collision_point
 	velocity = new_direction * new_speed
 	_point_at(new_direction)
 	

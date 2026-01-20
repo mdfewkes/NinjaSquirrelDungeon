@@ -20,6 +20,8 @@ func _process(_delta: float) -> void:
 		if light.lit:
 			lights_lit += 1.0
 	light_level = lights_lit / (lights.size() + 1)
+	if current_room:
+		light_level *= current_room.light_modifier
 	
 	var tween := create_tween()
 	tween.tween_property(canvas_modulate, "color", lighting_gradient.sample(light_level), 0.5)

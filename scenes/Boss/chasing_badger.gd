@@ -23,8 +23,8 @@ func _ready() -> void:
 	
 	if not starting_point:
 		starting_point = Marker2D.new()
-		get_parent().add_child.call_deferred(starting_point)
-		starting_point.global_position = global_position
+		add_sibling.call_deferred(starting_point)
+		starting_point.set_deferred("global_position", global_position)
 
 	_reset()
 
@@ -88,7 +88,7 @@ func _process_rebound(delta: float) -> void:
 
 
 func _on_hit(body: Node2D) -> void:
-	if body is BreakableWall and state != State.rebound:
+	if body is BreakableWall and state == State.charging:
 		_start_rebound()
 
 func _on_left_screen() -> void:
