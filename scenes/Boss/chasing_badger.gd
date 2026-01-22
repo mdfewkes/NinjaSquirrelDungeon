@@ -1,3 +1,4 @@
+class_name ChasingBadger
 extends Node2D
 
 enum State { idle, charging, rebound }
