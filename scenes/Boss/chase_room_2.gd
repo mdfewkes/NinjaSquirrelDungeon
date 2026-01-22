@@ -1,9 +1,10 @@
 extends Room
 
-@onready var player_marker1: Marker2D = $PlayerMarker1
-@onready var player_marker2: Marker2D = $PlayerMarker2
-@onready var boss_trigger: Area2D = $CutSceneTriggerBoss
-@onready var player_trigger: Area2D = $CutSceneTriggerPlayer
+@onready var player_marker1: Marker2D = $CutScene/PlayerMarker1
+@onready var player_marker2: Marker2D = $CutScene/PlayerMarker2
+@onready var boss_trigger: Area2D = $CutScene/BossTrigger
+@onready var player_trigger: Area2D = $CutScene/PlayerTrigger
+@onready var animation_player: AnimationPlayer = $CutScene/AnimationPlayer
 
 var player_in_place = false
 
@@ -24,8 +25,13 @@ func _on_body_entered_player_trigger(player: Node2D) -> void:
 		player._update_blend_positions()
 		player.input_vector = Vector2.ZERO
 		player.is_cutscene_squirrel = true
+		
+		var cam := player.get_node("Camera2D")
+		tween.tween_property(cam, "position", Vector2(-300, 0), 0.5)
 
 
 func _on_hitbox_entered_boss_trigger(hit_box: Area2D) -> void:
 	if hit_box.get_parent() is ChasingBadger and player_in_place:
-		get_tree().paused = true
+		var boss: ChasingBadger = hit_box.get_parent()
+		boss.start_final_cut_scene()
+		animation_player.play("badger_fall")

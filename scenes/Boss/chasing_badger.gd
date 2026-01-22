@@ -1,7 +1,7 @@
 class_name ChasingBadger
 extends Node2D
 
-enum State { idle, charging, rebound }
+enum State { idle, charging, rebound, cut_scene }
 
 @export var charge_accel := 1500.0
 @export var charge_seconds := 5.0
@@ -28,6 +28,11 @@ func _ready() -> void:
 		starting_point.set_deferred("global_position", global_position)
 
 	_reset()
+
+
+func start_final_cut_scene() -> void:
+	state = State.cut_scene
+	animation_player.play("Falling")
 
 
 func _reset() -> void:

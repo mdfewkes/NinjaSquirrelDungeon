@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=78 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
@@ -620,6 +620,96 @@ size = Vector2(299, 820)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb6bo"]
 size = Vector2(635.5, 820)
 
+[sub_resource type="Animation" id="Animation_lsfgt"]
+resource_name = "badger_fall"
+length = 15.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"smoke puff",
+"time": 3.0
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutScene/Acorn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.6333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutScene/Acorn:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 3.9, 4.2, 6),
+"transitions": PackedFloat32Array(1, 1.8660656, 1, 0.4999999, 1),
+"update": 0,
+"values": [Vector2(2701, 451), Vector2(2701, 451), Vector2(2701, 191), Vector2(2800, 151), Vector2(3289, 144)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutScene/Acorn:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.6333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rq0fv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutScene/Acorn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutScene/Acorn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2701, 451)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutScene/Acorn:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rq0fv"]
+_data = {
+&"RESET": SubResource("Animation_rq0fv"),
+&"badger_fall": SubResource("Animation_lsfgt")
+}
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_8ntv0")
@@ -681,7 +771,7 @@ tile_set = SubResource("TileSet_k83mh")
 [node name="Player" parent="." instance=ExtResource("10_wpb25")]
 visibility_layer = 2
 z_index = 10
-position = Vector2(6145, 250)
+position = Vector2(9453, 756)
 max_hp = 7
 
 [node name="Rooms" type="Node2D" parent="."]
@@ -1249,8 +1339,12 @@ position = Vector2(509, 95)
 
 [node name="Enemies" type="Node2D" parent="Rooms/ChaseRoom2"]
 
-[node name="ChasingBadger" parent="Rooms/ChaseRoom2/Enemies" instance=ExtResource("20_rh62l")]
+[node name="ChasingBadger" parent="Rooms/ChaseRoom2/Enemies" node_paths=PackedStringArray("starting_point") instance=ExtResource("20_rh62l")]
 visible = false
+position = Vector2(2759, 274)
+starting_point = NodePath("../BossStartPoint")
+
+[node name="BossStartPoint" type="Marker2D" parent="Rooms/ChaseRoom2/Enemies"]
 position = Vector2(-1371, -37)
 
 [node name="Environment" type="Node2D" parent="Rooms/ChaseRoom2"]
@@ -1520,31 +1614,44 @@ visible = true
 position = Vector2(11.5, 0)
 shape = SubResource("RectangleShape2D_0hq3a")
 
-[node name="PlayerMarker1" type="Marker2D" parent="Rooms/ChaseRoom2"]
+[node name="CutScene" type="Node2D" parent="Rooms/ChaseRoom2"]
+
+[node name="PlayerMarker1" type="Marker2D" parent="Rooms/ChaseRoom2/CutScene"]
 position = Vector2(3239, 244)
 
-[node name="PlayerMarker2" type="Marker2D" parent="Rooms/ChaseRoom2"]
+[node name="PlayerMarker2" type="Marker2D" parent="Rooms/ChaseRoom2/CutScene"]
 position = Vector2(3864, 235)
 
-[node name="CutSceneTriggerBoss" type="Area2D" parent="Rooms/ChaseRoom2"]
+[node name="BossTrigger" type="Area2D" parent="Rooms/ChaseRoom2/CutScene"]
 position = Vector2(2752, 201)
 collision_layer = 0
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom2/CutSceneTriggerBoss"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom2/CutScene/BossTrigger"]
 position = Vector2(227.5, 40)
 shape = SubResource("RectangleShape2D_mk8f8")
 debug_color = Color(0, 0.6498882, 0.13749999, 0.41960785)
 
-[node name="CutSceneTriggerPlayer" type="Area2D" parent="Rooms/ChaseRoom2"]
+[node name="PlayerTrigger" type="Area2D" parent="Rooms/ChaseRoom2/CutScene"]
 position = Vector2(3201, 202)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom2/CutSceneTriggerPlayer"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom2/CutScene/PlayerTrigger"]
 position = Vector2(272.75, 40)
 shape = SubResource("RectangleShape2D_nb6bo")
 debug_color = Color(0, 0.6498882, 0.13749999, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rooms/ChaseRoom2/CutScene"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_rq0fv")
+}
+
+[node name="Acorn" parent="Rooms/ChaseRoom2/CutScene" instance=ExtResource("14_25ntg")]
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+position = Vector2(2701, 451)
 
 [connection signal="body_entered" from="Rooms/CutSceneRoom/Environment/SceneTrigger" to="Rooms/CutSceneRoom" method="_start_cut_scene" unbinds=1]
 [connection signal="body_entered" from="Rooms/SaveRoom1/RocksTrigger" to="Rooms/SaveRoom1" method="_on_rocks_trigger_body_entered"]
