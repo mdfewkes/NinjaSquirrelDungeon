@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=72 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="9_8wa4f"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="10_wpb25"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="11_rfkyh"]
-[ext_resource type="Script" uid="uid://bardjl21pgsso" path="res://scenes/Boss/cut_scene_room.gd" id="11_rxbiy"]
+[ext_resource type="Script" uid="uid://bardjl21pgsso" path="res://scenes/Boss/IntroCutScene/cut_scene_room.gd" id="11_rxbiy"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="12_rxbiy"]
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="13_o03n2"]
-[ext_resource type="PackedScene" uid="uid://cu1cul1uy6ju6" path="res://scenes/Boss/cut_scene_badger.tscn" id="13_rfkyh"]
+[ext_resource type="PackedScene" uid="uid://cu1cul1uy6ju6" path="res://scenes/Boss/IntroCutScene/cut_scene_badger.tscn" id="13_rfkyh"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="14_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://og7se7clp0jl" path="res://scenes/Items/acorn.tscn" id="14_25ntg"]
 [ext_resource type="PackedScene" uid="uid://bacx7l8nfuxpv" path="res://scenes/Bridge/bridge.tscn" id="15_3rgt7"]
@@ -137,7 +137,7 @@ physics_layer_1/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o03n2"]
-size = Vector2(1276, 1453)
+size = Vector2(1089, 1453)
 
 [sub_resource type="Gradient" id="Gradient_rxbiy"]
 offsets = PackedFloat32Array(0.48816568, 1)
@@ -277,7 +277,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_rfkyh"]
 resource_name = "enter"
-length = 15.0
+length = 14.0
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"stand up",
@@ -294,6 +294,10 @@ markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"yell",
 "time": 12.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"pickup",
+"time": 4.5
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -302,7 +306,7 @@ tracks/0/path = NodePath("Enemies/CutSceneBadger:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 9, 12.033334, 14.966666),
+"times": PackedFloat32Array(0, 3, 7.8, 10.833334, 13.766666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-1505, 261), Vector2(-488, 279), Vector2(-488, 279), Vector2(-470, 199), Vector2(-429, 40)]
@@ -314,10 +318,10 @@ tracks/1/path = NodePath("Enemies/CutSceneBadger/Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.4, 1.5000001, 1.6000001, 1.7000002, 1.9000001, 2, 2.1, 2.2, 2.4, 2.5000002, 2.6000001, 2.7000003, 2.8, 2.9, 3.0000002, 3.5, 4, 4.5, 5.0000005, 5.25, 5.5, 5.75, 6.0000005, 6.25, 6.5, 6.75, 7, 7.2, 7.4000006, 7.6000004, 7.8, 8, 8.200001, 8.400001, 8.6, 8.8, 9, 9.4, 9.6, 9.933333, 10.066667, 10.200001, 10.666667, 10.8, 11.500001, 11.6, 11.7, 11.900001, 12),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.9, 1, 1.1, 1.2, 1.4, 1.5000001, 1.6000001, 1.7000002, 1.9000001, 2, 2.1, 2.2, 2.4, 2.5000002, 2.6000001, 2.7000003, 2.8, 2.9, 3.0000002, 3.3, 3.8000004, 4.05, 4.3, 4.55, 4.8, 5.05, 5.3, 5.55, 5.8, 6, 6.200001, 6.4000006, 6.6000004, 6.8, 7.000001, 7.200001, 7.4000006, 7.6000004, 7.8, 8.2, 8.400001, 8.733334, 8.866667, 9.000001, 9.466667, 9.6, 10.300001, 10.400001, 10.5, 10.700001, 10.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 4, 5, 4, 5, 7, 8, 7, 8, 7, 8, 7, 8, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 11, 10, 11, 4, 5, 11, 4, 11, 9, 4, 5, 4, 11]
+"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 4, 5, 7, 8, 7, 8, 7, 8, 7, 8, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 11, 10, 11, 4, 5, 11, 4, 11, 9, 4, 5, 4, 11]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -326,10 +330,10 @@ tracks/2/path = NodePath("Environment/Acorn:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.766667, 5.0333333, 5.3, 5.533334, 5.8, 6.033334, 6.3000007, 6.5333343, 6.8000007, 6.9333334, 7),
-"transitions": PackedFloat32Array(1, 4.2870936, 1, 1, 1, 1, 1, 1, 1, 1, 2.297394, 1),
+"times": PackedFloat32Array(0, 3, 3.5666668, 3.8333333, 4.1000004, 4.333334, 4.6000004, 4.833334, 5.1000004, 5.333334, 5.6000004, 5.7333336, 5.8),
+"transitions": PackedFloat32Array(1, 1, 4.2870936, 1, 1, 1, 1, 1, 1, 1, 1, 2.297394, 1),
 "update": 0,
-"values": [Vector2(-451, 315), Vector2(-451, 315), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 185), Vector2(-463, 246)]
+"values": [Vector2(-451, 315), Vector2(-451, 315), Vector2(-451, 315), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 195), Vector2(-541, 185), Vector2(-541, 185), Vector2(-463, 246)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -338,7 +342,7 @@ tracks/3/path = NodePath("Environment/Acorn:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(7, 7.2),
+"times": PackedFloat32Array(5.8, 6),
 "transitions": PackedFloat32Array(1, 0.3298769),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.1, 0.1)]
@@ -350,7 +354,7 @@ tracks/4/path = NodePath("Environment/Acorn:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 7.2),
+"times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -362,7 +366,7 @@ tracks/5/path = NodePath("Enemies/CutSceneBadger:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 9, 12.033334, 14.966666),
+"times": PackedFloat32Array(0, 7.8, 10.833334, 13.766666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(4, 4)]
@@ -374,7 +378,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(5, 9, 9.6, 10.2, 10.8, 12, 13.5),
+"times": PackedFloat32Array(3.8, 7.8, 8.400001, 9, 9.6, 10.8, 12.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0.4, 0.2],
@@ -406,7 +410,7 @@ tracks/7/path = NodePath("Enemies/ShockWave")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(12.033334, 13.333333, 14.1),
+"times": PackedFloat32Array(10.833334, 12.133333, 12.900001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [1.0],
@@ -426,7 +430,7 @@ tracks/8/path = NodePath("Enemies/ShockWave2")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(12.1, 13.2),
+"times": PackedFloat32Array(10.900001, 12),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [1.0],
@@ -443,7 +447,7 @@ tracks/9/path = NodePath("Enemies/ShockWave3")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(12.2, 13.6),
+"times": PackedFloat32Array(11, 12.400001),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [1.0],
@@ -460,7 +464,7 @@ tracks/10/path = NodePath("Enemies/ShockWave4")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(5, 12, 12.8, 14.3),
+"times": PackedFloat32Array(3.8, 10.8, 11.6, 13.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [1.0],
@@ -483,10 +487,10 @@ tracks/11/path = NodePath("Enemies/SpitParticles:emitting")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 12, 15),
+"times": PackedFloat32Array(0, 10.8, 13.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, true]
+"values": [false, true, false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -495,10 +499,10 @@ tracks/12/path = NodePath("Enemies/WindParticles:emitting")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 12, 15),
+"times": PackedFloat32Array(0, 10.8, 13.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, true]
+"values": [false, true, false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -507,7 +511,7 @@ tracks/13/path = NodePath("Enemies/WindParticles:amount")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(12, 12.6),
+"times": PackedFloat32Array(10.8, 11.400001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [20, 100]
@@ -518,6 +522,9 @@ _data = {
 &"RESET": SubResource("Animation_rxbiy"),
 &"enter": SubResource("Animation_rfkyh")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86r8g"]
+size = Vector2(60, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lec38"]
 size = Vector2(624, 554)
@@ -676,11 +683,11 @@ max_hp = 7
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("11_rxbiy")
+dialog_script_path = "res://scenes/Boss/IntroCutScene/intro_dialog.bobbin"
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom"]
-visible = false
-position = Vector2(-378, 96.5)
+position = Vector2(-471.5, 96.5)
 shape = SubResource("RectangleShape2D_o03n2")
 
 [node name="Lights" type="Node2D" parent="Rooms/CutSceneRoom"]
@@ -790,6 +797,14 @@ libraries = {
 [node name="PlayerEndingPoint" type="Marker2D" parent="Rooms/CutSceneRoom"]
 position = Vector2(527, 316)
 
+[node name="InvisibleWall" type="StaticBody2D" parent="Rooms/CutSceneRoom"]
+position = Vector2(118, 321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
+position = Vector2(-15, 0)
+shape = SubResource("RectangleShape2D_86r8g")
+debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
 [node name="SaveRoom1" type="Area2D" parent="Rooms"]
 collision_layer = 0
 collision_mask = 2
@@ -798,7 +813,6 @@ camera_zoom = 1.2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SaveRoom1"]
-visible = false
 position = Vector2(611, 316)
 shape = SubResource("RectangleShape2D_lec38")
 
@@ -812,7 +826,7 @@ shape = SubResource("RectangleShape2D_lec38")
 position = Vector2(646, 320)
 
 [node name="RocksPoint" type="Marker2D" parent="Rooms/SaveRoom1"]
-position = Vector2(304, 323)
+position = Vector2(175, 320)
 
 [node name="RocksTrigger" type="Area2D" parent="Rooms/SaveRoom1"]
 collision_layer = 0
