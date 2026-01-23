@@ -7,7 +7,7 @@ extends CPUParticles2D
 
 var prevPos = Vector2(-999,-999)
 
-func _process(delta):
+func _process(_delta):
 	var dist = prevPos.distance_to(get_parent().position)
 	#print("move dist: "+str(dist))
 	emitting = dist > 0

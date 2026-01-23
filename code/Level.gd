@@ -32,13 +32,9 @@ func _process(_delta: float) -> void:
 	tween.tween_property(canvas_modulate, "color", lighting_gradient.sample(light_level), 0.5)
 
 func load_level(scene_path_to_level: String) -> void: 
-	call_deferred("_call_for_scene_shange", scene_path_to_level)
+	call_deferred("_call_for_scene_change", scene_path_to_level)
 
-func _call_for_scene_shange(scene_path_to_level: String) -> void:
-	#var players := get_tree().get_nodes_in_group("player")
-	#for player in players:
-		#player.reparent(get_tree().root)
-		
+func _call_for_scene_change(scene_path_to_level: String) -> void:
 	last_level = level_name
 	GameManager.change_scene(scene_path_to_level)
 

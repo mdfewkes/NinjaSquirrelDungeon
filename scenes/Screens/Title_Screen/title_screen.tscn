@@ -40,7 +40,7 @@ focus_next = NodePath("../HistoryButton")
 focus_previous = NodePath("../CreditsButton")
 text = "Play Game"
 script = ExtResource("2_wy4sj")
-path_to_scene = "res://world.tscn"
+path_to_scene = "res://scenes/Dungeon/Enterance/EnteranceMap.tscn"
 start_with_focus = true
 
 [node name="TestSneak" type="Button" parent="."]
@@ -94,6 +94,18 @@ text = "Test Cutscene
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_scene.tscn"
+
+[node name="World" type="Button" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 216.0
+offset_right = 1112.0
+offset_bottom = 280.0
+text = "World
+
+"
+script = ExtResource("2_wy4sj")
+path_to_scene = "res://world.tscn"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 0
