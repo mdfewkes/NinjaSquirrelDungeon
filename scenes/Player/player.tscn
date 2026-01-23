@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=195 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -66,6 +66,7 @@
 [ext_resource type="AudioStream" uid="uid://2m2ci3x0bkr0" path="res://scenes/Player/Audio/hero_effort_big_08.ogg" id="46_4bupc"]
 [ext_resource type="AudioStream" uid="uid://bijevpd38ruyb" path="res://scenes/Player/Audio/hero_effort_big_09.ogg" id="47_5y20s"]
 [ext_resource type="AudioStream" uid="uid://cs5dv3gbo4e4k" path="res://scenes/Player/Audio/hero_effort_big_10.ogg" id="48_xpxgn"]
+[ext_resource type="Script" uid="uid://doyw710s3hmtd" path="res://scenes/Player/footprints.gd" id="50_kxlis"]
 [ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
 [ext_resource type="Texture2D" uid="uid://dwk7dp54yxm2o" path="res://scenes/Player/Art/blob-shadow.png" id="69_d7mgq"]
@@ -2765,6 +2766,7 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.08
 scale_amount_max = 0.08
 color_ramp = SubResource("Gradient_d7mgq")
+script = ExtResource("50_kxlis")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -28)
