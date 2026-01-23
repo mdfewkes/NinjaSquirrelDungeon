@@ -58,19 +58,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/path = NodePath("ShadowSprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ShadowSprite:modulate")
+tracks/5/path = NodePath("Sprite2D:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -86,38 +86,38 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("DeathParticles:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.30459484, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeathParticles:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.10000001),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ShadowSprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rwquk"]
@@ -159,10 +159,10 @@ tracks/1/path = NodePath("Sprite2D:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -238,13 +238,13 @@ transitions = ["Start", "idleState", SubResource("AnimationNodeStateMachineTrans
 graph_offset = Vector2(-28.590057, 54.037483)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0qmk6"]
-graph_offset = Vector2(-581, 1)
+graph_offset = Vector2(-520.9348, 108.02179)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_b8j2l")
 nodes/StateMachine/position = Vector2(-200, 120)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0w3qu"]
-height = 60.0
+height = 44.0
 
 [sub_resource type="Gradient" id="Gradient_0siu8"]
 offsets = PackedFloat32Array(0, 0.43195266, 1)
@@ -261,7 +261,8 @@ knockback_multiply = 2
 position = Vector2(0, -8)
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, -40)
+position = Vector2(0, -32.255)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_0siu8")
 hframes = 2
 

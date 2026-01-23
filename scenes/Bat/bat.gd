@@ -29,7 +29,6 @@ func chase_state():
 	navigation_agent_2d.target_position = player.global_position
 	var next_point := navigation_agent_2d.get_next_path_position()
 	velocity = global_position.direction_to(next_point) * speed
-	sprite_2d.scale.x = sign(velocity.x)
 	move_and_slide()
 
 func knockback_state(delta):
