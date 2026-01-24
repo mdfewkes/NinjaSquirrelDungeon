@@ -29,8 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="25_mc2jv"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="28_o3ebs"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_k83mh"]
-[ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="29_k83mh"]
-[ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="29_qktwf"]
+[ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="30_k83mh"]
+[ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="30_qktwf"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -644,27 +644,27 @@ position = Vector2(492, -347)
 [node name="Environment" type="Node2D" parent="Rooms/WaterRoom"]
 position = Vector2(492, -347)
 
-[node name="ExtraHealth" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_k83mh")]
+[node name="ExtraHealth" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_k83mh")]
 position = Vector2(-511, 368)
 
-[node name="QuestItem" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+[node name="QuestItem" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
 position = Vector2(-906, 180)
 
-[node name="QuestItem2" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+[node name="QuestItem2" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
 position = Vector2(-751, 184)
 item_value = 1
 
 [node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem2" index="1"]
 frame = 1
 
-[node name="QuestItem3" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+[node name="QuestItem3" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
 position = Vector2(-749, 508)
 item_value = 2
 
 [node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem3" index="1"]
 frame = 2
 
-[node name="QuestItem4" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+[node name="QuestItem4" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
 position = Vector2(-920, 508)
 item_value = 3
 
