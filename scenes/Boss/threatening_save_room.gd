@@ -21,6 +21,8 @@ func _on_timer() -> void:
 		ImpactEffects.shake(randf_range(0.5, 2.0), randf_range(0.4, 0.8))
 
 func _on_rocks_trigger_body_entered(body: Node2D) -> void:
+	if not body is Player:
+		return
 	if has_entered:
 		return
 	has_entered = true

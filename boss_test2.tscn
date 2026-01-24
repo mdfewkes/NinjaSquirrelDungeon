@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=79 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
@@ -575,8 +575,11 @@ size = Vector2(117, 242)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wal4e"]
 size = Vector2(763.5, 914)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aglf"]
+size = Vector2(90, 440)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq0fv"]
-size = Vector2(4678, 1604)
+size = Vector2(4455, 1604)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2pmu"]
 size = Vector2(559, 254)
@@ -620,51 +623,6 @@ size = Vector2(299, 820)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb6bo"]
 size = Vector2(635.5, 820)
 
-[sub_resource type="Animation" id="Animation_lsfgt"]
-resource_name = "badger_fall"
-length = 15.0
-markers = [{
-"color": Color(1, 1, 1, 1),
-"name": &"smoke puff",
-"time": 3.0
-}]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CutScene/Acorn:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 3.6333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CutScene/Acorn:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 3.9, 4.2, 6),
-"transitions": PackedFloat32Array(1, 1.8660656, 1, 0.4999999, 1),
-"update": 0,
-"values": [Vector2(2701, 451), Vector2(2701, 451), Vector2(2701, 191), Vector2(2800, 151), Vector2(3289, 144)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CutScene/Acorn:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3, 3.6333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
-}
-
 [sub_resource type="Animation" id="Animation_rq0fv"]
 length = 0.001
 tracks/0/type = "value"
@@ -702,6 +660,146 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutScene/Acorn/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutScene/Acorn:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutScene/Acorn:bounce_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="Animation" id="Animation_lsfgt"]
+resource_name = "badger_fall"
+length = 20.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"smoke puff",
+"time": 3.0
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutScene/Acorn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutScene/Acorn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 5.8666663, 7.133333, 7.7000003, 8.700001, 9.233334, 14.5),
+"transitions": PackedFloat32Array(1, 3.4822018, 0.4999999, 1.4142137, 2.0000002, 0.8705504, 1, 1),
+"update": 0,
+"values": [Vector2(2701, 451), Vector2(2701, 451), Vector2(2900, 151), Vector2(2900, 151), Vector2(3320, 191), Vector2(3320, 191), Vector2(3175.746, 191), Vector2(3808.746, 191)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutScene/Acorn:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 5.3),
+"transitions": PackedFloat32Array(1, 2.143547, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutScene/Acorn/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 5.6666665, 7.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.6333334, 6.7666664, 8.733334, 12.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"thump"
+}, {
+"args": [],
+"method": &"trigger_tail_whip"
+}, {
+"args": [],
+"method": &"walk_away"
+}, {
+"args": [],
+"method": &"fade_out"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutScene/Acorn:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.3, 6.766667, 8.799999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 20, 5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutScene/Acorn:bounce_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 4.4333334, 6.733333, 7.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 25.0, 5.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rq0fv"]
@@ -771,7 +869,7 @@ tile_set = SubResource("TileSet_k83mh")
 [node name="Player" parent="." instance=ExtResource("10_wpb25")]
 visibility_layer = 2
 z_index = 10
-position = Vector2(9453, 756)
+position = Vector2(-453, -292)
 max_hp = 7
 
 [node name="Rooms" type="Node2D" parent="."]
@@ -1285,6 +1383,18 @@ visible = false
 position = Vector2(6029.25, 241)
 shape = SubResource("RectangleShape2D_wal4e")
 
+[node name="RocksPoint" type="Marker2D" parent="Rooms/SaveRoom2"]
+position = Vector2(5598, 256)
+
+[node name="RocksTrigger" type="Area2D" parent="Rooms/SaveRoom2"]
+position = Vector2(5914, 240)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SaveRoom2/RocksTrigger"]
+position = Vector2(39, 3)
+shape = SubResource("RectangleShape2D_7aglf")
+
 [node name="Lights" type="Node2D" parent="Rooms/SaveRoom2"]
 
 [node name="Enemies" type="Node2D" parent="Rooms/SaveRoom2"]
@@ -1304,8 +1414,7 @@ light_modifier = 0.3
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom2"]
-visible = false
-position = Vector2(1520, 249)
+position = Vector2(1408.5, 249)
 shape = SubResource("RectangleShape2D_rq0fv")
 
 [node name="Lights" type="Node2D" parent="Rooms/ChaseRoom2"]
@@ -1652,9 +1761,16 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 z_index = 20
 position = Vector2(2701, 451)
+collision_layer = 0
+collision_mask = 0
+bounce_speed = 1.5
+
+[node name="PointLight2D" parent="Rooms/ChaseRoom2/CutScene/Acorn" index="2"]
+energy = 0.0
 
 [connection signal="body_entered" from="Rooms/CutSceneRoom/Environment/SceneTrigger" to="Rooms/CutSceneRoom" method="_start_cut_scene" unbinds=1]
 [connection signal="body_entered" from="Rooms/SaveRoom1/RocksTrigger" to="Rooms/SaveRoom1" method="_on_rocks_trigger_body_entered"]
+[connection signal="body_entered" from="Rooms/SaveRoom2/RocksTrigger" to="Rooms/SaveRoom2" method="_on_rocks_trigger_body_entered"]
 
 [editable path="Rooms/CutSceneRoom/Enemies/CutSceneBadger"]
 [editable path="Rooms/CutSceneRoom/Environment/Bridge"]
@@ -1667,3 +1783,4 @@ position = Vector2(2701, 451)
 [editable path="Rooms/ChaseRoom1/Environment/Spikes/FloorSwitch2"]
 [editable path="Rooms/ChaseRoom1/Environment/Spikes/WallSpikes2"]
 [editable path="Rooms/ChaseRoom2/Environment/Bridge"]
+[editable path="Rooms/ChaseRoom2/CutScene/Acorn"]

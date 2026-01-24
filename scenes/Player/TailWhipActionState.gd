@@ -61,6 +61,10 @@ func _action_exit(_player: Player) -> void:
 
 
 func cast_hook_ray(_dir: Vector2) -> void:
+	if not player:
+		player = get_tree().get_first_node_in_group("player")
+	if player.is_cutscene_squirrel:
+		return
 	# The original version of this only allowed the tail whip
 	# in the 4 cardinal directions. This version instead casts the
 	# ray in the direction the player was moving. This will allow
@@ -76,6 +80,8 @@ func cast_hook_ray(_dir: Vector2) -> void:
 
 
 func start_hook_pull() -> void:
+	if player.is_cutscene_squirrel:
+		return
 	var is_wall = wall_ray.is_colliding()
 	var is_obj = obj_ray.is_colliding()
 	
@@ -118,6 +124,8 @@ func start_hook_pull() -> void:
 
 
 func release_hook() -> void:
+	if player.is_cutscene_squirrel:
+		return
 	tail.clear_tip_position()
 	var sparks: CPUParticles2D = player.get_node("TailHookSparks")
 	sparks.global_position = hook_point

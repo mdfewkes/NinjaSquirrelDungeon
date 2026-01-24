@@ -26,7 +26,7 @@ bounce_amount = 10.0
 add_to_inventory = false
 pull_speed_coefficient = 2.0
 
-[node name="GoldenAcorn" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.35341114, 0.35341114)
 texture = ExtResource("2_fot5o")
 

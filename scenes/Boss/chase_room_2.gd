@@ -14,6 +14,27 @@ func _ready() -> void:
 	player_trigger.body_entered.connect(_on_body_entered_player_trigger)
 
 
+func trigger_tail_whip() -> void:
+	var player: Player = get_tree().get_first_node_in_group("player")
+	player.playback.travel("TailWhipAction")
+
+func walk_away() -> void:
+	var player: Player = get_tree().get_first_node_in_group("player")
+	player.input_vector = Vector2.RIGHT * 0.4
+
+func fade_out() -> void:
+	var world_env: WorldEnvironment = get_tree().get_first_node_in_group("world_environment")
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(world_env.environment, "glow_bloom", 1.0, 3.0)
+	tween.tween_property(world_env.environment, "adjustment_brightness", 0.0, 4.0)
+	tween.tween_property(world_env.environment, "adjustment_contrast", 2.0, 4.0)
+
+func thump() -> void:
+	ImpactEffects.shake(4, 0.4)
+
 func _on_body_entered_player_trigger(player: Node2D) -> void:
 	if player is Player:
 		player_in_place = true
@@ -25,7 +46,9 @@ func _on_body_entered_player_trigger(player: Node2D) -> void:
 		player._update_blend_positions()
 		player.input_vector = Vector2.ZERO
 		player.is_cutscene_squirrel = true
-		
+		player.hurt_box.set_deferred("monitorable", false)
+		player.hurt_box.set_deferred("monitorable", false)
+
 		var cam := player.get_node("Camera2D")
 		tween.tween_property(cam, "position", Vector2(-300, 0), 0.5)
 

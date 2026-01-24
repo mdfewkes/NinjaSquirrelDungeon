@@ -6,6 +6,7 @@
 radius = 60.00833
 
 [node name="CutSceneBadger" type="StaticBody2D"]
+collision_layer = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
