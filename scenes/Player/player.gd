@@ -61,6 +61,7 @@ func _ready() -> void:
 	fall_detector.fell_into_pit.connect(_on_fall_complete)
 
 	InventoryManager.reset()
+	InventoryManager.item_collected.connect(_on_collected_item)
 	current_hp = max_hp
 	update_health.emit(current_hp, max_hp)
 
@@ -330,3 +331,11 @@ func entered_platform() -> void:
 func exited_platform() -> void:
 	is_on_platform = false
 	fall_detector.refresh_active_pits()
+
+
+func _on_collected_item(item: InventoryManager.InventoryItem, _node: CollectableItem) -> void:
+	match item.type:
+		InventoryManager.ItemType.health:
+			max_hp += item.value
+			current_hp = max_hp
+			update_health.emit(current_hp, max_hp)

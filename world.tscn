@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=48 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="25_mc2jv"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="28_o3ebs"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_k83mh"]
+[ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="29_k83mh"]
+[ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="29_qktwf"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -642,6 +644,33 @@ position = Vector2(492, -347)
 [node name="Environment" type="Node2D" parent="Rooms/WaterRoom"]
 position = Vector2(492, -347)
 
+[node name="ExtraHealth" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_k83mh")]
+position = Vector2(-511, 368)
+
+[node name="QuestItem" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+position = Vector2(-906, 180)
+
+[node name="QuestItem2" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+position = Vector2(-751, 184)
+item_value = 1
+
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem2" index="1"]
+frame = 1
+
+[node name="QuestItem3" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+position = Vector2(-749, 508)
+item_value = 2
+
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem3" index="1"]
+frame = 2
+
+[node name="QuestItem4" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_qktwf")]
+position = Vector2(-920, 508)
+item_value = 3
+
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem4" index="1"]
+frame = 6
+
 [node name="TriggerTest" type="Area2D" parent="."]
 position = Vector2(-16, 0)
 collision_layer = 0
@@ -669,3 +698,7 @@ position = Vector2(-177, 306)
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes6"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes7"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes8"]
+[editable path="Rooms/WaterRoom/Environment/QuestItem"]
+[editable path="Rooms/WaterRoom/Environment/QuestItem2"]
+[editable path="Rooms/WaterRoom/Environment/QuestItem3"]
+[editable path="Rooms/WaterRoom/Environment/QuestItem4"]
