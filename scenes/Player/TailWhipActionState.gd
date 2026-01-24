@@ -3,6 +3,9 @@ extends ActionState
 @export var sfx_on_start: AudioSFX
 @export var sfx_on_pull_wall: AudioSFX
 @export var sfx_on_pull_obj: AudioSFX
+@export var cooldown_time_sec: float = 0.5
+
+var last_whip_time = 0
 
 var wall_ray: RayCast2D
 var obj_ray: RayCast2D
@@ -43,8 +46,13 @@ func process_state(_player :Player, delta: float) -> bool:
 	return player.playback.get_current_node() != "TailWhipAction"
 
 
+func can_enter() -> bool:
+	return Time.get_ticks_msec() > last_whip_time + cooldown_time_sec * 1000
+
 func _action_enter(_player: Player) -> void:
+	last_whip_time = Time.get_ticks_msec()
 	player = _player
+	player.velocity = Vector2.ZERO
 	wall_ray = player.get_node("TailHookWallRay")
 	obj_ray = player.get_node("TailHookObjectRay")
 	tail = player.tail
@@ -57,7 +65,6 @@ func _action_exit(_player: Player) -> void:
 	hook_point = Vector2.INF
 	hook_obj = null
 	tail.clear_tip_position()
-	player.set_collision_mask_value(8, true)
 
 
 func cast_hook_ray(_dir: Vector2) -> void:

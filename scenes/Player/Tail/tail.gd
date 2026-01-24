@@ -97,7 +97,12 @@ func calculate_segment(i: int, target_position: Vector2) -> Vector2:
 	if not FeatureFlags.is_enabled("old_tail_pose"):
 		var ideal_position = target_position + target_line.get_point_position(i) - target_line.get_point_position(i - 1)
 		if i == len(target_line.points) - 1 and fixed_tip_position != Vector2.INF:
-			ideal_position = fixed_tip_position
+			# every now and then the whip gets interrupted and the tip can stay connected to the wall
+			# which looks suuuuper cursed. We should never stay connected longer than a second though
+			if Time.get_ticks_msec() > last_tip_set + 1000:
+				clear_tip_position()
+			else:
+				ideal_position = fixed_tip_position
 		var rval = responsiveness
 		if quick_snap_mode: 
 			rval = quick_snap_responsiveness
@@ -206,8 +211,14 @@ func set_cloak_amount(value: float) -> void:
 		display_surface.material.set_shader_parameter("cloaked_amount", value)
 
 var fixed_tip_position: Vector2 = Vector2.INF
+var last_tip_set: int = 0
 func set_tip_position(pos: Vector2) -> void:
 	fixed_tip_position = pos
+	last_tip_set = Time.get_ticks_msec()
 
 func clear_tip_position() -> void:
 	fixed_tip_position = Vector2.INF
+	var player: Player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.set_collision_mask_value(8, true)
+		player.fall_detector.refresh_active_pits()

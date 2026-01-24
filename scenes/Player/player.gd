@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
 func _move_state() -> void:
 	velocity = input_vector * speed
 
-	if Input.is_action_just_pressed("roll") or received_roll_command:
+	if _should_roll():
 		_set_roll_state()
 		return
 		
@@ -114,10 +114,15 @@ func _action_state(delta: float) -> void:
 		current_action_state = null
 		current_state = PlayerState.Move
 
+func _should_roll() -> bool:
+	if is_cutscene_squirrel:
+		return received_roll_command
+	return Input.is_action_just_pressed("roll")
+
 func _roll_state() -> void:
 	_check_and_set_action_state()
 
-	if Input.is_action_just_pressed("roll") or received_roll_command:
+	if _should_roll():
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		play_sfx_effort()
 		if input_vector != Vector2.ZERO:
@@ -165,6 +170,7 @@ func _update_blend_positions() -> void:
 func _set_action_state(state: ActionState) -> void:
 	action_selected_by_cutscene = null
 	if state == null: return
+	if not state.can_enter(): return
 	
 	_clear_cloaked_state()
 	current_state = PlayerState.Action

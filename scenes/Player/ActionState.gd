@@ -16,6 +16,9 @@ func _ready() -> void:
 func process_state(_player :Player, _delta: float) -> bool:
 	return true
 
+func can_enter() -> bool:
+	return true
+
 func _action_enter(_player :Player) -> void:
 	pass
 

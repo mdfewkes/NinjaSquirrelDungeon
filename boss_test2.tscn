@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=80 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
@@ -527,6 +527,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86r8g"]
 size = Vector2(60, 240)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrgy4"]
+size = Vector2(866, 84)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lec38"]
 size = Vector2(624, 554)
 
@@ -997,6 +1000,26 @@ position = Vector2(118, 321)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
 position = Vector2(-15, 0)
 shape = SubResource("RectangleShape2D_86r8g")
+debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
+position = Vector2(-994, -287)
+shape = SubResource("RectangleShape2D_86r8g")
+debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
+position = Vector2(-1001, 295)
+shape = SubResource("RectangleShape2D_86r8g")
+debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
+position = Vector2(-769, -127)
+shape = SubResource("RectangleShape2D_jrgy4")
+debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Rooms/CutSceneRoom/InvisibleWall"]
+position = Vector2(-769, 120)
+shape = SubResource("RectangleShape2D_jrgy4")
 debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
 
 [node name="SaveRoom1" type="Area2D" parent="Rooms"]
