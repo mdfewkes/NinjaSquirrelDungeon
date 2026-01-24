@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dplx8gnuq04lk"]
+[gd_scene load_steps=12 format=3 uid="uid://dplx8gnuq04lk"]
 
 [ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_28u5p"]
 [ext_resource type="PackedScene" uid="uid://dq1l63ht8k17e" path="res://temp assets/grasseffect.tscn" id="2_txick"]
+[ext_resource type="PackedScene" uid="uid://di1qjcnjfe4ol" path="res://temp assets/bush_particles.tscn" id="3_2fvi4"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_fktey"]
 [ext_resource type="Texture2D" uid="uid://d0pt17ek7w3ra" path="res://temp assets/bush_sprite.png" id="5_2fvi4"]
 [ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_8yp1n"]
@@ -26,6 +27,7 @@ radius = 50.0
 [node name="Bush" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 script = ExtResource("1_28u5p")
 destroy_effect = ExtResource("2_txick")
+bush_particles = ExtResource("3_2fvi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -92)
