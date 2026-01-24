@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8uv3jdhy4ubh"
-path="res://.godot/imported/GoldenAcorn.png-6a053ce56b4d36871c197e3ebe8031d3.ctex"
+uid="uid://d06ehi0jjghui"
+path="res://.godot/imported/Key-2.png-830b8ef437e96f53f42745395a42822a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Items/GoldenAcorn.png"
-dest_files=["res://.godot/imported/GoldenAcorn.png-6a053ce56b4d36871c197e3ebe8031d3.ctex"]
+source_file="res://scenes/Items/Art/Key-2.png"
+dest_files=["res://.godot/imported/Key-2.png-830b8ef437e96f53f42745395a42822a.ctex"]
 
 [params]
 

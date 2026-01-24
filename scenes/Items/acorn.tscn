@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://og7se7clp0jl"]
 
 [ext_resource type="Script" uid="uid://bnne2iq8re6hq" path="res://scenes/Items/collectable_item.gd" id="1_fot5o"]
-[ext_resource type="Texture2D" uid="uid://b8uv3jdhy4ubh" path="res://scenes/Items/GoldenAcorn.png" id="2_fot5o"]
+[ext_resource type="Texture2D" uid="uid://b8uv3jdhy4ubh" path="res://scenes/Items/Art/GoldenAcorn.png" id="2_fot5o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkc2"]
 radius = 26.0

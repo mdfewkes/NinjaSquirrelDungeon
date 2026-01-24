@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfsjclbxrvnhr"]
+[gd_scene load_steps=4 format=3 uid="uid://bfsjclbxrvnhr"]
 
-[ext_resource type="Texture2D" uid="uid://bm3g6n61cc5yn" path="res://temp assets/items-temp.png" id="1_7copc"]
 [ext_resource type="Script" uid="uid://bnne2iq8re6hq" path="res://scenes/Items/collectable_item.gd" id="1_b5ysf"]
-[ext_resource type="Texture2D" uid="uid://c5l8urrthra5b" path="res://scenes/Items/Key-1.png" id="3_ygt3d"]
+[ext_resource type="Texture2D" uid="uid://c5l8urrthra5b" path="res://scenes/Items/Art/Key-1.png" id="3_ygt3d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkc2"]
 radius = 26.0
@@ -15,16 +14,10 @@ script = ExtResource("1_b5ysf")
 item_value = 1
 pull_speed_coefficient = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_7copc")
-hframes = 2
-vframes = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_swkc2")
 
-[node name="Key1" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.536743e-07, -4.7683716e-07)
 scale = Vector2(0.33182973, 0.33182973)
 texture = ExtResource("3_ygt3d")
