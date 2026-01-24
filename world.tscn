@@ -630,7 +630,7 @@ position = Vector2(-520, 195)
 position = Vector2(-512, 521)
 
 [node name="Light3" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
-position = Vector2(-184, 181)
+position = Vector2(-169, 181)
 
 [node name="Light4" parent="Rooms/WaterRoom/Lights" instance=ExtResource("8_gbfbk")]
 position = Vector2(-183, 527)

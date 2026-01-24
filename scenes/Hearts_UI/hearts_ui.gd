@@ -13,10 +13,10 @@ func _ready() -> void:
 		set_max_hp(player.max_hp)
 
 func set_current_hp(value):
-	full_hearts.size.x = value * 32;
+	full_hearts.size.x = value * 235;
 	
 func set_max_hp(value):
-	empty_hearts.size.x = value * 32;
+	empty_hearts.size.x = value * 235;
 
 func set_health(current_hp, max_hp):
 	set_current_hp(current_hp)
