@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cns5m44736nn8"]
+
+[ext_resource type="Texture2D" uid="uid://c5j8ixvj0ecma" path="res://scenes/Player/Art/ninja_squirrel_tailess_sprite_sheet.png" id="1_olep5"]
+
+[node name="GhostNPC" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(2.4925976, 6.1180906, 5.016675, 0.70980394)
+position = Vector2(-6, -40)
+scale = Vector2(0.34994298, 0.34994298)
+texture = ExtResource("1_olep5")
+hframes = 4
+vframes = 8

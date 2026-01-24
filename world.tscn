@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=46 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="21_il2jm"]
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="25_mc2jv"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="28_o3ebs"]
+[ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_k83mh"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -656,6 +657,9 @@ shape = SubResource("RectangleShape2D_k83mh")
 
 [node name="Default" type="Node2D" parent="SpawnPoints"]
 position = Vector2(576, 488)
+
+[node name="GhostNPC" parent="." instance=ExtResource("29_k83mh")]
+position = Vector2(-177, 306)
 
 [editable path="Rooms/BatRoom/Environment/WallSpikes"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes2"]
