@@ -31,6 +31,8 @@ func fade_out() -> void:
 	tween.tween_property(world_env.environment, "glow_bloom", 1.0, 3.0)
 	tween.tween_property(world_env.environment, "adjustment_brightness", 0.0, 4.0)
 	tween.tween_property(world_env.environment, "adjustment_contrast", 2.0, 4.0)
+	await tween.finished
+	GameManager.change_scene("res://scenes/Screens/Credits_Screen/credits_screen.tscn")
 
 func thump() -> void:
 	ImpactEffects.shake(4, 0.4)
