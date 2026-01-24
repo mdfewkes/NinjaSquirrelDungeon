@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 
 func _on_queue_free_timer_timeout() -> void:
 	queue_free()
+	
