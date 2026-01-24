@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=84 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
@@ -27,6 +27,10 @@
 [ext_resource type="Script" uid="uid://c73gjb37miysr" path="res://code/BreakableWall.gd" id="21_7mmc6"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="22_8wa4f"]
 [ext_resource type="Script" uid="uid://brq8r6inxird3" path="res://scenes/Boss/chase_room_2.gd" id="25_lsfgt"]
+[ext_resource type="PackedScene" uid="uid://bpkl5kq3kyjsa" path="res://decorations/sewer_grate.tscn" id="28_rq0fv"]
+[ext_resource type="PackedScene" uid="uid://m01h6jt48kvk" path="res://decorations/sewer_pipe_long.tscn" id="29_0hq3a"]
+[ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="30_xn3as"]
+[ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="31_lo0ou"]
 
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -1790,6 +1794,28 @@ bounce_speed = 1.5
 
 [node name="PointLight2D" parent="Rooms/ChaseRoom2/CutScene/Acorn" index="2"]
 energy = 0.0
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="SewerGrate" parent="Decorations" instance=ExtResource("28_rq0fv")]
+position = Vector2(627, 108)
+
+[node name="SewerPipeLong" parent="Decorations" instance=ExtResource("29_0hq3a")]
+position = Vector2(1656, -38)
+
+[node name="SewerPipeLong2" parent="Decorations" instance=ExtResource("29_0hq3a")]
+position = Vector2(-211, 27)
+
+[node name="SewerPipeLong3" parent="Decorations" instance=ExtResource("29_0hq3a")]
+position = Vector2(-675, 35)
+
+[node name="SewerPipeMedium" parent="Decorations" instance=ExtResource("30_xn3as")]
+position = Vector2(959, 418)
+rotation = -3.1415927
+
+[node name="SewerPipeSmall" parent="Decorations" instance=ExtResource("31_lo0ou")]
+position = Vector2(2308, 641)
+rotation = -3.1415927
 
 [connection signal="body_entered" from="Rooms/CutSceneRoom/Environment/SceneTrigger" to="Rooms/CutSceneRoom" method="_start_cut_scene" unbinds=1]
 [connection signal="body_entered" from="Rooms/SaveRoom1/RocksTrigger" to="Rooms/SaveRoom1" method="_on_rocks_trigger_body_entered"]

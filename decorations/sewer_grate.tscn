@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpkl5kq3kyjsa"]
+
+[ext_resource type="Texture2D" uid="uid://bma4easmcxnug" path="res://decorations/SewerGrate.png" id="1_4ifls"]
+
+[node name="SewerGrate" type="Sprite2D"]
+position = Vector2(0, -21)
+texture = ExtResource("1_4ifls")

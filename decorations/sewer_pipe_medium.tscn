@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://by6eos1lmsxqn"]
+
+[ext_resource type="Texture2D" uid="uid://d2x7133supbje" path="res://decorations/SewerPipe2.png" id="1_4yqk3"]
+
+[node name="SewerPipeMedium" type="Sprite2D"]
+texture = ExtResource("1_4yqk3")
