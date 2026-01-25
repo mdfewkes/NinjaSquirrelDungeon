@@ -13,6 +13,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not activated and body is Player:
 		activate(body)
+		body.heal()
 
 
 func activate(player: Player) -> void:

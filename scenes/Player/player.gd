@@ -337,3 +337,7 @@ func _on_collected_item(item: InventoryManager.InventoryItem, _node: Collectable
 			max_hp += item.value
 			current_hp = max_hp
 			update_health.emit(current_hp, max_hp)
+
+func heal() -> void:
+	current_hp = max_hp
+	update_health.emit(current_hp, max_hp)
