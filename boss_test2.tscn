@@ -1,9 +1,8 @@
-[gd_scene load_steps=84 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=82 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_8ntv0"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_wal4e"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://scenes/Pause_UI/pause_menu.tscn" id="3_wcef1"]
-[ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="4_25ntg"]
 [ext_resource type="PackedScene" uid="uid://s2wiif7o71tk" path="res://scenes/Help_UI/help_ui.tscn" id="5_3rgt7"]
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="6_rf7rn"]
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="7_rh62l"]
@@ -35,14 +34,6 @@
 [sub_resource type="Gradient" id="Gradient_26xuy"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
 colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
-
-[sub_resource type="Environment" id="Environment_lec38"]
-background_mode = 3
-ambient_light_source = 1
-reflected_light_source = 1
-glow_enabled = true
-fog_light_energy = 16.0
-adjustment_enabled = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3ebs"]
 texture = ExtResource("9_8wa4f")
@@ -824,9 +815,6 @@ metadata/_custom_type_script = "uid://8a5snm317mpn"
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.60052365, 0.52271074, 0.8287144, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["world_environment"]]
-environment = SubResource("Environment_lec38")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("2_wal4e")]
@@ -836,8 +824,6 @@ offset_right = 42.0
 offset_bottom = 33.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_wcef1")]
-
-[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_25ntg")]
 
 [node name="HelpUI" parent="CanvasLayer" instance=ExtResource("5_3rgt7")]
 

@@ -52,17 +52,15 @@ signal update_health(current_health, max_health)
 signal player_death
 signal direction_changed(new_direction)
 
-func _ready() -> void:	
+func _ready() -> void:
 	animation_tree.active = true
 	hurt_box.hurt.connect(_on_hurt)
 	hit_box.hit.connect(_on_hit)
 	player_death.connect(_on_player_death)
 	fall_detector.entered_pit.connect(_on_fall_start)
 	fall_detector.fell_into_pit.connect(_on_fall_complete)
-
-	InventoryManager.reset()
 	InventoryManager.item_collected.connect(_on_collected_item)
-	current_hp = max_hp
+	GameManager.restore_persistant_state(self)
 	update_health.emit(current_hp, max_hp)
 
 func _physics_process(delta: float) -> void:
@@ -222,7 +220,7 @@ func _on_hit(hurtbox: HurtBox):
 		
 
 func _on_player_death() -> void:
-	get_tree().reload_current_scene()
+	GameManager.restart_after_death()
 
 func _on_player_directed(vector: Vector2) -> void:
 	input_vector = vector

@@ -61,6 +61,8 @@ var tail_shape = []
 var selected_pose = Direction.UP
 var direction: Vector2 = Vector2(0., -1.)
 
+var instant_tail_update := false
+
 func _ready() -> void:
 	# needs to be deferred because the parent component isn't ready
 	call_deferred("create_shapes")
@@ -107,6 +109,10 @@ func calculate_segment(i: int, target_position: Vector2) -> Vector2:
 		if quick_snap_mode: 
 			rval = quick_snap_responsiveness
 		var result_position = lerp(ideal_position, tail_shape[i].get_global_position(), rval)
+		if instant_tail_update:
+			# this is for respawning or warping into a room
+			result_position = ideal_position
+			set_deferred("instant_tail_update", false)
 		var distance_modifier = (target_position - ideal_position).length() / (target_position - result_position).length()
 		tail_shape[i].set_global_position(result_position)
 		tail_shape[i].shape.radius = _get_size(i) * clamp(distance_modifier, 0.7, 1.3)

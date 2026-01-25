@@ -32,23 +32,25 @@ func _process(_delta: float) -> void:
 	tween.tween_property(canvas_modulate, "color", lighting_gradient.sample(light_level), 0.5)
 
 func load_level(scene_path_to_level: String) -> void: 
-	call_deferred("_call_for_scene_change", scene_path_to_level)
-
-func _call_for_scene_change(scene_path_to_level: String) -> void:
 	last_level = level_name
-	GameManager.change_scene(scene_path_to_level)
+	GameManager.clear_respawn_point()
+	GameManager.change_scene.call_deferred(scene_path_to_level, true)
+
 
 func _setup() -> void:
-	var spawn_point = default_spawn
-	if spawn_points.has(last_level):
-		spawn_point = spawn_points[last_level]
 	var players := get_tree().get_nodes_in_group("player")
-	for player in players:
-		#player.reparent(self)
-		if spawn_point != null:
-			player.global_position = spawn_point.global_position
 	var player = players[0] if players.size() > 0 else null
-	
+	if not GameManager.has_respawn_point():
+		var spawn_point = default_spawn
+		if spawn_points.has(last_level):
+			spawn_point = spawn_points[last_level]
+		if spawn_point:
+			GameManager.set_respawn_point(spawn_point.global_position)
+		for _player in players:
+			if spawn_point != null:
+				_player.global_position = spawn_point.global_position
+				_player.tail.instant_tail_update = true
+
 	for child in rooms_parent_node.get_children():
 		if child is Room:
 			rooms.push_back(child)

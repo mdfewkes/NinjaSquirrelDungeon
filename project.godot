@@ -42,6 +42,7 @@ player=""
 navigation_polygon_source_geometry_group=""
 present_lights=""
 world_environment=""
+inventory_icons=""
 
 [input]
 

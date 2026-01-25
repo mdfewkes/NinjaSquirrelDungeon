@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
 [ext_resource type="PackedScene" uid="uid://dfe0t0s8qmj53" path="res://scenes/Pause_UI/pause_menu.tscn" id="3_2noj6"]
-[ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="4_0cvjd"]
 [ext_resource type="PackedScene" uid="uid://s2wiif7o71tk" path="res://scenes/Help_UI/help_ui.tscn" id="5_5ctwp"]
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="6_e512g"]
 [ext_resource type="Texture2D" uid="uid://denh52bnlpwqc" path="res://scenes/Tileset/Auto_tile_Sewer.png" id="7_3stkh"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="10_cslsd"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="10_lbstr"]
 [ext_resource type="PackedScene" uid="uid://dplx8gnuq04lk" path="res://temp assets/bush.tscn" id="11_x6k3p"]
+[ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_cslsd"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_lg7io"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_7r056"]
 
@@ -139,8 +139,6 @@ color = Color(0.60052365, 0.52271074, 0.8287144, 1)
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_2noj6")]
 
-[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_0cvjd")]
-
 [node name="HelpUI" parent="CanvasLayer" instance=ExtResource("5_5ctwp")]
 
 [node name="GroundLayer" type="Node2D" parent="."]
@@ -175,6 +173,12 @@ navigation_polygon = SubResource("NavigationPolygon_3jbha")
 [node name="Player" parent="." instance=ExtResource("8_hncci")]
 z_index = 10
 position = Vector2(582, 574)
+is_cutscene_squirrel = false
+god_mode = false
+speed = 300.0
+roll_speed = 600.0
+max_hp = 4
+knockback_friction = 1000.0
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -208,6 +212,9 @@ position = Vector2(1056, 440)
 
 [node name="Bush3" parent="Rooms/StartRoom/Environment" instance=ExtResource("11_x6k3p")]
 position = Vector2(1056, 304)
+
+[node name="ExtraHealth" parent="Rooms/StartRoom/Environment" instance=ExtResource("15_cslsd")]
+position = Vector2(200, 489)
 
 [node name="ToEnterance" type="Area2D" parent="Rooms/StartRoom"]
 position = Vector2(180, 900)

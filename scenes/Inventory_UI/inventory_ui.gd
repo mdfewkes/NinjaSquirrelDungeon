@@ -22,6 +22,7 @@ func _on_item_added(item: InventoryManager.InventoryItem, n: CollectableItem):
 	var copy_container = template_container.duplicate()
 	copy_container.add_child(copy_node)
 	copy_container.show()
+	copy_container.add_to_group("inventory_icons")
 
 	call_deferred("add_child", copy_container)
 	nodes_by_item_id[item.item_id] = copy_container

@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk20rvipu2exi"]
+[gd_scene load_steps=5 format=3 uid="uid://dk20rvipu2exi"]
 
 [ext_resource type="Script" uid="uid://bsokfo8fr7dot" path="res://scenes/Main/game_manager.gd" id="1_gol0p"]
 [ext_resource type="PackedScene" uid="uid://dnkf7s8eo12ho" path="res://scenes/Screens/Title_Screen/title_screen.tscn" id="2_br8qb"]
+[ext_resource type="PackedScene" uid="uid://cjh23nsspqgh7" path="res://scenes/Inventory_UI/inventory_ui.tscn" id="4_rdp1x"]
+
+[sub_resource type="Environment" id="Environment_px18m"]
+background_mode = 3
+ambient_light_source = 1
+reflected_light_source = 1
+glow_enabled = true
+fog_light_energy = 16.0
+adjustment_enabled = true
 
 [node name="Main" type="Node" node_paths=PackedStringArray("current_scene")]
 script = ExtResource("1_gol0p")
@@ -9,3 +18,10 @@ current_scene = NodePath("TitleScreen")
 metadata/_custom_type_script = "uid://bsokfo8fr7dot"
 
 [node name="TitleScreen" parent="." instance=ExtResource("2_br8qb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_rdp1x")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["world_environment"]]
+environment = SubResource("Environment_px18m")
