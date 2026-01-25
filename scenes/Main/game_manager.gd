@@ -17,19 +17,20 @@ func _ready() -> void:
 	_reset_persistant_state()
 
 
-static func change_scene(scene_path: String, keep_state = false) -> void:
+static func change_scene(scene_path: String, keep_state = false, fade = true) -> void:
 	if _instance:
-		_instance._change_scene.call_deferred(scene_path, keep_state)
+		_instance._change_scene.call_deferred(scene_path, keep_state, fade)
 
-func _change_scene(scene_path: String, keep_state = false) -> void:
+func _change_scene(scene_path: String, keep_state = false, fade = true) -> void:
 	if scene_path == current_scene.get_scene_file_path(): return
 	if scene_path == "reload":
 		scene_path = current_scene.get_scene_file_path()
-	print("changing to", scene_path)
-	print("keep state:", keep_state)
-	
+	print("changing to ", scene_path, " keep state=", keep_state)
+		
 	var new_scene = load(scene_path).instantiate()
 
+	if fade:
+		await fade_out().finished
 	remove_child(current_scene)
 	current_scene.queue_free()
 
@@ -43,10 +44,38 @@ func _change_scene(scene_path: String, keep_state = false) -> void:
 		# like a barrel checkpoint, so we fall back to the level's start point
 		respawn_point = Vector2.INF
 
+	if fade:
+		await fade_in().finished
+
+
+static func fade_out(time = 0.5):
+	if _instance:
+		var world_env: WorldEnvironment = _instance.get_tree().get_first_node_in_group("world_environment")
+		if world_env:
+			var tween = _instance.create_tween()
+			tween.set_parallel(true)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(world_env.environment, "glow_bloom", 1.0, time / 2)
+			tween.tween_property(world_env.environment, "adjustment_brightness", 0.0, time)
+			tween.tween_property(world_env.environment, "adjustment_contrast", 2.0, time)
+			return tween
+
+
+static func fade_in(time = 0.5):
+	if _instance:
+		var world_env: WorldEnvironment = _instance.get_tree().get_first_node_in_group("world_environment")
+		if world_env:
+			var tween = _instance.create_tween()
+			tween.set_parallel(true)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(world_env.environment, "glow_bloom", 0.0, time)
+			tween.tween_property(world_env.environment, "adjustment_brightness", 1.0, time)
+			tween.tween_property(world_env.environment, "adjustment_contrast", 1.0, time)
+			return tween
+	
 
 static func restore_persistant_state(player: Player) -> void:
 	if _instance:
-		print("restoring persistent player state")
 		player.max_hp = _instance.max_hp
 		player.current_hp = _instance.current_hp
 		if _instance.respawn_point != Vector2.INF:
@@ -59,7 +88,6 @@ func _on_health_change(_current_hp: int, _max_hp: int):
 	max_hp = _max_hp
 
 func _reset_persistant_state() -> void:
-	print("resetting persistent state")
 	max_hp = 4
 	current_hp = max_hp
 	respawn_point = Vector2.INF
@@ -68,7 +96,7 @@ func _reset_persistant_state() -> void:
 
 static func set_respawn_point(global_pos: Vector2) -> void:
 	if _instance:
-		print("updating respawn:", global_pos)
+		print("updating respawn: ", global_pos)
 		_instance.respawn_point = global_pos
 
 
@@ -78,7 +106,6 @@ static func has_respawn_point() -> bool:
 
 static func clear_respawn_point() -> void:
 	if _instance:
-		print("clearing respawn")
 		_instance.respawn_point = Vector2.INF
 
 

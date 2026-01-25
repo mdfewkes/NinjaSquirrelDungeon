@@ -38,6 +38,8 @@ func load_level(scene_path_to_level: String) -> void:
 
 
 func _setup() -> void:
+	if not is_inside_tree():
+		await tree_entered
 	var players := get_tree().get_nodes_in_group("player")
 	var player = players[0] if players.size() > 0 else null
 	if not GameManager.has_respawn_point():

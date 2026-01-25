@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwkfo0fdexbrh"]
+[gd_scene load_steps=7 format=3 uid="uid://cwkfo0fdexbrh"]
 
 [ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://scenes/Bonfire/bonfire.gd" id="1_70l5l"]
 [ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://scenes/Bonfire/Trashcan.png" id="1_s8pws"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
 size = Vector2(50, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wsa28"]
+radius = 100.0
 
 [node name="Bonfire" type="StaticBody2D"]
 collision_mask = 3
@@ -29,3 +32,12 @@ texture = ExtResource("1_s8pws")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -10.5)
 shape = SubResource("RectangleShape2D_buw6a")
+
+[node name="ActivationTrigger" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationTrigger"]
+shape = SubResource("CircleShape2D_wsa28")
+debug_color = Color(0.20273793, 0.6349372, 0.26178008, 0.41960785)

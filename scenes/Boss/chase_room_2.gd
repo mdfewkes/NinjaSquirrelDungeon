@@ -23,17 +23,9 @@ func walk_away() -> void:
 	player.input_vector = Vector2.RIGHT * 0.4
 
 func fade_out() -> void:
-	var world_env: WorldEnvironment = get_tree().get_first_node_in_group("world_environment")
-	var tween = create_tween()
-	tween.set_parallel(true)
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(world_env.environment, "glow_bloom", 1.0, 3.0)
-	tween.tween_property(world_env.environment, "adjustment_brightness", 0.0, 4.0)
-	tween.tween_property(world_env.environment, "adjustment_contrast", 2.0, 4.0)
-	await tween.finished
-	GameManager.change_scene("res://scenes/Screens/Credits_Screen/credits_screen.tscn")
-
+	await GameManager.fade_out(4.0).finished
+	GameManager.change_scene("res://scenes/Screens/Credits_Screen/credits_screen.tscn", true)
+	
 func thump() -> void:
 	ImpactEffects.shake(4, 0.4)
 
