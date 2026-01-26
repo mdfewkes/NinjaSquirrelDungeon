@@ -266,7 +266,6 @@ tile_set = SubResource("TileSet_k83mh")
 visibility_layer = 2
 z_index = 10
 position = Vector2(1010, 3368)
-god_mode = true
 max_hp = 7
 
 [node name="Rooms" type="Node2D" parent="."]
