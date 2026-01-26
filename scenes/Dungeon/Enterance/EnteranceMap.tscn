@@ -131,6 +131,7 @@ level_name = "Enterance"
 lighting_gradient = SubResource("Gradient_r5oec")
 spawn_points = {
 "East Wing": NodePath("SpawnPoints/FromEastWing"),
+"North Wing": NodePath("SpawnPoints/FromFinal"),
 "West Wing": NodePath("SpawnPoints/FromWestWing")
 }
 default_spawn = NodePath("SpawnPoints/Default")
@@ -170,12 +171,6 @@ navigation_polygon = SubResource("NavigationPolygon_3jbha")
 [node name="Player" parent="." instance=ExtResource("8_cm8av")]
 z_index = 10
 position = Vector2(582, 574)
-is_cutscene_squirrel = false
-god_mode = true
-speed = 300.0
-roll_speed = 600.0
-max_hp = 4
-knockback_friction = 1000.0
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -241,7 +236,7 @@ position = Vector2(164, -752)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("15_ymxj4")
-path_to_level = "res://boss_test1.tscn"
+path_to_level = "res://scenes/Dungeon/North Wing/NorthWingPhase1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/FinalHallwayRoom/ToFinal"]
 position = Vector2(412, -160)
