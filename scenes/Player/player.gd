@@ -61,7 +61,9 @@ func _ready() -> void:
 	fall_detector.fell_into_pit.connect(_on_fall_complete)
 	InventoryManager.item_collected.connect(_on_collected_item)
 	GameManager.restore_persistant_state(self)
+	current_hp = max_hp
 	update_health.emit(current_hp, max_hp)
+	update_health.connect(func (_a, _b): persisted_state_changed.emit(self))
 
 func _physics_process(delta: float) -> void:
 	if not is_cutscene_squirrel:
@@ -311,6 +313,8 @@ func _on_fall_start(_pit: Node2D) -> void:
 
 
 func _on_fall_complete() -> void:
+	if current_state == PlayerState.Dying:
+		return
 	current_state = PlayerState.Move
 	rotation = 0
 	tail.call_deferred("show")
@@ -337,3 +341,20 @@ func _on_collected_item(item: InventoryManager.InventoryItem, _node: Collectable
 			max_hp += item.value
 			current_hp = max_hp
 			update_health.emit(current_hp, max_hp)
+
+func heal() -> void:
+	current_hp = max_hp
+	update_health.emit(current_hp, max_hp)
+
+
+signal persisted_state_changed(obj: Node)
+
+func get_persisted_state() -> Dictionary:
+	return {
+		"current_hp": current_hp,
+		"max_hp": max_hp,
+	}
+	
+func restore_persisted_state(data: Dictionary) -> void:
+	current_hp = data["current_hp"]
+	max_hp = data["max_hp"]

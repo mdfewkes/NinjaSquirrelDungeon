@@ -7,7 +7,7 @@
 radius = 26.0
 height = 54.0
 
-[node name="QuestItem" type="Area2D"]
+[node name="QuestItem" type="Area2D" groups=["persisted"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_kb8yh")

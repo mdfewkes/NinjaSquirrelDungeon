@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctl482k56qsk1"
+path="res://.godot/imported/LoS Dungeon Sneak - Mid Intensity.ogg-79d7fd247eab2be5b3128032f30bc342.oggvorbisstr"
+
+[deps]
+
+source_file="res://LoS Dungeon Sneak - Mid Intensity.ogg"
+dest_files=["res://.godot/imported/LoS Dungeon Sneak - Mid Intensity.ogg-79d7fd247eab2be5b3128032f30bc342.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

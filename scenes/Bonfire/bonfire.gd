@@ -1,16 +1,22 @@
 extends StaticBody2D
 
 @onready var fire_efx: Node2D = $FireEFX
+@onready var trigger: Area2D = $ActivationTrigger
 
-# Called when the node enters the scene tree for the first time.
+@export var activated := false
+
 func _ready() -> void:
-	pass # Replace with function body.
+	fire_efx.hide()
+	trigger.body_entered.connect(_on_body_entered)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func _on_body_entered(body: Node2D) -> void:
+	if not activated and body is Player:
+		activate(body)
+		body.heal()
 
 
-func play_fire_efx() -> void:
-	pass
+func activate(player: Player) -> void:
+	fire_efx.show()
+	activated = true
+	StateManager.set_key("respawn_point", player.global_position)

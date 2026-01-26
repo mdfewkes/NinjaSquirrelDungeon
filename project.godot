@@ -27,6 +27,7 @@ InventoryManager="*res://code/InventoryManager.gd"
 FeatureFlags="*res://code/FeatureFlags.gd"
 DialogueBox="*res://scenes/DialogueBox/dialogue_box.tscn"
 ImpactEffects="*res://code/ImpactEffects.gd"
+StateManager="*res://code/StateManager.gd"
 
 [display]
 
@@ -43,6 +44,7 @@ navigation_polygon_source_geometry_group=""
 present_lights=""
 world_environment=""
 inventory_icons=""
+persisted=""
 
 [input]
 

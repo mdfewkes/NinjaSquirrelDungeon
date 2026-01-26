@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://bsokfo8fr7dot"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("4_rdp1x")]
+mouse_filter = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["world_environment"]]
 environment = SubResource("Environment_px18m")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://drbhy24aptcv6"
+path="res://.godot/imported/LoS Dungeon Sneak - Sneak Base Level Melody.ogg-dcf763bc204290031b3a5f68058314f2.oggvorbisstr"
+
+[deps]
+
+source_file="res://LoS Dungeon Sneak - Sneak Base Level Melody.ogg"
+dest_files=["res://.godot/imported/LoS Dungeon Sneak - Sneak Base Level Melody.ogg-dcf763bc204290031b3a5f68058314f2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

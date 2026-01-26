@@ -106,7 +106,7 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sik3a"]
 size = Vector2(128, 32)
 
-[node name="Door" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D" groups=["persisted"]]
 script = ExtResource("1_sik3a")
 sfx_on_open = SubResource("Resource_choin")
 sfx_on_close = SubResource("Resource_0yfhr")
