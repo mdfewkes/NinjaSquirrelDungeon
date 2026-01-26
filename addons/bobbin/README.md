@@ -13,40 +13,48 @@ temp mood = "friendly"
 
 # Host variable (provided by your game)
 extern player_name
+extern gold
 
 Hello, {player_name}!
 
 - Ask about wares
     set met_merchant = true
     I have potions and scrolls.
+    - Buy potion (10 gold)
+        if gold >= 10
+            You purchase the potion.
+        else
+            You can't afford that.
+    - Never mind
+        Come back anytime.
 
 - Leave
-    Safe travels!
+    if met_merchant
+        Safe travels, friend!
+    else
+        Goodbye, stranger.
 ```
 
 ## Using in Godot
 
 ```gdscript
-# Simple API (single dialogue)
-Bobbin.start("res://dialogue/intro.bobbin")
+# Create a runtime
+var runtime = Bobbin.create("res://dialogue/intro.bobbin")
 
-while Bobbin.has_more():
-    if Bobbin.is_waiting_for_choice():
-        var choices = Bobbin.current_choices()
+while runtime.has_more():
+    if runtime.is_waiting_for_choice():
+        var choices = runtime.current_choices()
         # Show choices to player, get their selection...
-        Bobbin.select_choice(selection)
+        runtime.select_choice(selection)
     else:
-        print(Bobbin.current_line())
-        Bobbin.advance()
+        print(runtime.current_line())
+        runtime.advance()
 
 # With host state (pass game variables to dialogue)
-Bobbin.start_with_host("res://dialogue/intro.bobbin", {
+var runtime = Bobbin.create_with_host("res://dialogue/intro.bobbin", {
     "player_name": "Hero",
     "gold": 100
 })
-
-# Create independent runtimes for multiple concurrent dialogues
-var runtime = Bobbin.create("res://dialogue/npc.bobbin")
 ```
 
 ## Editor Settings
@@ -62,6 +70,16 @@ You can check the current indentation mode in the bottom-right corner of the edi
 Web builds require **multi-threading support** enabled in your export settings. Bobbin's WebAssembly binary uses threads.
 
 In Godot's Export dialog, ensure "Thread Support" is enabled for your web export preset.
+
+## macOS
+
+macOS quarantines unsigned binaries downloaded from the internet. If Godot fails to load the addon, run this in Terminal from your project's `addons/bobbin/bin/` folder:
+
+```bash
+xattr -dr com.apple.quarantine *.dylib
+```
+
+This only affects developers during development. Games exported and properly signed for distribution will work without this step.
 
 ## License
 
