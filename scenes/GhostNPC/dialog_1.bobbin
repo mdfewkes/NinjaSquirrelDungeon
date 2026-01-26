@@ -1,1 +1,34 @@
+save wallet = 10
+save last_choice = 0
+
 howdy, pardner!
+
+Would you like to play a game of chance?
+- Yes
+  Great! You have {wallet} coins in your wallet.
+  Let's see if you can double your money!
+  Pick a number between 1 and 5:
+  - 1
+    set last_choice = 1
+  - 2
+    set last_choice = 2
+  - 3
+    set last_choice = 3
+  - 4
+    set last_choice = 4
+  - 5
+    set last_choice = 5
+
+  if last_choice >= 3
+    You picked {last_choice}. Lucky you!
+    You win 10 coins!
+    set wallet = wallet + 10
+  else
+    You picked {last_choice}. Unlucky!
+    You lose 5 coins.
+    set wallet = wallet - 5
+  You now have {wallet} coins in your wallet.
+  Thanks for playing! See you soon, pardner!
+- No
+  Maybe next time, pardner!
+
