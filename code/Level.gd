@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 
 func load_level(scene_path_to_level: String) -> void: 
 	last_level = level_name
-	GameManager.clear_respawn_point()
+	StateManager.clear_key("respawn_point")
 	GameManager.change_scene.call_deferred(scene_path_to_level, true)
 
 
@@ -42,12 +42,12 @@ func _setup() -> void:
 		await tree_entered
 	var players := get_tree().get_nodes_in_group("player")
 	var player = players[0] if players.size() > 0 else null
-	if not GameManager.has_respawn_point():
+	if not StateManager.has_key("respawn_point"):
 		var spawn_point = default_spawn
 		if spawn_points.has(last_level):
 			spawn_point = spawn_points[last_level]
 		if spawn_point:
-			GameManager.set_respawn_point(spawn_point.global_position)
+			StateManager.set_key("respawn_point", spawn_point.global_position)
 		for _player in players:
 			if spawn_point != null:
 				_player.global_position = spawn_point.global_position
@@ -64,6 +64,7 @@ func _setup() -> void:
 		if player and room.collision_shape_2d.shape.get_rect().has_point(player.global_position):
 			last_saw_player = room
 	_set_current_room(last_saw_player)
+
 
 func _set_current_room(room: Room) -> void:
 	last_room = current_room

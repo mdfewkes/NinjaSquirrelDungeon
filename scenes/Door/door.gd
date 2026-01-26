@@ -58,7 +58,7 @@ func open():
 		if sfx_on_open:
 			AudioManager.PlaySFX(sfx_on_open, self)
 	is_open = true
-
+	persisted_state_changed.emit(self)
 
 func close():
 	if is_open:
@@ -66,6 +66,7 @@ func close():
 		if sfx_on_close:
 			AudioManager.PlaySFX(sfx_on_close, self)
 	is_open = false
+	persisted_state_changed.emit(self)
 
 
 func _on_unlock_area_entered(body: Node2D) -> void:
@@ -92,3 +93,19 @@ func _on_switch_triggered(_switch: SwitchTrigger):
 	call_deferred("open")
 	if close_timer:
 		close_timer.call_deferred("start")
+
+
+signal persisted_state_changed(obj: Node)
+
+func get_persisted_state() -> Dictionary:
+	return {
+		"is_open": is_open
+	}
+	
+func restore_persisted_state(data: Dictionary) -> void:
+	if "is_open" in data:
+		is_open = data["is_open"]
+		if is_open:
+			anim.play("open", -1, 10)
+		else:
+			anim.play("RESET")

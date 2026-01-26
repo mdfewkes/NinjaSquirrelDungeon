@@ -35,6 +35,7 @@ signal item_collected(node: CollectableItem)
 # randomized to make sure items don't all bounce in lockstep
 var bounce_differentiator: float
 
+var collected := false
 
 func trigger_collection() -> void:
 	if sfx_on_collect:
@@ -43,6 +44,8 @@ func trigger_collection() -> void:
 	if add_to_inventory:
 		InventoryManager.add_item(self)
 	InventoryManager.emit_item_collected(self)
+	collected = true
+	emit_signal("persisted_state_changed", self)
 	emit_signal("item_collected", self)
 	queue_free()
 
@@ -65,3 +68,15 @@ func can_be_pulled() -> Node:
 	if pull_speed_coefficient != 0.0:
 		return self
 	return null
+
+
+signal persisted_state_changed(obj: Node)
+
+func get_persisted_state() -> Dictionary:
+	return {
+		"collected": collected
+	}
+	
+func restore_persisted_state(data: Dictionary) -> void:
+	if data.get("collected"):
+		queue_free()

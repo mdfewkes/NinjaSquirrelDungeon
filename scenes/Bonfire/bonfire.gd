@@ -19,4 +19,4 @@ func _on_body_entered(body: Node2D) -> void:
 func activate(player: Player) -> void:
 	fire_efx.show()
 	activated = true
-	GameManager.set_respawn_point(player.global_position)
+	StateManager.set_key("respawn_point", player.global_position)
