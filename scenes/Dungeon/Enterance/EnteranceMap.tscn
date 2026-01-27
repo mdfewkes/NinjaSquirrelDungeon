@@ -221,15 +221,15 @@ shape = SubResource("RectangleShape2D_4lyq4")
 
 [node name="Environment" type="Node2D" parent="Rooms/FinalHallwayRoom"]
 
-[node name="ButtonDoor" parent="Rooms/FinalHallwayRoom/Environment" instance=ExtResource("13_p32oj")]
+[node name="WestDoor" parent="Rooms/FinalHallwayRoom/Environment" instance=ExtResource("13_p32oj")]
+modulate = Color(0.43529412, 1, 0.49803922, 1)
 position = Vector2(580, -200)
-required_key_value = 1
-close_after_seconds = 2.0
+required_key_value = 10
 
-[node name="GreenDoor" parent="Rooms/FinalHallwayRoom/Environment" instance=ExtResource("13_p32oj")]
+[node name="EastDoor" parent="Rooms/FinalHallwayRoom/Environment" instance=ExtResource("13_p32oj")]
 modulate = Color(0.2713101, 0.8626709, 0.4886579, 1)
 position = Vector2(572, -548)
-required_key_value = 2
+required_key_value = 11
 
 [node name="ToFinal" type="Area2D" parent="Rooms/FinalHallwayRoom"]
 position = Vector2(164, -752)
