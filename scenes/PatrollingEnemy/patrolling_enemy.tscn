@@ -433,12 +433,17 @@ frame = 3
 [node name="ShadowSprite" parent="." index="2"]
 visible = false
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+debug_enabled = true
+
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_oh7v8")
 }
 
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="5"]
 root_node = NodePath("../Sprite2D")
 callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeStateMachine_7l7ke")
@@ -448,24 +453,24 @@ parameters/conditions/is_patrol = false
 parameters/Chase/blend_position = Vector2(0.307, -0.825)
 parameters/Patrol/blend_position = Vector2(-0.44701195, 0.6775701)
 
-[node name="HurtBox" parent="." index="8"]
+[node name="HurtBox" parent="." index="9"]
 position = Vector2(-3, -1)
 scale = Vector2(4.187, 2.309)
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("CapsuleShape2D_6d2yr")
 
-[node name="HitBox" parent="." index="9"]
+[node name="HitBox" parent="." index="10"]
 position = Vector2(0, -30)
 knockback = 500
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_qc4yg")
 
-[node name="PatrolTimer" type="Timer" parent="." index="10"]
+[node name="PatrolTimer" type="Timer" parent="." index="11"]
 autostart = true
 
-[node name="GrabBox" type="Area2D" parent="." index="11"]
+[node name="GrabBox" type="Area2D" parent="." index="12"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("5_qc4yg")
@@ -477,10 +482,10 @@ position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_ukvp4")
 debug_color = Color(0.7777905, 0.31842506, 0.7667915, 0.41960785)
 
-[node name="ShockWave" parent="." index="12" instance=ExtResource("5_ukvp4")]
+[node name="ShockWave" parent="." index="13" instance=ExtResource("5_ukvp4")]
 position = Vector2(0, -50)
 
-[node name="DeathParticles" parent="." index="13"]
+[node name="DeathParticles" parent="." index="14"]
 position = Vector2(0, -47)
 emission_sphere_radius = 50.0
 linear_accel_min = -150.0

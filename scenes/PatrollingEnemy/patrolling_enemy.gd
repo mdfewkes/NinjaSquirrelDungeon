@@ -25,6 +25,7 @@ const DartmunkScene = preload("res://scenes/Dartmunk/dartmunk.tscn")
 @export var sfx_on_chase : AudioSFX
 
 ## Onready Variables
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var patrol_timer: Timer = $PatrolTimer
 @onready var shockwave: ShockWave = $ShockWave
 
@@ -88,7 +89,9 @@ func idle_state():
 		state = States.PATROL
 
 func chase_state():
-	velocity = global_position.direction_to(player.global_position).normalized() * speed
+	navigation_agent_2d.target_position = player.global_position
+	var next_point := navigation_agent_2d.get_next_path_position()
+	velocity = global_position.direction_to(next_point) * speed
 	chase = true
 	patrol = false
 	move_and_slide()
@@ -120,7 +123,9 @@ func patrol_state():
 	patrol = true
 	chase = false
 	if not at_patrol_point():
-		velocity = global_position.direction_to(target_coordinates) * speed
+		navigation_agent_2d.target_position = target_coordinates
+		var next_point := navigation_agent_2d.get_next_path_position()
+		velocity = global_position.direction_to(next_point) * speed
 		patrol = true
 		chase = false
 		#sprite_2d.scale.x = sign(velocity.x)
