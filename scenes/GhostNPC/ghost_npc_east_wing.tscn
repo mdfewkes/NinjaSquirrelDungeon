@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d000e70uocowo"]
+
+[ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/ghost_east_wing.png" id="1_ecelx"]
+[ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_k1bhi"]
+
+[node name="GhostNPCEastWing" type="Node2D"]
+modulate = Color(1, 1, 1, 0.7372549)
+scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_ecelx")
+
+[node name="DialogueTrigger" parent="." instance=ExtResource("2_k1bhi")]
+position = Vector2(0, -2)
+dialogue_file = "uid://bh10nkombcfw3"
+
+[node name="PromptContainer" parent="DialogueTrigger" index="1"]
+offset_left = -41.0
+offset_top = -125.0
+offset_right = 39.0
+offset_bottom = -97.0
+
+[editable path="DialogueTrigger"]

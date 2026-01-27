@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwfms7dbcl64a"]
+
+[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/ghost_entrance.png" id="1_2t8b5"]
+[ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_m0d5j"]
+
+[node name="GhostNPCEntrance" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.7372549)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_2t8b5")
+
+[node name="DialogueTrigger" parent="." instance=ExtResource("2_m0d5j")]
+position = Vector2(0, -2)
+dialogue_file = "uid://bh10nkombcfw3"
+
+[node name="PromptContainer" parent="DialogueTrigger" index="1"]
+offset_left = -41.0
+offset_top = -125.0
+offset_right = 39.0
+offset_bottom = -97.0
+
+[editable path="DialogueTrigger"]

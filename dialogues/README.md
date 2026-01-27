@@ -8,11 +8,11 @@ This folder contains all dialogue scripts for Legend of Shadowtail, written in [
 dialogues/
 ├── README.md          # This file
 └── museum/            # Dialogue Museum demo dialogues (learning examples)
-    ├── storyteller.bobbin    # Multi-line dialogue
-    ├── merchant.bobbin       # Choice branching with -
-    ├── memory_keeper.bobbin  # save/set variables
-    ├── oracle.bobbin         # extern host state
-    └── syntax_guide.bobbin   # Interactive syntax tutorial
+	├── storyteller.bobbin    # Multi-line dialogue
+	├── merchant.bobbin       # Choice branching with -
+	├── memory_keeper.bobbin  # save/set variables
+	├── oracle.bobbin         # extern host state
+	└── syntax_guide.bobbin   # Interactive syntax tutorial
 ```
 
 ## Quick Start
@@ -35,7 +35,7 @@ Use `-` to create player choices. Indent responses under each choice:
 ```bobbin
 What would you like?
 - Buy something
-    Here's your item!
+	Here's your item!
 - Leave
     Goodbye!
 ```
@@ -89,8 +89,8 @@ DialogueBox.show_dialogue("res://dialogues/intro.bobbin")
 
 # With game variables for extern access
 DialogueBox.show_dialogue("res://dialogues/boss_defeated.bobbin", {
-    "boss_name": "Shadow King",
-    "player_level": player.level
+	"boss_name": "Shadow King",
+	"player_level": player.level
 })
 
 # Async version - waits for dialogue to complete before continuing
