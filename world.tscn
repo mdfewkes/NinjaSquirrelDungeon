@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=50 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="25_mc2jv"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="28_o3ebs"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_k83mh"]
+[ext_resource type="PackedScene" uid="uid://cxbcl075njlas" path="res://scenes/GhostNPC/quest_item_01.tscn" id="29_w44yn"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="30_k83mh"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="30_qktwf"]
 [ext_resource type="PackedScene" uid="uid://d000e70uocowo" path="res://scenes/GhostNPC/ghost_npc_east_wing.tscn" id="31_gggvi"]
@@ -634,31 +635,34 @@ position = Vector2(492, -347)
 position = Vector2(492, -347)
 
 [node name="ExtraHealth" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_k83mh")]
-position = Vector2(-511, 368)
+position = Vector2(-923, 194)
 
 [node name="QuestItem" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
-position = Vector2(-906, 180)
+position = Vector2(-179, 444)
 
 [node name="QuestItem2" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
-position = Vector2(-751, 184)
+position = Vector2(-526, 283)
 item_value = 1
 
 [node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem2" index="1"]
 frame = 1
 
 [node name="QuestItem3" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
-position = Vector2(-749, 508)
+position = Vector2(-519, 438)
 item_value = 2
 
 [node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem3" index="1"]
 frame = 2
 
 [node name="QuestItem4" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
-position = Vector2(-920, 508)
+position = Vector2(-513, 350)
 item_value = 3
 
 [node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem4" index="1"]
 frame = 6
+
+[node name="Quest_Item_01" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_w44yn")]
+position = Vector2(-155, 339)
 
 [node name="TriggerTest" type="Area2D" parent="."]
 position = Vector2(-16, 0)

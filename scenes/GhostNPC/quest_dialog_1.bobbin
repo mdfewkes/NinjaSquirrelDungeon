@@ -1,0 +1,6 @@
+save quest_currency = 0
+save last_choice = 0
+
+howdy, pardner!
+    set quest_currency = quest_currency + 1
+    your quest currency is: {quest_currency}

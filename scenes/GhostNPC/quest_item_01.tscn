@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxbcl075njlas"]
+
+[ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_27756"]
+[ext_resource type="Texture2D" uid="uid://cftj0tlkcye5o" path="res://scenes/Items/Art/temp-collectibles.png" id="2_m7gye"]
+
+[node name="Quest_Item_01" type="Node2D"]
+modulate = Color(1, 1, 1, 0.7372549)
+scale = Vector2(0.4, 0.4)
+
+[node name="DialogueTrigger" parent="." instance=ExtResource("2_27756")]
+position = Vector2(0, -2)
+dialogue_file = "uid://p5tl8mmaqeqy"
+
+[node name="PromptContainer" parent="DialogueTrigger" index="1"]
+offset_left = -41.0
+offset_top = -125.0
+offset_right = 39.0
+offset_bottom = -97.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, -4.7683716e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_m7gye")
+hframes = 4
+vframes = 4
+frame = 6
+
+[editable path="DialogueTrigger"]
