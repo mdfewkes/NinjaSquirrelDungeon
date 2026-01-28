@@ -5,9 +5,9 @@
 
 [node name="GhostNPCEastWing" type="Node2D"]
 modulate = Color(1, 1, 1, 0.7372549)
-scale = Vector2(0.4, 0.4)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ecelx")
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("2_k1bhi")]

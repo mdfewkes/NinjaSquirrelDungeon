@@ -5,14 +5,14 @@
 
 [node name="GhostNPCWestWing" type="Node2D"]
 modulate = Color(1, 1, 1, 0.7372549)
-scale = Vector2(0.4, 0.4)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ufib5")
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("2_ht3f3")]
 position = Vector2(0, -2)
-dialogue_file = "uid://qyckowqyx3w5"
+dialogue_file = "uid://crpdk603f8s8k"
 
 [node name="PromptContainer" parent="DialogueTrigger" index="1"]
 offset_left = -41.0
