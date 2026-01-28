@@ -26,6 +26,10 @@ func set_as_current_room() -> void:
 	
 	enemies_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 	enemies_parent_node.visible = true
+	for enemy in enemies_parent_node.get_children():
+		if enemy.has_method("reset_position"):
+			enemy.reset_position()
+	
 	environment_parent_node.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	var camera = get_viewport().get_camera_2d()

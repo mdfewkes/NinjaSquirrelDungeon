@@ -28,11 +28,12 @@ var animation_tree_playback: AnimationNodeStateMachinePlayback
 var current_hp := max_hp
 var player = null
 var facing_direction: Vector2 = Vector2.ZERO
+var resetting_position: Vector2 = Vector2.ZERO
 
 ## Lifecycle Functions
 func _ready() -> void:
 	hurt_box.hurt.connect(_on_hurt)
-	$Label.text = str(current_hp)
+	resetting_position = global_position
 	var players := get_tree().get_nodes_in_group("player")
 	player = players[0] if players.size() > 0 else null
 	if animation_tree:
@@ -76,7 +77,10 @@ func can_see_player() -> bool:
 	
 	ray_cast_2d.target_position = player.global_position - global_position
 	return not ray_cast_2d.is_colliding()
-	
+
+func reset_position() -> void:
+	global_position = resetting_position
+
 ## Events
 func _on_hurt(hit_box: HitBox) -> void:
 	current_hp -= hit_box.damage
