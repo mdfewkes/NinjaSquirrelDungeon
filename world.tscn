@@ -711,12 +711,15 @@ position = Vector2(576, 488)
 position = Vector2(-834, 202)
 
 [node name="GhostNPCEastWing" parent="." instance=ExtResource("31_gggvi")]
+modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-750, 426)
 
 [node name="GhostNPCEntrance" parent="." instance=ExtResource("32_w44yn")]
+modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-753, 292)
 
 [node name="GhostNPCWestWing" parent="." instance=ExtResource("33_6ah6f")]
+modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-298, 199)
 
 [editable path="Rooms/BatRoom/Environment/WallSpikes"]
