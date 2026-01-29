@@ -20,6 +20,7 @@ radius = 16.03122
 
 [node name="EnemyBase" type="CharacterBody2D"]
 script = ExtResource("1_p4led")
+peripheral_vision = 0.2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -6)
