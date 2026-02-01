@@ -274,6 +274,9 @@ position = Vector2(-89, -50)
 [node name="Light5" parent="Rooms/Room01/Lights" groups=["present_lights"] instance=ExtResource("10_lyrpa")]
 position = Vector2(-1443, 272)
 
+[node name="Light7" parent="Rooms/Room01/Lights" groups=["present_lights"] instance=ExtResource("10_lyrpa")]
+position = Vector2(-1195, 469)
+
 [node name="Light6" parent="Rooms/Room01/Lights" groups=["present_lights"] instance=ExtResource("10_lyrpa")]
 position = Vector2(-740, 531)
 
