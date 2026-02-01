@@ -92,7 +92,7 @@ offset_bottom = 199.0
 text = "Test Cutscene
 "
 script = ExtResource("2_wy4sj")
-path_to_scene = "res://scenes/Screens/Example_Cutscene_Screen/example_cutscene_scene.tscn"
+path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
 
 [node name="World" type="Button" parent="."]
 layout_mode = 0
