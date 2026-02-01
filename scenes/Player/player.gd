@@ -294,7 +294,11 @@ func play_sfx_effort() -> void:
 
 
 func can_fall(_area: Node2D) -> bool:
-	return not is_on_platform and current_action_state != $"Tail Whip ActionState"
+	if is_on_platform:
+		return false
+	if tail.fixed_tip_position != Vector2.INF:
+		return false
+	return true
 
 
 func _on_fall_start(_pit: Node2D) -> void:
