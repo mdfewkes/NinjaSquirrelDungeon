@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://5pbl42y2fb2y"]
+[gd_scene load_steps=36 format=3 uid="uid://5pbl42y2fb2y"]
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
 [ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/raccoon_sprite_sheet.png" id="4_kw6ql"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="5_qc4yg"]
 [ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="5_ukvp4"]
+[ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="6_ukvp4"]
 
 [sub_resource type="Animation" id="Animation_cwiwr"]
 length = 0.001
@@ -406,6 +407,8 @@ radius = 32.0
 radius = 40.0
 height = 100.79
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dyxq"]
+
 [node name="PatrollingEnemy" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("1_xy51q")]
 collision_layer = 4
 collision_mask = 135
@@ -418,7 +421,6 @@ dartmunk_summon_markers = Array[float]([])
 sfx_on_chase = null
 view_range = 500.0
 min_view_range = 50.0
-peripheral_vision = 0.2
 knockback_friction = 3000
 max_hp = 3
 
@@ -485,7 +487,22 @@ debug_color = Color(0.7777905, 0.31842506, 0.7667915, 0.41960785)
 [node name="ShockWave" parent="." index="13" instance=ExtResource("5_ukvp4")]
 position = Vector2(0, -50)
 
-[node name="DeathParticles" parent="." index="14"]
+[node name="FallDetector" type="Area2D" parent="." index="14"]
+position = Vector2(-5, -12)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("6_ukvp4")
+default_animation_enabled = false
+position_tracking_enabled = false
+move_toward_center = false
+fall_time = 1.5
+reset_after_fall = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector" index="0"]
+shape = SubResource("CircleShape2D_3dyxq")
+debug_color = Color(0.7484302, 0.29314187, 0.885395, 0.41960785)
+
+[node name="DeathParticles" parent="." index="15"]
 position = Vector2(0, -47)
 emission_sphere_radius = 50.0
 linear_accel_min = -150.0
