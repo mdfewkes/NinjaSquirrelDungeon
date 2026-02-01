@@ -939,7 +939,6 @@ max_hp = 7
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_y374w")
-dialog_script_path = "res://scenes/Dungeon/North Wing/IntroCutScene/intro_dialog.bobbin"
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom"]
