@@ -412,6 +412,7 @@ height = 100.79
 [node name="PatrollingEnemy" node_paths=PackedStringArray("dartmunk_summon_markers") instance=ExtResource("1_xy51q")]
 collision_layer = 4
 collision_mask = 135
+motion_mode = 1
 script = ExtResource("2_6d2yr")
 random_patrol = false
 patrol_point_radius = 10
@@ -421,7 +422,7 @@ dartmunk_summon_markers = Array[float]([])
 sfx_on_chase = null
 view_range = 500.0
 min_view_range = 50.0
-knockback_friction = 3000
+knockback_friction = 5000
 max_hp = 3
 
 [node name="Sprite2D" parent="." index="1"]
@@ -492,10 +493,7 @@ position = Vector2(-5, -12)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("6_ukvp4")
-default_animation_enabled = false
 position_tracking_enabled = false
-move_toward_center = false
-fall_time = 1.5
 reset_after_fall = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector" index="0"]
