@@ -137,56 +137,6 @@ sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o03n2"]
 size = Vector2(1089, 1261)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2x6bc"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(0, 0, 90, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6ubm"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(90, 0, 90, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cb7dp"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(180, 0, 90, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_044k6"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(270, 0, 90, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dhuvy"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(360, 0, 90, 250)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_75gdc"]
-atlas = ExtResource("13_ncfnn")
-region = Rect2(450, 0, 90, 250)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y374w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2x6bc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u6ubm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cb7dp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_044k6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dhuvy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75gdc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="Gradient" id="Gradient_rxbiy"]
 offsets = PackedFloat32Array(0.48816568, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -576,6 +526,56 @@ size = Vector2(60, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrgy4"]
 size = Vector2(866, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x6bc"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(0, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ubm"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(90, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb7dp"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(180, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_044k6"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(270, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhuvy"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(360, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75gdc"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(450, 0, 90, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y374w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x6bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ubm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb7dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_044k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhuvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75gdc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lec38"]
 size = Vector2(624, 554)
@@ -967,12 +967,6 @@ z_index = 1
 position = Vector2(-1605, 261)
 collision_mask = 0
 
-[node name="AcornExclamation" type="AnimatedSprite2D" parent="Rooms/CutSceneRoom/Enemies/CutSceneBadger"]
-position = Vector2(1158, -60)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_y374w")
-frame_progress = 0.5745577
-
 [node name="ShockWave" parent="Rooms/CutSceneRoom/Enemies" instance=ExtResource("13_wxuag")]
 position = Vector2(-431, 146)
 
@@ -1085,6 +1079,12 @@ debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
 position = Vector2(-769, 120)
 shape = SubResource("RectangleShape2D_jrgy4")
 debug_color = Color(0.24148726, 0.5271159, 0.938683, 0.41960785)
+
+[node name="AcornExclamation" type="AnimatedSprite2D" parent="Rooms/CutSceneRoom"]
+position = Vector2(-446, 213)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_y374w")
+frame_progress = 0.73837787
 
 [node name="SaveRoom1" type="Area2D" parent="Rooms"]
 collision_layer = 0
