@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=92 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_dk06n"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_7jnt8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bardjl21pgsso" path="res://scenes/Dungeon/North Wing/IntroCutScene/cut_scene_room.gd" id="10_y374w"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="11_yjfbv"]
 [ext_resource type="PackedScene" uid="uid://cu1cul1uy6ju6" path="res://scenes/Boss/cut_scene_badger.tscn" id="12_ou0te"]
+[ext_resource type="Texture2D" uid="uid://cclls0cbhvqv5" path="res://exclamation-Sheet.png" id="13_ncfnn"]
 [ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="13_wxuag"]
 [ext_resource type="PackedScene" uid="uid://og7se7clp0jl" path="res://scenes/Items/acorn.tscn" id="14_sivhr"]
 [ext_resource type="PackedScene" uid="uid://bacx7l8nfuxpv" path="res://scenes/Bridge/bridge.tscn" id="15_dwx28"]
@@ -135,6 +136,56 @@ sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o03n2"]
 size = Vector2(1089, 1261)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x6bc"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(0, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ubm"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(90, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb7dp"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(180, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_044k6"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(270, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhuvy"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(360, 0, 90, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75gdc"]
+atlas = ExtResource("13_ncfnn")
+region = Rect2(450, 0, 90, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y374w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x6bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ubm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb7dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_044k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhuvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75gdc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_rxbiy"]
 offsets = PackedFloat32Array(0.48816568, 1)
@@ -844,7 +895,6 @@ repeat_size = Vector2(1280, 768)
 
 [node name="TextureRect" type="TextureRect" parent="GroundLayer/Parallax2D"]
 modulate = Color(0.14167443, 0.03949087, 0.17355067, 1)
-anchors_preset = -1
 offset_left = -1024.0
 offset_top = -768.0
 offset_right = 2048.0
@@ -916,6 +966,12 @@ position = Vector2(-791, 63)
 z_index = 1
 position = Vector2(-1605, 261)
 collision_mask = 0
+
+[node name="AcornExclamation" type="AnimatedSprite2D" parent="Rooms/CutSceneRoom/Enemies/CutSceneBadger"]
+position = Vector2(1158, -60)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_y374w")
+frame_progress = 0.5745577
 
 [node name="ShockWave" parent="Rooms/CutSceneRoom/Enemies" instance=ExtResource("13_wxuag")]
 position = Vector2(-431, 146)
