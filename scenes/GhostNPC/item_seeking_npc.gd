@@ -24,7 +24,7 @@ func _ready() -> void:
 		item_to_give.hide()
 		item_to_give.monitoring = false
 	_refresh_state()
-	trigger.interaction_finished.connect(_on_interaction_finished)
+	trigger.commands_requested.connect(_on_commands_requested)
 	InventoryManager.item_collected.connect(_on_item_collected)
 
 func _refresh_state() -> void:
@@ -33,13 +33,14 @@ func _refresh_state() -> void:
 func _on_item_collected(_item: InventoryManager.InventoryItem, _node: CollectableItem) -> void:
 	_refresh_state()
 
-func _on_interaction_finished() -> void:
-	var host_state: Dictionary = DialogueBox.get_saved_state()
-	var my_state: Dictionary = host_state.get(trigger.dialogue_file, {})
-	if my_state.get("give_player_item"):
-		if item_to_give:
-			item_to_give.show()
-			item_to_give.trigger_collection()
-		if remove_from_inventory:
-			InventoryManager.remove_item(item_type, item_value)
-			_refresh_state()
+func _on_commands_requested(commands: Dictionary) -> void:
+	_refresh_state()  # Ensure host_state is current before dialogue starts
+	commands["give_reward"] = func(_args): _give_reward()
+
+func _give_reward() -> void:
+	if item_to_give:
+		item_to_give.show()
+		item_to_give.trigger_collection()
+	if remove_from_inventory:
+		InventoryManager.remove_item(item_type, item_value)
+		_refresh_state()  # Keep state consistent after inventory change

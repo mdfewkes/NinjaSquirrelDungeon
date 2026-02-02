@@ -114,25 +114,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 
-func show_dialogue(path: String, host_state: Dictionary = {}) -> void:
+func show_dialogue(path: String, host_state: Dictionary = {}, commands: Dictionary = {}) -> void:
 	if _runtime != null:
 		push_warning("DialogueBox: Already showing dialogue, ignoring new request")
 		return
 
 	_current_path = path
 
-	# Create Bobbin runtime from dialogue file
-	if host_state.is_empty():
-		_runtime = Bobbin.create(path)
-	else:
-		_runtime = Bobbin.create_with_host(path, host_state)
+	# Create Bobbin runtime from dialogue file with saved state, host state, and commands
+	var saved_vars: Dictionary = _variable_storage.get(path, {})
+	_runtime = Bobbin.create(path, saved_vars, host_state, commands)
 
 	if _runtime == null:
 		push_error("DialogueBox: Failed to load dialogue from: " + path)
 		return
-
-	# Restore any previously saved variables for this dialogue
-	_restore_variables(path)
 
 	# Pause game and show UI
 	get_tree().paused = true
@@ -144,9 +139,9 @@ func show_dialogue(path: String, host_state: Dictionary = {}) -> void:
 	_display_current()
 
 
-func show_dialogue_async(path: String, host_state: Dictionary = {}) -> void:
+func show_dialogue_async(path: String, host_state: Dictionary = {}, commands: Dictionary = {}) -> void:
 	_awaiting_completion = true
-	show_dialogue(path, host_state)
+	show_dialogue(path, host_state, commands)
 
 	# Wait for dialogue to finish
 	while _awaiting_completion and _runtime != null:

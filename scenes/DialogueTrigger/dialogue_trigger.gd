@@ -10,6 +10,9 @@ class_name DialogueTrigger
 
 signal interaction_started
 signal interaction_finished
+## Emitted before dialogue starts. Connect to this signal to provide commands.
+## Modify the passed dictionary to register command handlers.
+signal commands_requested(commands: Dictionary)
 
 @export_group("Dialogue")
 ## Path to the .bobbin dialogue file to play when interacted with.
@@ -123,7 +126,11 @@ func _start_interaction() -> void:
 
 	interaction_started.emit()
 
-	DialogueBox.show_dialogue(dialogue_file, host_state)
+	# Allow parent nodes to provide commands for this dialogue
+	var commands: Dictionary = {}
+	commands_requested.emit(commands)
+
+	DialogueBox.show_dialogue(dialogue_file, host_state, commands)
 
 
 func _on_dialogue_finished(_path: String) -> void:
