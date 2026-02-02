@@ -22,15 +22,15 @@ extern play_sound(name)
 Hello, {player_name}!
 
 - Ask about wares
-    set met_merchant = true
-    I have potions and scrolls.
-    - Buy potion (10 gold)
-        if gold >= 10
-            give_item("potion", 1)
-            play_sound("purchase")
-            You purchase the potion.
-        else
-            You can't afford that.
+	set met_merchant = true
+	I have potions and scrolls.
+	- Buy potion (10 gold)
+		if gold >= 10
+			give_item("potion", 1)
+			play_sound("purchase")
+			You purchase the potion.
+		else
+			You can't afford that.
     - Never mind
         Come back anytime.
 
