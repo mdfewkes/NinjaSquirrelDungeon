@@ -8,6 +8,6 @@ if not quest_complete
         give_reward()
         set quest_complete = true
     else
-        Farm boy, fetch me that orange circle in that other room.
+        Farm boy, fetch me that orange circle in THAT OTHER room...
 else
     I guess we just hang out now...

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=74 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -25,9 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="21_cw42d"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="21_gk2mf"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="22_gk2mf"]
+[ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="25_006yv"]
 [ext_resource type="PackedScene" uid="uid://fxsacil12y2n" path="res://scenes/GhostNPC/ghost_npc_west_wing.tscn" id="25_41oyu"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
-[ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="27_oi2iw"]
+[ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="27_006yv"]
 [ext_resource type="Texture2D" uid="uid://cqju4jhmdqcqy" path="res://scenes/GhostNPC/tap.png" id="27_vfetf"]
 [ext_resource type="Texture2D" uid="uid://d2jdcktv85qr1" path="res://scenes/GhostNPC/book.png" id="28_50cqo"]
 [ext_resource type="Texture2D" uid="uid://durkhvhl42l0" path="res://scenes/GhostNPC/tea.png" id="29_gmq1v"]
@@ -183,6 +184,60 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -160, -3548, 0, 0, 0, 0, -164, -3810, 0, 0, 0, 0, -349, -3875, 0, 0, 0, 0, -547, -3811, 0, 0, 0, 0, -543, -3544)
 }
 point_count = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ah6f"]
+atlas = ExtResource("25_006yv")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1i3r"]
+atlas = ExtResource("25_006yv")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7rxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ah6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1i3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my276"]
+atlas = ExtResource("27_006yv")
+region = Rect2(0, 0, 104, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx0jh"]
+atlas = ExtResource("27_006yv")
+region = Rect2(104, 0, 104, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1foii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my276")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx0jh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_g1i3r"]
+offsets = PackedFloat32Array(0, 0.77350426)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ljvvc"]
+gradient = SubResource("Gradient_g1i3r")
+fill = 1
+fill_from = Vector2(0.48290598, 0.45299146)
+fill_to = Vector2(0.95726496, 0.055555556)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h4sk"]
 size = Vector2(1537, 1821)
@@ -989,37 +1044,114 @@ curve = SubResource("Curve2D_78h8h")
 
 [node name="Environment" type="Node2D" parent="Rooms/Room13"]
 
-[node name="Door" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
-position = Vector2(-1664, -4669)
-required_key_value = 1
-
-[node name="QuestDoor1" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
-position = Vector2(-1795, -3295)
+[node name="QuestDoor1" parent="Rooms/Room13/Environment" instance=ExtResource("13_7nf2g")]
+position = Vector2(-1792, -3082)
 required_key_value = 97
 
-[node name="QuestDoor2" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
-position = Vector2(-1795, -3215)
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestDoor1" index="3"]
+texture = ExtResource("25_006yv")
+hframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/Room13/Environment/QuestDoor1/Sprite2D" index="0"]
+position = Vector2(-64, 0)
+sprite_frames = SubResource("SpriteFrames_n7rxm")
+autoplay = "default"
+
+[node name="QuestDoor2" parent="Rooms/Room13/Environment" instance=ExtResource("13_7nf2g")]
+position = Vector2(-1793, -3179)
 required_key_value = 97
 
-[node name="QuestDoor3" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
-position = Vector2(-1795, -3134)
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestDoor2" index="3"]
+texture = ExtResource("25_006yv")
+hframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/Room13/Environment/QuestDoor2/Sprite2D" index="0"]
+position = Vector2(-64, 0)
+sprite_frames = SubResource("SpriteFrames_n7rxm")
+autoplay = "default"
+
+[node name="QuestDoor3" parent="Rooms/Room13/Environment" instance=ExtResource("13_7nf2g")]
+position = Vector2(-1793, -3279)
 required_key_value = 97
 
-[node name="GhostNPCWestWing" parent="Rooms/Room13" instance=ExtResource("25_41oyu")]
-modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
-position = Vector2(-368, -3210)
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestDoor3" index="3"]
+texture = ExtResource("25_006yv")
+hframes = 2
 
-[node name="QuestItem" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/Room13/Environment/QuestDoor3/Sprite2D" index="0"]
+position = Vector2(-64, 0)
+sprite_frames = SubResource("SpriteFrames_n7rxm")
+autoplay = "default"
+
+[node name="QuestItem" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(-1794, -2981)
+item_value = 91
+
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem" index="1"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/Room13/Environment/QuestItem"]
+sprite_frames = SubResource("SpriteFrames_1foii")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="Rooms/Room13/Environment/QuestItem"]
+texture = SubResource("GradientTexture2D_ljvvc")
+
+[node name="QuestItem2" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
 position = Vector2(120, -4496)
 item_type = 0
 item_value = 97
 
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem" index="1"]
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2" index="1"]
 visible = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem"]
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2"]
 scale = Vector2(0.19, 0.19)
 texture = ExtResource("27_vfetf")
+
+[node name="QuestItem3" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(-1550, -3338)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem3" index="1"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem3"]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_vfetf")
+
+[node name="QuestItem4" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(-1446, -3336)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem4" index="1"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem4"]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_vfetf")
+
+[node name="QuestItem5" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(-1295, -3338)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem5" index="1"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem5"]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_vfetf")
+
+[node name="Door" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
+position = Vector2(-1664, -4669)
+required_key_value = 1
+
+[node name="GhostNPCWestWing" parent="Rooms/Room13" instance=ExtResource("25_41oyu")]
+modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
+position = Vector2(-368, -3210)
 
 [node name="QuestItem2" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
 position = Vector2(-4524, -363)
@@ -1114,9 +1246,6 @@ position = Vector2(708, 205)
 
 [node name="DELETE ME9" parent="Rooms/Room13" instance=ExtResource("13_60n6h")]
 position = Vector2(635, 206)
-
-[node name="ExtraHealth" parent="Rooms/Room13" instance=ExtResource("27_oi2iw")]
-position = Vector2(-1800, -3010)
 
 [node name="Room14" type="Area2D" parent="Rooms"]
 collision_layer = 0
@@ -1337,7 +1466,14 @@ position = Vector2(-1641, -4832)
 [editable path="Rooms/Room06/Environment/FloorSpikes3"]
 [editable path="Rooms/Room06/Environment/FloorSpikes4"]
 [editable path="Rooms/Room06/Environment/FloorSpikes5"]
-[editable path="Rooms/Room13/QuestItem"]
+[editable path="Rooms/Room13/Environment/QuestDoor1"]
+[editable path="Rooms/Room13/Environment/QuestDoor2"]
+[editable path="Rooms/Room13/Environment/QuestDoor3"]
+[editable path="Rooms/Room13/Environment/QuestItem"]
+[editable path="Rooms/Room13/Environment/QuestItem2"]
+[editable path="Rooms/Room13/Environment/QuestItem3"]
+[editable path="Rooms/Room13/Environment/QuestItem4"]
+[editable path="Rooms/Room13/Environment/QuestItem5"]
 [editable path="Rooms/Room13/QuestItem2"]
 [editable path="Rooms/Room13/QuestItem3"]
 [editable path="Rooms/Room13/QuestItem4"]
