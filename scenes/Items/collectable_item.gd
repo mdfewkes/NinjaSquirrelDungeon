@@ -41,6 +41,10 @@ func trigger_collection() -> void:
 	if sfx_on_collect:
 		# if we emit the sound with self as the target, the item gets freed before the sound can play
 		AudioManager.PlaySFX(sfx_on_collect, get_tree().get_first_node_in_group("player"))
+	# we don't want the light showing up in the inventory hud
+	var light: PointLight2D = get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = false
 	if add_to_inventory:
 		InventoryManager.add_item(self)
 	InventoryManager.emit_item_collected(self)
