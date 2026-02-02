@@ -1106,42 +1106,7 @@ item_value = 97
 visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2"]
-scale = Vector2(0.19, 0.19)
-texture = ExtResource("27_vfetf")
-
-[node name="QuestItem3" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
-position = Vector2(-1550, -3338)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem3" index="1"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem3"]
-scale = Vector2(0.19, 0.19)
-texture = ExtResource("27_vfetf")
-
-[node name="QuestItem4" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
-position = Vector2(-1446, -3336)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem4" index="1"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem4"]
-scale = Vector2(0.19, 0.19)
-texture = ExtResource("27_vfetf")
-
-[node name="QuestItem5" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
-position = Vector2(-1295, -3338)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem5" index="1"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem5"]
+self_modulate = Color(0.71402115, 1.6978991, 1.6978991, 0.69803923)
 scale = Vector2(0.19, 0.19)
 texture = ExtResource("27_vfetf")
 
@@ -1163,6 +1128,8 @@ visible = false
 texture = ExtResource("28_50cqo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem2"]
+modulate = Color(0, 1.4503007, 1.4568164, 0.5176471)
+self_modulate = Color(1.1554386e-06, 1.4165531, 1.4244802, 1)
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("28_50cqo")
 
@@ -1176,6 +1143,7 @@ visible = false
 texture = ExtResource("28_50cqo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem3"]
+self_modulate = Color(1.101734, 2.0331757, 2.0331757, 0.7921569)
 scale = Vector2(0.29, 0.29)
 texture = ExtResource("29_gmq1v")
 
@@ -1189,10 +1157,14 @@ visible = false
 texture = ExtResource("28_50cqo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem4"]
+modulate = Color(6.8879046e-05, 2.514818, 2.539524, 1)
+self_modulate = Color(2.0088153, 3.6032796, 2.8842077, 0.63529414)
 scale = Vector2(0.225, 0.225)
 texture = ExtResource("30_3h4sk")
 
 [node name="QuestItem5" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+modulate = Color(0, 2.2323458, 2.2450464, 0.635)
+self_modulate = Color(0, 1.9143859, 1.9196348, 0.647)
 position = Vector2(-1953, -5212)
 item_type = 0
 item_value = 97
@@ -1207,6 +1179,7 @@ scale = Vector2(0.28, 0.28)
 texture = ExtResource("31_006yv")
 
 [node name="QuestItem6" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+modulate = Color(0.71112716, 2.8066084, 2.8066084, 0.64705884)
 position = Vector2(-66, 386)
 item_type = 0
 item_value = 97
@@ -1471,9 +1444,6 @@ position = Vector2(-1641, -4832)
 [editable path="Rooms/Room13/Environment/QuestDoor3"]
 [editable path="Rooms/Room13/Environment/QuestItem"]
 [editable path="Rooms/Room13/Environment/QuestItem2"]
-[editable path="Rooms/Room13/Environment/QuestItem3"]
-[editable path="Rooms/Room13/Environment/QuestItem4"]
-[editable path="Rooms/Room13/Environment/QuestItem5"]
 [editable path="Rooms/Room13/QuestItem2"]
 [editable path="Rooms/Room13/QuestItem3"]
 [editable path="Rooms/Room13/QuestItem4"]
