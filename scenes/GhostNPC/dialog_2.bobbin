@@ -1,0 +1,8 @@
+extern has_needed_item
+save give_player_item = 0
+
+if has_needed_item
+  Oh, my sweet Westley! Thank you! Have some more health!
+  set give_player_item = 1
+else
+  Farm boy, fetch me that orange circle on the the other side of the room.

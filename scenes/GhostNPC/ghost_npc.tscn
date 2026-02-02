@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cns5m44736nn8"]
+[gd_scene load_steps=4 format=3 uid="uid://cns5m44736nn8"]
 
+[ext_resource type="Script" uid="uid://gnwn5lld4ul4" path="res://scenes/GhostNPC/item_seeking_npc.gd" id="1_4pchw"]
 [ext_resource type="Texture2D" uid="uid://c5j8ixvj0ecma" path="res://scenes/Player/Art/ninja_squirrel_tailess_sprite_sheet.png" id="1_olep5"]
 [ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_xc4qq"]
 
 [node name="GhostNPC" type="Node2D"]
+script = ExtResource("1_4pchw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(2.4925976, 6.1180906, 5.016675, 0.70980394)

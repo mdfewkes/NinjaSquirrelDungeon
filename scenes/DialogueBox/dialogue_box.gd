@@ -161,6 +161,9 @@ func clear_saved_state() -> void:
 	_variable_storage.clear()
 
 
+func get_saved_state() -> Dictionary:
+	return _variable_storage.duplicate_deep()
+
 func _advance() -> void:
 	if _runtime == null:
 		return

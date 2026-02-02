@@ -299,6 +299,13 @@ position = Vector2(1056, 440)
 [node name="Bush3" parent="Rooms/StartRoom/Environment" instance=ExtResource("3_tlwt5")]
 position = Vector2(1056, 304)
 
+[node name="QuestItem5" parent="Rooms/StartRoom/Environment" instance=ExtResource("30_qktwf")]
+position = Vector2(879, 119)
+item_value = 5
+
+[node name="Sprite2D" parent="Rooms/StartRoom/Environment/QuestItem5" index="1"]
+frame = 4
+
 [node name="Bonfire" parent="Rooms/StartRoom" instance=ExtResource("25_mc2jv")]
 position = Vector2(573, 159)
 
@@ -730,6 +737,16 @@ position = Vector2(576, 488)
 [node name="DoNotUseGhostNPC" parent="." instance=ExtResource("29_k83mh")]
 position = Vector2(-834, 202)
 
+[node name="Buttercup" parent="." node_paths=PackedStringArray("item_to_give") instance=ExtResource("29_k83mh")]
+position = Vector2(120, 388)
+item_value = 5
+item_to_give = NodePath("ExtraHealth")
+
+[node name="DialogueTrigger" parent="Buttercup" index="1"]
+dialogue_file = "uid://cr6gaoaymd514"
+
+[node name="ExtraHealth" parent="Buttercup" instance=ExtResource("30_k83mh")]
+
 [node name="GhostNPCEastWing" parent="." instance=ExtResource("31_gggvi")]
 modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-750, 426)
@@ -742,6 +759,7 @@ position = Vector2(-753, 292)
 modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-298, 199)
 
+[editable path="Rooms/StartRoom/Environment/QuestItem5"]
 [editable path="Rooms/BatRoom/Environment/WallSpikes"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes2"]
 [editable path="Rooms/TrapRooms/Environment/FloorSpikes3"]
@@ -754,3 +772,5 @@ position = Vector2(-298, 199)
 [editable path="Rooms/WaterRoom/Environment/QuestItem2"]
 [editable path="Rooms/WaterRoom/Environment/QuestItem3"]
 [editable path="Rooms/WaterRoom/Environment/QuestItem4"]
+[editable path="Buttercup"]
+[editable path="Buttercup/DialogueTrigger"]
