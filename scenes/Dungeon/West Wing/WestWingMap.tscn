@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=65 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -28,6 +28,12 @@
 [ext_resource type="PackedScene" uid="uid://fxsacil12y2n" path="res://scenes/GhostNPC/ghost_npc_west_wing.tscn" id="25_41oyu"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="27_oi2iw"]
+[ext_resource type="Texture2D" uid="uid://cqju4jhmdqcqy" path="res://scenes/GhostNPC/tap.png" id="27_vfetf"]
+[ext_resource type="Texture2D" uid="uid://d2jdcktv85qr1" path="res://scenes/GhostNPC/book.png" id="28_50cqo"]
+[ext_resource type="Texture2D" uid="uid://durkhvhl42l0" path="res://scenes/GhostNPC/tea.png" id="29_gmq1v"]
+[ext_resource type="Texture2D" uid="uid://dshdm4sv37dlm" path="res://scenes/GhostNPC/pillow.png" id="30_3h4sk"]
+[ext_resource type="Texture2D" uid="uid://d2jo8qjr0kc1r" path="res://scenes/GhostNPC/berries.png" id="31_006yv"]
+[ext_resource type="Texture2D" uid="uid://cc5yi0dpadrvt" path="res://scenes/GhostNPC/lantern.png" id="32_3h4sk"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -1004,19 +1010,83 @@ modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
 position = Vector2(-368, -3210)
 
 [node name="QuestItem" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(-737, -3313)
+position = Vector2(120, -4496)
 item_type = 0
 item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem" index="1"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem"]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_vfetf")
 
 [node name="QuestItem2" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(-652, -3310)
+position = Vector2(-4524, -363)
 item_type = 0
 item_value = 97
 
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem2" index="1"]
+visible = false
+texture = ExtResource("28_50cqo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem2"]
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("28_50cqo")
+
 [node name="QuestItem3" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(-847, -3313)
+position = Vector2(1363, -4314)
 item_type = 0
 item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem3" index="1"]
+visible = false
+texture = ExtResource("28_50cqo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem3"]
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("29_gmq1v")
+
+[node name="QuestItem4" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+position = Vector2(1888, -2081)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem4" index="1"]
+visible = false
+texture = ExtResource("28_50cqo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem4"]
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("30_3h4sk")
+
+[node name="QuestItem5" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+position = Vector2(-1953, -5212)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem5" index="1"]
+visible = false
+texture = ExtResource("31_006yv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem5"]
+position = Vector2(-1, 0)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("31_006yv")
+
+[node name="QuestItem6" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
+position = Vector2(-66, 386)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room13/QuestItem6" index="1"]
+visible = false
+texture = ExtResource("31_006yv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem6"]
+position = Vector2(-1, 0)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("32_3h4sk")
 
 [node name="DELETE ME" parent="Rooms/Room13" instance=ExtResource("13_60n6h")]
 position = Vector2(777, 400)
@@ -1270,3 +1340,6 @@ position = Vector2(-1641, -4832)
 [editable path="Rooms/Room13/QuestItem"]
 [editable path="Rooms/Room13/QuestItem2"]
 [editable path="Rooms/Room13/QuestItem3"]
+[editable path="Rooms/Room13/QuestItem4"]
+[editable path="Rooms/Room13/QuestItem5"]
+[editable path="Rooms/Room13/QuestItem6"]

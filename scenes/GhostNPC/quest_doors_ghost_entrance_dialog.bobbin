@@ -2,53 +2,53 @@ save has_talked_once = 0
 
 Ah...
 if has_talked_once < 1
-    The last Shadowtail...
-    I have watched so many of you enter this- this dungeon.
-    What was once a grand marvel of the Ancients' engineering, has now turned into madness. I fear there may be no hope.
-    Perhaps... Perhaps you ought to turn back...
-    But... if you insist on braving this wretched labyrinth, perhaps I can aid you on your quest. If you bring me 3 Artifacts, I can add my life-force to your own.
-    What is your need, brave Shadowtail?
+	The last Shadowtail...
+	I have watched so many of you enter this- this dungeon.
+	What was once a grand marvel of the Ancients' engineering, has now turned into madness. I fear there may be no hope.
+	Perhaps... Perhaps you ought to turn back...
+	But... if you insist on braving this wretched labyrinth, perhaps I can aid you on your quest. If you bring me 3 Artifacts, I can add my life-force to your own.
+	What is your need, brave Shadowtail?
 else
-    What is your need, brave Shadowtail?
+	What is your need, brave Shadowtail?
 set has_talked_once = 1
 - Learn about Artifacts
-    - Artifact 1: The Book
-        Long before we Shadowtail stormed this fortress, had I wished to visit here. The Great King of the Pawsticks had uncovered one of the manuals of the ancient world. A book that explained the inner workings of the mechanisms in this place which divert, and clean the water.
-        It is a great regret of my life that my only journey into this place was to be struck down by the defilement of its original purpose. *Dismantling the brick work to expose the earth and form deadly pits.* What a grotesque use of such a technical feat that this structure once was.
-        I cannot read the book now, but my connection to the longing for its knowledge will have turned it into an Artifact, and it will unlock the Spirit Cage doors of any of the ghosts herein.
-    - Artifact 2: The Lantern
-        In this dungeon you will find many lanterns which you can use to your advantage. They will help you cross chasms (by whipping your tail at them) and putting out the lanterns with your shuriken will make you harder to spot.
-        But should you find a cracked lantern -not a lantern affixed to the ground, but a belt lantern, designed to be worn for portable light- should you find my broken belt lantern, it will open a Spirit Cage door.
-    - Artifact 3: The Berries
-        It is an ingulgeance... to even speak of this, I yearn to hide my face in shame. But the Bantombolds, the fiercome Racoon warriors you see patrolling these halls. They have the best snacks.
-        I had not tasted berries this good in my entire lifetime. The Chipmunks -the Burrowbrood Chipmunk clan, used to keep us all in great fruits every year. But nothing a Burrobrood produced was ever half as good as these berries...
-        Bring a handful of berries to any ghost, and it will unlock a Spirit Cage door.
+	- Artifact 1: The Book
+		Long before we Shadowtail stormed this fortress, had I wished to visit here. The Great King of the Pawsticks had uncovered one of the manuals of the ancient world. A book that explained the inner workings of the mechanisms in this place which divert, and clean the water.
+		It is a great regret of my life that my only journey into this place was to be struck down by the defilement of its original purpose. *Dismantling the brick work to expose the earth and form deadly pits.* What a grotesque use of such a technical feat that this structure once was.
+		I cannot read the book now, but my connection to the longing for its knowledge will have turned it into an Artifact, and it will unlock the Spirit Cage doors of any of the ghosts herein.
+	- Artifact 2: The Lantern
+		In this dungeon you will find many lanterns which you can use to your advantage. They will help you cross chasms (by whipping your tail at them) and putting out the lanterns with your shuriken will make you harder to spot.
+		But should you find a cracked lantern -not a lantern affixed to the ground, but a belt lantern, designed to be worn for portable light- should you find my broken belt lantern, it will open a Spirit Cage door.
+	- Artifact 3: The Berries
+		It is an ingulgeance... to even speak of this, I yearn to hide my face in shame. But the Bantombolds, the fiercome Racoon warriors you see patrolling these halls. They have the best snacks.
+		I had not tasted berries this good in my entire lifetime. The Chipmunks -the Burrowbrood Chipmunk clan, used to keep us all in great fruits every year. But nothing a Burrobrood produced was ever half as good as these berries...
+		Bring a handful of berries to any ghost, and it will unlock a Spirit Cage door.
 - Learn about Ghosts
-    - I, the Ghost of the Entrance
-        When the Great Acorn of Hearth and Harvest was taken, it was my personal failing.
-        Though, no, I do not believe anyone could have seen the Chipmunks' betrayal, it was the duty of the Shadowtail Order to prevent sedition.
-        We had focused so long on the brewing hostilities between our folk of the forest, and the denizens of this mighty bastion of the old world. We trained for a war that did not come. Instead, had we opened our eyes, we could have seen the enemy within our ranks...
-        It was... far too great a failure of mine... were I to send one of my own students to correct this error, it would be a shame too great to bear.
-        I had to be the one to come here, to the Final Aqueduct, in search of our Great Acorn.
-        Foolish. I was so foolish to think that such a rash decision could erase my pain of having failed our forest so close to the perils of winter, when we need the Acorn most.
-        I KNOW those treacherous Chipmunks are here in this maze. Somewhere... They must be. But I will never know... I died to the traps they had laid against one another.
-        It seems that internal squabbles were not exclusive to the forest realm. From what I gather, the Keenclaws and Bantombolds who used to live in the wings of this fortress, had long grown envious of the Pawsticks.
-        You could hear them fighting, each claiming to be the TRUE allies of the Chipmunks and their "Great Power." I can only assume the great new power they argued over, was our Acorn.
-        We use the Acorn for survival, keeping us warm during the icy months, and keeping our crops in good health during the times of sun. But... that is not its only use. To prevent just such a calamity, we kept the Acorn's destructive powers secret. Even from Shadowtail such as yourself.
-        I heard one dying Pawstick claim that they had found a Badger, if you can believe it, who threatens to CONSUME the Great Acorn, and become some monsterous beast who will enforce order.
-        If I had focused ONLY on retrieving intel, and had not rushed in to assuage my guilt, I could have prepared you -and all of the Shadowtail, for the fight that lies ahead.
-        So if you want to learn more of the Ghost of the Entrance of the Last Aqueduct: He is a fool. You need know nothing more about him...
-    - Ghost of the West
-        A... jolly Shadowtail. One of the... most beloved of our order.
-        That the Ghost of the West Wing of the Final Aqueduct managed to last longer than I did, in this dungeon... has deeply wounded my pride.
-        Had you asked me who among our order was the least-prepared to brave a dungeon of this magnitude... -Well I would not have graced the question with an answer. But... as we have both finished our journey through life, I can now tell you that I would have assumed the Ghost of the West would have perished right away.
-        As it stands, you will find the Ghost of the West, DEEP withing the western wing of this fortress.
-        (Likely lounging about no doubt.)
-        Perhaps... Perhaps, in life, I had something to learn from those *jovial* ways after all. Perhaps I should not have scorned that frivolity or exuberance for life. Somehow... that bouyant attitude must help in traversing the dangers here... Perhaps. I- I do not really know.
-    - Ghost of the East
-        If I thought my own quest for vengeance was foolhardy-
-        No. I shall not speak more of the Ghost of the East Wing of the Final Aqueduct.
-        I have suffered far enough indignities of late, least of all plummeting to my death only to linger on in hopes of aiding those who I failed.
-        The Ghost in the East- you ought to form your own opionions of.
+	- I, the Ghost of the Entrance
+		When the Great Acorn of Hearth and Harvest was taken, it was my personal failing.
+		Though, no, I do not believe anyone could have seen the Chipmunks' betrayal, it was the duty of the Shadowtail Order to prevent sedition.
+		We had focused so long on the brewing hostilities between our folk of the forest, and the denizens of this mighty bastion of the old world. We trained for a war that did not come. Instead, had we opened our eyes, we could have seen the enemy within our ranks...
+		It was... far too great a failure of mine... were I to send one of my own students to correct this error, it would be a shame too great to bear.
+		I had to be the one to come here, to the Final Aqueduct, in search of our Great Acorn.
+		Foolish. I was so foolish to think that such a rash decision could erase my pain of having failed our forest so close to the perils of winter, when we need the Acorn most.
+		I KNOW those treacherous Chipmunks are here in this maze. Somewhere... They must be. But I will never know... I died to the traps they had laid against one another.
+		It seems that internal squabbles were not exclusive to the forest realm. From what I gather, the Keenclaws and Bantombolds who used to live in the wings of this fortress, had long grown envious of the Pawsticks.
+		You could hear them fighting, each claiming to be the TRUE allies of the Chipmunks and their "Great Power." I can only assume the great new power they argued over, was our Acorn.
+		We use the Acorn for survival, keeping us warm during the icy months, and keeping our crops in good health during the times of sun. But... that is not its only use. To prevent just such a calamity, we kept the Acorn's destructive powers secret. Even from Shadowtail such as yourself.
+		I heard one dying Pawstick claim that they had found a Badger, if you can believe it, who threatens to CONSUME the Great Acorn, and become some monsterous beast who will enforce order.
+		If I had focused ONLY on retrieving intel, and had not rushed in to assuage my guilt, I could have prepared you -and all of the Shadowtail, for the fight that lies ahead.
+		So if you want to learn more of the Ghost of the Entrance of the Last Aqueduct: He is a fool. You need know nothing more about him...
+	- Ghost of the West
+		A... jolly Shadowtail. One of the... most beloved of our order.
+		That the Ghost of the West Wing of the Final Aqueduct managed to last longer than I did, in this dungeon... has deeply wounded my pride.
+		Had you asked me who among our order was the least-prepared to brave a dungeon of this magnitude... -Well I would not have graced the question with an answer. But... as we have both finished our journey through life, I can now tell you that I would have assumed the Ghost of the West would have perished right away.
+		As it stands, you will find the Ghost of the West, DEEP withing the western wing of this fortress.
+		(Likely lounging about no doubt.)
+		Perhaps... Perhaps, in life, I had something to learn from those *jovial* ways after all. Perhaps I should not have scorned that frivolity or exuberance for life. Somehow... that bouyant attitude must help in traversing the dangers here... Perhaps. I- I do not really know.
+	- Ghost of the East
+		If I thought my own quest for vengeance was foolhardy-
+		No. I shall not speak more of the Ghost of the East Wing of the Final Aqueduct.
+		I have suffered far enough indignities of late, least of all plummeting to my death only to linger on in hopes of aiding those who I failed.
+		The Ghost in the East- you ought to form your own opionions of.
 - Leave
-    If anyone can succeed, it will be you!
+	If anyone can succeed, it will be you!
