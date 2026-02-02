@@ -18,6 +18,8 @@ func _on_item_added(item: InventoryManager.InventoryItem, n: CollectableItem):
 	copy_node.bounce_amount = 0
 	copy_node.position = Vector2(16, 16)
 	copy_node.scale = Vector2(0.5, 0.5)
+	copy_node.monitorable = false
+	copy_node.monitoring = false
 	copy_node.remove_from_group("persisted")
 
 	var copy_container = template_container.duplicate()
