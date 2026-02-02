@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=30 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -128,6 +128,9 @@ size = Vector2(952, 896)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tosua"]
 size = Vector2(908, 888)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqdfd"]
+size = Vector2(241, 515)
+
 [node name="EnteranceLevel" type="Node2D" node_paths=PackedStringArray("spawn_points", "default_spawn")]
 script = ExtResource("1_majm5")
 level_name = "Enterance"
@@ -207,28 +210,6 @@ position = Vector2(80, 536)
 
 [node name="Bonfire" parent="Rooms/StartRoom/Environment" instance=ExtResource("13_ajdh6")]
 position = Vector2(904, 164)
-
-[node name="GhostNPCEntrance" parent="Rooms/StartRoom" instance=ExtResource("13_ymxj4")]
-modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
-position = Vector2(300, 197)
-
-[node name="QuestDoor1" parent="Rooms/StartRoom" instance=ExtResource("13_p32oj")]
-modulate = Color(0.43529412, 1, 0.49803922, 1)
-position = Vector2(194, -90)
-required_key_value = 97
-
-[node name="QuestDoor2" parent="Rooms/StartRoom" instance=ExtResource("13_p32oj")]
-modulate = Color(0.43529412, 1, 0.49803922, 1)
-position = Vector2(194, -203)
-required_key_value = 97
-
-[node name="QuestDoor3" parent="Rooms/StartRoom" instance=ExtResource("13_p32oj")]
-modulate = Color(0.43529412, 1, 0.49803922, 1)
-position = Vector2(194, -312)
-required_key_value = 97
-
-[node name="ExtraHealth" parent="Rooms/StartRoom" instance=ExtResource("15_dnpav")]
-position = Vector2(188, -404)
 
 [node name="QuestItem" parent="Rooms/StartRoom" instance=ExtResource("16_sqdfd")]
 position = Vector2(294, 424)
@@ -347,6 +328,43 @@ path_to_level = "res://scenes/Dungeon/West Wing/WestWingMap.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/WestEnteranceRoom/ToWest"]
 position = Vector2(412, -160)
 shape = SubResource("RectangleShape2D_dnpav")
+
+[node name="QuestDoorRoom" type="Area2D" parent="Rooms"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_6lqkh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/QuestDoorRoom"]
+position = Vector2(197.5, -278.5)
+shape = SubResource("RectangleShape2D_sqdfd")
+
+[node name="Lights" type="Node2D" parent="Rooms/QuestDoorRoom"]
+
+[node name="Enemies" type="Node2D" parent="Rooms/QuestDoorRoom"]
+
+[node name="Environment" type="Node2D" parent="Rooms/QuestDoorRoom"]
+
+[node name="GhostNPCEntrance" parent="Rooms/QuestDoorRoom" instance=ExtResource("13_ymxj4")]
+modulate = Color(0.6648811, 1.3776001, 1.8247963, 0.7372549)
+position = Vector2(300, 197)
+
+[node name="QuestDoor1" parent="Rooms/QuestDoorRoom" instance=ExtResource("13_p32oj")]
+modulate = Color(0.43529412, 1, 0.49803922, 1)
+position = Vector2(194, -90)
+required_key_value = 97
+
+[node name="QuestDoor2" parent="Rooms/QuestDoorRoom" instance=ExtResource("13_p32oj")]
+modulate = Color(0.43529412, 1, 0.49803922, 1)
+position = Vector2(194, -203)
+required_key_value = 97
+
+[node name="QuestDoor3" parent="Rooms/QuestDoorRoom" instance=ExtResource("13_p32oj")]
+modulate = Color(0.43529412, 1, 0.49803922, 1)
+position = Vector2(194, -312)
+required_key_value = 97
+
+[node name="ExtraHealth" parent="Rooms/QuestDoorRoom" instance=ExtResource("15_dnpav")]
+position = Vector2(188, -404)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://cwnhly7jknqij"]
+[gd_scene load_steps=51 format=4 uid="uid://cwnhly7jknqij"]
 
 [ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_cbp6q"]
@@ -156,6 +156,9 @@ point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo7i5"]
 size = Vector2(1079, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w44yn"]
+size = Vector2(765, 791)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k83mh"]
 size = Vector2(296, 160)
@@ -691,6 +694,22 @@ frame = 6
 
 [node name="BobbinQuest_Item_01" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_w44yn")]
 position = Vector2(-155, 339)
+
+[node name="Room 1" type="Area2D" parent="Rooms"]
+position = Vector2(3124, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("20_bc84e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 1"]
+position = Vector2(1804.5, 332.5)
+shape = SubResource("RectangleShape2D_w44yn")
+
+[node name="Lights" type="Node2D" parent="Rooms/Room 1"]
+
+[node name="Enemies" type="Node2D" parent="Rooms/Room 1"]
+
+[node name="Environment" type="Node2D" parent="Rooms/Room 1"]
 
 [node name="TriggerTest" type="Area2D" parent="."]
 position = Vector2(-16, 0)
