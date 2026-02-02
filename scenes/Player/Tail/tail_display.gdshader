@@ -10,6 +10,7 @@ uniform bool smooth_tail = false;
 uniform sampler2D tail_color_lookup; // Color lookup, but can also be used to animate later
 uniform sampler2D cloaked_color_lookup; // Color lookup, but can also be used to animate later
 uniform float cloaked_amount : hint_range(0.0, 1.0) = 0.0;
+uniform float base_opacity: hint_range(0.0, 1.0) = 1.0;
 uniform vec3 points[TAIL_POINTS_COUNT];  // xy = position, z = radius
 
 // https://github.com/marklundin/glsl-sdf-primitives/blob/master/sdCapsule.glsl
@@ -78,5 +79,5 @@ void fragment() {
 			tail_color = outline_color;
 		}
 	}
-	COLOR = vec4(tail_color, smoothstep(tail_outline_threshold, -tail_outline_threshold, dist));
+	COLOR = vec4(tail_color, base_opacity * smoothstep(tail_outline_threshold, -tail_outline_threshold, dist));
 }

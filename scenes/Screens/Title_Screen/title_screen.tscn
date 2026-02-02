@@ -1,8 +1,181 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnkf7s8eo12ho"]
+[gd_scene load_steps=24 format=4 uid="uid://dnkf7s8eo12ho"]
 
-[ext_resource type="Texture2D" uid="uid://b5in85tmpn451" path="res://temp assets/bricktexture-temp.png" id="1_o53yu"]
+[ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="2_3n13u"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_wy4sj"]
 [ext_resource type="Texture2D" uid="uid://c2s6pnug1iwmh" path="res://scenes/Main/Logo.png" id="3_xodhh"]
+[ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://scenes/Player/Tail/tail.gd" id="4_2x54i"]
+[ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://scenes/Player/Tail/tail_display.gdshader" id="5_3n13u"]
+[ext_resource type="Texture2D" uid="uid://cn2nwwjovjqom" path="res://scenes/Player/Tail/tail_texture.tres" id="6_w2epf"]
+[ext_resource type="Gradient" uid="uid://bwlxagisch16x" path="res://scenes/Player/Tail/tail_gradient2.tres" id="8_pyq6a"]
+[ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="9_x5lud"]
+
+[sub_resource type="Gradient" id="Gradient_2x54i"]
+offsets = PackedFloat32Array(0.216763, 0.74277455, 1)
+colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3n13u"]
+gradient = SubResource("Gradient_2x54i")
+width = 500
+height = 500
+fill_from = Vector2(0.7393162, 0.78846157)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_2x54i"]
+resource_name = "title_tail"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tail/TargetPoints:points")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9903116),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(1.5, 10, 24.25, -13.5, 52.75, -28.25, 73, -56.25, 86.5, -72, 118, -69, 146.75, -80, 178, -64.75), PackedVector2Array(1.5, 10, 28.421839, -11.29138, 46.124138, -37.08448, 68.09196, -59.44023, 85.02759, -73.71782, 115.300575, -69.2454, 141.84195, -79.50919, 175.79138, -65.97701), PackedVector2Array(1.5, 10, 29, -8.75, 48.25, -31.25, 70.25, -53.25, 91.25, -67.25, 115.5, -75.5, 141.5, -82.5, 174.25, -69.75), PackedVector2Array(1.5, 10, 26.25, -21, 54.5, -24.5, 77.75, -45.25, 96.25, -50.25, 116.25, -69.75, 142.5, -85.75, 172.5, -81.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3n13u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tail/TargetPoints:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TileMapLayer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w2epf"]
+resource_name = "title2"
+length = 20.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tail/TargetPoints:points")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 24.999996, -20.400002, 40, -50, 35, -70, 47, -90, 70.8, -97.6, 94.399994, -91, 115, -64), PackedVector2Array(0, 0, 25.599995, -18, 41.8, -48, 35, -70, 46.2, -90.6, 70.8, -97.6, 95, -95, 118.2, -67), PackedVector2Array(0, 0, 25.999996, -13.800003, 42.999996, -44, 38.399998, -69.4, 45.933327, -90.8, 70, -100.4, 101.2, -99.6, 124.399994, -82), PackedVector2Array(0, 0, 25.599995, -18, 41.8, -48, 35, -70, 46.2, -90.6, 70.8, -97.6, 95, -95, 122.59999, -83)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PointLight2D:energy")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.83]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TileMapLayer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, 0), Vector2(-256, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3n13u"]
+_data = {
+&"RESET": SubResource("Animation_3n13u"),
+&"title2": SubResource("Animation_w2epf"),
+&"title_tail": SubResource("Animation_2x54i")
+}
+
+[sub_resource type="Gradient" id="Gradient_hc2s7"]
+colors = PackedColorArray(0.39, 0.39, 0.39, 1, 0.6194887, 0.61948866, 0.6194887, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3b8ej"]
+gradient = SubResource("Gradient_hc2s7")
+
+[sub_resource type="Gradient" id="Gradient_b8y57"]
+offsets = PackedFloat32Array(0.11377245, 0.18862276, 0.9730539)
+colors = PackedColorArray(0.8627451, 0.40392157, 0.30588236, 1, 0.65882355, 0.13725491, 0.16862746, 1, 0.17528966, 0.013860011, 0.02030225, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jn0uf"]
+gradient = SubResource("Gradient_b8y57")
+
+[sub_resource type="Gradient" id="Gradient_roljh"]
+offsets = PackedFloat32Array(0.7340425)
+colors = PackedColorArray(0.052262783, 0.0143958805, 0.0647591, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2x54i"]
+gradient = SubResource("Gradient_roljh")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_roljh"]
+shader = ExtResource("5_3n13u")
+shader_parameter/tail_color_threshold = 0.009000003687379993
+shader_parameter/tail_color2_threshold = 0.08400000724988
+shader_parameter/tail_outline_threshold = 0.02000000095
+shader_parameter/smooth_tail = true
+shader_parameter/tail_color_lookup = SubResource("GradientTexture2D_2x54i")
+shader_parameter/cloaked_color_lookup = SubResource("GradientTexture2D_jn0uf")
+shader_parameter/cloaked_amount = 0.0
+shader_parameter/base_opacity = 0.41200001957
+shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_od0aj"]
+shader = ExtResource("5_3n13u")
+shader_parameter/tail_color_threshold = 0.01000000373487999
+shader_parameter/tail_color2_threshold = 0.04500000539738
+shader_parameter/tail_outline_threshold = 0.010000000475
+shader_parameter/smooth_tail = false
+shader_parameter/tail_color_lookup = ExtResource("6_w2epf")
+shader_parameter/cloaked_color_lookup = SubResource("GradientTexture2D_jn0uf")
+shader_parameter/cloaked_amount = 0.0
+shader_parameter/base_opacity = 1.0
+shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_roljh"]
+_limits = [2.0, 50.0, 0.0, 1.0]
+bake_resolution = 8
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(0.24278843, 9.001156), 0.0, 9.0, 0, 0, Vector2(0.31249997, 20.904045), 0.0, 9.999999, 0, 0, Vector2(0.4639423, 29.801157), 0.0, 0.0, 0, 0, Vector2(0.6009615, 36.654335), 0.0, 0.0, 0, 0, Vector2(0.7764422, 29.921387), 0.0, 0.0, 0, 0, Vector2(0.89423066, 19.701733), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 8
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -12,12 +185,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 768.0
-texture = ExtResource("1_o53yu")
-stretch_mode = 1
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAgAIAAQAAAAAAAEAAgAIAAQAAAAAAAIAAgAIAAQAAAAAAAMAAgAIAAQAAAAAAAQAAgAIAAQAAAAAAAUAAgAIAAQAAAAAAAYAAgAIAAQAAAAAAAcAAgAIAAQAAAAAAAgAAgAIAAQAAAAAAAkAAgAIAAQAAAAAAAoAAgAIAAQAAAABAAAAAgAIAAQAAAABAAEAAgAIAAQAAAABAAIAAgAIAAQAAAABAAMAAgAIAAQAAAABAAQAAgAIAAQAAAABAAUAAgAIAAQAAAABAAYAAgAIAAQAAAABAAcAAgAIAAQAAAABAAgAAgAIAAQAAAABAAkAAgAIAAQAAAABAAoAAgAIAAQAAAACAAAAAgAIAAQAAAACAAEAAgAIAAQAAAACAAIAAgAIAAQAAAACAAMAAgAIAAQAAAACAAQAAgAIAAQAAAACAAUAAgAIAAQAAAACAAYAAgAIAAQAAAACAAcAAgAIAAQAAAACAAgAAgAIAAQAAAACAAkAAgAIAAQAAAACAAoAAgAIAAQAAAADAAAAAgAIAAQAAAADAAEAAgAIAAQAAAADAAIAAgAIAAQAAAADAAMAAgAIAAQAAAADAAQAAgAIAAQAAAADAAUAAgAIAAQAAAADAAYAAgAIAAQAAAADAAcAAgAIAAQAAAADAAgAAgAIAAQAAAADAAkAAgAIAAQAAAADAAoAAgAIAAQAAAAEAAAAAgAIAAQAAAAEAAEAAgAIAAQAAAAEAAIAAgAIAAQAAAAEAAMAAgAIAAQAAAAEAAQAAgAIAAQAAAAEAAUAAgAIAAQAAAAEAAYAAgAIAAQAAAAEAAcAAgAIAAQAAAAEAAgAAgAIAAQAAAAEAAkAAgAIAAQAAAAEAAoAAgAIAAQAAAAFAAAAAgAIAAQAAAAFAAEAAgAIAAQAAAAFAAIAAgAIAAQAAAAFAAMAAgAIAAQAAAAFAAQAAgAIAAQAAAAFAAUAAgAIAAQAAAAFAAYAAgAIAAQAAAAFAAcAAgAIAAQAAAAFAAgAAgAIAAQAAAAFAAkAAgAIAAQAAAAFAAoAAgAIAAQAAAAGAAAAAgAIAAQAAAAGAAEAAgAIAAQAAAAGAAIAAgAIAAQAAAAGAAMAAgAIAAQAAAAGAAQAAgAIAAQAAAAGAAUAAgAIAAQAAAAGAAYAAgAIAAQAAAAGAAcAAgAIAAQAAAAGAAgAAgAIAAQAAAAGAAkAAgAIAAQAAAAGAAoAAgAIAAQAAAAHAAAAAgAIAAQAAAAHAAEAAgAIAAQAAAAHAAIAAgAIAAQAAAAHAAMAAgAIAAQAAAAHAAQAAgAIAAQAAAAHAAUAAgAIAAQAAAAHAAYAAgAIAAQAAAAHAAcAAgAIAAQAAAAHAAgAAgAIAAQAAAAHAAkAAgAIAAQAAAAHAAoAAgAIAAQAAAAIAAAAAgAIAAQAAAAIAAEAAgAIAAQAAAAIAAIAAgAIAAQAAAAIAAMAAgAIAAQAAAAIAAQAAgAIAAQAAAAIAAUAAgAIAAQAAAAIAAYAAgAIAAQAAAAIAAcAAgAIAAQAAAAIAAgAAgAIAAQAAAAIAAkAAgAIAAQAAAAIAAoAAgAIAAQAAAAJAAAAAgAIAAQAAAAJAAEAAgAIAAQAAAAJAAIAAgAIAAQAAAAJAAMAAgAIAAQAAAAJAAQAAgAIAAQAAAAJAAUAAgAIAAQAAAAJAAYAAgAIAAQAAAAJAAcAAgAIAAQAAAAJAAgAAgAIAAQAAAAJAAkAAgAIAAQAAAAJAAoAAgAIAAQAAAAKAAAAAgAIAAQAAAAKAAEAAgAIAAQAAAAKAAIAAgAIAAQAAAAKAAMAAgAIAAQAAAAKAAQAAgAIAAQAAAAKAAUAAgAIAAQAAAAKAAYAAgAIAAQAAAAKAAcAAgAIAAQAAAAKAAgAAgAIAAQAAAAKAAkAAgAIAAQAAAAKAAoAAgAIAAQAAAALAAAAAgAIAAQAAAALAAEAAgAIAAQAAAALAAIAAgAIAAQAAAALAAMAAgAIAAQAAAALAAQAAgAIAAQAAAALAAUAAgAIAAQAAAALAAYAAgAIAAQAAAALAAcAAgAIAAQAAAALAAgAAgAIAAQAAAALAAkAAgAIAAQAAAALAAoAAgAIAAQAAAAMAAAAAgAIAAQAAAAMAAEAAgAIAAQAAAAMAAIAAgAIAAQAAAAMAAMAAgAIAAQAAAAMAAQAAgAIAAQAAAAMAAUAAgAIAAQAAAAMAAYAAgAIAAQAAAAMAAcAAgAIAAQAAAAMAAgAAgAIAAQAAAAMAAkAAgAIAAQAAAAMAAoAAgAIAAQAAAANAAAAAgAIAAQAAAANAAEAAgAIAAQAAAANAAIAAgAIAAQAAAANAAMAAgAIAAQAAAANAAQAAgAIAAQAAAANAAUAAgAIAAQAAAANAAYAAgAIAAQAAAANAAcAAgAIAAQAAAANAAgAAgAIAAQAAAANAAkAAgAIAAQAAAANAAoAAgAIAAQAAAAOAAAAAgAIAAQAAAAOAAEAAgAIAAQAAAAOAAIAAgAIAAQAAAAOAAMAAgAIAAQAAAAOAAQAAgAIAAQAAAAOAAUAAgAIAAQAAAAOAAYAAgAIAAQAAAAOAAcAAgAIAAQAAAAOAAgAAgAIAAQAAAAOAAkAAgAIAAQAAAAOAAoAAgAIAAQAAAAPAAAAAgAIAAQAAAAPAAEAAgAIAAQAAAAPAAIAAgAIAAQAAAAPAAMAAgAIAAQAAAAPAAQAAgAIAAQAAAAPAAUAAgAIAAQAAAAPAAYAAgAIAAQAAAAPAAcAAgAIAAQAAAAPAAgAAgAIAAQAAAAPAAkAAgAIAAQAAAAPAAoAAgAIAAQAAAAQAAAAAgAIAAQAAAAQAAEAAgAIAAQAAAAQAAIAAgAIAAQAAAAQAAMAAgAIAAQAAAAQAAQAAgAIAAQAAAAQAAUAAgAIAAQAAAAQAAYAAgAIAAQAAAAQAAcAAgAIAAQAAAAQAAgAAgAIAAQAAAAQAAkAAgAIAAQAAAAQAAoAAgAIAAQAAAARAAAAAgAIAAQAAAARAAEAAgAIAAQAAAARAAIAAgAIAAQAAAARAAMAAgAIAAQAAAARAAQAAgAIAAQAAAARAAUAAgAIAAQAAAARAAYAAgAIAAQAAAARAAcAAgAIAAQAAAARAAgAAgAIAAQAAAARAAkAAgAIAAQAAAARAAoAAgAIAAQAAAAVAAMAAgAIAAQAAAA=")
+tile_set = ExtResource("2_3n13u")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -30,6 +201,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 490.0
 offset_top = 371.0
@@ -42,6 +214,7 @@ path_to_scene = "res://scenes/Dungeon/Enterance/EnteranceMap.tscn"
 start_with_focus = true
 
 [node name="TestSneak" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 63.0
 offset_top = 53.0
@@ -53,6 +226,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dungeon/North Wing/NorthWingPhase1.tscn"
 
 [node name="TestChase" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 63.0
 offset_top = 232.0
@@ -63,6 +237,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dungeon/North Wing/NorthWingPhase2.tscn"
 
 [node name="TestDialog" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 927.0
 offset_top = 42.0
@@ -73,6 +248,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/DialogueMuseum/dialogue_museum.tscn"
 
 [node name="TestDartmunk" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 64.0
 offset_top = 141.0
@@ -84,6 +260,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dartmunk/dartmunk_arena.tscn"
 
 [node name="TestCutscene" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 927.0
 offset_top = 135.0
@@ -95,6 +272,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
 
 [node name="World" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 928.0
 offset_top = 216.0
@@ -107,6 +285,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://world.tscn"
 
 [node name="CreditsButton" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 492.0
 offset_top = 459.0
@@ -119,6 +298,7 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Credits_Screen/credits_screen.tscn"
 
 [node name="HistoryButton" type="Button" parent="."]
+z_index = 9
 layout_mode = 0
 offset_left = 491.0
 offset_top = 545.0
@@ -130,5 +310,66 @@ script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
 
 [node name="Logo" type="Sprite2D" parent="."]
+z_index = 10
 position = Vector2(577, 243)
 texture = ExtResource("3_xodhh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(576.5, 323)
+scale = Vector2(2.294, 1.276)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+shadow_filter_smooth = 11.9
+texture = SubResource("GradientTexture2D_3n13u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MockPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_3n13u")
+}
+autoplay = "title2"
+speed_scale = 2.0
+
+[node name="MockPlayer" type="CharacterBody2D" parent="."]
+z_index = 8
+position = Vector2(4, 44)
+
+[node name="Tail" type="Node2D" parent="MockPlayer" node_paths=PackedStringArray("attachement")]
+z_index = -1
+position = Vector2(203, 617)
+scale = Vector2(5, 5)
+script = ExtResource("4_2x54i")
+attachement = NodePath("..")
+responsiveness = 0.5
+tail_start_offset = Vector2(0, -30)
+death_gradient = SubResource("GradientTexture2D_3b8ej")
+second_gradient_modifier = 0.045
+fixed_min = Vector2(-40, -163)
+fixed_max = Vector2(177, 70)
+
+[node name="ShadowSurface" type="ColorRect" parent="MockPlayer/Tail"]
+light_mask = 0
+material = SubResource("ShaderMaterial_roljh")
+offset_left = 30.0
+offset_top = -170.0
+offset_right = 260.0
+offset_bottom = 43.0
+rotation = 0.38397244
+
+[node name="DisplaySurface" type="ColorRect" parent="MockPlayer/Tail"]
+light_mask = 0
+material = SubResource("ShaderMaterial_od0aj")
+
+[node name="TargetPoints" type="Line2D" parent="MockPlayer/Tail"]
+points = PackedVector2Array(0, 0, 30, -35, 40, -50, 35, -70, 47, -90, 64, -95, 79, -86, 81, -63)
+width = 1.5
+width_curve = SubResource("Curve_roljh")
+default_color = Color(0.8901961, 0.34901962, 0.25882354, 1)
+gradient = ExtResource("8_pyq6a")
+
+[node name="Blade" type="Sprite2D" parent="MockPlayer/Tail"]
+visible = false
+position = Vector2(80, -50)
+rotation = 1.5707964
+texture = ExtResource("9_x5lud")

@@ -14,6 +14,11 @@ extends Node2D
 @export var quick_snap_mode: bool = false
 @export var quick_snap_responsiveness: float = 0.5
 
+## these are only used on the title screen to prevent glitchy floating point errors in the simple case where we know the whole range of motion
+@export var fixed_min: Vector2 = Vector2.INF
+## these are only used on the title screen
+@export var fixed_max: Vector2 = Vector2.INF
+
 @onready var target_line: Line2D = $TargetPoints
 @onready var display_surface: ColorRect = $DisplaySurface
 @onready var blade: Node2D = $Blade
@@ -61,7 +66,7 @@ var tail_shape = []
 var selected_pose = Direction.UP
 var direction: Vector2 = Vector2(0., -1.)
 
-var instant_tail_update := false
+var instant_tail_update := true
 
 func _ready() -> void:
 	# needs to be deferred because the parent component isn't ready
@@ -153,10 +158,14 @@ func _process(_delta: float) -> void:
 	tail_shape[0].set_global_position(target_position) # The first segment follows target without fail
 	for i in range(1, tail_poses[selected_pose].size()):
 		target_position = calculate_segment(i, target_position)
-		min_pos.x = min(min_pos.x, target_position.x - tail_shape[i].shape.radius - display_padding)
-		min_pos.y = min(min_pos.y, target_position.y - tail_shape[i].shape.radius - display_padding)
-		max_pos.x = max(max_pos.x, target_position.x + tail_shape[i].shape.radius + display_padding)
-		max_pos.y = max(max_pos.y, target_position.y + tail_shape[i].shape.radius + display_padding)
+		if fixed_min == Vector2.INF:
+			min_pos.x = min(min_pos.x, target_position.x - tail_shape[i].shape.radius - display_padding)
+			min_pos.y = min(min_pos.y, target_position.y - tail_shape[i].shape.radius - display_padding)
+			max_pos.x = max(max_pos.x, target_position.x + tail_shape[i].shape.radius + display_padding)
+			max_pos.y = max(max_pos.y, target_position.y + tail_shape[i].shape.radius + display_padding)
+		else:
+			min_pos = fixed_min
+			max_pos = fixed_max
 
 	blade.global_position = tail_shape[len(tail_shape) - 1].global_position
 
@@ -171,6 +180,11 @@ func _process(_delta: float) -> void:
 	display_surface.set_global_position(min_pos)
 	display_surface.set_size(max_pos - min_pos)
 	display_surface.material.set_shader_parameter("points", shader_data)
+
+	var display2: ColorRect = get_node_or_null("ShadowSurface")
+	if display2:
+		display2.material.set_shader_parameter("points", shader_data)
+
 
 func _on_player_direction_changed(new_direction: Variant) -> void:
 	selected_pose = direction_to_index_lut[round(new_direction.x)][round(new_direction.y)]
