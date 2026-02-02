@@ -12,7 +12,7 @@ texture = ExtResource("1_2t8b5")
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("2_m0d5j")]
 position = Vector2(0, -2)
-dialogue_file = "uid://bh10nkombcfw3"
+dialogue_file = "uid://cjt1i201jco2w"
 
 [node name="PromptContainer" parent="DialogueTrigger" index="1"]
 offset_left = -41.0
