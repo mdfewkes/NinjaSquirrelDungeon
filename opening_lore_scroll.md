@@ -1,0 +1,3 @@
+Run, last of the Shadowtails.
+Seek the acorn, before winter freezes us! Hasten! But be cautious...
+We do not know who awaits you after the Uprising of the Final Aqueduct.

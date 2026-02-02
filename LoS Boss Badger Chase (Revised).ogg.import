@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1yjfhp34mwil"
+path="res://.godot/imported/LoS Boss Badger Chase (Revised).ogg-ce28b61c98261bd5d58a6cdc1c7f09b2.oggvorbisstr"
+
+[deps]
+
+source_file="res://LoS Boss Badger Chase (Revised).ogg"
+dest_files=["res://.godot/imported/LoS Boss Badger Chase (Revised).ogg-ce28b61c98261bd5d58a6cdc1c7f09b2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

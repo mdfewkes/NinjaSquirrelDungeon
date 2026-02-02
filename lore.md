@@ -102,4 +102,3 @@ this style of design will also get you the ‘Firelink Shrine’ or home-base ef
 
 [Mikey's direction on controls/actions](https://discord.com/channels/1372973188425842969/1437168420352163992/1451683695520907374):
 > The ideal situation of inputs is having 2 action buttons that can be reassigned to different actions (built) from a menu (not built) and the slide having it's own dedicated button. The interactions, ideally, would share the same buttons as the action buttons, but be used in a situation where you wouldn't worry about needing the action functionality (a room with no enemies). Letting us give the interactions the input priority 
-

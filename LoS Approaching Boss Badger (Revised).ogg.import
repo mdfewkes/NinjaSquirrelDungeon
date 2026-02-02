@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8uc8csfso7gq"
+path="res://.godot/imported/LoS Approaching Boss Badger (Revised).ogg-8c60a394a9aa4f45f59e32f2e9713059.oggvorbisstr"
+
+[deps]
+
+source_file="res://LoS Approaching Boss Badger (Revised).ogg"
+dest_files=["res://.godot/imported/LoS Approaching Boss Badger (Revised).ogg-8c60a394a9aa4f45f59e32f2e9713059.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
