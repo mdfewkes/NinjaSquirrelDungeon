@@ -1,27 +1,59 @@
 save has_talked_once = 0
-
+save west_quest_completed = false
+extern has_needed_item
+extern give_reward()
 Oh!
 if has_talked_once < 1
-	A Shadowtail!
-	You mean we did not all fail!?
-	Collect 3 artifacts and I can transfer my remaining life essence to you.
-	Would you like to learn more?
+    A Shadowtail!
+    You mean we did not all fail!?
+    Dying was a shock to me, but so was coming back as a ghost! It's nice to get one last chance to wish the Shadowtail good luck!
+    What can I help you with?
 else
-	Would you like to learn more?
+    What can I help you with?
 set has_talked_once = 1
+if has_needed_item
+    Would you look at that! That's my Heart, isn't it? I shouldn't be surprised, with a smart Shadowtail such as yourself in here, helping set things right!
+    Thank you! With my Heart back, I can pass on my remaining life essence to you, and that should ease your passage through these skulking shadows.
+    give_reward()
+    set west_quest_completed = true
+- Quest!
+    if not west_quest_completed
+        Where are my manners? I should give my remaining life essence to you so that you will have an easier time traversing this dungeon!
+        Alas, my Heart got locked up in one of those Spirit Cages, and we'll need 3 Artifacts of Meaning to get it out. Any 3 will unlock the gates!
+        If you can get me my Heart back, the increase to your heatlh is yours!
+        And if you survive the dungeon, maybe you'll live an even heartier life than I did! Ho ho.
+        Oh! And the Spirit Cage my Heart is trapped in - it's... to the left there, over that very old ledge that has started to fall away. PLEASE be very careful if you walk over there...    
+    else
+        You are going to do wonderful things! Thank you again for restoring my Heart.
 - Learn about Artifacts
-	- Artifact 1
-		It's a tea kettle from before the Dartmunks turned on us.
-	- Artifact 2
-		It's a water spout from the Ancients who built this place.
-	- Artifact 3
-		It's a fancy cushion that the rat king sat on before he was dethroned.
+    - Artifact 1: Tea Pot
+        For generations, the Chipmunks took great care of us woodland folk. -And we needed their help! Without a strong, sturdy structure like the one we're standing in, the winters are hard.
+        -I just realized! You're the only one of us who is standing! Ho ho!
+        Anyhow! The Burrowbrood clan of Chipmunks toiled to provide us great feasts, in winter even! Can you believe that? We took them for granted...
+        I don't know which of them turned on us. But I know I'd have done things differently if I'd known how upset the Chipmunks had become. They call themselves Dartmunks now... Watch out for -you guessed it! Their DARTS! Ho ho! Took one to the side. Then another.
+        They're powerful if you let them get on top of you.
+        ...Somewhere in this maze that the rodent clans lived in, I am so sure I saw one of those old Burrowbrood tea pots, from before... From a... From a happier time. What a nice tea pot it was...
+    - Artifact 2: Water Spout
+        I've seen hints that before this place was turned into a fortress for the rodent folk to live in, the Ancients took great care in making this place beautiful. 
+        Somewhere in here is one of their old water spouts - but it's not like a tap that you or I might make. This has decorations along it and two wings on top. The Ancients seemed to think even a water tap was worth making artfully. I admire that.
+    - Artifact 3: Cushion
+        The Rat king of the Pawsticks once sat on a VERY comfortable looking throne.
+        The Chipmunks threw out all of the old reminders of the Pawsticks' opulence when they took over.
+        But Shadowtail, I believe one of those comfy cushions... might just be around here still. I know that I cannot feel pain anymore, so I can't benefit from that cushion... but it sure seems a shame to let such a comfy pillow go to waste!
 - Learn about Ghosts
-	- Ghost of the West (Me!)
-		I'm great!
-	- Ghost of the East
-		He needs to drink some tea and calm down...
-	- Ghost of the Entrance
-		My mentor. A sad death.
+    - Ghost of the West (Me!)
+        I'm great!
+        Hahaha!
+        Well! At least I THINK I'm great, ho ho!
+        You might have guessed that I was a sort of... unusual Shadowtail. I didn't QUITE fit in with our great and noble order, ho ho.
+        But it was a good life, living among the Shadowtail. Sometimes I think I was the only one who saw you as Squirrels and not just TOOLS for WAR! HA!
+        Perhaps, if you survive this place... you can decide for yourself what the Shadowtails will stand for...
+        I- I do believe... you are the only one - the LAST Shadowtail... It may stand to you to decide whether our order continues if you survive this. -And if you continue our order... what choices might you make that will lead you to a better life than we led each other to?
+    - Ghost of the East
+        The Ghost of the East... hmm... how to say this... The Ghost of the East... needs to drink some tea and calm down... Ho ho!
+    - Ghost of the Entrance
+        My mentor. A sad death.
+        I-
+        Please, Shadowtail... I cannot speak of this death...
 - No
-	Maybe next time, pardner!
+    Maybe next time, pardner!

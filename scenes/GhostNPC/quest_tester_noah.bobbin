@@ -3,11 +3,11 @@ extern give_reward()
 save quest_complete = false
 
 if not quest_complete
-    if has_needed_item
-        Oh, my sweet Westley! Thank you! Have some more health!
-        give_reward()
-        set quest_complete = true
-    else
-        Farm boy, fetch me that orange circle in THAT OTHER room...
+	if has_needed_item
+		Oh, my sweet Westley! Thank you! Have some more health!
+		give_reward()
+		set quest_complete = true
+	else
+		Farm boy, fetch me that orange circle in THAT OTHER room...
 else
-    I guess we just hang out now...
+	I guess we just hang out now...

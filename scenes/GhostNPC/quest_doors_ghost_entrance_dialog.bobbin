@@ -1,5 +1,5 @@
 save has_talked_once = 0
-save quest_completed = false
+save entrance_quest_completed = false
 extern has_needed_item
 extern give_reward()
 
@@ -20,9 +20,9 @@ if has_needed_item
     Seeing you willing to try, when all other Shadowtail failed, it reminds me why the Shadowtail order was founded...
     Thank you for returning my Heart to me. I can now pass on my remaining life essence to you.
     give_reward()
-    set quest_completed = true
+    set entrance_quest_completed = true
 - Quest!
-    if not quest_completed
+    if not entrance_quest_completed
         I can help keep you alive longer, by transferring some of my life essence to your own.
         But my Heart has gotten trapped in one of those Spirit Cages.
         There is a small, dark room, behind me, I have placed lanterns on either side of it. Inside you will find 3 Spirit Cage doors which block my Heart.
