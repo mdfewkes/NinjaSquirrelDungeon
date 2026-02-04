@@ -13,4 +13,5 @@ func _get_parent_level() -> Level:
 
 func _on_body_entered(body: Node2D):
 	if body is Player and path_to_level != "":
+		StateManager.clear_key("respawn_point")
 		_get_parent_level().load_level(path_to_level)

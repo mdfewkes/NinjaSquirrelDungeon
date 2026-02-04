@@ -22,11 +22,11 @@ func manage_node(node: Node, key: String, parent_key = "") -> void:
 	else:
 		data[key] = node.get_persisted_state()
 	node.connect("persisted_state_changed", _on_state_update.bind(key, parent_key))
-	print("managing: ", [key, parent_key, data[key]])
+	#print("managing: ", [key, parent_key, data[key]])
 
 
 func manage_scene(scene_path: String) -> void:
-	print("managing scene: ", scene_path)
+	#print("managing scene: ", scene_path)
 	for node in get_tree().get_nodes_in_group("persisted"):
 		manage_node(node, node.get_path(), scene_path)
 
@@ -42,10 +42,14 @@ func get_key(key: String, parent_key = "") -> Variant:
 func set_key(key: String, val: Variant, parent_key = "") -> void:
 	var data = _get_dict(parent_key)
 	data[key] = val
+	#if key == "respawn_point":
+		#print("set respawn: ", val, ", parent=", parent_key)
 
 func clear_key(key: String, parent_key = "") -> void:
 	var data = _get_dict(parent_key)
 	data.erase(key)
+	#if key == "respawn_point":
+		#print("clear respawn, parent=", parent_key)
 
 
 func _get_dict(parent_key: String) -> Dictionary:
@@ -59,4 +63,4 @@ func _get_dict(parent_key: String) -> Dictionary:
 func _on_state_update(node: Node, key: String, parent_key = "") -> void:
 	var data = _get_dict(parent_key)
 	data[key] = node.get_persisted_state()
-	print("update: ", [key, parent_key, data[key]])
+	#print("update: ", [key, parent_key, data[key]])

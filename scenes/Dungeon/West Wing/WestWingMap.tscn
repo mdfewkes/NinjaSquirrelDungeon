@@ -355,6 +355,7 @@ modulate = Color(0.71112716, 2.8066084, 2.8066084, 0.64705884)
 position = Vector2(-66, 386)
 item_type = 0
 item_value = 97
+bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room01/Environment/QuestItem6" index="2"]
 scale = Vector2(0.195, 0.195)
@@ -1138,6 +1139,7 @@ autoplay = "default"
 [node name="QuestItem" parent="Rooms/Room13/Environment" instance=ExtResource("26_krmrj")]
 position = Vector2(-1794, -2981)
 item_value = 91
+bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem" index="2"]
 visible = false
@@ -1153,6 +1155,7 @@ texture = SubResource("GradientTexture2D_ljvvc")
 position = Vector2(120, -4496)
 item_type = 0
 item_value = 97
+bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2" index="2"]
 visible = false
@@ -1288,6 +1291,7 @@ self_modulate = Color(0, 1.9143859, 1.9196348, 0.647)
 position = Vector2(-1953, -5212)
 item_type = 0
 item_value = 97
+bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room14/Environment/QuestItem5" index="2"]
 scale = Vector2(0.28, 0.28)

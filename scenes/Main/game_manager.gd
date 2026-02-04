@@ -20,7 +20,7 @@ func _change_scene(scene_path: String, keep_state = false, fade = true) -> void:
 	if scene_path == current_scene.get_scene_file_path(): return
 	if scene_path == "reload":
 		scene_path = current_scene.get_scene_file_path()
-	print("changing to ", scene_path, " keep state=", keep_state)
+	#print("changing to ", scene_path, " keep state=", keep_state)
 		
 	var new_scene = load(scene_path).instantiate()
 
@@ -35,8 +35,6 @@ func _change_scene(scene_path: String, keep_state = false, fade = true) -> void:
 	if not keep_state:
 		StateManager.reset()
 		InventoryManager.reset()
-	else:
-		StateManager.clear_key("respawn_point")
 	StateManager.set_key("current_scene", scene_path)
 	StateManager.manage_scene(scene_path)
 
@@ -75,6 +73,7 @@ static func restore_persistant_state(player: Player) -> void:
 		StateManager.manage_node(player, "player")
 		if StateManager.has_key("respawn_point"):
 			player.global_position = StateManager.get_key("respawn_point")
+			#print("restoring to respawn: ", player.global_position)
 		player.tail.instant_tail_update = true
 
 
