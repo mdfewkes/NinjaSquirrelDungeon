@@ -1,7 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://e054clg25bop"]
+[gd_scene load_steps=8 format=3 uid="uid://e054clg25bop"]
 
 [ext_resource type="Script" uid="uid://bnne2iq8re6hq" path="res://scenes/Items/collectable_item.gd" id="1_vht4x"]
 [ext_resource type="Texture2D" uid="uid://d06ehi0jjghui" path="res://scenes/Items/Art/Key-2.png" id="3_w3w4r"]
+
+[sub_resource type="Gradient" id="Gradient_tjxyp"]
+colors = PackedColorArray(0.064446, 0.03564725, 0.086352, 0.7058824, 0.06522, 0.036900003, 0.09, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w3w4r"]
+gradient = SubResource("Gradient_tjxyp")
+fill = 1
+fill_from = Vector2(0.48504272, 0.49358973)
+fill_to = Vector2(1, 0.5405983)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkc2"]
 radius = 26.0
@@ -25,6 +34,18 @@ item_value = 2
 bounce_speed = 1.0
 bounce_amount = 10.0
 pull_speed_coefficient = 0.5
+
+[node name="Shadow" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 20.0
+offset_right = 32.0
+offset_bottom = 84.0
+grow_horizontal = 2
+scale = Vector2(1, 0.5)
+texture = SubResource("GradientTexture2D_w3w4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_swkc2")

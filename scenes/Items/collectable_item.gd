@@ -45,6 +45,9 @@ func trigger_collection() -> void:
 	var light: PointLight2D = get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = false
+	var shadow = get_node_or_null("Shadow")
+	if shadow:
+		shadow.hide()
 	if add_to_inventory:
 		InventoryManager.add_item(self)
 	InventoryManager.emit_item_collected(self)

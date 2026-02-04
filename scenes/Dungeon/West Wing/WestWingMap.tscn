@@ -350,6 +350,18 @@ position = Vector2(-740, 531)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room01"]
 
+[node name="QuestItem6" parent="Rooms/Room01/Environment" instance=ExtResource("26_krmrj")]
+modulate = Color(0.71112716, 2.8066084, 2.8066084, 0.64705884)
+position = Vector2(-66, 386)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room01/Environment/QuestItem6" index="2"]
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("32_3h4sk")
+hframes = 1
+vframes = 1
+
 [node name="Decorations" type="Node2D" parent="Rooms/Room01"]
 
 [node name="SewerGrate" parent="Rooms/Room01/Decorations" instance=ExtResource("14_3kpl8")]
@@ -791,6 +803,19 @@ position = Vector2(-2777, -895)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room08"]
 
+[node name="QuestItem2" parent="Rooms/Room08/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(-4524, -363)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room08/Environment/QuestItem2" index="2"]
+modulate = Color(0, 1.45, 1.457, 0.518)
+self_modulate = Color(0, 1.417, 1.424, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("28_50cqo")
+hframes = 1
+vframes = 1
+
 [node name="Room09" type="Area2D" parent="Rooms"]
 collision_layer = 0
 collision_mask = 2
@@ -951,6 +976,19 @@ position = Vector2(1380, -2369)
 [node name="Bush17" parent="Rooms/Room11/Environment" instance=ExtResource("11_jb2cf")]
 position = Vector2(1574, -2434)
 
+[node name="QuestItem4" parent="Rooms/Room11/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(1888, -2081)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room11/Environment/QuestItem4" index="2"]
+modulate = Color(0, 2.515, 2.54, 1)
+self_modulate = Color(2.009, 3.603, 2.884, 0.635)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("30_3h4sk")
+hframes = 1
+vframes = 1
+
 [node name="Bonfire" parent="Rooms/Room11" instance=ExtResource("21_cw42d")]
 position = Vector2(1821, -2136)
 
@@ -981,6 +1019,18 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(489, -3270)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room12"]
+
+[node name="QuestItem3" parent="Rooms/Room12/Environment" instance=ExtResource("26_krmrj")]
+position = Vector2(1363, -4314)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room12/Environment/QuestItem3" index="2"]
+self_modulate = Color(1.102, 2.033, 2.033, 0.792)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("29_gmq1v")
+hframes = 1
+vframes = 1
 
 [node name="SmallKey" parent="Rooms/Room12" instance=ExtResource("13_60n6h")]
 position = Vector2(2914, -3806)
@@ -1089,7 +1139,7 @@ autoplay = "default"
 position = Vector2(-1794, -2981)
 item_value = 91
 
-[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem" index="1"]
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem" index="2"]
 visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/Room13/Environment/QuestItem"]
@@ -1104,7 +1154,7 @@ position = Vector2(120, -4496)
 item_type = 0
 item_value = 97
 
-[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2" index="1"]
+[node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2" index="2"]
 visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2"]
@@ -1136,81 +1186,6 @@ texture = ExtResource("31_181sq")
 [node name="Door" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
 position = Vector2(-1664, -4669)
 required_key_value = 1
-
-[node name="QuestItem2" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(-4524, -363)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem2" index="1"]
-visible = false
-texture = ExtResource("28_50cqo")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem2"]
-modulate = Color(0, 1.4503007, 1.4568164, 0.5176471)
-self_modulate = Color(1.1554386e-06, 1.4165531, 1.4244802, 1)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("28_50cqo")
-
-[node name="QuestItem3" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(1363, -4314)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem3" index="1"]
-visible = false
-texture = ExtResource("28_50cqo")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem3"]
-self_modulate = Color(1.101734, 2.0331757, 2.0331757, 0.7921569)
-scale = Vector2(0.29, 0.29)
-texture = ExtResource("29_gmq1v")
-
-[node name="QuestItem4" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-position = Vector2(1888, -2081)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem4" index="1"]
-visible = false
-texture = ExtResource("28_50cqo")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem4"]
-modulate = Color(6.8879046e-05, 2.514818, 2.539524, 1)
-self_modulate = Color(2.0088153, 3.6032796, 2.8842077, 0.63529414)
-scale = Vector2(0.225, 0.225)
-texture = ExtResource("30_3h4sk")
-
-[node name="QuestItem5" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-modulate = Color(0, 2.2323458, 2.2450464, 0.635)
-self_modulate = Color(0, 1.9143859, 1.9196348, 0.647)
-position = Vector2(-1953, -5212)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem5" index="1"]
-visible = false
-texture = ExtResource("31_006yv")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem5"]
-position = Vector2(-1, 0)
-scale = Vector2(0.28, 0.28)
-texture = ExtResource("31_006yv")
-
-[node name="QuestItem6" parent="Rooms/Room13" instance=ExtResource("26_krmrj")]
-modulate = Color(0.71112716, 2.8066084, 2.8066084, 0.64705884)
-position = Vector2(-66, 386)
-item_type = 0
-item_value = 97
-
-[node name="Sprite2D" parent="Rooms/Room13/QuestItem6" index="1"]
-visible = false
-texture = ExtResource("31_006yv")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/QuestItem6"]
-position = Vector2(-1, 0)
-scale = Vector2(0.195, 0.195)
-texture = ExtResource("32_3h4sk")
 
 [node name="DELETE ME" parent="Rooms/Room13" instance=ExtResource("13_60n6h")]
 position = Vector2(777, 400)
@@ -1306,6 +1281,19 @@ position = Vector2(-2095, -5825)
 position = Vector2(-1279, -5879)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room14"]
+
+[node name="QuestItem5" parent="Rooms/Room14/Environment" instance=ExtResource("26_krmrj")]
+modulate = Color(0, 2.2323458, 2.2450464, 0.635)
+self_modulate = Color(0, 1.9143859, 1.9196348, 0.647)
+position = Vector2(-1953, -5212)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room14/Environment/QuestItem5" index="2"]
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("31_006yv")
+hframes = 1
+vframes = 1
 
 [node name="Room15" type="Area2D" parent="Rooms"]
 collision_layer = 0
@@ -1454,10 +1442,14 @@ position = Vector2(576, 639)
 [node name="TestSpawn" type="Node2D" parent="SpawnPoints"]
 position = Vector2(-1641, -4832)
 
+[editable path="Rooms/Room01/Environment/QuestItem6"]
 [editable path="Rooms/Room06/Environment/FloorSpikes2"]
 [editable path="Rooms/Room06/Environment/FloorSpikes3"]
 [editable path="Rooms/Room06/Environment/FloorSpikes4"]
 [editable path="Rooms/Room06/Environment/FloorSpikes5"]
+[editable path="Rooms/Room08/Environment/QuestItem2"]
+[editable path="Rooms/Room11/Environment/QuestItem4"]
+[editable path="Rooms/Room12/Environment/QuestItem3"]
 [editable path="Rooms/Room13/Environment/QuestDoor1"]
 [editable path="Rooms/Room13/Environment/QuestDoor2"]
 [editable path="Rooms/Room13/Environment/QuestDoor3"]
@@ -1465,8 +1457,4 @@ position = Vector2(-1641, -4832)
 [editable path="Rooms/Room13/Environment/QuestItem2"]
 [editable path="Rooms/Room13/Environment/West Wing Ghost"]
 [editable path="Rooms/Room13/Environment/West Wing Ghost/DialogueTrigger"]
-[editable path="Rooms/Room13/QuestItem2"]
-[editable path="Rooms/Room13/QuestItem3"]
-[editable path="Rooms/Room13/QuestItem4"]
-[editable path="Rooms/Room13/QuestItem5"]
-[editable path="Rooms/Room13/QuestItem6"]
+[editable path="Rooms/Room14/Environment/QuestItem5"]
