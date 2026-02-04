@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=77 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6te4ppn0jmm" path="res://scenes/GhostNPC/ghost_west_wing.png" id="31_181sq"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="31_ljvvc"]
 [ext_resource type="Texture2D" uid="uid://cc5yi0dpadrvt" path="res://scenes/GhostNPC/lantern.png" id="32_3h4sk"]
+[ext_resource type="PackedScene" uid="uid://47kcpmwa6gq4" path="res://scenes/PatrollingEnemy/GHOST_dartmonk.tscn" id="38_ljvvc"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -1445,6 +1446,15 @@ position = Vector2(576, 639)
 
 [node name="TestSpawn" type="Node2D" parent="SpawnPoints"]
 position = Vector2(-1641, -4832)
+
+[node name="GHOST_dartmonk" parent="." instance=ExtResource("38_ljvvc")]
+position = Vector2(-547, 360)
+
+[node name="GHOST_dartmonk2" parent="." instance=ExtResource("38_ljvvc")]
+position = Vector2(-3229, -1450)
+
+[node name="GHOST_dartmonk3" parent="." instance=ExtResource("38_ljvvc")]
+position = Vector2(188, 448)
 
 [editable path="Rooms/Room01/Environment/QuestItem6"]
 [editable path="Rooms/Room06/Environment/FloorSpikes2"]

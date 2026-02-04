@@ -25,9 +25,16 @@ func _process(delta):
 	position.x = start_pos.x + hoffset
 	position.y = start_pos.y + voffset
 	# switch frame depending on what direction we're moving
-	if prev_pos.x < position.x:
-		set_frame(firstFrame)
-	else:
-		set_frame(lastFrame)
+	if hdistance > vdistance: # moving side to side mostly?
+		if prev_pos.x < position.x:
+			set_frame(firstFrame)
+		else:
+			set_frame(lastFrame)
+	else: # moving up and down mostly
+		if prev_pos.y < position.y:
+			set_frame(firstFrame)
+		else:
+			set_frame(lastFrame)	
+	# remember so we can compare to determine direction moved
 	prev_pos = position
 	

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://47kcpmwa6gq4"]
+
+[ext_resource type="Texture2D" uid="uid://cix5irjenoyg" path="res://scenes/Dartmunk/GHOST_DartmonkV2.png" id="1_cejes"]
+[ext_resource type="Script" uid="uid://ycagodgw07o" path="res://scenes/PatrollingEnemy/ghost_movement.gd" id="2_q823s"]
+
+[node name="GHOST_dartmonk" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(4, -54)
+scale = Vector2(0.394, 0.394)
+texture = ExtResource("1_cejes")
+hframes = 7
+vframes = 5
+frame = 21
+script = ExtResource("2_q823s")
+firstFrame = 15
+lastFrame = 22
+hspeed = 3.5
+hdistance = 10.0
+vspeed = 0.5
+vdistance = 128.0
