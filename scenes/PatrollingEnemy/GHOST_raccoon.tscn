@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://17card0tvwk3"]
+
+[ext_resource type="Script" uid="uid://ycagodgw07o" path="res://scenes/PatrollingEnemy/ghost_movement.gd" id="1_71eh0"]
+[ext_resource type="Texture2D" uid="uid://dobag5qxv1iwh" path="res://scenes/PatrollingEnemy/GHOST_raccoon_sprite_sheet.png" id="1_b64nq"]
+
+[node name="GHOST_raccoon" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(4, -54)
+scale = Vector2(0.394, 0.394)
+texture = ExtResource("1_b64nq")
+hframes = 6
+vframes = 4
+frame = 3
+script = ExtResource("1_71eh0")
