@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=84 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -245,6 +245,44 @@ gradient = SubResource("Gradient_g1i3r")
 fill = 1
 fill_from = Vector2(0.48290598, 0.45299146)
 fill_to = Vector2(0.95726496, 0.055555556)
+
+[sub_resource type="Animation" id="Animation_cc6al"]
+resource_name = "west_ghost_float_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.98),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-369, -3213), Vector2(-369, -3215.755), Vector2(-369, -3213)]
+}
+
+[sub_resource type="Animation" id="Animation_0d6gi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-369, -3213)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xg67u"]
+_data = {
+&"RESET": SubResource("Animation_0d6gi"),
+&"west_ghost_float_animation": SubResource("Animation_cc6al")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h4sk"]
 size = Vector2(1537, 1821)
@@ -1211,6 +1249,12 @@ scale = Vector2(2.1195724, 1.3149848)
 [node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/West Wing Ghost"]
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("31_181sq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rooms/Room13/Environment/West Wing Ghost"]
+libraries = {
+&"": SubResource("AnimationLibrary_xg67u")
+}
+autoplay = "west_ghost_float_animation"
 
 [node name="SewerPipeLong" parent="Rooms/Room13/Environment" instance=ExtResource("36_cr2db")]
 position = Vector2(-631, -4035)
