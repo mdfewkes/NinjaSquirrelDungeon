@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://vaibohkpftii"]
 
 [ext_resource type="Script" uid="uid://dbnk78nmnqcue" path="res://scenes/Hopper/hopper.gd" id="1_qld5t"]
-[ext_resource type="Texture2D" uid="uid://cv4ea8acqc1s3" path="res://temp assets/bush-temp.png" id="2_1crdu"]
+[ext_resource type="Texture2D" uid="uid://hcla4vwsqm6x" path="res://temp assets/slime_skull.png" id="2_1crdu"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_gw15p"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_lf76h"]
 [ext_resource type="Texture2D" uid="uid://dh07adr4abtjg" path="res://scenes/Hopper/Art/hoppershadow.png" id="5_rgrea"]
@@ -436,6 +436,7 @@ offsets = PackedFloat32Array(0, 0.12130178, 0.69526625)
 colors = PackedColorArray(1, 1, 1, 1, 0.6637102, 0.5414517, 0.13081169, 1, 0.44839758, 0.6332764, 0.29261196, 1)
 
 [node name="Hopper" type="CharacterBody2D"]
+self_modulate = Color(4.954765, 4.954765, 4.954765, 0.4627451)
 collision_layer = 4
 collision_mask = 193
 script = ExtResource("1_qld5t")
@@ -452,7 +453,6 @@ shape = SubResource("CircleShape2D_uatfv")
 position = Vector2(0, -48)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_1crdu")
-hframes = 4
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 z_index = -1

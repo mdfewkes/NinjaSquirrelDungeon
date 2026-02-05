@@ -1143,10 +1143,7 @@ position = Vector2(-1539, -3098)
 position = Vector2(-889, -3107)
 
 [node name="Light8" parent="Rooms/Room13/Lights" instance=ExtResource("10_lyrpa")]
-position = Vector2(-95, -2933)
-
-[node name="Light9" parent="Rooms/Room13/Lights" instance=ExtResource("10_lyrpa")]
-position = Vector2(-177, -2709)
+position = Vector2(-98, -2962)
 
 [node name="Enemies" type="Node2D" parent="Rooms/Room13"]
 
@@ -1528,6 +1525,9 @@ position = Vector2(-190.5, -2769)
 shape = SubResource("RectangleShape2D_oi2iw")
 
 [node name="Lights" type="Node2D" parent="Rooms/Passage13-10"]
+
+[node name="Light9" parent="Rooms/Passage13-10/Lights" instance=ExtResource("10_lyrpa")]
+position = Vector2(-177, -2709)
 
 [node name="Enemies" type="Node2D" parent="Rooms/Passage13-10"]
 
