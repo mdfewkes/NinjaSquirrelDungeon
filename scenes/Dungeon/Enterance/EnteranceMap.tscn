@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=50 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_08kol"]
 [ext_resource type="PackedScene" uid="uid://17card0tvwk3" path="res://scenes/PatrollingEnemy/GHOST_raccoon.tscn" id="22_el7dr"]
+[ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="23_ib7gs"]
+[ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="24_m8oiq"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -130,6 +132,9 @@ gradient = SubResource("Gradient_el7dr")
 fill = 1
 fill_from = Vector2(0.5, 0.90000004)
 
+[sub_resource type="Animation" id="Animation_m8oiq"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_ib7gs"]
 resource_name = "entrance_ghost_float_animation"
 length = 2.0
@@ -158,9 +163,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(195, 275), Vector2(195, 262.575), Vector2(195, 275)]
 }
-
-[sub_resource type="Animation" id="Animation_m8oiq"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sxvr"]
 _data = {
@@ -561,6 +563,32 @@ position = Vector2(568, -740)
 
 [node name="GHOST_raccoon" parent="SpawnPoints" instance=ExtResource("22_el7dr")]
 position = Vector2(1357, 69)
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="crate" parent="Decorations" instance=ExtResource("23_ib7gs")]
+position = Vector2(1978, 501)
+
+[node name="crate2" parent="Decorations" instance=ExtResource("23_ib7gs")]
+position = Vector2(1973, 426)
+
+[node name="crate3" parent="Decorations" instance=ExtResource("23_ib7gs")]
+position = Vector2(1936, 487)
+
+[node name="barrel" parent="Decorations" instance=ExtResource("24_m8oiq")]
+position = Vector2(1969, 451)
+
+[node name="barrel2" parent="Decorations" instance=ExtResource("24_m8oiq")]
+position = Vector2(1300, 491)
+
+[node name="barrel3" parent="Decorations" instance=ExtResource("24_m8oiq")]
+position = Vector2(-694, 3)
+
+[node name="barrel4" parent="Decorations" instance=ExtResource("24_m8oiq")]
+position = Vector2(-734, 3)
+
+[node name="barrel5" parent="Decorations" instance=ExtResource("24_m8oiq")]
+position = Vector2(-714, 24)
 
 [editable path="Rooms/StartRoom/QuestItem"]
 [editable path="Rooms/StartRoom/QuestItem2"]
