@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=39 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -18,7 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_7r056"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="16_cslsd"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="17_81ge1"]
+[ext_resource type="PackedScene" uid="uid://m01h6jt48kvk" path="res://decorations/sewer_pipe_long.tscn" id="17_tf68q"]
+[ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="18_38mvj"]
 [ext_resource type="PackedScene" uid="uid://dfsk2ubkhnubj" path="res://scenes/Traps/wall_spikes.tscn" id="18_fs0o6"]
+[ext_resource type="PackedScene" uid="uid://bpkl5kq3kyjsa" path="res://decorations/sewer_grate.tscn" id="21_1lvyh"]
+[ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="22_s2ci2"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -303,6 +307,21 @@ rotation = -1.5707964
 dart_speed = 250.0
 fire_wait_time = 4.0
 
+[node name="SewerPipeLong" parent="Rooms/Room 1/Environment" instance=ExtResource("17_tf68q")]
+position = Vector2(1904, 116)
+
+[node name="SewerPipeMedium" parent="Rooms/Room 1/Environment" instance=ExtResource("18_38mvj")]
+position = Vector2(278, 60.5)
+
+[node name="SewerPipeMedium2" parent="Rooms/Room 1/Environment" instance=ExtResource("18_38mvj")]
+position = Vector2(418, 60.5)
+
+[node name="SewerPipeMedium4" parent="Rooms/Room 1/Environment" instance=ExtResource("18_38mvj")]
+position = Vector2(689, 60.5)
+
+[node name="SewerPipeMedium5" parent="Rooms/Room 1/Environment" instance=ExtResource("18_38mvj")]
+position = Vector2(818, 60.5)
+
 [node name="Room 2" type="Area2D" parent="Rooms"]
 position = Vector2(788, 0)
 collision_layer = 0
@@ -337,6 +356,9 @@ position = Vector2(1872, -272)
 rotation = 1.5707964
 dart_speed = 250.0
 fire_wait_time = 4.0
+
+[node name="SewerGrate" parent="Rooms/Room 2/Environment" instance=ExtResource("21_1lvyh")]
+position = Vector2(1554, -277)
 
 [node name="Room 3" type="Area2D" parent="Rooms"]
 position = Vector2(1415, -37)
@@ -843,6 +865,9 @@ shape = SubResource("RectangleShape2D_1lvyh")
 [node name="TextureRect" parent="Rooms/Room 4/Environment/WallSpikes9" index="3"]
 offset_right = 277.0
 
+[node name="SewerGrate" parent="Rooms/Room 4/Environment" instance=ExtResource("21_1lvyh")]
+position = Vector2(2025, -21)
+
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
 collision_layer = 0
@@ -865,6 +890,15 @@ position = Vector2(2002, 179)
 [node name="Enemies" type="Node2D" parent="Rooms/Room 5"]
 
 [node name="Environment" type="Node2D" parent="Rooms/Room 5"]
+
+[node name="SewerPipeSmall" parent="Rooms/Room 5/Environment" instance=ExtResource("22_s2ci2")]
+position = Vector2(1857, 115)
+
+[node name="SewerPipeSmall2" parent="Rooms/Room 5/Environment" instance=ExtResource("22_s2ci2")]
+position = Vector2(1912, 115)
+
+[node name="SewerPipeSmall3" parent="Rooms/Room 5/Environment" instance=ExtResource("22_s2ci2")]
+position = Vector2(1966, 115)
 
 [node name="GreenKey" parent="Rooms/Room 5" instance=ExtResource("16_7r056")]
 position = Vector2(2028, 475)

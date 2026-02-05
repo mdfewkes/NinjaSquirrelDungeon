@@ -1,10 +1,14 @@
 save quest_currency = 0
+save DO_NOT_USE_THIS_SCRIPT = 1
+save IT_IS_OUT_DATED = 1
+save SORRY_I_DONT_KNOW_HOW_TO_COMMENT_IN_BOBBIN = 1
+save SO_IM_USING_SOME_VARIABLES = 1
 
 trade 3 quest items for 1 HP
 
   if quest_currency >= 3
-	set quest_currency = quest_currency - 3
-	
+    set quest_currency = quest_currency - 3
+    
   else
-	you have {quest_currency} quest items
-	you need {3 - quest_currency} more quest items
+    you have {quest_currency} quest items
+    you need {3 - quest_currency} more quest items
