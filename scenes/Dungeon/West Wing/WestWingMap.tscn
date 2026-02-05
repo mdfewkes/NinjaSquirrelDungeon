@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=85 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_pgfn4"]
 [ext_resource type="PackedScene" uid="uid://vaibohkpftii" path="res://scenes/Hopper/hopper.tscn" id="16_78h8h"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_pvmdh"]
+[ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="17_0d6gi"]
 [ext_resource type="PackedScene" uid="uid://dm6k8pltw5ycl" path="res://scenes/Dartmunk/dartmunk.tscn" id="18_7qi8e"]
 [ext_resource type="PackedScene" uid="uid://cupx5ww4yp6ut" path="res://scenes/Bat/bat.tscn" id="20_dmhob"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="20_m110r"]
@@ -450,6 +451,69 @@ shape = SubResource("RectangleShape2D_pvmdh")
 [node name="Door" parent="Rooms/Room01" instance=ExtResource("13_7nf2g")]
 position = Vector2(577, -153)
 required_key_value = 1
+
+[node name="crate" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(204, -35)
+
+[node name="crate2" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(258, -35)
+
+[node name="crate3" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(313, -35)
+
+[node name="crate4" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(365, -33)
+
+[node name="crate5" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(202, 21)
+
+[node name="crate6" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(256, 21)
+
+[node name="crate7" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(311, 21)
+
+[node name="crate8" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(363, 23)
+
+[node name="crate17" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(423, -34)
+
+[node name="crate18" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(421, 22)
+
+[node name="crate19" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(480, -32)
+
+[node name="crate20" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(478, 24)
+
+[node name="crate9" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(706, -30)
+
+[node name="crate10" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(760, -30)
+
+[node name="crate11" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(815, -30)
+
+[node name="crate12" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(867, -28)
+
+[node name="crate13" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(704, 26)
+
+[node name="crate14" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(758, 26)
+
+[node name="crate15" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(813, 26)
+
+[node name="crate16" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(865, 28)
+
+[node name="crate21" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
+position = Vector2(865, 90)
 
 [node name="Room02" type="Area2D" parent="Rooms"]
 collision_layer = 0

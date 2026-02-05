@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=62 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_cslsd"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_lg7io"]
 [ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/ghost_east_wing.png" id="15_o5awk"]
+[ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="16_0ht87"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_7r056"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="16_cslsd"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_rofay"]
@@ -30,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="22_s2ci2"]
 [ext_resource type="Texture2D" uid="uid://7q07yd8fsalp" path="res://scenes/GhostNPC/sword.png" id="25_aybc4"]
 [ext_resource type="Texture2D" uid="uid://p0am3oafh1eg" path="res://scenes/GhostNPC/wreckage.png" id="26_funrx"]
+[ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="30_thkkl"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -141,6 +143,21 @@ gradient = SubResource("Gradient_08kol")
 fill = 1
 fill_from = Vector2(0.5, 0.90000004)
 
+[sub_resource type="Animation" id="Animation_aiqyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 158)]
+}
+
 [sub_resource type="Animation" id="Animation_aybc4"]
 resource_name = "east_ghost_float"
 length = 2.0
@@ -156,21 +173,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(556, 158), Vector2(556, 149.26), Vector2(556, 158)]
-}
-
-[sub_resource type="Animation" id="Animation_aiqyx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(556, 158)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ht87"]
@@ -374,6 +376,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_0ht87")
 }
 autoplay = "east_ghost_float"
+
+[node name="barrel" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
+position = Vector2(210, 82)
+
+[node name="barrel2" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
+position = Vector2(168, 117)
+
+[node name="barrel3" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
+position = Vector2(133, 155)
 
 [node name="ToEnterance" type="Area2D" parent="Rooms/StartRoom"]
 position = Vector2(180, 900)
@@ -1075,6 +1086,9 @@ offset_right = 277.0
 
 [node name="SewerGrate" parent="Rooms/Room 4/Environment" instance=ExtResource("21_1lvyh")]
 position = Vector2(2025, -21)
+
+[node name="rope" parent="Rooms/Room 4/Environment" instance=ExtResource("30_thkkl")]
+position = Vector2(2104, 33)
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
