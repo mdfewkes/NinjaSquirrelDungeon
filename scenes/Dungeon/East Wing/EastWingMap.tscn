@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=35 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -136,10 +136,17 @@ size = Vector2(1161, 1561)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf68q"]
 size = Vector2(937, 1400)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmef8"]
+size = Vector2(673.0001, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lvyh"]
+size = Vector2(278, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38mvj"]
 size = Vector2(617, 706)
 
 [node name="LevelTemplate" type="Node2D" node_paths=PackedStringArray("spawn_points", "default_spawn")]
+y_sort_enabled = true
 script = ExtResource("1_sed82")
 level_name = "East Wing"
 lighting_gradient = SubResource("Gradient_r5oec")
@@ -184,8 +191,10 @@ z_index = 10
 position = Vector2(582, 574)
 
 [node name="Rooms" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="StartRoom" type="Area2D" parent="Rooms"]
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
@@ -197,6 +206,7 @@ position = Vector2(627.5, 285)
 shape = SubResource("RectangleShape2D_dhtrk")
 
 [node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
+y_sort_enabled = true
 
 [node name="Light3" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_lbstr")]
 position = Vector2(1057, 527)
@@ -783,6 +793,7 @@ collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 4"]
+visible = false
 position = Vector2(1843.5, 526)
 shape = SubResource("RectangleShape2D_tf68q")
 
@@ -811,67 +822,26 @@ fire_wait_time = 4.0
 
 [node name="Environment" type="Node2D" parent="Rooms/Room 4"]
 
-[node name="WallSpikes" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1513, 605)
-rotation = 1.5707964
-
-[node name="WallSpikes2" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1513, 542)
-rotation = 1.5707964
-
-[node name="WallSpikes3" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1513, 480)
-rotation = 1.5707964
-
 [node name="WallSpikes4" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1513, 420)
+position = Vector2(1500, 425)
 rotation = 1.5707964
 
-[node name="WallSpikes5" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 866)
-rotation = 1.5707964
+[node name="CollisionShape2D" parent="Rooms/Room 4/Environment/WallSpikes4/HitBox" index="0"]
+position = Vector2(320.5, 0)
+shape = SubResource("RectangleShape2D_gmef8")
 
-[node name="WallSpikes6" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 803)
-rotation = 1.5707964
-
-[node name="WallSpikes7" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 741)
-rotation = 1.5707964
-
-[node name="WallSpikes8" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 681)
-rotation = 1.5707964
-
-[node name="WallSpikes10" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 1058)
-rotation = 1.5707964
-
-[node name="WallSpikes11" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 996)
-rotation = 1.5707964
-
-[node name="WallSpikes12" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1516, 936)
-rotation = 1.5707964
+[node name="TextureRect" parent="Rooms/Room 4/Environment/WallSpikes4" index="3"]
+offset_right = 660.378
 
 [node name="WallSpikes9" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1563, 1083)
+position = Vector2(1534, 1090)
 
-[node name="WallSpikes13" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1617, 1083)
+[node name="CollisionShape2D" parent="Rooms/Room 4/Environment/WallSpikes9/HitBox" index="0"]
+position = Vector2(123, 0)
+shape = SubResource("RectangleShape2D_1lvyh")
 
-[node name="WallSpikes14" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1694, 1083)
-
-[node name="WallSpikes15" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1748, 1083)
-
-[node name="WallSpikes16" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1815, 1084)
-
-[node name="WallSpikes17" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
-position = Vector2(1869, 1084)
+[node name="TextureRect" parent="Rooms/Room 4/Environment/WallSpikes9" index="3"]
+offset_right = 277.0
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
@@ -907,3 +877,6 @@ position = Vector2(576, 632)
 
 [node name="FromWorldExample" type="Node2D" parent="SpawnPoints"]
 position = Vector2(1236, 148)
+
+[editable path="Rooms/Room 4/Environment/WallSpikes4"]
+[editable path="Rooms/Room 4/Environment/WallSpikes9"]
