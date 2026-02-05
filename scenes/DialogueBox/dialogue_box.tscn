@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ww487p3x5qma"]
+[gd_scene load_steps=9 format=3 uid="uid://ww487p3x5qma"]
 
 [ext_resource type="Script" uid="uid://1bam8snwf6l" path="res://scenes/DialogueBox/dialogue_box.gd" id="1_script"]
 [ext_resource type="Shader" uid="uid://cbb727i2xswws" path="res://scenes/DialogueBox/dialogue_blur.gdshader" id="1_shader"]
+[ext_resource type="Script" uid="uid://65l2udj5s11u" path="res://scenes/DialogueBox/hide_dialog.gd" id="3_lnou1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_blur"]
 shader = ExtResource("1_shader")
@@ -122,6 +123,7 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "Dialogue text goes here..."
 fit_content = true
+script = ExtResource("3_lnou1")
 
 [node name="ChoicesContainer" type="VBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
