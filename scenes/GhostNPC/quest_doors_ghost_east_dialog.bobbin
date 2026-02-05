@@ -1,0 +1,56 @@
+save has_talked_once = 0
+save east_quest_completed = false
+extern has_needed_item
+extern give_reward()
+
+
+if has_talked_once < 1
+    NOW they send another Shadowtail?? Where were you when we needed you!?
+else
+    What, Shadowtail!?
+set has_talked_once = 1
+if has_needed_item
+    My- You returned my Heart to me...
+    Why would you- Why would you do that? I practically bit your head off when you came in here? This is such a... kindness...
+    Um... Right- Here's um, my life essence, please take it with you and... Shadowtail?
+    Don't befall the same fate as me and the rest of 'em.
+    Live.
+    Be the Shadowtail who lives.
+    give_reward()
+    set east_quest_completed = true
+- Quest!
+    if not east_quest_completed
+        WELL... As you may SEE... my Heart has gotten locked up inside one of those Spirit Cage thingies! (IT'S THE ROOM BEHIND ME) GREAT! WONDERFUL! WOW! THANKS, THE FINAL AQUADUCT, LOVE WHAT YOU'VE DONE WITH THE PLACE.
+        Listen Taily, you can take some of my life essence and it'll help you survive this stinking pit of a dungeon. Get my Heart out somehow and I'll help you increase your Health Acorns by 1.
+        You'll need 3 of the Pieces of Junk that we Shadowtail valued in life that have gotten scattered in this dungeon. They don't have to be the Junk that I thought was worthwhile, ANY of the Junk will work... But you'll need 3 to open the Spirit Cage doors.
+        You can ask me about the Junk that I thought was worth something if you want to know what to be on the lookout for. YOU'LL NEED THE CLUES! THIS PLACE IS A LIVING NIGHTMARE FROM WHICH YOU WILL NOT WAKE!!!!!!!!!
+    else
+        Live, Shadowtail. Live.
+- Learn about Artifacts
+    - Artifact 1: MY SWORD
+        GET IT! GET MY SWORD BACK!
+        IT WAS A NICE SWORD!!!!
+    - Artifact 2: SKULL
+        SOMEONE other than the Shadowtail HAVE TO HAVE DIED IN THIS PLACE IT IS SOOOO DEADLY!!!
+        If you can find the skull of any of our enemies who perished in this place... yes... that would bring me MUCH peace.......
+    - Artifact 3: WRECKAGE
+        I DIED MESSING UP ONE OF THEIR TRAPS AHAHAHAHA! TAKE THAT YOU FINAL AQUEDUCT!! I RUINED YOU!!
+        YOU MIGHT HAVE KILLED ME BUT I BROKE YOU FIRST!!! AHAHAHAHAHAHA!
+        Find it.
+        Find the wreckage I created.
+        It is a great trophy to us now.
+- Learn about Ghosts
+    - Ghost of the East
+        "THE LEADER IS DEAD BUT I SHOULD FOLLOW ORDERS AAANNNNYYYWAAYYYY"
+        Stupid. I was so stupid. I- This was the first time I really could have walked away from our order and it would mean I was still alive if I had.
+        Instead I'm dead, but trapped as a ghost, with my stinking 'pride'' intact I suppose...
+    - Ghost of the Entrance
+        "JOIN THE SHADOWTAIL! YOU WON'T PROBABLY DIE IN A SHARP HEAP OF METAL!! IT'LL BE FUUUUUUNNNNN"
+        Look. It's bad for us that our leader is dead. And I have to give out credit for being the first one in here and the first one to die.
+        I just would have preferred if we all could have avoided this fate.
+    - Ghost of the West
+       "WHAT IF EVERYTHING WAS A BIG STUPID JOKE AND NOTHING HAD ANY MEANING AT ALL BECAUSE LIFE WAS A BIG FUN TIME PARTY?????"
+        How that- I was never high enough in our order to be included in the hiring process of new Shadowtail... It is A MYSTERY to me how SOME Squirrels got let into our order OF NINJAS...
+        SOME of the ninjas in our order... are. not. very. ninja-like... idk...
+- Leave
+    ..........OKAY BYE

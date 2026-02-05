@@ -17,7 +17,7 @@ vframes = 8
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("2_xc4qq")]
 position = Vector2(0, -2)
-dialogue_file = "uid://bh10nkombcfw3"
+dialogue_file = "uid://c2lf6i3nnhjma"
 
 [node name="PromptContainer" parent="DialogueTrigger" index="1"]
 offset_left = -41.0

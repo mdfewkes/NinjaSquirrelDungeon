@@ -339,7 +339,7 @@ position = Vector2(1056, 304)
 position = Vector2(879, 119)
 item_value = 5
 
-[node name="Sprite2D" parent="Rooms/StartRoom/Environment/QuestItem5" index="1"]
+[node name="Sprite2D" parent="Rooms/StartRoom/Environment/QuestItem5" index="2"]
 frame = 4
 
 [node name="Bonfire" parent="Rooms/StartRoom" instance=ExtResource("25_mc2jv")]
@@ -710,7 +710,7 @@ position = Vector2(-520, 792)
 position = Vector2(-179, 444)
 item_value = 91
 
-[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem" index="1"]
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem" index="2"]
 visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rooms/WaterRoom/Environment/QuestItem"]
@@ -725,7 +725,7 @@ position = Vector2(-526, 283)
 item_type = 0
 item_value = 97
 
-[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem2" index="1"]
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem2" index="2"]
 frame = 1
 
 [node name="QuestItem3" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
@@ -733,7 +733,7 @@ position = Vector2(-519, 438)
 item_type = 0
 item_value = 97
 
-[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem3" index="1"]
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem3" index="2"]
 frame = 2
 
 [node name="QuestItem4" parent="Rooms/WaterRoom/Environment" instance=ExtResource("30_qktwf")]
@@ -741,7 +741,7 @@ position = Vector2(-513, 350)
 item_type = 0
 item_value = 97
 
-[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem4" index="1"]
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem4" index="2"]
 frame = 6
 
 [node name="BobbinQuest_Item_01" parent="Rooms/WaterRoom/Environment" instance=ExtResource("29_w44yn")]
@@ -751,7 +751,7 @@ position = Vector2(-155, 339)
 position = Vector2(-200, 281)
 item_value = 6
 
-[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem5" index="1"]
+[node name="Sprite2D" parent="Rooms/WaterRoom/Environment/QuestItem5" index="2"]
 frame = 4
 
 [node name="QuestDoor1" parent="Rooms/WaterRoom/Environment" instance=ExtResource("16_2u3nc")]
@@ -790,7 +790,8 @@ collision_mask = 2
 script = ExtResource("20_bc84e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 1"]
-position = Vector2(1804.5, 332.5)
+visible = false
+position = Vector2(-3153, -18)
 shape = SubResource("RectangleShape2D_w44yn")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=81 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="25_006yv"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="27_006yv"]
+[ext_resource type="Texture2D" uid="uid://unw4lr5pc7w6" path="res://scenes/GhostNPC/skull.png" id="27_cc6al"]
 [ext_resource type="Texture2D" uid="uid://cqju4jhmdqcqy" path="res://scenes/GhostNPC/tap.png" id="27_vfetf"]
 [ext_resource type="Texture2D" uid="uid://d2jdcktv85qr1" path="res://scenes/GhostNPC/book.png" id="28_50cqo"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_1foii"]
@@ -757,6 +758,18 @@ offset_top = -9.0
 offset_right = 170.0
 offset_bottom = 62.0
 expand_mode = 0
+
+[node name="QuestItem2" parent="Rooms/Room06/Environment" instance=ExtResource("26_krmrj")]
+modulate = Color(0.90432733, 1.9608799, 1.9608799, 0.45490196)
+position = Vector2(-3702, -3039)
+item_type = 0
+item_value = 97
+
+[node name="Sprite2D" parent="Rooms/Room06/Environment/QuestItem2" index="2"]
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("27_cc6al")
+hframes = 1
+vframes = 1
 
 [node name="Decorations" type="Node2D" parent="Rooms/Room06"]
 
@@ -1509,6 +1522,7 @@ position = Vector2(188, 448)
 [editable path="Rooms/Room06/Environment/FloorSpikes3"]
 [editable path="Rooms/Room06/Environment/FloorSpikes4"]
 [editable path="Rooms/Room06/Environment/FloorSpikes5"]
+[editable path="Rooms/Room06/Environment/QuestItem2"]
 [editable path="Rooms/Room08/Environment/QuestItem2"]
 [editable path="Rooms/Room11/Environment/QuestItem4"]
 [editable path="Rooms/Room12/Environment/QuestItem3"]

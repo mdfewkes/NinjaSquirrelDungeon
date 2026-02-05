@@ -7,8 +7,8 @@ save SO_IM_USING_SOME_VARIABLES = 1
 trade 3 quest items for 1 HP
 
   if quest_currency >= 3
-    set quest_currency = quest_currency - 3
-    
+	set quest_currency = quest_currency - 3
+	
   else
-    you have {quest_currency} quest items
-    you need {3 - quest_currency} more quest items
+	you have {quest_currency} quest items
+	you need {3 - quest_currency} more quest items
