@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dhuxm8tbvdu8"
+path="res://.godot/imported/dartmunk projectile 1.ogg-1ef9e6236d7aa6a47707aac873a5a1ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://dartmunk projectile 1.ogg"
+dest_files=["res://.godot/imported/dartmunk projectile 1.ogg-1ef9e6236d7aa6a47707aac873a5a1ae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
