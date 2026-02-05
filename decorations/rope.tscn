@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgylxwlfrgtjb"]
+
+[ext_resource type="Texture2D" uid="uid://ckltcydxbywuw" path="res://decorations/rope_decoration.png" id="1_hlix2"]
+
+[node name="rope" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hlix2")

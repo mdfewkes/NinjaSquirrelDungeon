@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=51 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_08kol"]
 [ext_resource type="PackedScene" uid="uid://17card0tvwk3" path="res://scenes/PatrollingEnemy/GHOST_raccoon.tscn" id="22_el7dr"]
+[ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="23_8sxvr"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="23_ib7gs"]
 [ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="24_m8oiq"]
 
@@ -566,17 +567,23 @@ position = Vector2(1357, 69)
 
 [node name="Decorations" type="Node2D" parent="."]
 
+[node name="rope" parent="Decorations" instance=ExtResource("23_8sxvr")]
+position = Vector2(-772, 36)
+
+[node name="rope2" parent="Decorations" instance=ExtResource("23_8sxvr")]
+position = Vector2(1910, 29)
+
 [node name="crate" parent="Decorations" instance=ExtResource("23_ib7gs")]
-position = Vector2(1978, 501)
+position = Vector2(1965, 10)
 
 [node name="crate2" parent="Decorations" instance=ExtResource("23_ib7gs")]
-position = Vector2(1973, 426)
+position = Vector2(1960, -65)
 
 [node name="crate3" parent="Decorations" instance=ExtResource("23_ib7gs")]
-position = Vector2(1936, 487)
+position = Vector2(1923, -4)
 
 [node name="barrel" parent="Decorations" instance=ExtResource("24_m8oiq")]
-position = Vector2(1969, 451)
+position = Vector2(1956, -40)
 
 [node name="barrel2" parent="Decorations" instance=ExtResource("24_m8oiq")]
 position = Vector2(1300, 491)
