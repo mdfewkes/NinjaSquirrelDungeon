@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=86 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="21_cw42d"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="21_gk2mf"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="22_gk2mf"]
+[ext_resource type="Texture2D" uid="uid://bv8fd47wc87ka" path="res://scenes/GhostNPC/ratrick.png" id="22_xg67u"]
 [ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="23_me5xx"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="25_006yv"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
@@ -464,15 +465,6 @@ position = Vector2(313, -35)
 [node name="crate4" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
 position = Vector2(365, -33)
 
-[node name="crate5" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
-position = Vector2(202, 21)
-
-[node name="crate6" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
-position = Vector2(256, 21)
-
-[node name="crate7" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
-position = Vector2(311, 21)
-
 [node name="crate8" parent="Rooms/Room01" instance=ExtResource("17_0d6gi")]
 position = Vector2(363, 23)
 
@@ -635,13 +627,26 @@ position = Vector2(755, -991)
 position = Vector2(810, -991)
 
 [node name="crate16" parent="Rooms/Room03/Environment" instance=ExtResource("17_0d6gi")]
-position = Vector2(862, -989)
+position = Vector2(696, -989)
 
 [node name="crate21" parent="Rooms/Room03/Environment" instance=ExtResource("17_0d6gi")]
-position = Vector2(862, -927)
+position = Vector2(862, -886)
 
 [node name="SewerGrate" parent="Rooms/Room03/Environment" instance=ExtResource("14_3kpl8")]
 position = Vector2(682, -1045)
+
+[node name="QuestItem6" parent="Rooms/Room03/Environment" instance=ExtResource("26_krmrj")]
+modulate = Color(1.1510262, 1.6379999, 1.6314831, 1)
+position = Vector2(867, -987)
+item_type = 0
+item_value = 97
+bounce_amount = 10.0
+
+[node name="Sprite2D" parent="Rooms/Room03/Environment/QuestItem6" index="2"]
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("22_xg67u")
+hframes = 1
+vframes = 1
 
 [node name="Decorations" type="Node2D" parent="Rooms/Room03"]
 
@@ -1644,6 +1649,7 @@ position = Vector2(-3229, -1450)
 position = Vector2(188, 448)
 
 [editable path="Rooms/Room01/Environment/QuestItem6"]
+[editable path="Rooms/Room03/Environment/QuestItem6"]
 [editable path="Rooms/Room06/Environment/FloorSpikes2"]
 [editable path="Rooms/Room06/Environment/FloorSpikes3"]
 [editable path="Rooms/Room06/Environment/FloorSpikes4"]

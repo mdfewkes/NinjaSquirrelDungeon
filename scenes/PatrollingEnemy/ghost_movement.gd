@@ -17,7 +17,7 @@ func _ready():
 	start_pos = position
 	prev_pos = position
 
-func _process(delta):
+func _process(_delta):
 	# Calculate offset using sine wave
 	var hoffset = sin(Time.get_ticks_msec() / 1000.0 * hspeed) * hdistance
 	var voffset = sin(Time.get_ticks_msec() / 1000.0 * vspeed) * vdistance

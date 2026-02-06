@@ -8,6 +8,7 @@ extends RichTextLabel
 @onready var dialog_icon_pillow: TextureRect = $"../DialogIconPillow"
 @onready var dialog_icon_tea_pot: TextureRect = $"../DialogIconTeaPot"
 @onready var dialog_icon_tap: TextureRect = $"../DialogIconTap"
+@onready var dialog_icon_doll: TextureRect = $"../DialogIconDoll"
 
 func _process(_delta) ->void:
 	if text.is_empty():
@@ -97,3 +98,11 @@ func _process(_delta) ->void:
 			dialog_icon_pillow.show()
 		else:
 			dialog_icon_pillow.hide()
+			
+		##DOLL
+		var doll1 = "I heard one of the guards saying that they got a shipment OF RATRICK DOLLS!! Can you believe it?? A real Ratrick doll somewhere in this place... Wow..."
+		if text == doll1:
+			dialog_icon_doll.show()
+		else:
+			dialog_icon_doll.hide()
+			

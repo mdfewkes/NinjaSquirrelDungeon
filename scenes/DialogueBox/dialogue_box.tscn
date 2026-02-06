@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ww487p3x5qma"]
+[gd_scene load_steps=19 format=3 uid="uid://ww487p3x5qma"]
 
 [ext_resource type="Script" uid="uid://1bam8snwf6l" path="res://scenes/DialogueBox/dialogue_box.gd" id="1_script"]
 [ext_resource type="Shader" uid="uid://cbb727i2xswws" path="res://scenes/DialogueBox/dialogue_blur.gdshader" id="1_shader"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dshdm4sv37dlm" path="res://scenes/GhostNPC/pillow.png" id="9_cqkov"]
 [ext_resource type="Texture2D" uid="uid://durkhvhl42l0" path="res://scenes/GhostNPC/tea.png" id="10_ff2km"]
 [ext_resource type="Texture2D" uid="uid://cqju4jhmdqcqy" path="res://scenes/GhostNPC/tap.png" id="11_kltnu"]
+[ext_resource type="Texture2D" uid="uid://bv8fd47wc87ka" path="res://scenes/GhostNPC/ratrick.png" id="12_7k5hd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_blur"]
 shader = ExtResource("1_shader")
@@ -187,6 +188,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("11_kltnu")
+
+[node name="DialogIconDoll" type="TextureRect" parent="Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("12_7k5hd")
 
 [node name="TextLabel" type="RichTextLabel" parent="Panel/VBox"]
 custom_minimum_size = Vector2(0, 80)
