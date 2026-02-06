@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqie6v1y53wic"]
+
+[ext_resource type="Texture2D" uid="uid://2sra6k35hyg4" path="res://decorations/Crack96.png" id="1_jhlq1"]
+
+[node name="crack96" type="Sprite2D"]
+texture = ExtResource("1_jhlq1")

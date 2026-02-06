@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=67 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -32,7 +32,10 @@
 [ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="22_s2ci2"]
 [ext_resource type="Texture2D" uid="uid://7q07yd8fsalp" path="res://scenes/GhostNPC/sword.png" id="25_aybc4"]
 [ext_resource type="Texture2D" uid="uid://p0am3oafh1eg" path="res://scenes/GhostNPC/wreckage.png" id="26_funrx"]
+[ext_resource type="PackedScene" uid="uid://27ywljbb2yge" path="res://decorations/blood_splatter_3.tscn" id="26_sgyp7"]
+[ext_resource type="PackedScene" uid="uid://dif47m4g5npmd" path="res://decorations/blood_splatter_1.tscn" id="27_cm3cw"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="30_thkkl"]
+[ext_resource type="PackedScene" uid="uid://cp3csbhb5l2jl" path="res://decorations/blood_splatter_2.tscn" id="32_4jhc3"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -615,6 +618,12 @@ position = Vector2(689, 60.5)
 [node name="SewerPipeMedium5" parent="Rooms/Room 1/Environment" instance=ExtResource("18_38mvj")]
 position = Vector2(818, 60.5)
 
+[node name="blood_splatter_3" parent="Rooms/Room 1/Environment" instance=ExtResource("26_sgyp7")]
+position = Vector2(1667, 324)
+
+[node name="blood_splatter1" parent="Rooms/Room 1/Environment" instance=ExtResource("27_cm3cw")]
+position = Vector2(1891, 239)
+
 [node name="Room 2" type="Area2D" parent="Rooms"]
 position = Vector2(788, 0)
 collision_layer = 0
@@ -1107,6 +1116,9 @@ texture = ExtResource("26_funrx")
 hframes = 1
 vframes = 1
 
+[node name="blood_splatter_2" parent="Rooms/Room 3/Environment" instance=ExtResource("32_4jhc3")]
+position = Vector2(1842, 760)
+
 [node name="Room 4" type="Area2D" parent="Rooms"]
 position = Vector2(2658, 0)
 collision_layer = 0
@@ -1114,7 +1126,6 @@ collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 4"]
-visible = false
 position = Vector2(1843.5, 526)
 shape = SubResource("RectangleShape2D_tf68q")
 
@@ -1168,7 +1179,10 @@ offset_right = 277.0
 position = Vector2(2025, -21)
 
 [node name="rope" parent="Rooms/Room 4/Environment" instance=ExtResource("30_thkkl")]
-position = Vector2(2104, 33)
+position = Vector2(2139, 41)
+
+[node name="barrel" parent="Rooms/Room 4/Environment" instance=ExtResource("16_0ht87")]
+position = Vector2(2174, -6)
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)

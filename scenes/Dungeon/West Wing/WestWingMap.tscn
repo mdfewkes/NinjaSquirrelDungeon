@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://pcavijuj43yr"]
+[gd_scene load_steps=96 format=4 uid="uid://pcavijuj43yr"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_lb4rh"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_r35qb"]
@@ -27,7 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="21_gk2mf"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="22_gk2mf"]
 [ext_resource type="Texture2D" uid="uid://bv8fd47wc87ka" path="res://scenes/GhostNPC/ratrick.png" id="22_xg67u"]
+[ext_resource type="PackedScene" uid="uid://cx3eeeibe2dli" path="res://decorations/crack91.tscn" id="23_cjcqq"]
 [ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="23_me5xx"]
+[ext_resource type="PackedScene" uid="uid://vjdut0t0bqjn" path="res://decorations/cracks.tscn" id="24_iqksg"]
+[ext_resource type="PackedScene" uid="uid://cxxvuhsd8hcjw" path="res://decorations/crack92.tscn" id="25_0uxds"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="25_006yv"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="27_006yv"]
@@ -41,9 +44,16 @@
 [ext_resource type="Texture2D" uid="uid://bk6te4ppn0jmm" path="res://scenes/GhostNPC/ghost_west_wing.png" id="31_181sq"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="31_ljvvc"]
 [ext_resource type="Texture2D" uid="uid://cc5yi0dpadrvt" path="res://scenes/GhostNPC/lantern.png" id="32_3h4sk"]
+[ext_resource type="PackedScene" uid="uid://cp3csbhb5l2jl" path="res://decorations/blood_splatter_2.tscn" id="33_8q0v7"]
+[ext_resource type="PackedScene" uid="uid://b08aywfjn720e" path="res://decorations/crack95.tscn" id="33_mr5wn"]
+[ext_resource type="PackedScene" uid="uid://cdegjx8rmd2y1" path="res://decorations/crack94.tscn" id="35_3c5hn"]
+[ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="36_8q0v7"]
 [ext_resource type="PackedScene" uid="uid://m01h6jt48kvk" path="res://decorations/sewer_pipe_long.tscn" id="36_cr2db"]
 [ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="37_me5xx"]
+[ext_resource type="PackedScene" uid="uid://bqie6v1y53wic" path="res://decorations/crack96.tscn" id="37_mr5wn"]
 [ext_resource type="PackedScene" uid="uid://47kcpmwa6gq4" path="res://scenes/PatrollingEnemy/GHOST_dartmonk.tscn" id="38_ljvvc"]
+[ext_resource type="PackedScene" uid="uid://cgxmk7ssi4p0o" path="res://decorations/crack99.tscn" id="47_iqksg"]
+[ext_resource type="PackedScene" uid="uid://b5p7ud71xmtk6" path="res://decorations/crack98.tscn" id="48_0uxds"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -648,6 +658,15 @@ texture = ExtResource("22_xg67u")
 hframes = 1
 vframes = 1
 
+[node name="Sprite2D" parent="Rooms/Room03/Environment" instance=ExtResource("23_cjcqq")]
+position = Vector2(858, -1054)
+
+[node name="cracks" parent="Rooms/Room03/Environment" instance=ExtResource("24_iqksg")]
+position = Vector2(-803, -731)
+
+[node name="crack92" parent="Rooms/Room03/Environment" instance=ExtResource("25_0uxds")]
+position = Vector2(-729, -1053)
+
 [node name="Decorations" type="Node2D" parent="Rooms/Room03"]
 
 [node name="SewerGrate" parent="Rooms/Room03/Decorations" instance=ExtResource("14_3kpl8")]
@@ -883,7 +902,7 @@ expand_mode = 0
 
 [node name="QuestItem2" parent="Rooms/Room06/Environment" instance=ExtResource("26_krmrj")]
 modulate = Color(0.90432733, 1.9608799, 1.9608799, 0.45490196)
-position = Vector2(-3702, -3039)
+position = Vector2(-3684, -2871)
 item_type = 0
 item_value = 97
 
@@ -892,6 +911,9 @@ scale = Vector2(0.48, 0.48)
 texture = ExtResource("27_cc6al")
 hframes = 1
 vframes = 1
+
+[node name="blood_splatter_2" parent="Rooms/Room06/Environment" instance=ExtResource("33_8q0v7")]
+position = Vector2(-3619, -2896)
 
 [node name="Decorations" type="Node2D" parent="Rooms/Room06"]
 
@@ -952,6 +974,9 @@ position = Vector2(-2777, -895)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room08"]
 
+[node name="crack95" parent="Rooms/Room08/Environment" instance=ExtResource("33_mr5wn")]
+position = Vector2(-3388, -1499)
+
 [node name="QuestItem2" parent="Rooms/Room08/Environment" instance=ExtResource("26_krmrj")]
 position = Vector2(-4524, -363)
 item_type = 0
@@ -962,6 +987,24 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("28_50cqo")
 hframes = 1
 vframes = 1
+
+[node name="cracks" parent="Rooms/Room08/Environment" instance=ExtResource("24_iqksg")]
+position = Vector2(-3611, -2907)
+
+[node name="cracks2" parent="Rooms/Room08/Environment" instance=ExtResource("24_iqksg")]
+position = Vector2(-3612, -2968)
+rotation = 1.8508592
+
+[node name="cracks3" parent="Rooms/Room08/Environment" instance=ExtResource("24_iqksg")]
+position = Vector2(-3550, -2906.0002)
+rotation = 0.712608
+scale = Vector2(1.2641797, 1.5641894)
+
+[node name="crack99" parent="Rooms/Room08/Environment" instance=ExtResource("47_iqksg")]
+position = Vector2(-3819, -21)
+
+[node name="crack93" parent="Rooms/Room08/Environment" instance=ExtResource("36_8q0v7")]
+position = Vector2(-3903, -1126)
 
 [node name="Room09" type="Area2D" parent="Rooms"]
 collision_layer = 0
@@ -990,6 +1033,10 @@ position = Vector2(-3930, 1363)
 [node name="Enemies" type="Node2D" parent="Rooms/Room09"]
 
 [node name="Environment" type="Node2D" parent="Rooms/Room09"]
+
+[node name="crack91" parent="Rooms/Room09/Environment" instance=ExtResource("23_cjcqq")]
+position = Vector2(-4353.0005, 881.00006)
+scale = Vector2(0.39310172, 0.47670808)
 
 [node name="SmallKey" parent="Rooms/Room09" instance=ExtResource("13_60n6h")]
 position = Vector2(-4162, 1173)
@@ -1049,6 +1096,9 @@ peripheral_vision = 1.0
 max_hp = 1
 
 [node name="Environment" type="Node2D" parent="Rooms/Room10"]
+
+[node name="crack94" parent="Rooms/Room10/Environment" instance=ExtResource("35_3c5hn")]
+position = Vector2(56, -2525)
 
 [node name="Room11" type="Area2D" parent="Rooms"]
 collision_layer = 0
@@ -1136,6 +1186,9 @@ texture = ExtResource("30_3h4sk")
 hframes = 1
 vframes = 1
 
+[node name="crack96" parent="Rooms/Room11/Environment" instance=ExtResource("37_mr5wn")]
+position = Vector2(1098, -2531)
+
 [node name="Bonfire" parent="Rooms/Room11" instance=ExtResource("21_cw42d")]
 position = Vector2(1821, -2136)
 
@@ -1178,6 +1231,9 @@ scale = Vector2(0.53, 0.53)
 texture = ExtResource("29_gmq1v")
 hframes = 1
 vframes = 1
+
+[node name="cracks" parent="Rooms/Room12/Environment" instance=ExtResource("24_iqksg")]
+position = Vector2(2909, -3777)
 
 [node name="SmallKey" parent="Rooms/Room12" instance=ExtResource("13_60n6h")]
 position = Vector2(2914, -3806)
@@ -1344,6 +1400,12 @@ position = Vector2(527, -514)
 
 [node name="SewerPipeSmall3" parent="Rooms/Room13/Environment/SewerPipeLong" instance=ExtResource("37_me5xx")]
 position = Vector2(-1171, -514)
+
+[node name="crack99" parent="Rooms/Room13/Environment" instance=ExtResource("47_iqksg")]
+position = Vector2(2936, -3945)
+
+[node name="crack98" parent="Rooms/Room13/Environment" instance=ExtResource("48_0uxds")]
+position = Vector2(-1458, -4382)
 
 [node name="Door" parent="Rooms/Room13" instance=ExtResource("13_7nf2g")]
 position = Vector2(-1664, -4669)
