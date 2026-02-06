@@ -395,14 +395,14 @@ position = Vector2(-740, 531)
 [node name="Environment" type="Node2D" parent="Rooms/Room01"]
 
 [node name="QuestItem6" parent="Rooms/Room01/Environment" instance=ExtResource("26_krmrj")]
-modulate = Color(0.71112716, 2.8066084, 2.8066084, 0.64705884)
+modulate = Color(1.1510262, 1.6379999, 1.6314831, 1)
 position = Vector2(-66, 386)
 item_type = 0
 item_value = 97
 bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room01/Environment/QuestItem6" index="2"]
-scale = Vector2(0.195, 0.195)
+scale = Vector2(0.37, 0.37)
 texture = ExtResource("32_3h4sk")
 hframes = 1
 vframes = 1
@@ -953,9 +953,7 @@ item_type = 0
 item_value = 97
 
 [node name="Sprite2D" parent="Rooms/Room08/Environment/QuestItem2" index="2"]
-modulate = Color(0, 1.45, 1.457, 0.518)
-self_modulate = Color(0, 1.417, 1.424, 1)
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("28_50cqo")
 hframes = 1
 vframes = 1
@@ -1171,7 +1169,7 @@ item_value = 97
 
 [node name="Sprite2D" parent="Rooms/Room12/Environment/QuestItem3" index="2"]
 self_modulate = Color(1.102, 2.033, 2.033, 0.792)
-scale = Vector2(0.29, 0.29)
+scale = Vector2(0.53, 0.53)
 texture = ExtResource("29_gmq1v")
 hframes = 1
 vframes = 1
@@ -1298,12 +1296,10 @@ item_value = 97
 bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2" index="2"]
-visible = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Room13/Environment/QuestItem2"]
-self_modulate = Color(0.71402115, 1.6978991, 1.6978991, 0.69803923)
-scale = Vector2(0.19, 0.19)
+scale = Vector2(0.51, 0.51)
 texture = ExtResource("27_vfetf")
+hframes = 1
+vframes = 1
 
 [node name="West Wing Ghost" parent="Rooms/Room13/Environment" node_paths=PackedStringArray("item_to_give") instance=ExtResource("29_1foii")]
 position = Vector2(-369, -3213)
@@ -1444,15 +1440,13 @@ position = Vector2(-1279, -5879)
 [node name="Environment" type="Node2D" parent="Rooms/Room14"]
 
 [node name="QuestItem5" parent="Rooms/Room14/Environment" instance=ExtResource("26_krmrj")]
-modulate = Color(0, 2.2323458, 2.2450464, 0.635)
-self_modulate = Color(0, 1.9143859, 1.9196348, 0.647)
 position = Vector2(-1953, -5212)
 item_type = 0
 item_value = 97
 bounce_amount = 10.0
 
 [node name="Sprite2D" parent="Rooms/Room14/Environment/QuestItem5" index="2"]
-scale = Vector2(0.28, 0.28)
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("31_006yv")
 hframes = 1
 vframes = 1

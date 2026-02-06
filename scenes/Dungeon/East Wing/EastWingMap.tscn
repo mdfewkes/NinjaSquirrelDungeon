@@ -659,7 +659,6 @@ item_type = 0
 item_value = 97
 
 [node name="Sprite2D" parent="Rooms/Room 2/Environment/QuestItem2" index="2"]
-self_modulate = Color(1.0142629, 1.9306018, 1.4402802, 0.5019608)
 rotation = 1.0646509
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("25_aybc4")
@@ -1103,7 +1102,7 @@ item_value = 97
 
 [node name="Sprite2D" parent="Rooms/Room 3/Environment/QuestItem2" index="2"]
 self_modulate = Color(1.5088992, 2.8066084, 2.8066084, 0.56078434)
-scale = Vector2(0.64, 0.64)
+scale = Vector2(0.84, 0.84)
 texture = ExtResource("26_funrx")
 hframes = 1
 vframes = 1
