@@ -1,3 +1,4 @@
+class_name ChangeSceneButton
 extends Button
 
 @export var path_to_scene: String = ""
