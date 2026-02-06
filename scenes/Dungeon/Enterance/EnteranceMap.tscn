@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=60 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -15,11 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="13_ajdh6"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="13_p32oj"]
 [ext_resource type="PackedScene" uid="uid://cwfms7dbcl64a" path="res://scenes/GhostNPC/ghost_npc_entrance.tscn" id="13_ymxj4"]
+[ext_resource type="PackedScene" uid="uid://bqie6v1y53wic" path="res://decorations/crack96.tscn" id="14_ve4ef"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_dnpav"]
+[ext_resource type="PackedScene" uid="uid://c7hmt2i55od51" path="res://decorations/roots_3.tscn" id="15_ecawk"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_ymxj4"]
+[ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="16_43n1i"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="16_1803i"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_sqdfd"]
 [ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/ghost_entrance.png" id="17_6u3ie"]
+[ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_08kol"]
 [ext_resource type="PackedScene" uid="uid://17card0tvwk3" path="res://scenes/PatrollingEnemy/GHOST_raccoon.tscn" id="22_el7dr"]
@@ -27,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://vjdut0t0bqjn" path="res://decorations/cracks.tscn" id="23_fj2hb"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="23_ib7gs"]
 [ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="24_m8oiq"]
+[ext_resource type="PackedScene" uid="uid://cx3eeeibe2dli" path="res://decorations/crack91.tscn" id="24_ulyiu"]
+[ext_resource type="PackedScene" uid="uid://btgywvf70bs7a" path="res://decorations/roots_2.tscn" id="25_217ws"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -212,6 +218,21 @@ gradient = SubResource("Gradient_el7dr")
 fill = 1
 fill_from = Vector2(0.5, 0.90000004)
 
+[sub_resource type="Animation" id="Animation_p7eab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195, 275)]
+}
+
 [sub_resource type="Animation" id="Animation_cbbql"]
 resource_name = "entrance_ghost_float_2"
 length = 2.0
@@ -227,21 +248,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(195, 275), Vector2(195, 261.11), Vector2(195, 275)]
-}
-
-[sub_resource type="Animation" id="Animation_p7eab"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(195, 275)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ve4ef"]
@@ -402,6 +408,22 @@ position = Vector2(80, 536)
 [node name="Bonfire" parent="Rooms/StartRoom/Environment" instance=ExtResource("13_ajdh6")]
 position = Vector2(904, 164)
 
+[node name="crack96" parent="Rooms/StartRoom/Environment" instance=ExtResource("14_ve4ef")]
+position = Vector2(889, 608)
+
+[node name="roots3" parent="Rooms/StartRoom/Environment" instance=ExtResource("15_ecawk")]
+z_index = 170
+position = Vector2(881.00006, 559)
+scale = Vector2(0.455, 0.455)
+
+[node name="crack93" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_43n1i")]
+position = Vector2(759, 33)
+
+[node name="roots7" parent="Rooms/StartRoom/Environment" instance=ExtResource("17_m7uob")]
+position = Vector2(765.99994, 56)
+rotation = 2.9549804
+scale = Vector2(0.585, 0.585)
+
 [node name="QuestItem" parent="Rooms/StartRoom" instance=ExtResource("16_sqdfd")]
 position = Vector2(294, 424)
 item_type = 0
@@ -542,6 +564,20 @@ position = Vector2(-292, 72)
 [node name="Enemies" type="Node2D" parent="Rooms/WestEnteranceRoom"]
 
 [node name="Environment" type="Node2D" parent="Rooms/WestEnteranceRoom"]
+
+[node name="crack91" parent="Rooms/WestEnteranceRoom/Environment" instance=ExtResource("24_ulyiu")]
+position = Vector2(-267, 490)
+rotation = -3.1415927
+scale = Vector2(1.43, 1.43)
+
+[node name="roots_collider1" type="StaticBody2D" parent="Rooms/WestEnteranceRoom/Environment"]
+
+[node name="roots2" parent="Rooms/WestEnteranceRoom/Environment/roots_collider1" instance=ExtResource("25_217ws")]
+position = Vector2(-269, 378)
+scale = Vector2(0.56, 0.56)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rooms/WestEnteranceRoom/Environment/roots_collider1"]
+polygon = PackedVector2Array(-343, 439, -323, 454, -303, 453, -307, 465, -274, 472, -249, 454, -257, 440, -272, 438, -277, 425, -277, 412, -288, 396, -314, 404, -334, 410)
 
 [node name="ToWest" type="Area2D" parent="Rooms/WestEnteranceRoom"]
 position = Vector2(-916, -104)

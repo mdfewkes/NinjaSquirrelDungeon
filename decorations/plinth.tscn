@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://saswlmxeecct"]
+
+[ext_resource type="Texture2D" uid="uid://dirsa2brmt2eg" path="res://decorations/plinth.png" id="1_47n2r"]
+
+[node name="plinth" type="Sprite2D"]
+texture = ExtResource("1_47n2r")
