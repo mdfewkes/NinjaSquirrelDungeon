@@ -1389,6 +1389,15 @@ position = Vector2(-1696, -6187)
 [node name="Light2" parent="Rooms/Room14/Lights" instance=ExtResource("10_lyrpa")]
 position = Vector2(-1698, -5682)
 
+[node name="Light5" parent="Rooms/Room14/Lights" instance=ExtResource("10_lyrpa")]
+position = Vector2(-1283, -5548)
+
+[node name="Light6" parent="Rooms/Room14/Lights" instance=ExtResource("10_lyrpa")]
+position = Vector2(-1376, -5905)
+
+[node name="Light4" parent="Rooms/Room14/Lights" instance=ExtResource("10_lyrpa")]
+position = Vector2(-2111, -5544)
+
 [node name="Light3" parent="Rooms/Room14/Lights" instance=ExtResource("10_lyrpa")]
 position = Vector2(-1692, -5236)
 lit = false
