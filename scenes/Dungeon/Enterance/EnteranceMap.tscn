@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=64 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -25,7 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/ghost_entrance.png" id="17_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
+[ext_resource type="PackedScene" uid="uid://dvn3i4dod2c7e" path="res://decorations/banner_3.tscn" id="19_r2h0m"]
+[ext_resource type="PackedScene" uid="uid://cqwhj4hl1ftj7" path="res://decorations/water_bowl.tscn" id="19_uisry"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_08kol"]
+[ext_resource type="PackedScene" uid="uid://cx6xtynbo2ccw" path="res://decorations/clutter_1.tscn" id="20_r2h0m"]
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="21_k518y"]
 [ext_resource type="PackedScene" uid="uid://17card0tvwk3" path="res://scenes/PatrollingEnemy/GHOST_raccoon.tscn" id="22_el7dr"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="23_8sxvr"]
 [ext_resource type="PackedScene" uid="uid://vjdut0t0bqjn" path="res://decorations/cracks.tscn" id="23_fj2hb"]
@@ -438,6 +442,25 @@ item_value = 97
 position = Vector2(397, 424)
 item_type = 0
 item_value = 97
+
+[node name="banner3" parent="Rooms/StartRoom" instance=ExtResource("19_r2h0m")]
+position = Vector2(379, 42)
+
+[node name="banner4" parent="Rooms/StartRoom" instance=ExtResource("19_r2h0m")]
+position = Vector2(1011, 42)
+
+[node name="clutter1" parent="Rooms/StartRoom" instance=ExtResource("20_r2h0m")]
+position = Vector2(773, 78)
+scale = Vector2(0.5, 0.71428573)
+
+[node name="water_bowl" parent="Rooms/StartRoom" instance=ExtResource("19_uisry")]
+position = Vector2(906, 57)
+
+[node name="statue" parent="Rooms/StartRoom" instance=ExtResource("21_k518y")]
+position = Vector2(467, 54)
+
+[node name="statue2" parent="Rooms/StartRoom" instance=ExtResource("21_k518y")]
+position = Vector2(696, 54)
 
 [node name="EntranceGhost" parent="Rooms/StartRoom" node_paths=PackedStringArray("item_to_give") instance=ExtResource("16_1803i")]
 position = Vector2(195, 275)

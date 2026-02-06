@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbp6j1ws4koqt"]
+
+[ext_resource type="PackedScene" uid="uid://cqwhj4hl1ftj7" path="res://decorations/water_bowl.tscn" id="1_edc1w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_akg2k"]
+radius = 22.0
+height = 60.0
+
+[node name="water_bowl(collidable)" type="StaticBody2D"]
+
+[node name="water_bowl" parent="." instance=ExtResource("1_edc1w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_akg2k")

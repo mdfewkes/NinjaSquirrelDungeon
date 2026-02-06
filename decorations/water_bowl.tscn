@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqwhj4hl1ftj7"]
+
+[ext_resource type="Texture2D" uid="uid://puegyun4828a" path="res://decorations/water_bowl.png" id="1_rnkn5"]
+
+[node name="water_bowl" type="Sprite2D"]
+texture = ExtResource("1_rnkn5")

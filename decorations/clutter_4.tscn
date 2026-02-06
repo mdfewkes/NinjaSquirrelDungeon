@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpvpsnriafooh"]
+
+[ext_resource type="Texture2D" uid="uid://c7apa0bumwrmv" path="res://decorations/clutter_4.png" id="1_g76jq"]
+
+[node name="clutter4" type="Sprite2D"]
+texture = ExtResource("1_g76jq")

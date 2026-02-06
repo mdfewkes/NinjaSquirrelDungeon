@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cibsk1ikwthkp"]
+
+[ext_resource type="PackedScene" uid="uid://b5porj72uktbm" path="res://decorations/clutter_2.tscn" id="1_g3ey1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_roai7"]
+radius = 13.416404
+height = 62.609882
+
+[node name="clutter2(collidable)" type="StaticBody2D"]
+
+[node name="clutter2" parent="." instance=ExtResource("1_g3ey1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -9)
+rotation = -1.1079365
+shape = SubResource("CapsuleShape2D_roai7")

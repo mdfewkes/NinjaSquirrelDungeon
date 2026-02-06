@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ba8i3dlifdv"]
+
+[ext_resource type="Texture2D" uid="uid://civ1g1yb0lwcb" path="res://decorations/bedroll.png" id="1_6ihrv"]
+
+[node name="bedroll" type="Sprite2D"]
+texture = ExtResource("1_6ihrv")

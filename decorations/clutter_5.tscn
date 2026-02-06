@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cke0q2u167eh6"]
+
+[ext_resource type="Texture2D" uid="uid://cvvwv32gvjl0v" path="res://decorations/clutter_5.png" id="1_2n3l3"]
+
+[node name="clutter5" type="Sprite2D"]
+texture = ExtResource("1_2n3l3")

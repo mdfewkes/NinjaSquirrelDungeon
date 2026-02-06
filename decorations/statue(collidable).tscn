@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://begq4gnsnc25m"]
+
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="1_hy4sl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itu4e"]
+radius = 12.0
+height = 60.0
+
+[node name="statue(collidable)" type="StaticBody2D"]
+
+[node name="statue" parent="." instance=ExtResource("1_hy4sl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
+shape = SubResource("CapsuleShape2D_itu4e")

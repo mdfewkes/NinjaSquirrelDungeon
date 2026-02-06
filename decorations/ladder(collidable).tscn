@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd7nqyh54cw7j"]
+
+[ext_resource type="PackedScene" uid="uid://bdjaw8aopny7o" path="res://decorations/ladder.tscn" id="1_03b6d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3b67"]
+radius = 16.854643
+height = 74.739716
+
+[node name="ladder(collidable)" type="StaticBody2D"]
+
+[node name="ladder" parent="." instance=ExtResource("1_03b6d")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 15)
+rotation = 0.5243889
+scale = Vector2(1.4863601, 1.0725629)
+shape = SubResource("CapsuleShape2D_d3b67")

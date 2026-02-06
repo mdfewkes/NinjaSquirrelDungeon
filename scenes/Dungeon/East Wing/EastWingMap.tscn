@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=81 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="16_cslsd"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_rofay"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="17_3rc66"]
+[ext_resource type="PackedScene" uid="uid://b1ba8i3dlifdv" path="res://decorations/bedroll.tscn" id="17_6gflv"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="17_81ge1"]
 [ext_resource type="PackedScene" uid="uid://m01h6jt48kvk" path="res://decorations/sewer_pipe_long.tscn" id="17_tf68q"]
 [ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="18_38mvj"]
@@ -36,9 +37,19 @@
 [ext_resource type="PackedScene" uid="uid://dif47m4g5npmd" path="res://decorations/blood_splatter_1.tscn" id="27_cm3cw"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="30_thkkl"]
 [ext_resource type="PackedScene" uid="uid://cp3csbhb5l2jl" path="res://decorations/blood_splatter_2.tscn" id="32_4jhc3"]
+[ext_resource type="PackedScene" uid="uid://rtabcy4h15kd" path="res://decorations/banner_2.tscn" id="33_jj1as"]
+[ext_resource type="PackedScene" uid="uid://bwf1x1wtip08t" path="res://decorations/banner_1.tscn" id="33_lvp0c"]
 [ext_resource type="PackedScene" uid="uid://dpobqxabwwexc" path="res://decorations/crack97.tscn" id="35_4jhc3"]
 [ext_resource type="PackedScene" uid="uid://e1v8glrvy6c3" path="res://decorations/roots_1.tscn" id="36_6u05r"]
+[ext_resource type="PackedScene" uid="uid://cbp6j1ws4koqt" path="res://decorations/water_bowl(collidable).tscn" id="37_fkqu1"]
 [ext_resource type="PackedScene" uid="uid://saswlmxeecct" path="res://decorations/plinth.tscn" id="38_6u05r"]
+[ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="38_sjwi5"]
+[ext_resource type="PackedScene" uid="uid://cke0q2u167eh6" path="res://decorations/clutter_5.tscn" id="40_fkqu1"]
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="41_sjwi5"]
+[ext_resource type="PackedScene" uid="uid://beprdb1gnubrt" path="res://decorations/clutter_3(collidable).tscn" id="43_wrdsv"]
+[ext_resource type="PackedScene" uid="uid://cibsk1ikwthkp" path="res://decorations/clutter_2(collidable).tscn" id="44_ydcdb"]
+[ext_resource type="PackedScene" uid="uid://cd7nqyh54cw7j" path="res://decorations/ladder(collidable).tscn" id="45_6gflv"]
+[ext_resource type="PackedScene" uid="uid://bdjaw8aopny7o" path="res://decorations/ladder.tscn" id="46_2280u"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -461,17 +472,18 @@ libraries = {
 }
 autoplay = "east_ghost_float"
 
+[node name="bedroll" parent="Rooms/StartRoom/Environment" instance=ExtResource("17_6gflv")]
+position = Vector2(97, 301)
+rotation = 1.5707964
+
 [node name="barrel" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
-modulate = Color(0.39628983, 0.39628983, 0.39628983, 1)
-position = Vector2(210, 82)
+position = Vector2(104, 184)
 
 [node name="barrel2" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
-modulate = Color(0.39628983, 0.39628983, 0.39628983, 1)
-position = Vector2(168, 117)
+position = Vector2(147, 231)
 
 [node name="barrel3" parent="Rooms/StartRoom/Environment" instance=ExtResource("16_0ht87")]
-modulate = Color(0.39628983, 0.39628983, 0.39628983, 1)
-position = Vector2(133, 155)
+position = Vector2(161, 286)
 
 [node name="ToEnterance" type="Area2D" parent="Rooms/StartRoom"]
 position = Vector2(180, 900)
@@ -1134,6 +1146,9 @@ shape = SubResource("RectangleShape2D_tf68q")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 4"]
 
+[node name="Light4" parent="Rooms/Room 4/Lights" groups=["present_lights"] instance=ExtResource("10_lbstr")]
+position = Vector2(2060, 142)
+
 [node name="Enemies" type="Node2D" parent="Rooms/Room 4"]
 
 [node name="DartTrap" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
@@ -1157,6 +1172,12 @@ fire_wait_time = 4.0
 
 [node name="Environment" type="Node2D" parent="Rooms/Room 4"]
 
+[node name="banner1" parent="Rooms/Room 4/Environment" instance=ExtResource("33_lvp0c")]
+position = Vector2(1933, -39)
+
+[node name="banner2" parent="Rooms/Room 4/Environment" instance=ExtResource("33_lvp0c")]
+position = Vector2(2146, -39)
+
 [node name="WallSpikes4" parent="Rooms/Room 4/Environment" instance=ExtResource("18_fs0o6")]
 position = Vector2(1500, 425)
 rotation = 1.5707964
@@ -1178,15 +1199,6 @@ shape = SubResource("RectangleShape2D_1lvyh")
 [node name="TextureRect" parent="Rooms/Room 4/Environment/WallSpikes9" index="3"]
 offset_right = 277.0
 
-[node name="SewerGrate" parent="Rooms/Room 4/Environment" instance=ExtResource("21_1lvyh")]
-position = Vector2(2025, -21)
-
-[node name="rope" parent="Rooms/Room 4/Environment" instance=ExtResource("30_thkkl")]
-position = Vector2(2139, 41)
-
-[node name="barrel" parent="Rooms/Room 4/Environment" instance=ExtResource("16_0ht87")]
-position = Vector2(2174, -6)
-
 [node name="crack97" parent="Rooms/Room 4/Environment" instance=ExtResource("35_4jhc3")]
 position = Vector2(2245, 822)
 rotation = -1.5707964
@@ -1200,6 +1212,43 @@ rotation = 1.439808
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rooms/Room 4/Environment/roots_collider_2"]
 polygon = PackedVector2Array(2228, 797, 2207, 809, 2164, 788, 2159, 733, 2121, 706, 2077, 709, 2065, 724, 2047, 749, 2073, 776, 2133, 793, 2077, 819, 2028, 784, 1997, 795, 1986, 833, 1991, 864, 2047, 852, 2110, 881, 2140, 876, 2150, 843, 2214, 842, 2241, 846)
+
+[node name="water_bowl(collidable)" parent="Rooms/Room 4/Environment" instance=ExtResource("37_fkqu1")]
+position = Vector2(2042, -9)
+
+[node name="crate" parent="Rooms/Room 4/Environment" instance=ExtResource("38_sjwi5")]
+position = Vector2(2168, 11)
+
+[node name="rope" parent="Rooms/Room 4/Environment" instance=ExtResource("30_thkkl")]
+position = Vector2(2202, 6)
+scale = Vector2(0.55660206, 0.5283323)
+
+[node name="clutter5" parent="Rooms/Room 4/Environment" instance=ExtResource("40_fkqu1")]
+position = Vector2(1953, 12)
+scale = Vector2(0.6751355, 0.8550592)
+
+[node name="statue" parent="Rooms/Room 4/Environment" instance=ExtResource("41_sjwi5")]
+position = Vector2(2181, 199)
+
+[node name="clutter3(collidable)" parent="Rooms/Room 4/Environment" instance=ExtResource("43_wrdsv")]
+position = Vector2(1876, 692)
+
+[node name="statue2" parent="Rooms/Room 4/Environment" instance=ExtResource("41_sjwi5")]
+position = Vector2(2181, 376)
+
+[node name="clutter2(collidable)" parent="Rooms/Room 4/Environment" instance=ExtResource("44_ydcdb")]
+position = Vector2(1923, 888)
+
+[node name="banner3" parent="Rooms/Room 4/Environment" instance=ExtResource("33_jj1as")]
+position = Vector2(2325, 228)
+
+[node name="ladder(collidable)" parent="Rooms/Room 4/Environment" instance=ExtResource("45_6gflv")]
+position = Vector2(1519, 159)
+scale = Vector2(-0.88, 0.6969697)
+
+[node name="ladder" parent="Rooms/Room 4/Environment" instance=ExtResource("46_2280u")]
+position = Vector2(2193, 81)
+scale = Vector2(1, 0.6969697)
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
@@ -1234,7 +1283,7 @@ position = Vector2(1966, 115)
 
 [node name="plinth" parent="Rooms/Room 5/Environment" instance=ExtResource("38_6u05r")]
 position = Vector2(2017, 473)
-scale = Vector2(0.295, 0.295)
+scale = Vector2(0.19, 0.19)
 
 [node name="GreenKey" parent="Rooms/Room 5" instance=ExtResource("16_7r056")]
 position = Vector2(2016, 456)
