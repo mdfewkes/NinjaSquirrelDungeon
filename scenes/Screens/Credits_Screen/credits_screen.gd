@@ -8,7 +8,7 @@ extends Control
 @export_file("*.md", "*.txt", "*.bbcode") var credits_file_path : String
 
 @onready var scrolling_container: VBoxContainer = $ScrollingContainer
-@onready var title_text: RichTextLabel = $ScrollingContainer/Title
+@onready var title_text: Node = $ScrollingContainer/Title
 @onready var final_text: RichTextLabel = $ScrollingContainer/FinalWords
 @onready var credits: RichTextLabel = $ScrollingContainer/Credits
 @onready var title_button: ChangeSceneButton = $ToTitle
@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var nudge := Input.get_axis("move_up", "move_down")
 	var speed := scroll_speed + nudge * nudge_scale
-	var total_height := title_text.size.y + credits.size.y
+	var total_height: float = title_text.size.y + credits.size.y
 	if scrolling_container.position.y > -total_height:
 		scrolling_container.position.y -= speed * delta
 	elif not fading_tween:
