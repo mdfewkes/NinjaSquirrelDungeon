@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://33ku6ocg5c8v"]
+[gd_scene load_steps=11 format=4 uid="uid://33ku6ocg5c8v"]
 
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="1_fe5uk"]
 [ext_resource type="Script" uid="uid://cmjre38k8slo1" path="res://scenes/Screens/Credits_Screen/credits_screen.gd" id="1_ify3x"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_fe5uk"]
+[ext_resource type="Texture2D" uid="uid://choox6diwyye0" path="res://scenes/GhostNPC/west-ghost-ending.png" id="4_j101b"]
+[ext_resource type="Texture2D" uid="uid://dowrn6xmenyvw" path="res://scenes/GhostNPC/entrance-ghost-ending.png" id="5_pa7yt"]
+[ext_resource type="Texture2D" uid="uid://b1ypad2a1rjgn" path="res://scenes/GhostNPC/east-ghost-ending.png" id="6_rd0xc"]
+[ext_resource type="Texture2D" uid="uid://ckww4lwte6ahb" path="res://scenes/GhostNPC/ratrick-ending.png" id="7_j101b"]
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
 offsets = PackedFloat32Array(0.216763, 0.74277455, 1)
@@ -226,6 +230,37 @@ text = "    PYTHON (MONTY) PICTURES LTD in association with MICHAEL WHITE presen
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="ghosts" type="HBoxContainer" parent="ScrollingContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+theme_override_constants/margin_left = 312
+
+[node name="west-ghost" type="TextureRect" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("4_j101b")
+stretch_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+theme_override_constants/margin_left = 27
+
+[node name="entrance-ghost" type="TextureRect" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+texture = ExtResource("5_pa7yt")
+
+[node name="east-ghost" type="TextureRect" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+texture = ExtResource("6_rd0xc")
+
+[node name="ratrick" type="TextureRect" parent="ScrollingContainer/ghosts"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("7_j101b")
+stretch_mode = 3
 
 [node name="FinalWords" type="RichTextLabel" parent="ScrollingContainer"]
 custom_minimum_size = Vector2(0, 648)
