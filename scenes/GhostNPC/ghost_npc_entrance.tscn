@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwfms7dbcl64a"]
 
-[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/ghost_entrance.png" id="1_2t8b5"]
+[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="1_2t8b5"]
 [ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_m0d5j"]
 
 [node name="GhostNPCEntrance" type="Node2D"]

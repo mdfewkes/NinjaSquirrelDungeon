@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d000e70uocowo"]
 
-[ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/ghost_east_wing.png" id="1_ecelx"]
+[ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/Art/ghost_east_wing.png" id="1_ecelx"]
 [ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_k1bhi"]
 
 [node name="GhostNPCEastWing" type="Node2D"]

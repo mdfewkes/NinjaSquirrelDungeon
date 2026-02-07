@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cix5irjenoyg" path="res://scenes/Dartmunk/Art/GHOST_DartmonkV2.png" id="1_cejes"]
 [ext_resource type="Script" uid="uid://ycagodgw07o" path="res://scenes/PatrollingEnemy/ghost_movement.gd" id="2_q823s"]
-[ext_resource type="AudioStream" uid="uid://c470y7ko21xyn" path="res://ghost call 1.ogg" id="3_7xm8x"]
+[ext_resource type="AudioStream" uid="uid://c470y7ko21xyn" path="res://scenes/GhostNPC/Audio/ghost call 1.ogg" id="3_7xm8x"]
 
 [node name="GHOST_dartmonk" type="Node2D"]
 

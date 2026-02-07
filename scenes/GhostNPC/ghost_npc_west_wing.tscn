@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fxsacil12y2n"]
 
-[ext_resource type="Texture2D" uid="uid://bk6te4ppn0jmm" path="res://scenes/GhostNPC/ghost_west_wing.png" id="1_ufib5"]
+[ext_resource type="Texture2D" uid="uid://bk6te4ppn0jmm" path="res://scenes/GhostNPC/Art/ghost_west_wing.png" id="1_ufib5"]
 [ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="2_ht3f3"]
 
 [node name="GhostNPCWestWing" type="Node2D"]
