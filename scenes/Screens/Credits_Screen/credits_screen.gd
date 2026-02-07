@@ -4,6 +4,8 @@ extends Control
 @export var scroll_speed := 50.0
 ## Pixels/second when holding up/down
 @export var nudge_scale := 500.0
+## Extra space after scroll
+@export var ending_buffer := 100
 
 @export_file("*.md", "*.txt", "*.bbcode") var credits_file_path : String
 
@@ -17,7 +19,7 @@ extends Control
 var fading_tween: Tween
 
 func _ready() -> void:
-	scrolling_container.position.y = size.y
+	scrolling_container.position.y = size.y/3
 	if credits_file_path:
 		credits.text = _load_from_file()
 
@@ -25,7 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var nudge := Input.get_axis("move_up", "move_down")
 	var speed := scroll_speed + nudge * nudge_scale
-	var total_height: float = title_text.size.y + credits.size.y + spacing.size.y
+	var total_height: float = title_text.size.y + credits.size.y + spacing.size.y + final_text.size.y + ending_buffer
 	if scrolling_container.position.y > -total_height:
 		scrolling_container.position.y -= speed * delta
 	elif not fading_tween:

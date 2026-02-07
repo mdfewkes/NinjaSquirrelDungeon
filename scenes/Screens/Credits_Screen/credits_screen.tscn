@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="1_fe5uk"]
 [ext_resource type="Script" uid="uid://cmjre38k8slo1" path="res://scenes/Screens/Credits_Screen/credits_screen.gd" id="1_ify3x"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_fe5uk"]
-[ext_resource type="Texture2D" uid="uid://choox6diwyye0" path="res://scenes/GhostNPC/west-ghost-ending.png" id="4_j101b"]
-[ext_resource type="Texture2D" uid="uid://dowrn6xmenyvw" path="res://scenes/GhostNPC/entrance-ghost-ending.png" id="5_pa7yt"]
-[ext_resource type="Texture2D" uid="uid://b1ypad2a1rjgn" path="res://scenes/GhostNPC/east-ghost-ending.png" id="6_rd0xc"]
-[ext_resource type="Texture2D" uid="uid://ckww4lwte6ahb" path="res://scenes/GhostNPC/ratrick-ending.png" id="7_j101b"]
+[ext_resource type="Texture2D" uid="uid://cfdtyc7efffo5" path="res://scenes/GhostNPC/west-ghost-ending.png" id="4_j101b"]
+[ext_resource type="Texture2D" uid="uid://cajirvdhfsnnx" path="res://scenes/GhostNPC/entrance-ghost-ending.png" id="5_pa7yt"]
+[ext_resource type="Texture2D" uid="uid://yegwdj2n25eh" path="res://scenes/GhostNPC/east-ghost-ending.png" id="6_rd0xc"]
+[ext_resource type="Texture2D" uid="uid://cycfjlh3m832a" path="res://scenes/GhostNPC/ratrick-ending.png" id="7_j101b"]
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
 offsets = PackedFloat32Array(0.216763, 0.74277455, 1)
@@ -63,7 +63,9 @@ start_with_focus = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 723.0
+offset_left = 76.0
+offset_right = -76.0
+offset_bottom = 1580.0
 grow_horizontal = 2
 
 [node name="Title" type="TextureRect" parent="ScrollingContainer"]
@@ -78,165 +80,25 @@ layout_mode = 2
 [node name="Credits" type="RichTextLabel" parent="ScrollingContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "    PYTHON (MONTY) PICTURES LTD in association with MICHAEL WHITE presents
-    Monty Python and The Holy Grail
-    Written and performed by:
-    Graham Chapman
-    John Cleese
-    Eric Idle
-    Terry Gilliam
-    Terry Jones
-    Michael Palin
-    Røten nik Atken Di
-    With
-    Connie Booth
-    Carol Cleveland
-    Neil Innes
-    Bee Duffell
-    John Young
-    Rita Davies
-    Wik
-    Also appearing
-    Avril Stewart
-    Sally Kinghorn
-    Alsø wik
-    Also also appearing
-    Mark Zycon
-    Elpseth Cameron
-    Mitsuko Forstater
-    Sandy Johnson
-    Sandy Rose
-    Romilly Squire
-    Joni Flynn
-    Alison Walker
-    Loraine Ward
-    Anna Lanski
-    Sally Coombe
-    Vivienne Macdonald
-    Yvonne Dick
-    Daphne Darling
-    Fiona Gordon
-    Gloria Graham
-    Judy Lams
-    Tracy Sneddon
-    Sylvia Taylor
-    Joyce Pollner
-    Mary Allen
-    Alsø alsø wik
-    Camera Operator HOWARD ATHERTON
-    Camera Focus JOHN WELLARD
-    Camera Assistant ROGER PRATT
-    Camera Grip RAY HALL
-    Chargehand Electrician TERRY HUNT
-    Lighting TELEFILM LIGHTING SERVICE LTD.
-    ANDREW RITCHIE & SON LTD.
-    TECHNICOLOR
-    Rostrum Cameraman KENT HOUSTON
-    Wi nøt trei ą høliday in Sweden this yër?
-    Sound Recordist GARTH MARSHALL
-    Sound Mixer HUGH STRAIN
-    Boom Swinger GODFREY KIRBY
-    Sound Maintenance PHILIP CHUBB
-    Sound Assistant ROBERT DOYLE
-    Dubbing Editor JOHN FOSTER
-    Assistant Editors JOHN MISTER, NICK GASTER,
-    ALEXANDER CAMPBELL ASKEW,
-    BRIAN PEACHEY, DANIELLE KOCHAVI
-    Sound Effects IAN CRAFFORD
-    See the løveli lakes
-    Continuity PENNY EYLES
-    Accountant BRIAN BROCKWELL
-    Production Secretary CHRISTINE WATT
-    Property Buyer BRIAN WINTERBORN
-    Property Master TOM RAEBURN
-    Property Men ROY CANNON, CHARLIE TORBETT,
-    MIKE KENNEDY
-    Catering RON HELLARD LTD.
-    Vehicles BUDGET RENT-A-CAR LTD.
-    The wøndërful telephøne system
-    Assistant Art Director PHILIP COWLAM
-    Construction Manager BILL HARMAN
-    Carpenters NOBBY CLARK, BOB DEVINE
-    Painter GRAHAM BULLOCK
-    Stagehand JIM N. SAVERY
-    Rigger ED SULLIVAN
-    And mäni interesting furry animals
-    With special extra thanks to
-    Charles Knode, Brian McNulty, John Gledhill, Peter Thomson, Sue Cable
-    Valerie Charlton, Drew Mara, Sue Smith, Charlie Coulter, Iain Monaghan,
-    Steve Bannell, Bernard Belanger, Alpine McAlpine, Hugh Boyle, Dave Taylor,
-    Gary Cooper, Peter Saunders, Les Shepherd, Vaughn Millard, Hamish Macinnes,
-    Terry Mosaic, Bawn O'Bernie Ranelagh
-    Made entirely on location in Scotland at Doune Castle, Castle Stalker, Killin, Glen Coe,
-    Arnhall Castle, Bracklinn Falls, Sherriffmuir.
-    By Python (Monty) Pictures Limited, 20, Fitzroy Square, London W.1 England.
-    And completed at Twickenham Film Studios, England.
-    Copyright © 1974 National Film Trustee Company Limited.
-    All rights reserved.
-    The Producers would like to thank The Forestry Commission,
-    Doune Admissions Ltd., Keir & Cawdor Estates, Stirling University
-    and the people of Doune for their help in the making of this film.
-    The characters and incidents portrayed and the names used are fictituous and
-    any similarity to the names, characters, or history of any person is entirely
-    accidental and unintentional.
-    Signed RICHARD M. NIXON
-    Including the majestik møøse
-    Songs NEIL INNES
-    Additional Music DEWOLFE
-    A møøse once bit my sister...
-    Costume Designer HAZEL PETHIG
-    Nø realli! She was Karving her initials øn the møøse with the sharpened end of an interspace tøøthbrush given her by Svenge - her brother-in-law -an Oslo Dentist and star of many Norwegian møvies: \"The Høt Hands of an Oslo Dentist\", \"Fillings of Passion\", \"The Huge Mølars of Horst Nordfink\"...
-    We apologise for the fault in the subtitles. Those responsible have been sacked.
-    Mynd you, møøse bites Kan be pretti nasti...
-    We apologise again for the fault in the subtitles. Those responsible for sacking the people who have just been sacked, have been sacked.
-    Production Manager JULIAN DOYLE
-    Assistant Director GERRY HARRISON
-    Special Effects JOHN HORTON
-    Choreography LEO KHARIBIAN
-    Fight Director & Period Consultant JOHN WALLER
-    Make Up Artists PEARL RASHBASS, PAM LUKE
-    Special Effects Photography JULIAN DOYLE
-    Animation Assistance LUCINDA COWELL, KATE HEPBURN
-    Møøse Trained by YUTTE HERMSGERVØRDENBRØTBØRDA
-    Lighting Cameraman TERRY BEDFORD
-    Special Møøse Effects OLAF PROT
-    Møøse Costumes SIGGI CHURCHILL
-    Designer ROY SMITH
-    Møøse choreographed by HORST PROT III
-    Miss Taylor's Møøses by HENGST DOUGLAS-HOME
-    Møøse trained to mix concrete and sign complicated insurance forms by JURGEN WIGG
-    Editor JOHN HACKNEY
-    Møøses noses wiped by BJØRN IRKESTØM-SLATER WALKER
-    Large møøse on the left hand side of the screen in the third scene from the end, given a thorough grounding in Latin, French and 'O' Level Geography by BO BENN
-    Suggested poses for the møøse suggested by VIC ROTTER
-    Antler-care by LIV THATCHER
-    The directors of the firm hired to continue the credits after the other people had been sacked, wish it to be known that they have just been sacked.
-    The credits have been completed in an entirely different style at great expense and at the last minute
-    Executive Producer JOHN GOLDSTONE & 'RALPH' THE WONDER LLAMA
-    Producer MARK FORSTATER
-    Assisted by EARL J. LLAMA
-    MILT Q. LLAMA III
-    SY LLAMA
-    MERLE Z. LLAMA IX
-    Directed by
-    40 SPECIALLY TRAINED ECUADORIAN MOUNTAIN LLAMAS
-    6 VENEZUELAN RED LLAMAS
-    142 MEXICAN WHOOPING LLAMAS
-    14 NORTH CHILEAN GUANACOS (CLOSELY RELATED TO THE LLAMA)
-    REG LLAMA OF BRIXTON
-    76000 BATTERY LLAMAS FROM 'LLAMA-FRESH' FARMS LTD. NEAR PARAGUAY
-    and
-    TERRY GILLIAM & TERRY JONES"
+text = "A
+Great
+Many
+People"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
+[node name="Spacing2" type="Control" parent="ScrollingContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
 [node name="ghosts" type="HBoxContainer" parent="ScrollingContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollingContainer/ghosts"]
 layout_mode = 2
-theme_override_constants/margin_left = 312
+theme_override_constants/margin_left = 82
 
 [node name="west-ghost" type="TextureRect" parent="ScrollingContainer/ghosts"]
 layout_mode = 2
