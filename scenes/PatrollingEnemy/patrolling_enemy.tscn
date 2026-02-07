@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://5pbl42y2fb2y"]
+[gd_scene load_steps=37 format=3 uid="uid://5pbl42y2fb2y"]
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="5_qc4yg"]
 [ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="5_ukvp4"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="6_ukvp4"]
+[ext_resource type="AudioStream" uid="uid://4kffwm8um4ob" path="res://src/clank-07.wav" id="7_3dyxq"]
 
 [sub_resource type="Animation" id="Animation_cwiwr"]
 length = 0.001
@@ -506,5 +507,9 @@ emission_sphere_radius = 50.0
 linear_accel_min = -150.0
 linear_accel_max = -100.0
 scale_amount_max = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="16"]
+stream = ExtResource("7_3dyxq")
+autoplay = true
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
