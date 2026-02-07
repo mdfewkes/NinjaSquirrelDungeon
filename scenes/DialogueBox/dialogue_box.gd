@@ -97,19 +97,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if _runtime.is_waiting_for_choice():
 		# Navigate choices with W/S or arrow keys
-		if event.is_action_pressed("move_up"):
+		if event.is_action_pressed("ui_up"):
 			_navigate_choices(-1)
 			get_viewport().set_input_as_handled()
-		elif event.is_action_pressed("move_down"):
+		elif event.is_action_pressed("ui_down"):
 			_navigate_choices(1)
 			get_viewport().set_input_as_handled()
 		# Select choice with action key
-		elif event.is_action_pressed("action_1"):
+		elif event.is_action_pressed("interact"):
 			_select_focused_choice()
 			get_viewport().set_input_as_handled()
 	else:
 		# Advance dialogue with action key
-		if event.is_action_pressed("action_1"):
+		if event.is_action_pressed("interact"):
 			_advance()
 			get_viewport().set_input_as_handled()
 

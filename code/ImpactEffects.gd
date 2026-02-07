@@ -77,20 +77,20 @@ func _process(delta: float) -> void:
 
 
 # This is just for testing. We should remove it before release
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.is_echo():
-		match event.physical_keycode:
-			KEY_1:
-				shake(0.5, 0.5)
-			KEY_2:
-				hit(1.0, 0.5, FlashType.Neutral)
-			KEY_3:
-				hit(1.0, 0.5, FlashType.Light)
-			KEY_4:
-				hit(1.0, 0.5, FlashType.Dark)
-			KEY_5:
-				hit(1.0, 0.5, FlashType.Stark)
-			KEY_6:
-				hit(1.0, 0.5, FlashType.Bland)
-			KEY_7:
-				flash(0.4, 0.2, FlashType.Neutral)
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventKey and event.pressed and not event.is_echo():
+		#match event.physical_keycode:
+			#KEY_1:
+				#shake(0.5, 0.5)
+			#KEY_2:
+				#hit(1.0, 0.5, FlashType.Neutral)
+			#KEY_3:
+				#hit(1.0, 0.5, FlashType.Light)
+			#KEY_4:
+				#hit(1.0, 0.5, FlashType.Dark)
+			#KEY_5:
+				#hit(1.0, 0.5, FlashType.Stark)
+			#KEY_6:
+				#hit(1.0, 0.5, FlashType.Bland)
+			#KEY_7:
+				#flash(0.4, 0.2, FlashType.Neutral)

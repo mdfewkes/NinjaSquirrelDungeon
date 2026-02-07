@@ -70,9 +70,9 @@ func _physics_process(delta: float) -> void:
 		input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	if current_state == PlayerState.Falling or current_state == PlayerState.Dying:
 		return
-	if Input.is_action_just_pressed("ui_cancel"):
-		current_state = PlayerState.Dying
-		call_deferred("_die")
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#current_state = PlayerState.Dying
+		#call_deferred("_die")
 
 	match current_state:
 		PlayerState.Move:

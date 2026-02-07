@@ -89,7 +89,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not _player_in_range or _is_interacting:
 		return
 
-	if event.is_action_pressed("action_1"):
+	if event.is_action_pressed("interact"):
 		_start_interaction()
 		get_viewport().set_input_as_handled()
 
