@@ -22,6 +22,9 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = get_node_or_null("AnimationTree")
 @onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
 
+@export var sfx_on_death : AudioSFX
+@export var sfx_on_hurt : AudioSFX
+
 var animation_tree_playback: AnimationNodeStateMachinePlayback
 
 ## Class variables
@@ -86,6 +89,8 @@ func _on_hurt(hit_box: HitBox) -> void:
 	current_hp -= hit_box.damage
 	if current_hp <= 0:
 		_on_death()
+	else:
+		AudioManager.PlaySFX(sfx_on_hurt, self)
 	
 	ImpactEffects.flash(0.4, 0.3, ImpactEffects.FlashType.Neutral)
 	velocity = hit_box.global_position.direction_to(global_position).normalized() * hit_box.knockback * knockback_multiply
@@ -104,4 +109,5 @@ func _on_death() -> void:
 	if animation_player and animation_player.has_animation("death"):
 		animation_player.play("death")
 		await animation_player.animation_finished
+	AudioManager.PlaySFX_at_position(sfx_on_death, self.global_position)
 	queue_free()

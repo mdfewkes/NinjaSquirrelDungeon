@@ -23,6 +23,7 @@ enum States {IDLE, PATROL, CHASE, STUN}
 const DartmunkScene = preload("res://scenes/Dartmunk/dartmunk.tscn")
 ## If set, this sound will be played when the enemy sees you
 @export var sfx_on_chase : AudioSFX
+@export var sfx_move : AudioSFX
 
 ## Onready Variables
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -173,6 +174,9 @@ func knockback_state(delta):
 func at_patrol_point() -> bool:
 	var target_coordinates : Vector2 = get_patrol_point_coords(current_patrol_point)
 	return global_position.distance_to(target_coordinates) <= patrol_point_radius
+
+func play_movement_sfx() -> void:
+	AudioManager.PlaySFX(sfx_move, self);
 
 ## Events
 func _on_hurt(hit_box: HitBox):
