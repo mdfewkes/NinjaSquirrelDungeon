@@ -3,6 +3,8 @@ extends EnemyBase
 @onready var playback := animation_tree.get("parameters/StateMachine/playback") as AnimationNodeStateMachinePlayback
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+@export var sfx_spot_player : AudioSFX
+
 func _ready() -> void:
 	super._ready()
 	
@@ -42,6 +44,13 @@ func is_player_in_range() -> bool:
 	var distance := global_position.distance_to(player.global_position)
 
 	return distance <= view_range * (1.0 - Level.light_level)
+
+func can_see_player() -> bool:
+	var value = super.can_see_player()
+	if value:
+		AudioManager.PlaySFX(sfx_spot_player, self)
+	
+	return value
 
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
