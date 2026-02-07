@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c6414fygx6ytt"]
 
 [ext_resource type="Script" uid="uid://bi2mp27eribvg" path="res://scenes/Boss/chasing_badger.gd" id="1_8hn4e"]
-[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/BadgerSpriteFrames.png" id="2_q2chi"]
+[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/Art/BadgerSpriteFrames.png" id="2_q2chi"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_q2chi"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="4_uvfnk"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu1cul1uy6ju6"]
 
-[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/BadgerSpriteFrames.png" id="1_0m3mp"]
+[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/Art/BadgerSpriteFrames.png" id="1_0m3mp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m3mp"]
 radius = 60.00833
