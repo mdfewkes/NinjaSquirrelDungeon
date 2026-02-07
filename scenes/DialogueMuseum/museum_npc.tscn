@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://qffe4xl1su4e"]
 
 [ext_resource type="Script" uid="uid://2dhkiaoyc38k" path="res://scenes/DialogueMuseum/museum_npc.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/raccoon_sprite_sheet.png" id="2_sprite"]
-[ext_resource type="PackedScene" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="3_dialogue_trigger"]
+[ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/Art/raccoon_sprite_sheet.png" id="2_sprite"]
+[ext_resource type="PackedScene" uid="uid://01w3xxvbl744" path="res://scenes/DialogueTrigger/dialogue_trigger.tscn" id="3_dialogue_trigger"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 

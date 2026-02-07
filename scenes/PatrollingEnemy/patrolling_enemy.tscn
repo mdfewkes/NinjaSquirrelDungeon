@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cavfv6dfhfijq" path="res://scenes/EnemyBase/enemy_base.tscn" id="1_xy51q"]
 [ext_resource type="Script" uid="uid://dow3aeq1g763y" path="res://scenes/PatrollingEnemy/patrolling_enemy.gd" id="2_6d2yr"]
-[ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/raccoon_sprite_sheet.png" id="4_kw6ql"]
+[ext_resource type="Texture2D" uid="uid://de3gi53mo2wui" path="res://scenes/PatrollingEnemy/Art/raccoon_sprite_sheet.png" id="4_kw6ql"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="5_qc4yg"]
 [ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="5_ukvp4"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="6_ukvp4"]
