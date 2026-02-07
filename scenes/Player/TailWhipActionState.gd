@@ -52,7 +52,7 @@ func can_enter() -> bool:
 func _action_enter(_player: Player) -> void:
 	last_whip_time = Time.get_ticks_msec()
 	player = _player
-	player.velocity = Vector2.ZERO
+	#player.velocity = Vector2.ZERO
 	wall_ray = player.get_node("TailHookWallRay")
 	obj_ray = player.get_node("TailHookObjectRay")
 	tail = player.tail

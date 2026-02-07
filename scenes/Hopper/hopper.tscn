@@ -425,9 +425,10 @@ _data = {
 polygon = PackedVector2Array(-5, -51, 3, -54, 10, -49, 13, -41, 13, -29, 8, -23, 0, -21, -6, -24, -9, -29, -9, -38, -8, -47)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebdqv"]
+radius = 40.04997
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kajec"]
-radius = 16.03122
+radius = 34.132095
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_584en"]
 height = 60.0
@@ -499,6 +500,7 @@ position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_ebdqv")
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2(-1, -22)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_lf76h")
@@ -511,7 +513,7 @@ position = Vector2(1, -17)
 shape = SubResource("CircleShape2D_kajec")
 
 [node name="GrabBox" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, -13)
 collision_layer = 8
 collision_mask = 0
 priority = 2

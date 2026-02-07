@@ -240,5 +240,6 @@ func clear_tip_position() -> void:
 	fixed_tip_position = Vector2.INF
 	var player: Player = get_tree().get_first_node_in_group("player")
 	if player:
+		await get_tree().create_timer(0.2).timeout
 		player.set_collision_mask_value(8, true)
 		player.fall_detector.refresh_active_pits()
