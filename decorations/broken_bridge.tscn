@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwc4kxreojn6y"]
+
+[ext_resource type="Texture2D" uid="uid://0r2psan67242" path="res://scenes/Bridge/Art/bridge-log.png" id="1_g88wi"]
+
+[node name="broken_bridge" type="Sprite2D"]
+texture = ExtResource("1_g88wi")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=83 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -45,11 +45,13 @@
 [ext_resource type="PackedScene" uid="uid://saswlmxeecct" path="res://decorations/plinth.tscn" id="38_6u05r"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="38_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://cke0q2u167eh6" path="res://decorations/clutter_5.tscn" id="40_fkqu1"]
-[ext_resource type="PackedScene" uid="uid://c58imjnlphqtw" path="res://decorations/statue.tscn" id="41_sjwi5"]
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="41_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://beprdb1gnubrt" path="res://decorations/clutter_3(collidable).tscn" id="43_wrdsv"]
 [ext_resource type="PackedScene" uid="uid://cibsk1ikwthkp" path="res://decorations/clutter_2(collidable).tscn" id="44_ydcdb"]
 [ext_resource type="PackedScene" uid="uid://cd7nqyh54cw7j" path="res://decorations/ladder(collidable).tscn" id="45_6gflv"]
 [ext_resource type="PackedScene" uid="uid://bdjaw8aopny7o" path="res://decorations/ladder.tscn" id="46_2280u"]
+[ext_resource type="PackedScene" uid="uid://cwc4kxreojn6y" path="res://decorations/broken_bridge.tscn" id="48_7uhjd"]
+[ext_resource type="PackedScene" uid="uid://cnc0f3fiabwpi" path="res://decorations/bridge_log_falling.tscn" id="49_6ba1i"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -1249,6 +1251,21 @@ scale = Vector2(-0.88, 0.6969697)
 [node name="ladder" parent="Rooms/Room 4/Environment" instance=ExtResource("46_2280u")]
 position = Vector2(2193, 81)
 scale = Vector2(1, 0.6969697)
+
+[node name="broken_bridge" parent="Rooms/Room 4/Environment" instance=ExtResource("48_7uhjd")]
+position = Vector2(1631, 314)
+
+[node name="broken_bridge3" parent="Rooms/Room 4/Environment" instance=ExtResource("48_7uhjd")]
+position = Vector2(1816, 315)
+
+[node name="bridge_log_falling" parent="Rooms/Room 4/Environment" instance=ExtResource("49_6ba1i")]
+z_index = -1
+position = Vector2(1781, 306)
+rotation = 0.19454259
+
+[node name="broken_bridge2" parent="Rooms/Room 4/Environment" instance=ExtResource("48_7uhjd")]
+z_index = -1
+position = Vector2(1648, 321)
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
