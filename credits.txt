@@ -2,7 +2,7 @@
 Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, light flickering, various team asset integration, light tweening
 
 [b]Mark Guinn[/b]
-Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, assorted fixes
+Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, bonfire placement, additional level design polish, assorted fixes
 
 [b]Noah Wizard[/b]
 Lore and related opening scroll, dungeon layout / level design (mainly east wing), entrance room with dialog, ghost NPCs, dialog authoring, quest item art / placement / merchant / related gating behavior, slime enemy sprite, quest givers show item picture, environment decoration placement, map color variants, boss arrival message
@@ -23,7 +23,7 @@ Cutscene support with animation and text scroll including action commands, reset
 Dynamic light shadows, pause menu with key Christer Kaitila: Ghost implementation (raccoon and dartmonk), ninja star, decorations (crate, barrell, rope, cracks), additional ninja squirrel sounds, tail segment sprites, player shadow, footprints effect, gamepad fixes toggle, bug fixes (bat health, player damage)
 
 [b]Amanda Stanley[/b]
-Voice sounds (hurt, item consumption, weak/med/strong effort)
+Initial lore (part of core story, tea pot, animal family clan names, basis for dartmunk backstory), voice sounds (hurt, item consumption, weak/med/strong effort)
 
 [b]Dávid Tóth[/b]
 Procedural player tail, initial player art draft, Ratrick the Plush decoration
@@ -35,7 +35,7 @@ Original patrolling bat behavior and initial sprite
 Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with variations)
 
 [b]Mel Fitzgerald[/b]
-Wall banners
+Wall banners with variations, 3 door types (fancy, pointy, wood)
 
 [b]Owen Peery[/b]: 
 Reddish orange tail whip particles
