@@ -17,6 +17,8 @@ extends EnemyBase
 ## Lower than move_threshold creates hysteresis - prevents start/stop flickering.
 @export_range(0.01, 1.0, 0.01, "or_greater") var stop_threshold: float = 0.05
 
+@export var sfx_on_spot_player: AudioSFX
+
 @export_group("Attack")
 ## PackedScene for dart projectile (assign in editor)
 @export var dart_scene: PackedScene
@@ -62,6 +64,7 @@ func _physics_process(delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			if is_player_in_range():
+				AudioManager.PlaySFX(sfx_on_spot_player, self)
 				current_state = State.MOVE
 		State.MOVE:
 			if not is_player_in_range():
@@ -260,6 +263,7 @@ func _on_hurt(hit_box: HitBox) -> void:
 #region Death State
 
 func _on_death() -> void:
+	AudioManager.PlaySFX_at_position(sfx_on_death, self.global_position)
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
 	attack_timer.stop()

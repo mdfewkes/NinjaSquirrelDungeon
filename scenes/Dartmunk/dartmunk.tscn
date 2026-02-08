@@ -1,12 +1,63 @@
-[gd_scene load_steps=30 format=3 uid="uid://dm6k8pltw5ycl"]
+[gd_scene load_steps=44 format=3 uid="uid://dm6k8pltw5ycl"]
 
 [ext_resource type="Script" uid="uid://b8ihjmnf56mes" path="res://scenes/Dartmunk/dartmunk.gd" id="1_dartmunk"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_hurtbox"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="3_4th2j"]
 [ext_resource type="PackedScene" uid="uid://cx5ftmfkycn22" path="res://scenes/Projectiles/dart.tscn" id="3_dart"]
+[ext_resource type="AudioStream" uid="uid://b8r0mmqsnp06e" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 1.ogg" id="3_x1fjy"]
 [ext_resource type="Texture2D" uid="uid://2uxfyxx3rmia" path="res://scenes/Dartmunk/Art/DartmonkV2.png" id="3_xthh6"]
+[ext_resource type="AudioStream" uid="uid://cg87xc8lx8c1k" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 2.ogg" id="4_2mbm2"]
+[ext_resource type="AudioStream" uid="uid://oqpyuq6gyjcf" path="res://scenes/Dartmunk/Audio/dartmunk death.ogg" id="4_6mdee"]
 [ext_resource type="Texture2D" uid="uid://c1o4jd4x8iyvj" path="res://scenes/Dartmunk/Art/dartmunk_placeholder.png" id="4_sprite"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="5_ddnv0"]
+[ext_resource type="AudioStream" uid="uid://cp8lnpal7o2dq" path="res://scenes/Dartmunk/Audio/dartmunk grunt 1.ogg" id="5_x1fjy"]
+[ext_resource type="AudioStream" uid="uid://0s65scam4t0p" path="res://scenes/Dartmunk/Audio/dartmunk grunt 2.ogg" id="6_2mbm2"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="7_01sbj"]
+[ext_resource type="AudioStream" uid="uid://7mr68d0k0gs" path="res://scenes/Dartmunk/Audio/dartmunk grunt 3.ogg" id="7_s4q2v"]
+[ext_resource type="AudioStream" uid="uid://dxgn4o55snlhp" path="res://scenes/Dartmunk/Audio/dartmunk hit hard.ogg" id="8_m6aww"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s4q2v"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("3_x1fjy")
+stream_1/stream = ExtResource("4_2mbm2")
+
+[sub_resource type="Resource" id="Resource_m6aww"]
+script = ExtResource("3_4th2j")
+volume_dB = -3.0
+stream = SubResource("AudioStreamRandomizer_s4q2v")
+max_voices = 2
+steal_strategy = 1
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gyipk"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("4_6mdee")
+
+[sub_resource type="Resource" id="Resource_je6ms"]
+script = ExtResource("3_4th2j")
+stream = SubResource("AudioStreamRandomizer_gyipk")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bf1xk"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("5_x1fjy")
+stream_1/stream = ExtResource("6_2mbm2")
+stream_2/stream = ExtResource("7_s4q2v")
+stream_3/stream = ExtResource("8_m6aww")
+
+[sub_resource type="Resource" id="Resource_ufhqr"]
+script = ExtResource("3_4th2j")
+volume_dB = -3.0
+stream = SubResource("AudioStreamRandomizer_bf1xk")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
 radius = 5.999979
@@ -626,11 +677,14 @@ collision_layer = 4
 collision_mask = 193
 motion_mode = 1
 script = ExtResource("1_dartmunk")
+sfx_on_spot_player = SubResource("Resource_m6aww")
 dart_scene = ExtResource("3_dart")
 view_range = 600.0
 speed = 300
 knockback_multiply = 2
 knockback_friction = 1500
+sfx_on_death = SubResource("Resource_je6ms")
+sfx_on_hurt = SubResource("Resource_ufhqr")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, -46)
