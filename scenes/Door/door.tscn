@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4rtepymi3alj"]
+[gd_scene load_steps=18 format=3 uid="uid://b4rtepymi3alj"]
 
 [ext_resource type="Script" uid="uid://bykcl0f78l5la" path="res://scenes/Door/door.gd" id="1_sik3a"]
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_y0mve"]
@@ -106,6 +106,21 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sik3a"]
 size = Vector2(128, 32)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y0mve"]
+polygon = PackedVector2Array(-115, -15, -131, -15, -130, 29, -115, 28)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mwu56"]
+polygon = PackedVector2Array(-95, -15, -88, -16, -87, 33, -94, 33)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lreon"]
+polygon = PackedVector2Array(-66, -14, -66, 33, -61, 31, -62, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_choin"]
+polygon = PackedVector2Array(-39, -15, -38, 33, -33, 33, -35, -19)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0yfhr"]
+polygon = PackedVector2Array(-14, -16, -13, 35, 1, 35, 0, -20)
+
 [node name="Door" type="StaticBody2D" groups=["persisted"]]
 script = ExtResource("1_sik3a")
 sfx_on_open = SubResource("Resource_choin")
@@ -130,6 +145,26 @@ shape = SubResource("RectangleShape2D_sik3a")
 position = Vector2(64, 0)
 texture = ExtResource("5_y0mve")
 offset = Vector2(-64, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_y0mve")
+occluder_light_mask = 3
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_mwu56")
+occluder_light_mask = 3
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_lreon")
+occluder_light_mask = 3
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_choin")
+occluder_light_mask = 3
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_0yfhr")
+occluder_light_mask = 3
 
 [node name="CloseTimer" type="Timer" parent="."]
 

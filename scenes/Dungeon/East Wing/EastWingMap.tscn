@@ -66,7 +66,7 @@
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
-colors = PackedColorArray(0.14833468, 0.099623166, 0.39291817, 1, 0.97134846, 0.9074668, 0.63094777, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.16253185, 0.019149436, 0.08003498, 1, 0.99545795, 0.6357595, 0.6523052, 1, 1, 1, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81ge1"]
 texture = ExtResource("7_3stkh")
@@ -1176,9 +1176,30 @@ z_index = 1
 position = Vector2(2050, 870)
 
 [node name="Light5" parent="Rooms/Room 4/Lights" groups=["present_lights"] instance=ExtResource("10_lbstr")]
-position = Vector2(2180, 120)
+position = Vector2(2185, 494)
+
+[node name="Light6" parent="Rooms/Room 4/Lights" groups=["present_lights"] instance=ExtResource("10_lbstr")]
+position = Vector2(2121, 38)
 
 [node name="Enemies" type="Node2D" parent="Rooms/Room 4"]
+
+[node name="Light7" parent="Rooms/Room 4/Enemies" groups=["present_lights"] instance=ExtResource("10_lbstr")]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(2360, 1074)
+
+[node name="PointLight2D" parent="Rooms/Room 4/Enemies/Light7" index="1"]
+color = Color(0.50281453, 0.99999994, 0.8089073, 1)
+energy = 2.0
+
+[node name="Light8" parent="Rooms/Room 4/Enemies" groups=["present_lights"] instance=ExtResource("10_lbstr")]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(2392, 1006)
+
+[node name="PointLight2D" parent="Rooms/Room 4/Enemies/Light8" index="1"]
+color = Color(0.50281453, 0.99999994, 0.8089073, 1)
+energy = 2.0
 
 [node name="DartTrap" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
 position = Vector2(1649, -8)
@@ -1297,7 +1318,7 @@ z_index = -1
 position = Vector2(1648, 321)
 
 [node name="LowerDoor" parent="Rooms/Room 4/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("19_3rc66")]
-position = Vector2(2312, 1024)
+position = Vector2(2281, 1025)
 rotation = 1.5707964
 single_use_key = false
 switches = [NodePath("../LowerDoorSwitch")]
@@ -1501,6 +1522,8 @@ position = Vector2(1236, 148)
 [editable path="Rooms/SpiritCage/Environment/QuestDoor3"]
 [editable path="Rooms/Room 2/Environment/QuestItem2"]
 [editable path="Rooms/Room 3/Environment/QuestItem2"]
+[editable path="Rooms/Room 4/Enemies/Light7"]
+[editable path="Rooms/Room 4/Enemies/Light8"]
 [editable path="Rooms/Room 4/Environment/WallSpikes4"]
 [editable path="Rooms/Room 4/Environment/WallSpikes9"]
 [editable path="Rooms/Room 5/Environment/Bridge"]
