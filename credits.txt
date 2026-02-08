@@ -20,7 +20,10 @@ Player animations (idle, 4-way run and attack), sewer wall tileset, boss badget 
 Cutscene support with animation and text scroll including action commands, reset on death, cutscene map triggers, instructions screen, lore screen improvements, initial player death animation
 
 [b]Durondal[/b]
-Dynamic light shadows, pause menu with key Christer Kaitila: Ghost implementation (raccoon and dartmonk), ninja star, decorations (crate, barrell, rope, cracks), additional ninja squirrel sounds, tail segment sprites, player shadow, footprints effect, gamepad fixes toggle, bug fixes (bat health, player damage)
+Dynamic light shadows, pause menu with key 
+
+[b]Christer Kaitila[/b]
+Ghost implementation (raccoon and dartmonk), ninja star, decorations (crate, barrell, rope, cracks), additional ninja squirrel sounds, tail segment sprites, player shadow, footprints effect, gamepad fixes toggle, bug fixes (bat health, player damage)
 
 [b]Amanda Stanley[/b]
 Initial lore (part of core story, tea pot, animal family clan names, basis for dartmunk backstory), voice sounds (hurt, item consumption, weak/med/strong effort)
