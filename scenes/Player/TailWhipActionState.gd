@@ -17,7 +17,7 @@ var hook_obj: Node
 var hook_obj_pull_factor: float
 
 # this controls how far away you can grab the wall
-const RAY_LENGTH = Vector2(450.0, 350.0)
+const RAY_LENGTH = Vector2(500.0, 400.0)
 # this is the initial speed once you start pulling
 const PULL_VELOCITY = 500.0
 # this is the acceleration (px/sec) over the course of the pull
@@ -52,7 +52,7 @@ func can_enter() -> bool:
 func _action_enter(_player: Player) -> void:
 	last_whip_time = Time.get_ticks_msec()
 	player = _player
-	#player.velocity = Vector2.ZERO
+	player.velocity = Vector2.ZERO
 	wall_ray = player.get_node("TailHookWallRay")
 	obj_ray = player.get_node("TailHookObjectRay")
 	tail = player.tail

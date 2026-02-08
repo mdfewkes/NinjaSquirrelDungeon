@@ -2697,6 +2697,7 @@ shader_parameter/smooth_tail = false
 shader_parameter/tail_color_lookup = ExtResource("36_7iww4")
 shader_parameter/cloaked_color_lookup = SubResource("GradientTexture2D_jn0uf")
 shader_parameter/cloaked_amount = 0.0
+shader_parameter/base_opacity = 1.0
 shader_parameter/points = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_1r7mf"]
@@ -2902,7 +2903,7 @@ texture_scale = 7.0
 
 [node name="FallDetector" type="Area2D" parent="."]
 position = Vector2(-5, -12)
-collision_layer = 64
+collision_layer = 0
 collision_mask = 64
 script = ExtResource("68_f8f8k")
 default_animation_enabled = false
