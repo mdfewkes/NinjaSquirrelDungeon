@@ -87,9 +87,24 @@ func PlayUI(sfx: AudioSFX) -> AudioStreamPlayer:
 	freshAudioSource.stream = sfx.stream
 	freshAudioSource.play()
 	
-	_add_voice(sfx, freshAudioSource)
-	
 	freshAudioSource.finished.connect(freshAudioSource.queue_free)
+	
+	# Add Voice
+	sfx.last_play_time = Time.get_ticks_msec()
+	var group = sfx.resource_path if sfx.concurrency_group.is_empty() else sfx.concurrency_group
+	if active_voices.has(group):
+		if active_voices[group].size() < sfx.max_voices:
+			active_voices[group].push_back(freshAudioSource)
+			return
+			
+		if sfx.voice_stealling:
+			if active_voices[group][0]:
+				active_voices[group].pop_front().emit_signal("finished")
+			active_voices[group].push_back(freshAudioSource)
+				
+	else:
+		active_voices[group] = []
+		active_voices[group].push_back(freshAudioSource)
 	
 	return freshAudioSource
 

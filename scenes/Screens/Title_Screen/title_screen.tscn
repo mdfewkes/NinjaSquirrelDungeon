@@ -1,13 +1,38 @@
-[gd_scene load_steps=24 format=4 uid="uid://dnkf7s8eo12ho"]
+[gd_scene load_steps=30 format=4 uid="uid://dnkf7s8eo12ho"]
 
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="2_3n13u"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_wy4sj"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="3_w2epf"]
 [ext_resource type="Texture2D" uid="uid://c2s6pnug1iwmh" path="res://scenes/Main/Logo.png" id="3_xodhh"]
 [ext_resource type="Script" uid="uid://c68f515bhvoqi" path="res://scenes/Player/Tail/tail.gd" id="4_2x54i"]
+[ext_resource type="AudioStream" uid="uid://d4d6jkeepo0m7" path="res://menu game select.ogg" id="4_tt6dw"]
 [ext_resource type="Shader" uid="uid://cd2vp1pfstiv" path="res://scenes/Player/Tail/tail_display.gdshader" id="5_3n13u"]
+[ext_resource type="AudioStream" uid="uid://c6l0bsm8pre5" path="res://menu UI click.ogg" id="5_pyq6a"]
 [ext_resource type="Texture2D" uid="uid://cn2nwwjovjqom" path="res://scenes/Player/Tail/tail_texture.tres" id="6_w2epf"]
 [ext_resource type="Gradient" uid="uid://bwlxagisch16x" path="res://scenes/Player/Tail/tail_gradient2.tres" id="8_pyq6a"]
 [ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="9_x5lud"]
+
+[sub_resource type="Resource" id="Resource_x5lud"]
+script = ExtResource("3_w2epf")
+stream = ExtResource("4_tt6dw")
+max_voices = 2
+trigger_when_out_of_range = true
+concurrency_group = "ui"
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3b8ej"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("5_pyq6a")
+
+[sub_resource type="Resource" id="Resource_b8y57"]
+script = ExtResource("3_w2epf")
+stream = SubResource("AudioStreamRandomizer_3b8ej")
+max_voices = 1
+trigger_when_out_of_range = true
+concurrency_group = "ui"
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
 offsets = PackedFloat32Array(0.216763, 0.74277455, 1)
@@ -19,23 +44,6 @@ width = 500
 height = 500
 fill_from = Vector2(0.7393162, 0.78846157)
 fill_to = Vector2(0, 0)
-
-[sub_resource type="Animation" id="Animation_2x54i"]
-resource_name = "title_tail"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tail/TargetPoints:points")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 2.9903116),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [PackedVector2Array(1.5, 10, 24.25, -13.5, 52.75, -28.25, 73, -56.25, 86.5, -72, 118, -69, 146.75, -80, 178, -64.75), PackedVector2Array(1.5, 10, 28.421839, -11.29138, 46.124138, -37.08448, 68.09196, -59.44023, 85.02759, -73.71782, 115.300575, -69.2454, 141.84195, -79.50919, 175.79138, -65.97701), PackedVector2Array(1.5, 10, 29, -8.75, 48.25, -31.25, 70.25, -53.25, 91.25, -67.25, 115.5, -75.5, 141.5, -82.5, 174.25, -69.75), PackedVector2Array(1.5, 10, 26.25, -21, 54.5, -24.5, 77.75, -45.25, 96.25, -50.25, 116.25, -69.75, 142.5, -85.75, 172.5, -81.5)]
-}
 
 [sub_resource type="Animation" id="Animation_3n13u"]
 length = 0.001
@@ -118,6 +126,23 @@ tracks/2/keys = {
 "values": [Vector2(-128, 0), Vector2(-256, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_2x54i"]
+resource_name = "title_tail"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tail/TargetPoints:points")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9903116),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(1.5, 10, 24.25, -13.5, 52.75, -28.25, 73, -56.25, 86.5, -72, 118, -69, 146.75, -80, 178, -64.75), PackedVector2Array(1.5, 10, 28.421839, -11.29138, 46.124138, -37.08448, 68.09196, -59.44023, 85.02759, -73.71782, 115.300575, -69.2454, 141.84195, -79.50919, 175.79138, -65.97701), PackedVector2Array(1.5, 10, 29, -8.75, 48.25, -31.25, 70.25, -53.25, 91.25, -67.25, 115.5, -75.5, 141.5, -82.5, 174.25, -69.75), PackedVector2Array(1.5, 10, 26.25, -21, 54.5, -24.5, 77.75, -45.25, 96.25, -50.25, 116.25, -69.75, 142.5, -85.75, 172.5, -81.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3n13u"]
 _data = {
 &"RESET": SubResource("Animation_3n13u"),
@@ -149,7 +174,7 @@ fill_to = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_roljh"]
 shader = ExtResource("5_3n13u")
-shader_parameter/tail_color_threshold = 0.009000003687379993
+shader_parameter/tail_color_threshold = 0.00900000368737999
 shader_parameter/tail_color2_threshold = 0.08400000724988
 shader_parameter/tail_outline_threshold = 0.02000000095
 shader_parameter/smooth_tail = true
@@ -212,6 +237,7 @@ text = "Play Game"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dungeon/Enterance/EnteranceMap.tscn"
 start_with_focus = true
+sfx_on_press = SubResource("Resource_x5lud")
 
 [node name="TestSneak" type="Button" parent="."]
 z_index = 9
@@ -224,6 +250,7 @@ text = "Test North Wing
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dungeon/North Wing/NorthWingPhase1.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="TestChase" type="Button" parent="."]
 z_index = 9
@@ -235,6 +262,7 @@ offset_bottom = 296.0
 text = "Test Boss Chase"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dungeon/North Wing/NorthWingPhase2.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="TestDialog" type="Button" parent="."]
 z_index = 9
@@ -246,6 +274,7 @@ offset_bottom = 106.0
 text = "Test Dialog System"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/DialogueMuseum/dialogue_museum.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="TestDartmunk" type="Button" parent="."]
 z_index = 9
@@ -258,6 +287,7 @@ text = "Test Dartmunks
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Dartmunk/dartmunk_arena.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="TestCutscene" type="Button" parent="."]
 z_index = 9
@@ -270,6 +300,7 @@ text = "Test Cutscene
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="World" type="Button" parent="."]
 z_index = 9
@@ -283,6 +314,7 @@ text = "World
 "
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://world.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="CreditsButton" type="Button" parent="."]
 z_index = 9
@@ -296,6 +328,7 @@ focus_neighbor_bottom = NodePath("../HistoryButton")
 text = "Credits"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Credits_Screen/credits_screen.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="HistoryButton" type="Button" parent="."]
 z_index = 9
@@ -308,6 +341,7 @@ focus_neighbor_top = NodePath("../CreditsButton")
 text = "History"
 script = ExtResource("2_wy4sj")
 path_to_scene = "res://scenes/Screens/Lore_Screen/lore_screen.tscn"
+sfx_on_press = SubResource("Resource_b8y57")
 
 [node name="Logo" type="Sprite2D" parent="."]
 z_index = 10

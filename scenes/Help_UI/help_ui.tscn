@@ -1,13 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://s2wiif7o71tk"]
+[gd_scene load_steps=7 format=3 uid="uid://s2wiif7o71tk"]
+
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="1_2g4l1"]
+[ext_resource type="AudioStream" uid="uid://c6l0bsm8pre5" path="res://menu UI click.ogg" id="2_7aaia"]
 
 [sub_resource type="GDScript" id="GDScript_16lmw"]
 script/source = "extends Control
 
 @onready var panel = $Panel
 
+@export var sfx_on_press: AudioSFX
+
 func _on_button_pressed() -> void:
+	AudioManager.PlayUI(sfx_on_press)
 	panel.visible = !panel.visible
 "
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3b8ej"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("2_7aaia")
+
+[sub_resource type="Resource" id="Resource_dvo40"]
+script = ExtResource("1_2g4l1")
+stream = SubResource("AudioStreamRandomizer_3b8ej")
+max_voices = 1
+trigger_when_out_of_range = true
+concurrency_group = "ui"
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="LabelSettings" id="LabelSettings_5p7gr"]
 font_size = 32
@@ -18,6 +38,7 @@ anchors_preset = 0
 offset_right = 32.0
 offset_bottom = 32.0
 script = SubResource("GDScript_16lmw")
+sfx_on_press = SubResource("Resource_dvo40")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

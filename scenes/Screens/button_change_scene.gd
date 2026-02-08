@@ -3,6 +3,7 @@ extends Button
 
 @export var path_to_scene: String = ""
 @export var start_with_focus := false
+@export var sfx_on_press: AudioSFX
 
 func _ready() -> void:
 	pressed.connect(on_pressed)
@@ -10,4 +11,5 @@ func _ready() -> void:
 		grab_focus()
 
 func on_pressed() -> void:
+	AudioManager.PlayUI(sfx_on_press)
 	GameManager.change_scene(path_to_scene)

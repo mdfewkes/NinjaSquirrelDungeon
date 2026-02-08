@@ -3,6 +3,8 @@ extends Control
 @onready var menu_panel: Control = $"."
 @onready var resume_btn: Button = %Resume
 
+@export var sfx_on_press: AudioSFX
+
 func _ready() -> void:
 	get_tree().paused = false
 	menu_panel.hide()
@@ -11,6 +13,7 @@ func _ready() -> void:
 
 
 func set_paused(paused: bool) -> void:
+	AudioManager.PlayUI(sfx_on_press)
 	get_tree().paused = paused
 
 	if paused:

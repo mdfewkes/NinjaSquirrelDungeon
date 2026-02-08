@@ -1,7 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfe0t0s8qmj53"]
+[gd_scene load_steps=12 format=3 uid="uid://dfe0t0s8qmj53"]
 
 [ext_resource type="Shader" uid="uid://yw1tsfm8uofj" path="res://scenes/Pause_UI/pause_menu.gdshader" id="1_hdmo1"]
 [ext_resource type="Script" uid="uid://b58gqu6vjslff" path="res://scenes/Pause_UI/pause_menu.gd" id="1_nwcfo"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_cpjkv"]
+[ext_resource type="AudioStream" uid="uid://c6l0bsm8pre5" path="res://menu UI click.ogg" id="3_n43m7"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3b8ej"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_n43m7")
+
+[sub_resource type="Resource" id="Resource_j5v2j"]
+script = ExtResource("2_cpjkv")
+stream = SubResource("AudioStreamRandomizer_3b8ej")
+max_voices = 1
+trigger_when_out_of_range = true
+concurrency_group = "ui"
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
 shader = ExtResource("1_hdmo1")
@@ -83,6 +99,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nwcfo")
+sfx_on_press = SubResource("Resource_j5v2j")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_nwcfo")
