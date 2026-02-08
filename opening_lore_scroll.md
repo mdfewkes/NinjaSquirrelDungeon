@@ -1,3 +1,5 @@
 Run, last of the Shadowtails.
-Seek the acorn, before winter freezes us! Hasten! But be cautious...
-We do not know who awaits you after the Uprising of the Final Aqueduct.
+Seek the Acorn, before winter freezes us! Hasten! 
+However... You must be cautious... None of our scouts have returned...
+We do not know who won the Uprising of the Final Aqueduct.
+Great challenges may await you as you enter the Old Sewer.

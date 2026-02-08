@@ -25,12 +25,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button2" type="Button" parent="LoreTextParent"]
+[node name="BackgroundForReadability" type="Button" parent="LoreTextParent"]
 layout_mode = 0
 offset_left = -14.0
 offset_top = 562.0
 offset_right = 1209.0
-offset_bottom = 946.0
+offset_bottom = 1183.0
+disabled = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LoreTextParent"]
 visible = false
