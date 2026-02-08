@@ -422,7 +422,6 @@ navigation_polygon = SubResource("NavigationPolygon_3jbha")
 [node name="Player" parent="." instance=ExtResource("8_hncci")]
 z_index = 10
 position = Vector2(582, 574)
-god_mode = true
 
 [node name="Rooms" type="Node2D" parent="."]
 y_sort_enabled = true
