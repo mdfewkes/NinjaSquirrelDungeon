@@ -82,8 +82,8 @@ func cast_hook_ray(_dir: Vector2) -> void:
 	var dir: Vector2 = player.animation_tree.get("parameters/StateMachine/TailWhipAction/blend_position")
 	dir.y = -dir.y
 	
-	wall_ray.target_position = dir * RAY_LENGTH
-	obj_ray.target_position = dir * RAY_LENGTH
+	wall_ray.target_position = dir.normalized() * RAY_LENGTH
+	obj_ray.target_position = dir.normalized() * RAY_LENGTH
 
 
 func start_hook_pull() -> void:
