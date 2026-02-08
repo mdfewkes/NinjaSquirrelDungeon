@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="1_fe5uk"]
 [ext_resource type="Script" uid="uid://cmjre38k8slo1" path="res://scenes/Screens/Credits_Screen/credits_screen.gd" id="1_ify3x"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_fe5uk"]
-[ext_resource type="Texture2D" uid="uid://cfdtyc7efffo5" path="res://scenes/GhostNPC/west-ghost-ending.png" id="4_j101b"]
-[ext_resource type="Texture2D" uid="uid://cajirvdhfsnnx" path="res://scenes/GhostNPC/entrance-ghost-ending.png" id="5_pa7yt"]
-[ext_resource type="Texture2D" uid="uid://yegwdj2n25eh" path="res://scenes/GhostNPC/east-ghost-ending.png" id="6_rd0xc"]
-[ext_resource type="Texture2D" uid="uid://cycfjlh3m832a" path="res://scenes/GhostNPC/ratrick-ending.png" id="7_j101b"]
+[ext_resource type="Texture2D" uid="uid://cfdtyc7efffo5" path="res://scenes/GhostNPC/Art/west-ghost-ending.png" id="4_j101b"]
+[ext_resource type="Texture2D" uid="uid://cajirvdhfsnnx" path="res://scenes/GhostNPC/Art/entrance-ghost-ending.png" id="5_pa7yt"]
+[ext_resource type="Texture2D" uid="uid://yegwdj2n25eh" path="res://scenes/GhostNPC/Art/east-ghost-ending.png" id="6_rd0xc"]
+[ext_resource type="Texture2D" uid="uid://cycfjlh3m832a" path="res://scenes/GhostNPC/Art/ratrick-ending.png" id="7_j101b"]
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
 offsets = PackedFloat32Array(0.216763, 0.74277455, 1)

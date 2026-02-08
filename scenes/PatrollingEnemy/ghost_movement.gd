@@ -10,12 +10,16 @@ extends Sprite2D
 @export var vspeed = 3.5
 @export var vdistance = 10.0
 
+@export var sfx_ghost_sound: AudioSFX
+
 var start_pos: Vector2
 var prev_pos: Vector2
 
 func _ready():
 	start_pos = position
 	prev_pos = position
+	
+	AudioManager.PlaySFX(sfx_ghost_sound, self)
 
 func _process(_delta):
 	# Calculate offset using sine wave
@@ -37,4 +41,6 @@ func _process(_delta):
 			set_frame(lastFrame)	
 	# remember so we can compare to determine direction moved
 	prev_pos = position
+	if randf() <= 0.001:
+		AudioManager.PlaySFX(sfx_ghost_sound, self)
 	
