@@ -45,6 +45,7 @@ func _on_body_entered_player_trigger(player: Node2D) -> void:
 
 		var cam := player.get_node("Camera2D")
 		tween.tween_property(cam, "position", Vector2(-300, 0), 0.5)
+		tween.parallel().tween_property(self, 'light_modifier', 0.5, 2.0)
 
 
 func _on_hitbox_entered_boss_trigger(hit_box: Area2D) -> void:
