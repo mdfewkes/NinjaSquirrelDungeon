@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=65 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -22,14 +22,14 @@
 [ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="16_43n1i"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="16_1803i"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_sqdfd"]
-[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
+[ext_resource type="Texture2D" uid="uid://dbvkfutesvdg1" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://dvn3i4dod2c7e" path="res://decorations/banner_3.tscn" id="19_r2h0m"]
 [ext_resource type="PackedScene" uid="uid://cqwhj4hl1ftj7" path="res://decorations/water_bowl.tscn" id="19_uisry"]
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_08kol"]
 [ext_resource type="PackedScene" uid="uid://cx6xtynbo2ccw" path="res://decorations/clutter_1.tscn" id="20_r2h0m"]
-[ext_resource type="PackedScene" uid="uid://c58imjnlphqtw" path="res://decorations/statue.tscn" id="21_k518y"]
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="21_k518y"]
 [ext_resource type="PackedScene" uid="uid://17card0tvwk3" path="res://scenes/PatrollingEnemy/GHOST_raccoon.tscn" id="22_el7dr"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="23_8sxvr"]
 [ext_resource type="PackedScene" uid="uid://vjdut0t0bqjn" path="res://decorations/cracks.tscn" id="23_fj2hb"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="24_m8oiq"]
 [ext_resource type="PackedScene" uid="uid://cx3eeeibe2dli" path="res://decorations/crack91.tscn" id="24_ulyiu"]
 [ext_resource type="PackedScene" uid="uid://btgywvf70bs7a" path="res://decorations/roots_2.tscn" id="25_217ws"]
+[ext_resource type="Texture2D" uid="uid://b52qhreok8ksi" path="res://decorations/gate_fancy.png" id="26_k518y"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -428,21 +429,6 @@ position = Vector2(765.99994, 56)
 rotation = 2.9549804
 scale = Vector2(0.585, 0.585)
 
-[node name="QuestItem" parent="Rooms/StartRoom" instance=ExtResource("16_sqdfd")]
-position = Vector2(294, 424)
-item_type = 0
-item_value = 97
-
-[node name="QuestItem2" parent="Rooms/StartRoom" instance=ExtResource("16_sqdfd")]
-position = Vector2(197, 420)
-item_type = 0
-item_value = 97
-
-[node name="QuestItem3" parent="Rooms/StartRoom" instance=ExtResource("16_sqdfd")]
-position = Vector2(397, 424)
-item_type = 0
-item_value = 97
-
 [node name="banner3" parent="Rooms/StartRoom" instance=ExtResource("19_r2h0m")]
 position = Vector2(379, 42)
 
@@ -517,10 +503,16 @@ modulate = Color(0.43529412, 1, 0.49803922, 1)
 position = Vector2(580, -200)
 required_key_value = 10
 
+[node name="Sprite2D" parent="Rooms/FinalHallwayRoom/Environment/WestDoor" index="3"]
+texture = ExtResource("26_k518y")
+
 [node name="EastDoor" parent="Rooms/FinalHallwayRoom/Environment" instance=ExtResource("13_p32oj")]
 modulate = Color(0.2713101, 0.8626709, 0.4886579, 1)
 position = Vector2(572, -548)
 required_key_value = 11
+
+[node name="Sprite2D" parent="Rooms/FinalHallwayRoom/Environment/EastDoor" index="3"]
+texture = ExtResource("26_k518y")
 
 [node name="ToFinal" type="Area2D" parent="Rooms/FinalHallwayRoom"]
 position = Vector2(164, -752)
@@ -744,11 +736,10 @@ position = Vector2(-734, 3)
 [node name="barrel5" parent="Decorations" instance=ExtResource("24_m8oiq")]
 position = Vector2(-714, 24)
 
-[editable path="Rooms/StartRoom/QuestItem"]
-[editable path="Rooms/StartRoom/QuestItem2"]
-[editable path="Rooms/StartRoom/QuestItem3"]
 [editable path="Rooms/StartRoom/EntranceGhost"]
 [editable path="Rooms/StartRoom/EntranceGhost/DialogueTrigger"]
+[editable path="Rooms/FinalHallwayRoom/Environment/WestDoor"]
+[editable path="Rooms/FinalHallwayRoom/Environment/EastDoor"]
 [editable path="Rooms/QuestDoorRoom/QuestItem"]
 [editable path="Rooms/QuestDoorRoom/QuestDoor1"]
 [editable path="Rooms/QuestDoorRoom/QuestDoor2"]
