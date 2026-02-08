@@ -1,9 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnh13635nxntx"]
+[gd_scene load_steps=8 format=3 uid="uid://cnh13635nxntx"]
 
 [ext_resource type="Script" uid="uid://bevja8c5uu4l5" path="res://scenes/Switch/switch_trigger.gd" id="1_mlmra"]
+[ext_resource type="Texture2D" uid="uid://do33kvwmjvlcs" path="res://scenes/Switch/Art/button.png" id="2_qy6kl"]
+[ext_resource type="PackedScene" uid="uid://ckfyuwake6yu8" path="res://scenes/Effects/smoke_burst.tscn" id="3_8d57m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ih5f"]
 size = Vector2(60, 40)
+
+[sub_resource type="Animation" id="Animation_8d57m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeBurst:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dvpsr"]
+resource_name = "triggered"
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeBurst:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hg4u"]
+_data = {
+&"RESET": SubResource("Animation_8d57m"),
+&"triggered": SubResource("Animation_dvpsr")
+}
 
 [node name="WallSwitch" type="Area2D"]
 collision_layer = 0
@@ -11,23 +74,23 @@ collision_mask = 2
 script = ExtResource("1_mlmra")
 player_trigger = false
 
+[node name="SmokeBurst" parent="." instance=ExtResource("3_8d57m")]
+rotation = -3.1415925
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ih5f")
 
-[node name="PleaseSwapMeOutWithSomethingPretty" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -20.0
-offset_right = 5.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.2)
-metadata/_edit_use_anchors_ = true
-
 [node name="ResetTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7hg4u")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qy6kl")
+hframes = 4
+frame = 3

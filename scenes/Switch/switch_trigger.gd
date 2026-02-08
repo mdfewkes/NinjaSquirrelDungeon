@@ -18,14 +18,17 @@ signal triggered(trigger: SwitchTrigger)
 @export var sfx_on_trigger: AudioSFX = preload("res://scenes/Switch/default_switch_sfx.tres")
 
 @onready var reset_timer: Timer = $ResetTimer
-
+var animation_player: AnimationPlayer
 
 func _ready() -> void:
+	animation_player = get_node_or_null("AnimationPlayer")
 	connect("area_entered", _on_area_entered)
 	connect("body_entered", _on_body_entered)
 	if reset_timer:
 		reset_timer.connect("timeout", _on_reset_timeout)
-	enable()
+	if invisible:
+		hide()
+	monitoring = true
 
 
 func _on_body_entered(body: Node2D):
@@ -47,21 +50,20 @@ func _on_reset_timeout():
 func trigger() -> void:
 	disable()
 	emit_signal("triggered", self)
+	if animation_player:
+		animation_player.play("triggered")
 	if sfx_on_trigger:
 		AudioManager.PlaySFX(sfx_on_trigger, self)
 
 
 func enable():
 	monitoring = true
-	# TODO: we'll probably want this to be an animation player for more complex press animation states
-	if invisible:
-		hide()
-	else:
-		show()
+	if animation_player:
+		animation_player.play("RESET")
+
 
 
 func disable():
 	monitoring = false
-	hide()
 	if reset_timer:
 		reset_timer.start()
