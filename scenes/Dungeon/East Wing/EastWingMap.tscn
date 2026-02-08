@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://saswlmxeecct" path="res://decorations/plinth.tscn" id="38_6u05r"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="38_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://cke0q2u167eh6" path="res://decorations/clutter_5.tscn" id="40_fkqu1"]
-[ext_resource type="PackedScene" uid="uid://c58imjnlphqtw" path="res://decorations/statue.tscn" id="41_sjwi5"]
+[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="41_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://beprdb1gnubrt" path="res://decorations/clutter_3(collidable).tscn" id="43_wrdsv"]
 [ext_resource type="PackedScene" uid="uid://cibsk1ikwthkp" path="res://decorations/clutter_2(collidable).tscn" id="44_ydcdb"]
 [ext_resource type="PackedScene" uid="uid://cd7nqyh54cw7j" path="res://decorations/ladder(collidable).tscn" id="45_6gflv"]
