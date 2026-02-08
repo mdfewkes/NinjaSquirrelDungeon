@@ -1,8 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnh13635nxntx"]
+[gd_scene load_steps=10 format=3 uid="uid://cnh13635nxntx"]
 
 [ext_resource type="Script" uid="uid://bevja8c5uu4l5" path="res://scenes/Switch/switch_trigger.gd" id="1_mlmra"]
 [ext_resource type="Texture2D" uid="uid://do33kvwmjvlcs" path="res://scenes/Switch/Art/button.png" id="2_qy6kl"]
 [ext_resource type="PackedScene" uid="uid://ckfyuwake6yu8" path="res://scenes/Effects/smoke_burst.tscn" id="3_8d57m"]
+
+[sub_resource type="Gradient" id="Gradient_8d57m"]
+offsets = PackedFloat32Array(0, 0.80924857)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvpsr"]
+gradient = SubResource("Gradient_8d57m")
+width = 32
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ih5f"]
 size = Vector2(60, 40)
@@ -76,6 +88,11 @@ player_trigger = false
 
 [node name="SmokeBurst" parent="." instance=ExtResource("3_8d57m")]
 rotation = -3.1415925
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
+energy = 0.5
+texture = SubResource("GradientTexture2D_dvpsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ih5f")
