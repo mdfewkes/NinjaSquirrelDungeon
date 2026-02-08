@@ -1,13 +1,34 @@
-[gd_scene load_steps=22 format=3 uid="uid://vaibohkpftii"]
+[gd_scene load_steps=29 format=3 uid="uid://vaibohkpftii"]
 
 [ext_resource type="Script" uid="uid://dbnk78nmnqcue" path="res://scenes/Hopper/hopper.gd" id="1_qld5t"]
 [ext_resource type="Texture2D" uid="uid://hcla4vwsqm6x" path="res://temp assets/slime_skull.png" id="2_1crdu"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_vntx1"]
+[ext_resource type="AudioStream" uid="uid://xtvfbd30ivcx" path="res://scenes/Hopper/Audio/Splash1.ogg" id="3_ebdqv"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_gw15p"]
+[ext_resource type="AudioStream" uid="uid://cqplc6u4pa7hg" path="res://scenes/Hopper/Audio/Splash2.ogg" id="4_kajec"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_lf76h"]
 [ext_resource type="Texture2D" uid="uid://dh07adr4abtjg" path="res://scenes/Hopper/Art/hoppershadow.png" id="5_rgrea"]
+[ext_resource type="AudioStream" uid="uid://yqk3pm5uc2os" path="res://scenes/Hopper/Audio/Splash4.ogg" id="6_hyt3b"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="6_ye5xp"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="7_1crdu"]
-[ext_resource type="AudioStream" uid="uid://l77hcbwgtgid" path="res://temp assets/Splash3.ogg" id="8_gw15p"]
+[ext_resource type="AudioStream" uid="uid://6hmhiruj82cv" path="res://scenes/Hopper/Audio/Splash5.ogg" id="7_fckge"]
+[ext_resource type="AudioStream" uid="uid://l77hcbwgtgid" path="res://scenes/Hopper/Audio/Splash3.ogg" id="8_gw15p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gicnr"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 5
+stream_0/stream = ExtResource("3_ebdqv")
+stream_1/stream = ExtResource("4_kajec")
+stream_2/stream = ExtResource("8_gw15p")
+stream_3/stream = ExtResource("6_hyt3b")
+stream_4/stream = ExtResource("7_fckge")
+
+[sub_resource type="Resource" id="Resource_8mf7f"]
+script = ExtResource("2_vntx1")
+volume_dB = -3.0
+stream = SubResource("AudioStreamRandomizer_gicnr")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uatfv"]
 radius = 12.0
@@ -88,6 +109,23 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 0)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_movement_sfx"
+}, {
+"args": [],
+"method": &"play_movement_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gicnr"]
 resource_name = "Hop_Short"
@@ -152,6 +190,23 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_movement_sfx"
+}, {
+"args": [],
+"method": &"play_movement_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hyt3b"]
@@ -442,9 +497,12 @@ self_modulate = Color(4.954765, 4.954765, 4.954765, 0.4627451)
 collision_layer = 4
 collision_mask = 193
 script = ExtResource("1_qld5t")
+sfx_on_move = SubResource("Resource_8mf7f")
 knockback_multiply = 2
 knockback_friction = 500
 max_hp = 7
+sfx_on_death = SubResource("Resource_8mf7f")
+sfx_on_hurt = SubResource("Resource_8mf7f")
 metadata/_custom_type_script = "uid://chhuy70a810pp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -530,7 +588,3 @@ position = Vector2(-9, -22)
 gravity = Vector2(0, 164)
 linear_accel_max = -78.81
 color_initial_ramp = SubResource("Gradient_1crdu")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_gw15p")
-autoplay = true

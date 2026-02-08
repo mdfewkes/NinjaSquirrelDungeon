@@ -13,6 +13,8 @@ var hop_end:Vector2
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+@export var sfx_on_move: AudioSFX
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	if current_hp <= 0:
@@ -63,6 +65,9 @@ func stun_state(delta):
 	if velocity.length() <= 0.01:
 		velocity = Vector2.ZERO
 		state = States.IDLE
+
+func play_movement_sfx() -> void:
+	AudioManager.PlaySFX(sfx_on_move, self)
 
 func _on_hurt(hit_box: HitBox) -> void:
 	super._on_hurt(hit_box)
