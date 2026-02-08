@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_hurtbox"]
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="3_4th2j"]
 [ext_resource type="PackedScene" uid="uid://cx5ftmfkycn22" path="res://scenes/Projectiles/dart.tscn" id="3_dart"]
-[ext_resource type="AudioStream" uid="uid://b8r0mmqsnp06e" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 1.ogg" id="3_x1fjy"]
-[ext_resource type="Texture2D" uid="uid://2uxfyxx3rmia" path="res://scenes/Dartmunk/Art/DartmonkV2.png" id="3_xthh6"]
-[ext_resource type="AudioStream" uid="uid://cg87xc8lx8c1k" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 2.ogg" id="4_2mbm2"]
-[ext_resource type="AudioStream" uid="uid://oqpyuq6gyjcf" path="res://scenes/Dartmunk/Audio/dartmunk death.ogg" id="4_6mdee"]
-[ext_resource type="Texture2D" uid="uid://c1o4jd4x8iyvj" path="res://scenes/Dartmunk/Art/dartmunk_placeholder.png" id="4_sprite"]
+[ext_resource type="AudioStream" uid="uid://cmgnyvmk575kb" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 1.ogg" id="3_x1fjy"]
+[ext_resource type="Texture2D" uid="uid://cv6y66njtkyrg" path="res://scenes/Dartmunk/Art/DartmonkV2.png" id="3_xthh6"]
+[ext_resource type="AudioStream" uid="uid://dr7hsw88143j2" path="res://scenes/Dartmunk/Audio/dartmunk spotting hero 2.ogg" id="4_2mbm2"]
+[ext_resource type="AudioStream" uid="uid://drsjcchmo6nkn" path="res://scenes/Dartmunk/Audio/dartmunk death.ogg" id="4_6mdee"]
+[ext_resource type="Texture2D" uid="uid://drhiul8sr68bn" path="res://scenes/Dartmunk/Art/dartmunk_placeholder.png" id="4_sprite"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="5_ddnv0"]
-[ext_resource type="AudioStream" uid="uid://cp8lnpal7o2dq" path="res://scenes/Dartmunk/Audio/dartmunk grunt 1.ogg" id="5_x1fjy"]
-[ext_resource type="AudioStream" uid="uid://0s65scam4t0p" path="res://scenes/Dartmunk/Audio/dartmunk grunt 2.ogg" id="6_2mbm2"]
+[ext_resource type="AudioStream" uid="uid://byj7i5lredp4a" path="res://scenes/Dartmunk/Audio/dartmunk grunt 1.ogg" id="5_x1fjy"]
+[ext_resource type="AudioStream" uid="uid://cqeb412abmu1m" path="res://scenes/Dartmunk/Audio/dartmunk grunt 2.ogg" id="6_2mbm2"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="7_01sbj"]
-[ext_resource type="AudioStream" uid="uid://7mr68d0k0gs" path="res://scenes/Dartmunk/Audio/dartmunk grunt 3.ogg" id="7_s4q2v"]
-[ext_resource type="AudioStream" uid="uid://dxgn4o55snlhp" path="res://scenes/Dartmunk/Audio/dartmunk hit hard.ogg" id="8_m6aww"]
+[ext_resource type="AudioStream" uid="uid://bc6fgo0hv1jll" path="res://scenes/Dartmunk/Audio/dartmunk grunt 3.ogg" id="7_s4q2v"]
+[ext_resource type="AudioStream" uid="uid://bxdjc0t7g3tbw" path="res://scenes/Dartmunk/Audio/dartmunk hit hard.ogg" id="8_m6aww"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s4q2v"]
 random_pitch = 1.2
@@ -748,7 +748,7 @@ emission_sphere_radius = 52.17
 
 [node name="FallDetector" type="Area2D" parent="."]
 position = Vector2(-5, -12)
-collision_layer = 64
+collision_layer = 0
 collision_mask = 64
 script = ExtResource("7_01sbj")
 position_tracking_enabled = false
