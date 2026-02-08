@@ -10,6 +10,8 @@ enum State { idle, charging, rebound, cut_scene }
 @export var rebound_amount := 2000.0
 @export var starting_point : Marker2D
 
+@export var sfx_on_charge: AudioSFX
+
 @onready var hit_box: HitBox = $HitBox
 @onready var on_screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -59,7 +61,9 @@ func _start_charging() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		velocity = global_position.direction_to(player.global_position)
-	print("charging:", velocity)
+	if sfx_on_charge:
+		AudioManager.PlaySFX(sfx_on_charge, self)
+	#print("charging:", velocity)
 
 
 func _process_charging(delta: float) -> void:
@@ -72,7 +76,7 @@ func _process_charging(delta: float) -> void:
 func _start_idle() -> void:
 	state = State.idle
 	last_state_change = Time.get_ticks_msec()
-	print("idle")
+	#print("idle")
 
 
 func _process_idle(_delta: float) -> void:
@@ -84,7 +88,7 @@ func _start_rebound() -> void:
 	state = State.rebound
 	last_state_change = Time.get_ticks_msec()
 	velocity = global_position.direction_to(starting_point.global_position) * rebound_amount * rebound_seconds
-	print("rebound:", velocity)
+	#print("rebound:", velocity)
 
 
 func _process_rebound(delta: float) -> void:

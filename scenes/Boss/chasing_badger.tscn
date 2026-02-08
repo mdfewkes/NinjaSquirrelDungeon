@@ -1,9 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6414fygx6ytt"]
+[gd_scene load_steps=17 format=3 uid="uid://c6414fygx6ytt"]
 
 [ext_resource type="Script" uid="uid://bi2mp27eribvg" path="res://scenes/Boss/chasing_badger.gd" id="1_8hn4e"]
-[ext_resource type="Texture2D" uid="uid://ce06k3xp6i6vw" path="res://scenes/Boss/Art/BadgerSpriteFrames.png" id="2_q2chi"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_i83gx"]
+[ext_resource type="Texture2D" uid="uid://dr81tqbkfgdk5" path="res://scenes/Boss/Art/BadgerSpriteFrames.png" id="2_q2chi"]
+[ext_resource type="AudioStream" uid="uid://cmc3t5y4hmgj1" path="res://scenes/Boss/Audio/boss badger irritated groan.ogg" id="3_e2yli"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_q2chi"]
+[ext_resource type="AudioStream" uid="uid://donej2hvym4qk" path="res://scenes/Boss/Audio/boss badger laugh.ogg" id="4_06yrk"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="4_uvfnk"]
+[ext_resource type="AudioStream" uid="uid://dpa41t816r6ob" path="res://scenes/Boss/Audio/boss badger ominous hmmm.ogg" id="5_c6ym2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nxp58"]
+random_pitch = 1.99
+streams_count = 3
+stream_0/stream = ExtResource("3_e2yli")
+stream_1/stream = ExtResource("4_06yrk")
+stream_2/stream = ExtResource("5_c6ym2")
+
+[sub_resource type="Resource" id="Resource_eqttf"]
+script = ExtResource("2_i83gx")
+stream = SubResource("AudioStreamRandomizer_nxp58")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8hn4e"]
 radius = 181.13531
@@ -230,6 +246,7 @@ _data = {
 
 [node name="ChasingBadger" type="Node2D"]
 script = ExtResource("1_8hn4e")
+sfx_on_charge = SubResource("Resource_eqttf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 50

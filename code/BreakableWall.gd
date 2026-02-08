@@ -13,7 +13,7 @@ extends HurtBox
 @export var rock_tint := Color.from_string("499485", Color.WHITE)
 @export var shake_amount := 2.0
 @export var shake_time := 0.3
-@export var sfx_on_break: AudioSFX
+@export var sfx_on_break: AudioSFX = preload("res://scenes/Boss/Audio/wall-breaking.tres")
 
 const rock_scene = preload("res://scenes/Projectiles/rock_projectile.tscn")
 const death_particles = preload("res://scenes/Effects/death_particles.tscn")
@@ -30,6 +30,8 @@ func _on_hurt(hit_box: HitBox) -> void:
 	if hit_box.damage >= damage_threshold:
 		_destroy_tiles()
 		_launch_rocks()
+		if sfx_on_break:
+			AudioManager.PlaySFX(sfx_on_break, hit_box.get_parent())
 		queue_free.call_deferred()
 
 func _destroy_tiles() -> void:
