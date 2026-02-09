@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://44wtx5tanfo7"]
+[gd_scene load_steps=97 format=4 uid="uid://44wtx5tanfo7"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_sed82"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_o0wdq"]
@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://saswlmxeecct" path="res://decorations/plinth.tscn" id="38_6u05r"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="38_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://cke0q2u167eh6" path="res://decorations/clutter_5.tscn" id="40_fkqu1"]
-[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="41_sjwi5"]
+[ext_resource type="PackedScene" uid="uid://c58imjnlphqtw" path="res://decorations/statue.tscn" id="41_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://beprdb1gnubrt" path="res://decorations/clutter_3(collidable).tscn" id="43_wrdsv"]
 [ext_resource type="PackedScene" uid="uid://cibsk1ikwthkp" path="res://decorations/clutter_2(collidable).tscn" id="44_ydcdb"]
 [ext_resource type="PackedScene" uid="uid://cd7nqyh54cw7j" path="res://decorations/ladder(collidable).tscn" id="45_6gflv"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://cnc0f3fiabwpi" path="res://decorations/bridge_log_falling.tscn" id="49_6ba1i"]
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="50_wspux"]
 [ext_resource type="PackedScene" uid="uid://bfsjclbxrvnhr" path="res://scenes/Items/small_key.tscn" id="54_gu8h4"]
+[ext_resource type="Texture2D" uid="uid://clickgcts553o" path="res://decorations/lock_med.png" id="54_qppii"]
 [ext_resource type="PackedScene" uid="uid://bacx7l8nfuxpv" path="res://scenes/Bridge/bridge.tscn" id="55_errya"]
 [ext_resource type="PackedScene" uid="uid://7hlcc4tjod4o" path="res://scenes/Traps/swinging_trap.tscn" id="56_msvnt"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="57_wph0s"]
@@ -1396,6 +1397,12 @@ position = Vector2(2257, 308)
 rotation = 1.5707964
 required_key_value = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="Rooms/Room 5/Environment/UpperDoor4/Sprite2D" index="5"]
+position = Vector2(-83, -2.9999957)
+rotation = -1.336062
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("54_qppii")
+
 [node name="UpperDoor3" parent="Rooms/Room 5/Environment" node_paths=PackedStringArray("switches") instance=ExtResource("19_3rc66")]
 position = Vector2(3247, 313)
 rotation = -1.5707964
@@ -1526,5 +1533,6 @@ position = Vector2(1236, 148)
 [editable path="Rooms/Room 4/Enemies/Light8"]
 [editable path="Rooms/Room 4/Environment/WallSpikes4"]
 [editable path="Rooms/Room 4/Environment/WallSpikes9"]
+[editable path="Rooms/Room 5/Environment/UpperDoor4"]
 [editable path="Rooms/Room 5/Environment/Bridge"]
 [editable path="Rooms/Room 5/Environment/Bridge2"]

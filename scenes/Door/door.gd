@@ -9,6 +9,9 @@ extends StaticBody2D
 # Closing just plays the animation in reverse.
 # A specific key can be required (or not).
 
+signal door_open()
+signal door_close()
+
 ## If not set to 0, the door will only open for keys where the item_value matches this number.
 @export var required_key_value := 0
 
@@ -55,6 +58,7 @@ func _ready() -> void:
 func open():
 	if not is_open:
 		anim.play("open")
+		door_open.emit()
 		if sfx_on_open:
 			AudioManager.PlaySFX(sfx_on_open, self)
 	is_open = true
@@ -63,6 +67,7 @@ func open():
 func close():
 	if is_open:
 		anim.play_backwards("open")
+		door_close.emit()
 		if sfx_on_close:
 			AudioManager.PlaySFX(sfx_on_close, self)
 	is_open = false

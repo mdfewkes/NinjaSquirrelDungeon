@@ -107,19 +107,19 @@ size = Vector2(128, 128)
 size = Vector2(128, 32)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y0mve"]
-polygon = PackedVector2Array(-115, -15, -131, -15, -130, 29, -115, 28)
+polygon = PackedVector2Array(-114, 3, -133, 4, -133, 12, -114, 13)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mwu56"]
-polygon = PackedVector2Array(-95, -15, -88, -16, -87, 33, -94, 33)
+polygon = PackedVector2Array(-94, 6, -88, 5, -89, 13, -94, 12)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lreon"]
-polygon = PackedVector2Array(-66, -14, -66, 33, -61, 31, -62, -16)
+polygon = PackedVector2Array(-67, 5, -66, 14, -61, 14, -61, 6)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_choin"]
-polygon = PackedVector2Array(-39, -15, -38, 33, -33, 33, -35, -19)
+polygon = PackedVector2Array(-39, 4, -39, 12, -34, 13, -34, 5)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0yfhr"]
-polygon = PackedVector2Array(-14, -16, -13, 35, 1, 35, 0, -20)
+polygon = PackedVector2Array(-12, 5, -13, 13, 0, 12, 1, 4)
 
 [node name="Door" type="StaticBody2D" groups=["persisted"]]
 script = ExtResource("1_sik3a")
@@ -147,22 +147,27 @@ texture = ExtResource("5_y0mve")
 offset = Vector2(-64, 0)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(0, 16)
 occluder = SubResource("OccluderPolygon2D_y0mve")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(0, 16)
 occluder = SubResource("OccluderPolygon2D_mwu56")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(0, 16)
 occluder = SubResource("OccluderPolygon2D_lreon")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(0, 16)
 occluder = SubResource("OccluderPolygon2D_choin")
 occluder_light_mask = 3
 
 [node name="LightOccluder2D5" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(0, 16)
 occluder = SubResource("OccluderPolygon2D_0yfhr")
 occluder_light_mask = 3
 
