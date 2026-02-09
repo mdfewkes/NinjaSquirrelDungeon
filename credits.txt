@@ -40,7 +40,7 @@ Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with var
 [b]Mel Fitzgerald[/b]
 Wall banners with variations, 3 door types (fancy, pointy, wood), 3 door lock sprites
 
-[b]Owen Peery[/b]: 
+[b]Owen Peery[/b] 
 Reddish orange tail whip particles
 
 [b]David Bates[/b]
