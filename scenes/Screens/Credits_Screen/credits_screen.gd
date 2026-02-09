@@ -7,8 +7,6 @@ extends Control
 ## Extra space after scroll
 @export var ending_buffer := 100
 
-@export_file("*.md", "*.txt", "*.bbcode") var credits_file_path : String
-
 @onready var scrolling_container: VBoxContainer = $ScrollingContainer
 @onready var title_text: Node = $ScrollingContainer/Title
 @onready var final_text: RichTextLabel = $ScrollingContainer/FinalWords
@@ -20,8 +18,6 @@ var fading_tween: Tween
 
 func _ready() -> void:
 	scrolling_container.position.y = size.y/3
-	if credits_file_path:
-		credits.text = _load_from_file()
 
 
 func _process(delta: float) -> void:
@@ -37,9 +33,3 @@ func _process(delta: float) -> void:
 
 func _on_fade_complete():
 	GameManager.change_scene(title_button.path_to_scene)
-
-
-func _load_from_file():
-	var file = FileAccess.open(credits_file_path, FileAccess.READ)
-	var content = file.get_as_text()
-	return content

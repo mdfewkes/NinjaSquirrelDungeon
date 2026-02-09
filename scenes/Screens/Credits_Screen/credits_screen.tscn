@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="1_fe5uk"]
 [ext_resource type="Script" uid="uid://cmjre38k8slo1" path="res://scenes/Screens/Credits_Screen/credits_screen.gd" id="1_ify3x"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_fe5uk"]
-[ext_resource type="Texture2D" uid="uid://cfdtyc7efffo5" path="res://scenes/GhostNPC/Art/west-ghost-ending.png" id="4_j101b"]
-[ext_resource type="Texture2D" uid="uid://cajirvdhfsnnx" path="res://scenes/GhostNPC/Art/entrance-ghost-ending.png" id="5_pa7yt"]
-[ext_resource type="Texture2D" uid="uid://yegwdj2n25eh" path="res://scenes/GhostNPC/Art/east-ghost-ending.png" id="6_rd0xc"]
-[ext_resource type="Texture2D" uid="uid://cycfjlh3m832a" path="res://scenes/GhostNPC/Art/ratrick-ending.png" id="7_j101b"]
+[ext_resource type="Texture2D" uid="uid://b61i6l2q17ly7" path="res://scenes/GhostNPC/Art/west-ghost-ending.png" id="4_j101b"]
+[ext_resource type="Texture2D" uid="uid://beh5faryy1fe8" path="res://scenes/GhostNPC/Art/entrance-ghost-ending.png" id="5_pa7yt"]
+[ext_resource type="Texture2D" uid="uid://d2se3mgvlbiyj" path="res://scenes/GhostNPC/Art/east-ghost-ending.png" id="6_rd0xc"]
+[ext_resource type="Texture2D" uid="uid://c5wmw51r6lqke" path="res://scenes/GhostNPC/Art/ratrick-ending.png" id="7_j101b"]
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
 offsets = PackedFloat32Array(0.216763, 0.74277455, 1)
@@ -30,7 +30,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ify3x")
-credits_file_path = "res://credits.txt"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -80,10 +79,57 @@ layout_mode = 2
 [node name="Credits" type="RichTextLabel" parent="ScrollingContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "A
-Great
-Many
-People"
+text = "[b]Michael Fewkes[/b]
+Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening
+
+[b]Mark Guinn[/b]
+Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, bonfire placement, additional level design polish, assorted fixes
+
+[b]Noah Wizard[/b]
+Lore and related opening scroll, dungeon layout / level design (mainly east wing), entrance room with dialog, ghost NPCs, dialog authoring, quest item art / placement / merchant / related gating behavior, slime enemy sprite, quest givers show item picture, environment decoration placement, map color variants, boss arrival message
+
+[b]Philippe Vaillancourt[/b]
+Dialog system including conditionals and game action support, dartmonk behaviors (including target leading, LOS, states) and related animation code, enemy movement smoothed, enemy navigation baking, mute toggle, feature flag support (internal use), invulnerability testing mode, internal feature examples
+
+[b]Aaron Sherman[/b]
+Music (dungeon, sneak, boss approach, boss chase, menu and credits music), sounds (star throw, squirrel steps, star hits, sword slash, sword hit, grab, rock trap, dart trap, trap dart firing, blow dart, bat enemy, menu click), cutscene music timing
+
+[b]Jakob Harris[/b]
+Player animations (idle, 4-way run and attack), sewer wall tileset, boss badget sprite, environment decoration art (lamp, bush, bonfire, trashcan, sewer grate, pipes), dartmonk animations, raccoon patrol behavior and art, bonfire dynamic flame effects, game logo, bat art, keys, acorn item and related UI, bush particles
+
+[b]Dan Dela Rosa[/b]
+Cutscene support with animation and text scroll including action commands, reset on death, cutscene map triggers, instructions screen, lore screen improvements, initial player death animation
+
+[b]Durondal[/b]
+Dynamic light shadows, pause menu with key 
+
+[b]Christer Kaitila[/b]
+Ghost implementation (raccoon and dartmonk), ninja star, decorations (crate, barrell, rope, cracks), additional ninja squirrel sounds, tail segment sprites, player shadow, footprints effect, gamepad fixes toggle, bug fixes (bat health, player damage)
+
+[b]Amanda Stanley[/b]
+Initial lore (part of core story, tea pot, animal family clan names, basis for dartmunk backstory), voice sounds (hurt, item consumption, weak/med/strong effort)
+
+[b]Dávid Tóth[/b]
+Procedural player tail, initial player art draft, Ratrick the Plush decoration
+
+[b]William Goddard[/b]
+Original patrolling bat behavior and initial sprite
+
+[b]JohnasaurusArt[/b]
+Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with variations)
+
+[b]Mel Fitzgerald[/b]
+Wall banners with variations, 3 door types (fancy, pointy, wood), 3 door lock sprites
+
+[b]Owen Peery[/b]: 
+Reddish orange tail whip particles
+
+[b]David Bates[/b]
+Enemies refactored to reuse common base code
+
+[b]Baguette[/b]
+Play testing
+"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

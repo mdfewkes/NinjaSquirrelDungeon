@@ -989,7 +989,12 @@ offset_left = 30.0
 offset_top = 600.0
 offset_right = 205.0
 offset_bottom = 623.0
-text = "This is just an example"
+text = "Run, last of the Shadowtails.
+Seek the Acorn, before winter freezes us! Hasten! 
+However... You must be cautious... None of our scouts have returned...
+We do not know who won the Uprising of the Final Aqueduct.
+Great challenges may await you as you enter the Old Sewer.
+"
 
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
