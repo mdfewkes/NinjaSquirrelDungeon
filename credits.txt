@@ -1,5 +1,5 @@
 [b]Michael Fewkes[/b]
-Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, light flickering, various team asset integration, light tweening
+Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening
 
 [b]Mark Guinn[/b]
 Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, bonfire placement, additional level design polish, assorted fixes
@@ -11,7 +11,7 @@ Lore and related opening scroll, dungeon layout / level design (mainly east wing
 Dialog system including conditionals and game action support, dartmonk behaviors (including target leading, LOS, states) and related animation code, enemy movement smoothed, enemy navigation baking, mute toggle, feature flag support (internal use), invulnerability testing mode, internal feature examples
 
 [b]Aaron Sherman[/b]
-Music (dungeon, sneak, boss approach, boss chase), sounds (star throw, squirrel steps, star hits, sword slash, sword hit, grab, rock trap, dart trap, trap dart firing, blow dart, bat enemy, menu click), cutscene music timing
+Music (dungeon, sneak, boss approach, boss chase, menu and credits music), sounds (star throw, squirrel steps, star hits, sword slash, sword hit, grab, rock trap, dart trap, trap dart firing, blow dart, bat enemy, menu click), cutscene music timing
 
 [b]Jakob Harris[/b]
 Player animations (idle, 4-way run and attack), sewer wall tileset, boss badget sprite, environment decoration art (lamp, bush, bonfire, trashcan, sewer grate, pipes), dartmonk animations, raccoon patrol behavior and art, bonfire dynamic flame effects, game logo, bat art, keys, acorn item and related UI, bush particles
@@ -38,7 +38,7 @@ Original patrolling bat behavior and initial sprite
 Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with variations)
 
 [b]Mel Fitzgerald[/b]
-Wall banners with variations, 3 door types (fancy, pointy, wood)
+Wall banners with variations, 3 door types (fancy, pointy, wood), 3 door lock sprites
 
 [b]Owen Peery[/b]: 
 Reddish orange tail whip particles
