@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://dbnk78nmnqcue" path="res://scenes/Hopper/hopper.gd" id="1_qld5t"]
 [ext_resource type="Texture2D" uid="uid://hcla4vwsqm6x" path="res://temp assets/slime_skull.png" id="2_1crdu"]
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_vntx1"]
-[ext_resource type="AudioStream" uid="uid://xtvfbd30ivcx" path="res://scenes/Hopper/Audio/Splash1.ogg" id="3_ebdqv"]
+[ext_resource type="AudioStream" uid="uid://bys0g2dhekyyy" path="res://scenes/Hopper/Audio/Splash1.ogg" id="3_ebdqv"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_gw15p"]
-[ext_resource type="AudioStream" uid="uid://cqplc6u4pa7hg" path="res://scenes/Hopper/Audio/Splash2.ogg" id="4_kajec"]
+[ext_resource type="AudioStream" uid="uid://bv30xgwbgr3x6" path="res://scenes/Hopper/Audio/Splash2.ogg" id="4_kajec"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_lf76h"]
 [ext_resource type="Texture2D" uid="uid://dh07adr4abtjg" path="res://scenes/Hopper/Art/hoppershadow.png" id="5_rgrea"]
-[ext_resource type="AudioStream" uid="uid://yqk3pm5uc2os" path="res://scenes/Hopper/Audio/Splash4.ogg" id="6_hyt3b"]
+[ext_resource type="AudioStream" uid="uid://dehj5c2feq22u" path="res://scenes/Hopper/Audio/Splash4.ogg" id="6_hyt3b"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="6_ye5xp"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="7_1crdu"]
-[ext_resource type="AudioStream" uid="uid://6hmhiruj82cv" path="res://scenes/Hopper/Audio/Splash5.ogg" id="7_fckge"]
-[ext_resource type="AudioStream" uid="uid://l77hcbwgtgid" path="res://scenes/Hopper/Audio/Splash3.ogg" id="8_gw15p"]
+[ext_resource type="AudioStream" uid="uid://hnaqq15nm3jh" path="res://scenes/Hopper/Audio/Splash5.ogg" id="7_fckge"]
+[ext_resource type="AudioStream" uid="uid://b8aw6r8vl8y68" path="res://scenes/Hopper/Audio/Splash3.ogg" id="8_gw15p"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gicnr"]
 random_pitch = 1.3
@@ -540,7 +540,6 @@ target_position = Vector2(16, 0)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 4.0
 target_desired_distance = 4.0
-debug_enabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 scale = Vector2(0.5, 0.5)

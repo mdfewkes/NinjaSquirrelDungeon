@@ -367,7 +367,6 @@ tile_map_data = PackedByteArray("AAD3/wAAAgADAAIAAAD8/wEAAgADAAAAAAD8/wIAAgADAAI
 tile_set = ExtResource("8_pgfn4")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_3jbha")
 navigation_layers = 65
 

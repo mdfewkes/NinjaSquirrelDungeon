@@ -47,7 +47,7 @@ var _is_repositioning: bool = false # Hysteresis state for smooth settling
 var _facing_direction: Vector2 = Vector2.DOWN
 
 ## Debug visualization
-@export var debug_draw: bool = true
+var debug_draw: bool = false
 var _debug_nav_path: PackedVector2Array = []
 
 
