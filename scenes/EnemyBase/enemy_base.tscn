@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chhuy70a810pp" path="res://scenes/EnemyBase/enemy_base.gd" id="1_p4led"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="2_egoki"]
-[ext_resource type="Texture2D" uid="uid://b5gt5vg8i70sv" path="res://scenes/PatrollingEnemy/Art/batshadow.png" id="2_voqne"]
+[ext_resource type="Texture2D" uid="uid://w2syrgqg3xbr" path="res://scenes/PatrollingEnemy/Art/batshadow.png" id="2_voqne"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="3_voqne"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="5_n8qwv"]
 
@@ -40,6 +40,7 @@ tree_root = SubResource("AnimationNodeStateMachine_3qipq")
 advance_expression_base_node = NodePath("..")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -131.0
 offset_right = 29.0
