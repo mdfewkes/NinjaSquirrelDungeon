@@ -109,3 +109,4 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains+all
 addons/bobbin/bin/~bobbin_godot.debug.dll
+/build
