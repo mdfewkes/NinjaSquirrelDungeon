@@ -1,9 +1,16 @@
 extends Node
 
-@export var listening_range: float = 1000.0
 @onready var sfx_template: AudioStreamPlayer2D = $SFXTemplate
 @onready var ui_template: AudioStreamPlayer = $UITemplate
 @onready var texture_rect: Sprite2D = $TextureRect
+@onready var music: AudioStreamPlayer = $Music
+
+@export var listening_range: float = 1000.0
+
+enum MusicStates {Title, Game, FinalRoom, FinalChase, Finale}
+var music_state = MusicStates.Title
+
+var interactive_music_player: AudioStreamPlaybackInteractive
 
 var active_voices = {} # Dict String : Array[AudioStreamPlayback]
 
@@ -11,6 +18,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mute"):
 		toggle_mute()
 		get_viewport().set_input_as_handled()
+
+func _ready() -> void:
+	interactive_music_player = music.get_stream_playback() as AudioStreamPlaybackInteractive
+	interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
 
 func _process(_delta: float) -> void:
 	var dead_voices = []
@@ -33,6 +44,12 @@ func _process(_delta: float) -> void:
 func toggle_mute() -> void:
 	var master_bus := AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_mute(master_bus, not AudioServer.is_bus_mute(master_bus))
+
+
+func PlayMusic(new_track: MusicStates) -> void:
+	if new_track != music_state:
+		music_state = new_track
+		interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
 
 
 func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:

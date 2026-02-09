@@ -1,8 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://d20pn8vvxkruw"]
+[gd_scene load_steps=10 format=3 uid="uid://d20pn8vvxkruw"]
 
 [ext_resource type="Script" uid="uid://bcu8yo1vqybs5" path="res://scenes/AudioManager/audio_manager.gd" id="1_kr7s0"]
 [ext_resource type="Texture2D" uid="uid://cnkairp1wrcsd" path="res://scenes/Player/Art/tail-segment-2.png" id="2_1gfwg"]
 [ext_resource type="AudioStream" uid="uid://bkfhflwh4nn2y" path="res://src/LoS Dungeon Sneak first pass.ogg" id="3_e10ti"]
+[ext_resource type="AudioStream" uid="uid://bgqqv6r1f4w8e" path="res://music/LoS Main Theme.ogg" id="3_pi0ky"]
+[ext_resource type="AudioStream" uid="uid://dxoo1kndeykao" path="res://music/LoS Boss Badger Chase (Revised).ogg" id="5_o3p52"]
+[ext_resource type="AudioStream" uid="uid://clvbw7hu0nt72" path="res://music/LoS Approaching Boss Badger (Revised).ogg" id="5_pi0ky"]
+[ext_resource type="AudioStream" uid="uid://de11cmwc41wo1" path="res://music/LoS Boss Badger Cutscene into Chase.ogg" id="5_v2isx"]
+[ext_resource type="AudioStream" uid="uid://o4vbchh66jj6" path="res://music/LoS Celebratory Fanfare.ogg" id="8_5yedo"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_v2isx"]
+clip_count = 6
+clip_0/name = &"Title"
+clip_0/stream = ExtResource("3_pi0ky")
+clip_0/auto_advance = 0
+clip_1/name = &"Game"
+clip_1/stream = ExtResource("3_e10ti")
+clip_1/auto_advance = 0
+clip_2/name = &"FinalRoom"
+clip_2/stream = ExtResource("5_pi0ky")
+clip_2/auto_advance = 0
+clip_3/name = &"FinalChase"
+clip_3/stream = ExtResource("5_v2isx")
+clip_3/auto_advance = 1
+clip_3/next_clip = 4
+clip_4/name = &"FinalChaseLoop"
+clip_4/stream = ExtResource("5_o3p52")
+clip_4/auto_advance = 0
+clip_5/name = &"Finale"
+clip_5/stream = ExtResource("8_5yedo")
+clip_5/auto_advance = 0
+initial_clip = 2
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 2,
+"from_time": 1,
+"to_time": 1
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_kr7s0")
@@ -14,10 +62,9 @@ texture = ExtResource("2_1gfwg")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("3_e10ti")
+stream = SubResource("AudioStreamInteractive_v2isx")
 autoplay = true
 bus = &"Music"
-parameters/looping = true
 
 [node name="SFXTemplate" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

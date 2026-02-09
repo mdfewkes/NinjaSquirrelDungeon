@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=69 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://cnh13635nxntx" path="res://scenes/Switch/wall_switch.tscn" id="28_i5e01"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="29_l2cjc"]
 [ext_resource type="PackedScene" uid="uid://bpkl5kq3kyjsa" path="res://decorations/sewer_grate.tscn" id="32_l2cjc"]
+[ext_resource type="Script" uid="uid://xp4j6tj7xq86" path="res://scenes/AudioManager/music_switch.gd" id="42_3ire1"]
 
 [sub_resource type="Gradient" id="Gradient_r5oec"]
 offsets = PackedFloat32Array(0.15056819, 0.87215906, 1)
@@ -506,6 +507,9 @@ shape = SubResource("RectangleShape2D_4lyq4")
 
 [node name="Lights" type="Node2D" parent="Rooms/FinalHallwayRoom"]
 
+[node name="Light" parent="Rooms/FinalHallwayRoom/Lights" instance=ExtResource("10_jh528")]
+position = Vector2(-880, -733)
+
 [node name="Enemies" type="Node2D" parent="Rooms/FinalHallwayRoom"]
 
 [node name="Environment" type="Node2D" parent="Rooms/FinalHallwayRoom"]
@@ -614,7 +618,6 @@ script = ExtResource("9_6lqkh")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/WestEnteranceRoom"]
-visible = false
 position = Vector2(-506, 296)
 shape = SubResource("RectangleShape2D_tosua")
 
@@ -804,6 +807,10 @@ position = Vector2(-789, 439)
 
 [node name="GHOST_raccoon" parent="Decorations" instance=ExtResource("22_el7dr")]
 position = Vector2(1357, 69)
+
+[node name="LevelMusic" type="Node" parent="."]
+script = ExtResource("42_3ire1")
+music_to_play = 1
 
 [editable path="Rooms/StartRoom/Enemies/Light8"]
 [editable path="Rooms/StartRoom/EntranceGhost"]
