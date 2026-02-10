@@ -28,7 +28,7 @@ func _process(_delta) ->void:
 			
 		##BERRIES
 		var berries1 = "It is an ingulgeance... to even speak of this, I yearn to hide my face in shame. But the Bantombolds, the fiercome Racoon warriors you see patrolling these halls. They have the best snacks."
-		var berries2 = "I had not tasted berries this good in my entire lifetime. The Chipmunks -the Burrowbrood Chipmunk clan, used to keep us all in great fruits every year. But nothing a Burrobrood produced was ever half as good as these berries..."
+		var berries2 = "I had not tasted berries this good in my entire lifetime. The Chipmunks -the Burrowbrood Chipmunk clan, used to keep us all in great fruits every year. But nothing a Burrowbrood produced was ever half as good as these berries..."
 		var berries3 = "Bring a handful of berries to any ghost, and it will unlock a Spirit Cage door."
 		if (text == berries1 || text == berries2 || text == berries3):
 			dialog_icon_berries.show()
