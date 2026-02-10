@@ -152,7 +152,8 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 		if sfx.voice_stealling:
 			match sfx.steal_strategy:
 				AudioSFX.StealStrategy.Oldest:
-					active_voices[group].pop_front().emit_signal("finished")
+					if active_voices[group][0]:
+						active_voices[group].pop_front().emit_signal("finished")
 					active_voices[group].push_back(source)
 				AudioSFX.StealStrategy.Furthest:
 					active_voices[group].push_back(source)
@@ -165,7 +166,8 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 						if distance > furthest_distance:
 							furthest_playback = playback
 							furthest_distance = distance
-					active_voices[group][furthest_playback].emit_signal("finished")
+					if active_voices[group][furthest_playback]:
+						active_voices[group][furthest_playback].emit_signal("finished")
 					active_voices[group].remove_at(furthest_playback)
 	else:
 		active_voices[group] = []
