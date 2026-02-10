@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyku0xo4jn1hn"]
+[gd_scene load_steps=7 format=3 uid="uid://cyku0xo4jn1hn"]
 
 [ext_resource type="Texture2D" uid="uid://cu7xuxdhbtirg" path="res://decorations/barrel_decoration.png" id="1_b1ra5"]
+[ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_raie3"]
+[ext_resource type="PackedScene" uid="uid://c2v88p5v7gfvk" path="res://temp assets/wood_particles.tscn" id="2_fk11e"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_n407s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwvn3"]
 radius = 19.0
 height = 42.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxywp"]
+radius = 24.0
+height = 56.0
+
 [node name="barrel" type="Node2D"]
+script = ExtResource("1_raie3")
+bush_particles = ExtResource("2_fk11e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_b1ra5")
@@ -15,3 +24,13 @@ texture = ExtResource("1_b1ra5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CapsuleShape2D_gwvn3")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(1, -28)
+collision_mask = 2
+script = ExtResource("4_n407s")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 24)
+shape = SubResource("CapsuleShape2D_cxywp")

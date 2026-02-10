@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvcjh7k8fysp2"]
+[gd_scene load_steps=7 format=3 uid="uid://bvcjh7k8fysp2"]
 
+[ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_0ybrx"]
 [ext_resource type="Texture2D" uid="uid://dhpygst37lhfa" path="res://decorations/crate_decoration.png" id="1_3jbcv"]
+[ext_resource type="PackedScene" uid="uid://c2v88p5v7gfvk" path="res://temp assets/wood_particles.tscn" id="2_dddpo"]
+[ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_ioo40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sduvh"]
 size = Vector2(31, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo81n"]
+size = Vector2(40, 44)
+
 [node name="crate" type="Node2D"]
+script = ExtResource("1_0ybrx")
+bush_particles = ExtResource("2_dddpo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -15,3 +23,13 @@ shape = SubResource("RectangleShape2D_sduvh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3jbcv")
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(1, -28)
+collision_mask = 2
+script = ExtResource("4_ioo40")
+metadata/_custom_type_script = "uid://jrn1snxemt88"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 22)
+shape = SubResource("RectangleShape2D_xo81n")

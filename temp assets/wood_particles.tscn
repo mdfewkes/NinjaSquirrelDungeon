@@ -1,0 +1,169 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2v88p5v7gfvk"]
+
+[ext_resource type="Script" uid="uid://4hrx776oqp53" path="res://temp assets/bush_particles.gd" id="1_8jyc6"]
+[ext_resource type="Texture2D" uid="uid://dhpygst37lhfa" path="res://decorations/crate_decoration.png" id="2_i8r63"]
+[ext_resource type="Texture2D" uid="uid://nuaj1eyhn35o" path="res://decorations/ladder.png" id="3_ipf05"]
+[ext_resource type="Texture2D" uid="uid://cu7xuxdhbtirg" path="res://decorations/barrel_decoration.png" id="4_ey4n0"]
+
+[sub_resource type="Gradient" id="Gradient_ljwha"]
+offsets = PackedFloat32Array(0, 0.5336323, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.7309417, 0.7309417, 0.7309417, 1, 0, 0, 0, 0)
+
+[node name="WoodParticles" type="Node2D"]
+script = ExtResource("1_8jyc6")
+
+[node name="BushParticles1" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("2_i8r63")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="BushParticles3" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("2_i8r63")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="BushParticles4" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("3_ipf05")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="BushParticles5" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("3_ipf05")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="BushParticles6" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("4_ey4n0")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="BushParticles8" type="CPUParticles2D" parent="."]
+modulate = Color(0.6305923, 0.4246714, 0.17632046, 1)
+amount = 1
+texture = ExtResource("4_ey4n0")
+lifetime = 0.5
+speed_scale = 0.5
+explosiveness = 0.5
+randomness = 1.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 500.0
+angular_velocity_min = -437.34
+angular_velocity_max = 266.66
+tangential_accel_min = 12.12
+tangential_accel_max = 12.12
+damping_min = 28.0
+damping_max = 36.0
+angle_min = 40.0
+angle_max = 60.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_ljwha")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]
