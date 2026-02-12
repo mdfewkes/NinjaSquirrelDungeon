@@ -7,6 +7,7 @@ const FADE_DEPTH = 64.0
 const FALL_SPEED = 100.0
 
 @export var can_be_destroyed := false
+@export var sfx_on_step: AudioSFX
 
 @onready var template: Area2D = $TemplateLog
 @onready var template_shape: CollisionShape2D = $TemplateLog/CollisionShape2D
@@ -75,6 +76,7 @@ func _on_body_exited_bridge(body: Node2D):
 func _on_body_entered_log(body: Node2D, log_index: int) -> void:
 	if broken_at_index < 0:
 		log_objs[log_index].append(body)
+		AudioManager.PlaySFX_at_position(sfx_on_step, body.global_position)
 
 func _on_body_exited_log(body: Node2D, log_index: int) -> void:
 	if broken_at_index < 0:

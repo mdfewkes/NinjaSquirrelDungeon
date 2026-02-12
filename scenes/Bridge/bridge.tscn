@@ -1,9 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://bacx7l8nfuxpv"]
+[gd_scene load_steps=13 format=3 uid="uid://bacx7l8nfuxpv"]
 
 [ext_resource type="Script" uid="uid://c0ieuvc3fjjh8" path="res://scenes/Bridge/bridge.gd" id="1_7kn5w"]
 [ext_resource type="Texture2D" uid="uid://0r2psan67242" path="res://scenes/Bridge/Art/bridge-log.png" id="1_fv7dx"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_ekp42"]
+[ext_resource type="AudioStream" uid="uid://bf4b5obamnfkl" path="res://scenes/Bridge/Audio/plank_01.ogg" id="3_3sw4t"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_b1hcl"]
+[ext_resource type="AudioStream" uid="uid://dnbkctihkkixy" path="res://scenes/Bridge/Audio/plank_02.ogg" id="4_5top3"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="4_nofgo"]
+[ext_resource type="AudioStream" uid="uid://b0lthtxrbhtn5" path="res://scenes/Bridge/Audio/plank_03.ogg" id="5_3uvff"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sl2s0"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("3_3sw4t")
+stream_1/stream = ExtResource("4_5top3")
+stream_2/stream = ExtResource("5_3uvff")
+
+[sub_resource type="Resource" id="Resource_5y6bj"]
+script = ExtResource("2_ekp42")
+volume_dB = -3.0
+stream = SubResource("AudioStreamRandomizer_sl2s0")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv7dx"]
 radius = 13.0
@@ -16,6 +35,7 @@ size = Vector2(124, 128)
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_7kn5w")
+sfx_on_step = SubResource("Resource_5y6bj")
 
 [node name="TemplateLog" type="Area2D" parent="."]
 collision_layer = 0
@@ -31,7 +51,6 @@ shape = SubResource("CapsuleShape2D_fv7dx")
 debug_color = Color(0.6933419, 0.4900911, 0.22547865, 0.41960785)
 
 [node name="BridgeShape" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_fv7dx")
 
 [node name="HurtBox" type="Area2D" parent="."]
