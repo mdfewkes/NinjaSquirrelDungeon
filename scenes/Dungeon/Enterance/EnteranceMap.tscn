@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://c40qubmb3lsdn"]
+[gd_scene load_steps=76 format=4 uid="uid://c40qubmb3lsdn"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_majm5"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_8dsxk"]
@@ -13,16 +13,21 @@
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="9_ymxj4"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="10_jh528"]
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="13_ajdh6"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="13_mhtcy"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="13_p32oj"]
 [ext_resource type="PackedScene" uid="uid://cwfms7dbcl64a" path="res://scenes/GhostNPC/ghost_npc_entrance.tscn" id="13_ymxj4"]
+[ext_resource type="AudioStream" uid="uid://cuinlhfb2rygy" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="14_6y8s7"]
 [ext_resource type="PackedScene" uid="uid://bqie6v1y53wic" path="res://decorations/crack96.tscn" id="14_ve4ef"]
+[ext_resource type="AudioStream" uid="uid://6sc36l3h6tnf" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="15_77jtg"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_dnpav"]
 [ext_resource type="PackedScene" uid="uid://c7hmt2i55od51" path="res://decorations/roots_3.tscn" id="15_ecawk"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_ymxj4"]
+[ext_resource type="AudioStream" uid="uid://q0pl0pudl7vl" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="16_7r8ff"]
 [ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="16_43n1i"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="16_1803i"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_sqdfd"]
 [ext_resource type="Texture2D" uid="uid://dbvkfutesvdg1" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
+[ext_resource type="AudioStream" uid="uid://cvv3qrthghq1u" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="17_ens25"]
 [ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://dvn3i4dod2c7e" path="res://decorations/banner_3.tscn" id="19_r2h0m"]
@@ -218,6 +223,21 @@ source_geometry_mode = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhtrk"]
 size = Vector2(1224, 759)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00o6o"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("14_6y8s7")
+stream_1/stream = ExtResource("15_77jtg")
+stream_2/stream = ExtResource("16_7r8ff")
+stream_3/stream = ExtResource("17_ens25")
+
+[sub_resource type="Resource" id="Resource_vghep"]
+script = ExtResource("13_mhtcy")
+stream = SubResource("AudioStreamRandomizer_00o6o")
+max_voices = 3
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [sub_resource type="Gradient" id="Gradient_el7dr"]
 offsets = PackedFloat32Array(0, 0.6165803)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -398,24 +418,30 @@ shape = SubResource("RectangleShape2D_dhtrk")
 
 [node name="Light3" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_jh528")]
 position = Vector2(1060, 92)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light4" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_jh528")]
 position = Vector2(101, 69)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light7" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_jh528")]
 position = Vector2(300, 73)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light5" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_jh528")]
 position = Vector2(1068, 536)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light6" parent="Rooms/StartRoom/Lights" groups=["present_lights"] instance=ExtResource("10_jh528")]
 position = Vector2(80, 536)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Enemies" type="Node2D" parent="Rooms/StartRoom"]
 
 [node name="Light8" parent="Rooms/StartRoom/Enemies" groups=["present_lights"] instance=ExtResource("10_jh528")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(580, -90)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="PointLight2D" parent="Rooms/StartRoom/Enemies/Light8" index="1"]
 color = Color(0, 0.89, 0.8009999, 1)
@@ -509,6 +535,7 @@ shape = SubResource("RectangleShape2D_4lyq4")
 
 [node name="Light" parent="Rooms/FinalHallwayRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(-880, -733)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Enemies" type="Node2D" parent="Rooms/FinalHallwayRoom"]
 
@@ -555,15 +582,18 @@ shape = SubResource("RectangleShape2D_p32oj")
 
 [node name="Light" parent="Rooms/EastEnteranceRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(1454, 342)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light2" parent="Rooms/EastEnteranceRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(1649, -42)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Enemies" type="Node2D" parent="Rooms/EastEnteranceRoom"]
 
 [node name="Light3" parent="Rooms/EastEnteranceRoom/Enemies" instance=ExtResource("10_jh528")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1779, -179)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="PointLight2D" parent="Rooms/EastEnteranceRoom/Enemies/Light3" index="1"]
 position = Vector2(7, -46)
@@ -625,18 +655,22 @@ shape = SubResource("RectangleShape2D_tosua")
 
 [node name="Light" parent="Rooms/WestEnteranceRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(-545, 339)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light2" parent="Rooms/WestEnteranceRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(-221, 60)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Light3" parent="Rooms/WestEnteranceRoom/Lights" instance=ExtResource("10_jh528")]
 position = Vector2(-210, 343)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="Enemies" type="Node2D" parent="Rooms/WestEnteranceRoom"]
 
 [node name="Light3" parent="Rooms/WestEnteranceRoom/Enemies" instance=ExtResource("10_jh528")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-510, -227)
+sfx_extinguish = SubResource("Resource_vghep")
 
 [node name="PointLight2D" parent="Rooms/WestEnteranceRoom/Enemies/Light3" index="1"]
 position = Vector2(2, 48)

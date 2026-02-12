@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bacx7l8nfuxpv"]
+[gd_scene load_steps=21 format=3 uid="uid://bacx7l8nfuxpv"]
 
 [ext_resource type="Script" uid="uid://c0ieuvc3fjjh8" path="res://scenes/Bridge/bridge.gd" id="1_7kn5w"]
 [ext_resource type="Texture2D" uid="uid://0r2psan67242" path="res://scenes/Bridge/Art/bridge-log.png" id="1_fv7dx"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://dnbkctihkkixy" path="res://scenes/Bridge/Audio/plank_02.ogg" id="4_5top3"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="4_nofgo"]
 [ext_resource type="AudioStream" uid="uid://b0lthtxrbhtn5" path="res://scenes/Bridge/Audio/plank_03.ogg" id="5_3uvff"]
+[ext_resource type="AudioStream" uid="uid://cgiw62j1uftw5" path="res://scenes/Bridge/Audio/rope_snap_hit.ogg" id="6_3uvff"]
+[ext_resource type="AudioStream" uid="uid://jtumf5xrrm7m" path="res://scenes/Bridge/Audio/rope_snap_crumple.ogg" id="7_sl2s0"]
+[ext_resource type="AudioStream" uid="uid://bu74evt754qpy" path="res://scenes/Bridge/Audio/rope_snap_fall.ogg" id="8_5y6bj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sl2s0"]
 random_pitch = 1.2
@@ -24,6 +27,38 @@ stream = SubResource("AudioStreamRandomizer_sl2s0")
 max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qu34o"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("6_3uvff")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p867x"]
+random_pitch = 1.2
+random_volume_offset_db = 6.0
+streams_count = 1
+stream_0/stream = ExtResource("7_sl2s0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jyr0d"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("8_5y6bj")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_h1ayy"]
+stream_count = 3
+stream_0/stream = SubResource("AudioStreamRandomizer_qu34o")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_p867x")
+stream_1/volume = 0.0
+stream_2/stream = SubResource("AudioStreamRandomizer_jyr0d")
+stream_2/volume = 0.0
+
+[sub_resource type="Resource" id="Resource_crrji"]
+script = ExtResource("2_ekp42")
+stream = SubResource("AudioStreamSynchronized_h1ayy")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv7dx"]
 radius = 13.0
 height = 130.0
@@ -36,6 +71,7 @@ collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_7kn5w")
 sfx_on_step = SubResource("Resource_5y6bj")
+sfx_on_break = SubResource("Resource_crrji")
 
 [node name="TemplateLog" type="Area2D" parent="."]
 collision_layer = 0

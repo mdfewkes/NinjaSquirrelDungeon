@@ -8,6 +8,7 @@ const FALL_SPEED = 100.0
 
 @export var can_be_destroyed := false
 @export var sfx_on_step: AudioSFX
+@export var sfx_on_break: AudioSFX
 
 @onready var template: Area2D = $TemplateLog
 @onready var template_shape: CollisionShape2D = $TemplateLog/CollisionShape2D
@@ -91,6 +92,7 @@ func _on_hurt(hit_box: HitBox) -> void:
 
 func _on_broken():
 	ImpactEffects.shake(0.8, 0.4)
+	AudioManager.PlaySFX_at_position(sfx_on_break, global_position)
 	death_particles.position = logs[broken_at_index].position
 	death_particles.emitting = true
 	hurt_box.monitorable = false
