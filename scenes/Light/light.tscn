@@ -1,8 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://idvuu5pv2ejg"]
+[gd_scene load_steps=14 format=3 uid="uid://idvuu5pv2ejg"]
 
 [ext_resource type="Script" uid="uid://cesdgy7wcnuis" path="res://scenes/Light/light.gd" id="1_5qqhr"]
-[ext_resource type="Texture2D" uid="uid://chfxph1wtlkx3" path="res://scenes/Light/lamp_sprite.png" id="2_lak6k"]
+[ext_resource type="Texture2D" uid="uid://chfxph1wtlkx3" path="res://scenes/Light/Art/lamp_sprite.png" id="2_lak6k"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_lvddm"]
+[ext_resource type="AudioStream" uid="uid://cuinlhfb2rygy" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="3_fkbj6"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_njlvs"]
+[ext_resource type="AudioStream" uid="uid://6sc36l3h6tnf" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="4_aqvqx"]
+[ext_resource type="AudioStream" uid="uid://q0pl0pudl7vl" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="5_l6eja"]
+[ext_resource type="AudioStream" uid="uid://cvv3qrthghq1u" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="6_8j3ln"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lvddm"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("3_fkbj6")
+stream_1/stream = ExtResource("4_aqvqx")
+stream_2/stream = ExtResource("5_l6eja")
+stream_3/stream = ExtResource("6_8j3ln")
+
+[sub_resource type="Resource" id="Resource_fkbj6"]
+script = ExtResource("2_lvddm")
+volume_dB = -3.0
+stream = SubResource("AudioStreamRandomizer_lvddm")
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Gradient" id="Gradient_pkg7o"]
 offsets = PackedFloat32Array(0, 0.72)
@@ -19,6 +39,7 @@ radius = 22.022715
 
 [node name="Light" type="Node2D"]
 script = ExtResource("1_5qqhr")
+sfx_extinguish = SubResource("Resource_fkbj6")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.38072696, 0.38072693)

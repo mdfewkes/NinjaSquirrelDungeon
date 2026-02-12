@@ -64,7 +64,7 @@ bus = &"Music"
 [node name="SFXTemplate" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 max_distance = 1500.0
-attenuation = 0.37640646
+attenuation = 1.5056256
 bus = &"SFX"
 
 [node name="UITemplate" type="AudioStreamPlayer" parent="."]

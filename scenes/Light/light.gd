@@ -2,6 +2,7 @@ class_name Light
 extends Node2D
 
 @export var lit = true
+@export var sfx_extinguish: AudioSFX
 
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var point_light_2d: PointLight2D = $PointLight2D
@@ -25,9 +26,11 @@ func _process(delta: float) -> void:
 		flicker_cooldown = (1 - randf() * randf()) * 0.25
 
 func turn_off_light() -> void:
+	if lit:
+		AudioManager.PlaySFX(sfx_extinguish, self)
 	point_light_2d.enabled = false
 	lit = false
-	
+
 func turn_on_light() -> void:
 	point_light_2d.enabled = true
 	lit = true

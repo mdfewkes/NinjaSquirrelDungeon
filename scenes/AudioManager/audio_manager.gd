@@ -128,6 +128,9 @@ func _open_voice_available(sfx: AudioSFX) -> bool:
 	if Time.get_ticks_msec() - sfx.last_play_time < sfx.cooldown_time_msec:
 		return false
 	
+	if sfx.max_voices <= -1:
+		return true
+	
 	var group = sfx.resource_path if sfx.concurrency_group.is_empty() else sfx.concurrency_group
 	
 	if active_voices.has(group):
@@ -144,7 +147,7 @@ func _add_voice(sfx: AudioSFX, source: AudioStreamPlayer2D) -> void:
 	var group = sfx.resource_path if sfx.concurrency_group.is_empty() else sfx.concurrency_group
 	
 	if active_voices.has(group):
-		if active_voices[group].size() < sfx.max_voices:
+		if active_voices[group].size() < sfx.max_voices or sfx.max_voices <= -1:
 			active_voices[group].push_back(source)
 			return
 			
