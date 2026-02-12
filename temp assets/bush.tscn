@@ -1,10 +1,46 @@
-[gd_scene load_steps=11 format=3 uid="uid://dplx8gnuq04lk"]
+[gd_scene load_steps=22 format=3 uid="uid://dplx8gnuq04lk"]
 
 [ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_28u5p"]
 [ext_resource type="PackedScene" uid="uid://di1qjcnjfe4ol" path="res://temp assets/bush_particles.tscn" id="3_2fvi4"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="3_2kkot"]
+[ext_resource type="AudioStream" uid="uid://bpwnqj2v7jk8x" path="res://temp assets/bush_hit_01.ogg" id="4_1ug04"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_fktey"]
 [ext_resource type="Texture2D" uid="uid://d0pt17ek7w3ra" path="res://temp assets/bush_sprite.png" id="5_2fvi4"]
 [ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_8yp1n"]
+[ext_resource type="AudioStream" uid="uid://b66vl2cufj7tr" path="res://temp assets/bush_hit_02.ogg" id="5_bkk6g"]
+[ext_resource type="AudioStream" uid="uid://cqpm2nfvix5pm" path="res://temp assets/bush_hit_03.ogg" id="6_3kpk7"]
+[ext_resource type="AudioStream" uid="uid://5vmmx2sr0fuc" path="res://temp assets/bush_tail_01.ogg" id="7_f7nfp"]
+[ext_resource type="AudioStream" uid="uid://cmqrv1y6ts041" path="res://temp assets/bush_tail_02.ogg" id="8_qcr1p"]
+[ext_resource type="AudioStream" uid="uid://ccl630w6g3lt2" path="res://temp assets/bush_tail_03.ogg" id="9_46t1x"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hrrds"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("4_1ug04")
+stream_1/stream = ExtResource("5_bkk6g")
+stream_2/stream = ExtResource("6_3kpk7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5tyk4"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("7_f7nfp")
+stream_1/stream = ExtResource("8_qcr1p")
+stream_2/stream = ExtResource("9_46t1x")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_cqme5"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_hrrds")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_5tyk4")
+stream_1/volume = 0.0
+
+[sub_resource type="Resource" id="Resource_0qml1"]
+script = ExtResource("3_2kkot")
+stream = SubResource("AudioStreamSynchronized_cqme5")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cy4n"]
 radius = 20.0
@@ -26,6 +62,7 @@ radius = 50.0
 [node name="Bush" type="StaticBody2D" groups=["navigation_polygon_source_geometry_group"]]
 script = ExtResource("1_28u5p")
 bush_particles = ExtResource("3_2fvi4")
+sfx_on_break = SubResource("Resource_0qml1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -92)
