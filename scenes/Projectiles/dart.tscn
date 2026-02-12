@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_502sn"]
 [ext_resource type="Texture2D" uid="uid://ce7rjgyeihc13" path="res://scenes/Projectiles/Art/dart.png" id="2_umxqs"]
 [ext_resource type="PackedScene" uid="uid://dp3y7pkypo3a4" path="res://scenes/Effects/sparks.tscn" id="3_fvhhx"]
-[ext_resource type="AudioStream" uid="uid://dhuxm8tbvdu8" path="res://scenes/Dartmunk/Audio/dartmunk projectile 1.ogg" id="3_nywut"]
-[ext_resource type="AudioStream" uid="uid://deqgg6cf1nen1" path="res://scenes/Dartmunk/Audio/dartmunk projectile 2.ogg" id="4_dlbd4"]
+[ext_resource type="AudioStream" uid="uid://canh8by3cedqc" path="res://scenes/Dartmunk/Audio/dartmunk projectile 1.ogg" id="3_nywut"]
+[ext_resource type="AudioStream" uid="uid://cr3xu2xd8aljp" path="res://scenes/Dartmunk/Audio/dartmunk projectile 2.ogg" id="4_dlbd4"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_e2cde"]
-[ext_resource type="AudioStream" uid="uid://ck6oft68g5it5" path="res://scenes/Dartmunk/Audio/dartmunk projectile 3.ogg" id="5_04i4g"]
-[ext_resource type="AudioStream" uid="uid://b746354k8fasr" path="res://scenes/Dartmunk/Audio/dartmunk projectile 4.ogg" id="6_502sn"]
+[ext_resource type="AudioStream" uid="uid://bvv3m6ygjnxo5" path="res://scenes/Dartmunk/Audio/dartmunk projectile 3.ogg" id="5_04i4g"]
+[ext_resource type="AudioStream" uid="uid://bgpt32ocywm1p" path="res://scenes/Dartmunk/Audio/dartmunk projectile 4.ogg" id="6_502sn"]
 [ext_resource type="AudioStream" uid="uid://db3nbngpjf3jp" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-1.ogg" id="11_tlvcl"]
 [ext_resource type="AudioStream" uid="uid://duxdw4dwjgplo" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-2.ogg" id="12_ra8g2"]
 [ext_resource type="AudioStream" uid="uid://d1s1omxto3xwc" path="res://scenes/Projectiles/Audio/shuriken-hit-hard-3.ogg" id="13_5xpd7"]
@@ -30,7 +30,6 @@ stream_3/stream = ExtResource("6_502sn")
 
 [sub_resource type="Resource" id="Resource_3r4p1"]
 script = ExtResource("2_502sn")
-volume_dB = -6.0
 stream = SubResource("AudioStreamRandomizer_l5d40")
 steal_strategy = 1
 metadata/_custom_type_script = "uid://0c6lrocedisf"

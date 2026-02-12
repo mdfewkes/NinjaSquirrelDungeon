@@ -8,12 +8,16 @@
 
 [sub_resource type="Resource" id="Resource_choin"]
 script = ExtResource("2_y0mve")
+volume_dB = 3.0
 stream = ExtResource("3_mwu56")
+max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Resource" id="Resource_0yfhr"]
 script = ExtResource("2_y0mve")
+volume_dB = 3.0
 stream = ExtResource("4_lreon")
+max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Animation" id="Animation_jl38d"]

@@ -5,11 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://d31byv420y6lw" path="res://scenes/Switch/Audio/switch2sound.ogg" id="3_a067e"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u41ts"]
+random_pitch = 1.2
 streams_count = 2
 stream_0/stream = ExtResource("2_jw43s")
 stream_1/stream = ExtResource("3_a067e")
 
 [resource]
 script = ExtResource("1_tu4nf")
+volume_dB = 3.0
 stream = SubResource("AudioStreamRandomizer_u41ts")
 metadata/_custom_type_script = "uid://0c6lrocedisf"
