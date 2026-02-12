@@ -52,7 +52,7 @@ script = ExtResource("1_kr7s0")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.46666667)
+modulate = Color(1, 1, 1, 0.6509804)
 texture = ExtResource("2_1gfwg")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -64,7 +64,7 @@ bus = &"Music"
 [node name="SFXTemplate" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 max_distance = 1500.0
-attenuation = 1.5
+attenuation = 0.37640646
 bus = &"SFX"
 
 [node name="UITemplate" type="AudioStreamPlayer" parent="."]

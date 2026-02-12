@@ -15,6 +15,7 @@ enum State { idle, charging, rebound, cut_scene }
 @onready var hit_box: HitBox = $HitBox
 @onready var on_screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sound_source: Node2D = $SoundSource
 
 var state = State.idle
 var velocity := Vector2.ZERO
@@ -61,8 +62,7 @@ func _start_charging() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		velocity = global_position.direction_to(player.global_position)
-	if sfx_on_charge:
-		AudioManager.PlaySFX(sfx_on_charge, self)
+	AudioManager.PlaySFX(sfx_on_charge, sound_source)
 	#print("charging:", velocity)
 
 
