@@ -15,6 +15,7 @@ var current_hp: int
 enum PlayerSFX {hurt, footstep, effort}
 @export var sfx_hurt: AudioSFX
 @export var sfx_footstep: AudioSFX
+@export var sfx_roll: AudioSFX
 @export var sfx_effort_low: AudioSFX
 @export var sfx_effort_medium: AudioSFX
 @export var sfx_effort_high: AudioSFX
@@ -128,6 +129,8 @@ func _roll_state() -> void:
 		play_sfx_effort()
 		if input_vector != Vector2.ZERO:
 			velocity = input_vector * velocity.length()
+		if input_vector != velocity.normalized():
+			AudioManager.PlaySFX(sfx_roll, self)
 		received_roll_command = false
 		return
 	
@@ -183,6 +186,7 @@ func  _set_roll_state() -> void:
 	playback.travel("RollState")
 	current_state = PlayerState.Roll
 	play_sfx_effort()
+	AudioManager.PlaySFX(sfx_roll, self)
 
 func _check_and_set_action_state() -> void:
 	if Input.is_action_just_pressed("action_1") or action_selected_by_cutscene == "action_1":
