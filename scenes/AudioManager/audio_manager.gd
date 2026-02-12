@@ -46,7 +46,7 @@ func toggle_mute() -> void:
 	AudioServer.set_bus_mute(master_bus, not AudioServer.is_bus_mute(master_bus))
 
 
-func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
+func PlaySFX(sfx: AudioSFX, target: Node2D, attenuation: float = 1.5) -> AudioStreamPlayer2D:
 	if sfx == null or target == null:
 		return null
 	if not sfx.trigger_when_out_of_range:
@@ -63,6 +63,7 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	
 	freshAudioSource.volume_db = sfx.volume_dB
 	freshAudioSource.stream = sfx.stream
+	freshAudioSource.attenuation = attenuation
 	freshAudioSource.play()
 	
 	_add_voice(sfx, freshAudioSource)
@@ -73,12 +74,12 @@ func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
 	
 	return freshAudioSource
 
-func PlaySFX_at_position(sfx: AudioSFX, position: Vector2) -> AudioStreamPlayer2D:
+func PlaySFX_at_position(sfx: AudioSFX, position: Vector2, attenuation: float = 1.5) -> AudioStreamPlayer2D:
 	var freshNode = Node2D.new()
 	add_child(freshNode)
 	freshNode.global_position = position
 	
-	var freshAudioSource = PlaySFX(sfx, freshNode)
+	var freshAudioSource = PlaySFX(sfx, freshNode, attenuation)
 	
 	if freshAudioSource != null:
 		freshAudioSource.finished.connect(freshNode.queue_free)

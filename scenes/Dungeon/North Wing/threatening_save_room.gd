@@ -23,7 +23,7 @@ func _on_timer() -> void:
 	_set_random_time()
 	if Level.current_room == self:
 		ImpactEffects.shake(randf_range(0.5, 2.0), randf_range(0.4, 0.8))
-		AudioManager.PlaySFX(sfx_on_hit, self)
+		AudioManager.PlaySFX(sfx_on_hit, self, 0.25)
 
 func _on_rocks_trigger_body_entered(body: Node2D) -> void:
 	if not body is Player:

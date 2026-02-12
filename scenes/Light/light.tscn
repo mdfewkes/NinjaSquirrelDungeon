@@ -20,7 +20,6 @@ stream_3/stream = ExtResource("6_8j3ln")
 
 [sub_resource type="Resource" id="Resource_fkbj6"]
 script = ExtResource("2_lvddm")
-volume_dB = -3.0
 stream = SubResource("AudioStreamRandomizer_lvddm")
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 

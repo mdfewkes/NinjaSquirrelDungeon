@@ -30,7 +30,7 @@ func _on_hurt(hit_box: HitBox) -> void:
 	if hit_box.damage >= damage_threshold:
 		_destroy_tiles()
 		_launch_rocks()
-		AudioManager.PlaySFX_at_position(sfx_on_break, _get_cs().global_position)
+		AudioManager.PlaySFX_at_position(sfx_on_break, _get_cs().global_position, 0.0)
 		queue_free.call_deferred()
 
 func _destroy_tiles() -> void:

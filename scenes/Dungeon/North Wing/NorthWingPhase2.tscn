@@ -1076,7 +1076,6 @@ pull_speed_coefficient = 0.0
 position = Vector2(-641, 321)
 
 [node name="BridgeShape" parent="Rooms/CutSceneRoom/Environment/Bridge" index="1"]
-visible = true
 position = Vector2(-195, -1)
 shape = SubResource("RectangleShape2D_wdgqb")
 
@@ -1084,7 +1083,6 @@ shape = SubResource("RectangleShape2D_wdgqb")
 position = Vector2(-258, 323)
 
 [node name="BridgeShape" parent="Rooms/CutSceneRoom/Environment/Bridge2" index="1"]
-visible = true
 position = Vector2(2.5, -3)
 
 [node name="SceneTrigger" type="Area2D" parent="Rooms/CutSceneRoom/Environment"]
@@ -1858,7 +1856,6 @@ position = Vector2(2705, 240)
 can_be_destroyed = true
 
 [node name="BridgeShape" parent="Rooms/ChaseRoom2/Environment/Bridge" index="1"]
-visible = true
 position = Vector2(11.5, 0)
 shape = SubResource("RectangleShape2D_0hq3a")
 

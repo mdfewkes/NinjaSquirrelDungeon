@@ -62,7 +62,7 @@ func _start_charging() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		velocity = global_position.direction_to(player.global_position)
-	AudioManager.PlaySFX(sfx_on_charge, sound_source)
+	AudioManager.PlaySFX(sfx_on_charge, sound_source, 0.5)
 	#print("charging:", velocity)
 
 
