@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ba8i3dlifdv"]
+[gd_scene load_steps=6 format=3 uid="uid://b1ba8i3dlifdv"]
 
 [ext_resource type="Texture2D" uid="uid://civ1g1yb0lwcb" path="res://decorations/bedroll.png" id="1_6ihrv"]
+[ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="2_kgyyl"]
+
+[sub_resource type="Gradient" id="Gradient_fc115"]
+offsets = PackedFloat32Array(0.36956522, 0.66459626)
+colors = PackedColorArray(0.20784314, 0.08627451, 0.09803922, 1, 0.55, 0.2145, 0.29278326, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5w06e"]
+gradient = SubResource("Gradient_fc115")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e73e"]
+size = Vector2(184, 72)
 
 [node name="bedroll" type="Sprite2D"]
 texture = ExtResource("1_6ihrv")
+
+[node name="TailCloakArea" type="Area2D" parent="."]
+position = Vector2(-4, -40)
+script = ExtResource("2_kgyyl")
+tail_gradient = SubResource("GradientTexture2D_5w06e")
+metadata/_custom_type_script = "uid://8wwkar2rentt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailCloakArea"]
+visible = false
+position = Vector2(7, 38)
+shape = SubResource("RectangleShape2D_4e73e")
+debug_color = Color(0.7159706, 0.34293634, 0.8576906, 0.41960785)

@@ -1,15 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvcjh7k8fysp2"]
+[gd_scene load_steps=11 format=3 uid="uid://bvcjh7k8fysp2"]
 
 [ext_resource type="Script" uid="uid://dyukorqtw7sx1" path="res://temp assets/bush.gd" id="1_0ybrx"]
 [ext_resource type="Texture2D" uid="uid://dhpygst37lhfa" path="res://decorations/crate_decoration.png" id="1_3jbcv"]
 [ext_resource type="PackedScene" uid="uid://c2v88p5v7gfvk" path="res://temp assets/wood_particles.tscn" id="2_dddpo"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="4_ioo40"]
+[ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_dddpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sduvh"]
 size = Vector2(31, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo81n"]
 size = Vector2(40, 44)
+
+[sub_resource type="Gradient" id="Gradient_ioo40"]
+offsets = PackedFloat32Array(0.23366834, 0.8768844)
+colors = PackedColorArray(0.19, 0.1235, 0.057, 1, 0.7, 0.45499998, 0.21000001, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xo81n"]
+gradient = SubResource("Gradient_ioo40")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se0gx"]
+radius = 43.0
 
 [node name="crate" type="Node2D"]
 script = ExtResource("1_0ybrx")
@@ -33,3 +44,14 @@ metadata/_custom_type_script = "uid://jrn1snxemt88"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1, 22)
 shape = SubResource("RectangleShape2D_xo81n")
+
+[node name="TailCloakArea" type="Area2D" parent="."]
+position = Vector2(-4, -40)
+script = ExtResource("5_dddpo")
+tail_gradient = SubResource("GradientTexture2D_xo81n")
+metadata/_custom_type_script = "uid://8wwkar2rentt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailCloakArea"]
+position = Vector2(4, 40)
+shape = SubResource("CircleShape2D_se0gx")
+debug_color = Color(0.7159706, 0.34293634, 0.8576906, 0.41960785)

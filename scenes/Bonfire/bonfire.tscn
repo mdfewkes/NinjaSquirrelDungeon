@@ -1,15 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwkfo0fdexbrh"]
+[gd_scene load_steps=11 format=3 uid="uid://cwkfo0fdexbrh"]
 
 [ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://scenes/Bonfire/bonfire.gd" id="1_70l5l"]
 [ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://scenes/Bonfire/Trashcan.png" id="1_s8pws"]
 [ext_resource type="PackedScene" uid="uid://cdf1eo5u4dhu4" path="res://scenes/Bonfire/fire_efx.tscn" id="2_70l5l"]
 [ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://scenes/Bonfire/TrashHole.png" id="2_buw6a"]
+[ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_jdxka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
 size = Vector2(50, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wsa28"]
 radius = 100.0
+
+[sub_resource type="Gradient" id="Gradient_wukud"]
+offsets = PackedFloat32Array(0.24844721, 0.50931674, 0.72981364)
+colors = PackedColorArray(0.21, 0.19207999, 0.1764, 1, 0.51, 0.43052498, 0.07649998, 1, 0.66, 0.22572005, 0.10560002, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_drron"]
+gradient = SubResource("Gradient_wukud")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8nif"]
+size = Vector2(122, 156)
 
 [node name="Bonfire" type="StaticBody2D"]
 collision_mask = 3
@@ -41,3 +52,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationTrigger"]
 shape = SubResource("CircleShape2D_wsa28")
 debug_color = Color(0.20273793, 0.6349372, 0.26178008, 0.41960785)
+
+[node name="TailCloakArea" type="Area2D" parent="."]
+position = Vector2(-4, -40)
+script = ExtResource("5_jdxka")
+tail_gradient = SubResource("GradientTexture2D_drron")
+metadata/_custom_type_script = "uid://8wwkar2rentt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailCloakArea"]
+position = Vector2(4, 30)
+shape = SubResource("RectangleShape2D_r8nif")
+debug_color = Color(0.7159706, 0.34293634, 0.8576906, 0.41960785)

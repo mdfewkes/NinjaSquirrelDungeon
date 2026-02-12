@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://btgywvf70bs7a"]
+[gd_scene load_steps=6 format=3 uid="uid://btgywvf70bs7a"]
 
 [ext_resource type="Texture2D" uid="uid://dt01giat2p2ik" path="res://decorations/roots_2.png" id="1_ck8s6"]
+[ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="2_v3j4t"]
+
+[sub_resource type="Gradient" id="Gradient_fc115"]
+offsets = PackedFloat32Array(0.29503107, 0.66459626)
+colors = PackedColorArray(0.17, 0.0714, 0.081259996, 1, 0.55, 0.2145, 0.29278326, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v3j4t"]
+gradient = SubResource("Gradient_fc115")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7w60"]
+radius = 136.03308
 
 [node name="roots2" type="Sprite2D"]
 texture = ExtResource("1_ck8s6")
+
+[node name="TailCloakArea" type="Area2D" parent="."]
+position = Vector2(-4, -40)
+script = ExtResource("2_v3j4t")
+tail_gradient = SubResource("GradientTexture2D_v3j4t")
+metadata/_custom_type_script = "uid://8wwkar2rentt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailCloakArea"]
+position = Vector2(-23, 35)
+shape = SubResource("CircleShape2D_n7w60")
+debug_color = Color(0.7159706, 0.34293634, 0.8576906, 0.41960785)
