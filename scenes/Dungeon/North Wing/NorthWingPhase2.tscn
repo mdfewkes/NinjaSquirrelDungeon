@@ -1004,13 +1004,13 @@ shape = SubResource("RectangleShape2D_o03n2")
 position = Vector2(-790, 519)
 
 [node name="Light20" parent="Rooms/CutSceneRoom/Lights" instance=ExtResource("11_yjfbv")]
-position = Vector2(-91, 70)
+position = Vector2(-88, 88)
 
 [node name="Light14" parent="Rooms/CutSceneRoom/Lights" instance=ExtResource("11_yjfbv")]
 position = Vector2(-91, 515)
 
 [node name="Light8" parent="Rooms/CutSceneRoom/Lights" instance=ExtResource("11_yjfbv")]
-position = Vector2(-791, 63)
+position = Vector2(-805, 76)
 
 [node name="Enemies" type="Node2D" parent="Rooms/CutSceneRoom"]
 
@@ -1180,7 +1180,6 @@ camera_zoom = 0.8
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/ChaseRoom1"]
-visible = false
 position = Vector2(3279.5, 327)
 shape = SubResource("RectangleShape2D_8ntv0")
 
@@ -1520,7 +1519,6 @@ camera_zoom = 1.2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SaveRoom2"]
-visible = false
 position = Vector2(6029.25, 241)
 shape = SubResource("RectangleShape2D_wal4e")
 

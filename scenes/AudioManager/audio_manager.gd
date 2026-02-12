@@ -2,8 +2,8 @@ extends Node
 
 @onready var sfx_template: AudioStreamPlayer2D = $SFXTemplate
 @onready var ui_template: AudioStreamPlayer = $UITemplate
-@onready var texture_rect: Sprite2D = $TextureRect
 @onready var music: AudioStreamPlayer = $Music
+@onready var texture_rect: Sprite2D = $TextureRect
 
 @export var listening_range: float = 1000.0
 
@@ -44,12 +44,6 @@ func _process(_delta: float) -> void:
 func toggle_mute() -> void:
 	var master_bus := AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_mute(master_bus, not AudioServer.is_bus_mute(master_bus))
-
-
-func PlayMusic(new_track: MusicStates) -> void:
-	if new_track != music_state:
-		music_state = new_track
-		interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
 
 
 func PlaySFX(sfx: AudioSFX, target: Node2D) -> AudioStreamPlayer2D:
@@ -124,6 +118,11 @@ func PlayUI(sfx: AudioSFX) -> AudioStreamPlayer:
 		active_voices[group].push_back(freshAudioSource)
 	
 	return freshAudioSource
+
+func PlayMusic(new_track: MusicStates) -> void:
+	if new_track != music_state:
+		music_state = new_track
+		interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
 
 func _open_voice_available(sfx: AudioSFX) -> bool:
 	if Time.get_ticks_msec() - sfx.last_play_time < sfx.cooldown_time_msec:
