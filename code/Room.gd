@@ -13,9 +13,11 @@ extends Area2D
 var lights: Array
 
 signal player_entered_room(room)
+signal player_exited_room(room)
 
 func _ready() -> void:
 	connect("body_entered", _on_body_entered)
+	connect("body_exited", _on_body_exited)
 	
 	lights = lights_parent_node.get_children()
 
@@ -56,3 +58,7 @@ func remove_as_current_room() -> void:
 func _on_body_entered(body: Node2D):
 	if body is Player:
 		player_entered_room.emit(self)
+		
+func _on_body_exited(body: Node2D):
+	if body is Player:
+		player_exited_room.emit(self)

@@ -15,6 +15,8 @@ static var last_room: Room = null
 static var last_level: String = ""
 static var light_level: float = 1
 
+var player
+
 func _ready() -> void:
 	call_deferred("_setup")
 
@@ -41,7 +43,7 @@ func _setup() -> void:
 	if not is_inside_tree():
 		await tree_entered
 	var players := get_tree().get_nodes_in_group("player")
-	var player = players[0] if players.size() > 0 else null
+	player = players[0] if players.size() > 0 else null
 	if not StateManager.has_key("respawn_point"):
 		var spawn_point = default_spawn
 		if spawn_points.has(last_level):
@@ -57,13 +59,20 @@ func _setup() -> void:
 		if child is Room:
 			rooms.push_back(child)
 	
-	var last_saw_player = null
 	for room in rooms:
 		room.player_entered_room.connect(_on_player_entered_room)
+		room.player_exited_room.connect(_on_player_exited_room)
 		room.remove_as_current_room()
+		
+	_set_current_room(_locate_player())
+
+
+func _locate_player() -> Room:
+	var last_saw_player = current_room
+	for room in rooms:
 		if player and room.collision_shape_2d.shape.get_rect().has_point(player.global_position):
 			last_saw_player = room
-	_set_current_room(last_saw_player)
+	return last_saw_player
 
 
 func _set_current_room(room: Room) -> void:
@@ -77,4 +86,10 @@ func _set_current_room(room: Room) -> void:
 		current_room.set_as_current_room()
 
 func _on_player_entered_room(room: Room) -> void:
-	_set_current_room(room)
+	if room != current_room:
+		_set_current_room(room)
+
+func _on_player_exited_room(room: Room) -> void:
+	if room == current_room:
+		_set_current_room(_locate_player())
+		print("they've escapped!")

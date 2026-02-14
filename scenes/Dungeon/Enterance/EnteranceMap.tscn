@@ -16,18 +16,18 @@
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="13_mhtcy"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="13_p32oj"]
 [ext_resource type="PackedScene" uid="uid://cwfms7dbcl64a" path="res://scenes/GhostNPC/ghost_npc_entrance.tscn" id="13_ymxj4"]
-[ext_resource type="AudioStream" uid="uid://cuinlhfb2rygy" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="14_6y8s7"]
+[ext_resource type="AudioStream" uid="uid://r4t0587gpucq" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="14_6y8s7"]
 [ext_resource type="PackedScene" uid="uid://bqie6v1y53wic" path="res://decorations/crack96.tscn" id="14_ve4ef"]
-[ext_resource type="AudioStream" uid="uid://6sc36l3h6tnf" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="15_77jtg"]
+[ext_resource type="AudioStream" uid="uid://f4fixav30oey" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="15_77jtg"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_dnpav"]
 [ext_resource type="PackedScene" uid="uid://c7hmt2i55od51" path="res://decorations/roots_3.tscn" id="15_ecawk"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_ymxj4"]
-[ext_resource type="AudioStream" uid="uid://q0pl0pudl7vl" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="16_7r8ff"]
+[ext_resource type="AudioStream" uid="uid://bkst75va1c5m3" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="16_7r8ff"]
 [ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="16_43n1i"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="16_1803i"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_sqdfd"]
-[ext_resource type="Texture2D" uid="uid://dbvkfutesvdg1" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
-[ext_resource type="AudioStream" uid="uid://cvv3qrthghq1u" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="17_ens25"]
+[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
+[ext_resource type="AudioStream" uid="uid://btankt1gydsoq" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="17_ens25"]
 [ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://dvn3i4dod2c7e" path="res://decorations/banner_3.tscn" id="19_r2h0m"]
@@ -221,7 +221,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1064, 920, -1016, -924
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhtrk"]
-size = Vector2(1224, 759)
+size = Vector2(1232, 759)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00o6o"]
 random_pitch = 1.2
@@ -286,19 +286,19 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lyq4"]
-size = Vector2(352, 772)
+size = Vector2(352, 784)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnpav"]
 size = Vector2(296, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p32oj"]
-size = Vector2(952, 896)
+size = Vector2(956, 896)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tosua"]
-size = Vector2(908, 888)
+size = Vector2(940, 888)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqdfd"]
-size = Vector2(241, 515)
+size = Vector2(241, 524)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my276"]
 atlas = ExtResource("19_6u3ie")
@@ -411,7 +411,7 @@ script = ExtResource("9_6lqkh")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
-position = Vector2(568, 360.5)
+position = Vector2(572, 360.5)
 shape = SubResource("RectangleShape2D_dhtrk")
 
 [node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
@@ -528,7 +528,7 @@ script = ExtResource("9_6lqkh")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/FinalHallwayRoom"]
-position = Vector2(576, -414)
+position = Vector2(576, -408)
 shape = SubResource("RectangleShape2D_4lyq4")
 
 [node name="Lights" type="Node2D" parent="Rooms/FinalHallwayRoom"]
@@ -575,7 +575,7 @@ script = ExtResource("9_6lqkh")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/EastEnteranceRoom"]
-position = Vector2(1660, 292)
+position = Vector2(1658, 292)
 shape = SubResource("RectangleShape2D_p32oj")
 
 [node name="Lights" type="Node2D" parent="Rooms/EastEnteranceRoom"]
@@ -648,7 +648,7 @@ script = ExtResource("9_6lqkh")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/WestEnteranceRoom"]
-position = Vector2(-506, 296)
+position = Vector2(-490, 296)
 shape = SubResource("RectangleShape2D_tosua")
 
 [node name="Lights" type="Node2D" parent="Rooms/WestEnteranceRoom"]
@@ -717,7 +717,7 @@ collision_mask = 2
 script = ExtResource("9_6lqkh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/QuestDoorRoom"]
-position = Vector2(197.5, -278.5)
+position = Vector2(197.5, -274)
 shape = SubResource("RectangleShape2D_sqdfd")
 
 [node name="Lights" type="Node2D" parent="Rooms/QuestDoorRoom"]

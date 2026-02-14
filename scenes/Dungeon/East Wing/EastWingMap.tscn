@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="15_7r056"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_cslsd"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_lg7io"]
-[ext_resource type="Texture2D" uid="uid://c4vy14wghe17a" path="res://scenes/GhostNPC/Art/ghost_east_wing.png" id="15_o5awk"]
+[ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/Art/ghost_east_wing.png" id="15_o5awk"]
 [ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="16_0ht87"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_7r056"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="16_cslsd"]
@@ -32,8 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_funrx"]
 [ext_resource type="PackedScene" uid="uid://bpkl5kq3kyjsa" path="res://decorations/sewer_grate.tscn" id="21_1lvyh"]
 [ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="22_s2ci2"]
-[ext_resource type="Texture2D" uid="uid://3unfv2d5irr3" path="res://scenes/GhostNPC/Art/sword.png" id="25_aybc4"]
-[ext_resource type="Texture2D" uid="uid://cw65bbnq6b1n8" path="res://scenes/GhostNPC/Art/wreckage.png" id="26_funrx"]
+[ext_resource type="Texture2D" uid="uid://7q07yd8fsalp" path="res://scenes/GhostNPC/Art/sword.png" id="25_aybc4"]
+[ext_resource type="Texture2D" uid="uid://p0am3oafh1eg" path="res://scenes/GhostNPC/Art/wreckage.png" id="26_funrx"]
 [ext_resource type="PackedScene" uid="uid://27ywljbb2yge" path="res://decorations/blood_splatter_3.tscn" id="26_sgyp7"]
 [ext_resource type="PackedScene" uid="uid://dif47m4g5npmd" path="res://decorations/blood_splatter_1.tscn" id="27_cm3cw"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="30_thkkl"]
@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://saswlmxeecct" path="res://decorations/plinth.tscn" id="38_6u05r"]
 [ext_resource type="PackedScene" uid="uid://bvcjh7k8fysp2" path="res://decorations/crate.tscn" id="38_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://cke0q2u167eh6" path="res://decorations/clutter_5.tscn" id="40_fkqu1"]
-[ext_resource type="PackedScene" path="res://decorations/statue.tscn" id="41_sjwi5"]
+[ext_resource type="PackedScene" uid="uid://c58imjnlphqtw" path="res://decorations/statue.tscn" id="41_sjwi5"]
 [ext_resource type="PackedScene" uid="uid://beprdb1gnubrt" path="res://decorations/clutter_3(collidable).tscn" id="43_wrdsv"]
 [ext_resource type="PackedScene" uid="uid://cibsk1ikwthkp" path="res://decorations/clutter_2(collidable).tscn" id="44_ydcdb"]
 [ext_resource type="PackedScene" uid="uid://cd7nqyh54cw7j" path="res://decorations/ladder(collidable).tscn" id="45_6gflv"]
@@ -241,7 +241,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-129, 886, -102, -76, 1
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhtrk"]
-size = Vector2(1533, 662)
+size = Vector2(1527, 662)
 
 [sub_resource type="Gradient" id="Gradient_08kol"]
 offsets = PackedFloat32Array(0, 0.6165803)
@@ -292,6 +292,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r056"]
 size = Vector2(296, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5awk"]
+size = Vector2(220, 426)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my276"]
 atlas = ExtResource("17_3rc66")
@@ -347,20 +350,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5awk"]
-size = Vector2(220, 426)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cslsd"]
-size = Vector2(765, 791)
+size = Vector2(807, 791)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81ge1"]
-size = Vector2(636, 1071)
+size = Vector2(664, 1071)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs0o6"]
-size = Vector2(1161, 1561)
+size = Vector2(1196, 1561)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf68q"]
-size = Vector2(937, 1400)
+size = Vector2(959, 1400)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmef8"]
 size = Vector2(673.0001, 8)
@@ -369,7 +369,7 @@ size = Vector2(673.0001, 8)
 size = Vector2(278, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38mvj"]
-size = Vector2(2861, 2090)
+size = Vector2(2954, 2090)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msvnt"]
 size = Vector2(429, 128)
@@ -439,7 +439,7 @@ script = ExtResource("9_ajolp")
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
-position = Vector2(627.5, 320)
+position = Vector2(624.5, 320)
 shape = SubResource("RectangleShape2D_dhtrk")
 
 [node name="Lights" type="Node2D" parent="Rooms/StartRoom"]
@@ -527,6 +527,10 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SpiritCage"]
+position = Vector2(579, -203)
+shape = SubResource("RectangleShape2D_o5awk")
+
 [node name="Lights" type="Node2D" parent="Rooms/SpiritCage"]
 
 [node name="Enemies" type="Node2D" parent="Rooms/SpiritCage"]
@@ -586,17 +590,13 @@ position = Vector2(-64, 0)
 sprite_frames = SubResource("SpriteFrames_aiqyx")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SpiritCage"]
-position = Vector2(579, -203)
-shape = SubResource("RectangleShape2D_o5awk")
-
 [node name="Room 1" type="Area2D" parent="Rooms"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 1"]
-position = Vector2(1804.5, 332.5)
+position = Vector2(1783.5, 332.5)
 shape = SubResource("RectangleShape2D_cslsd")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 1"]
@@ -722,7 +722,7 @@ collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 3"]
-position = Vector2(2027.5, 355.5)
+position = Vector2(2027, 355.5)
 shape = SubResource("RectangleShape2D_fs0o6")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 3"]
@@ -1167,7 +1167,7 @@ collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 4"]
-position = Vector2(1843.5, 526)
+position = Vector2(1854.5, 526)
 shape = SubResource("RectangleShape2D_tf68q")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 4"]
@@ -1334,7 +1334,7 @@ collision_mask = 2
 script = ExtResource("9_ajolp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 5"]
-position = Vector2(3074.5, 718)
+position = Vector2(3028, 718)
 shape = SubResource("RectangleShape2D_38mvj")
 
 [node name="Lights" type="Node2D" parent="Rooms/Room 5"]
@@ -1449,7 +1449,6 @@ invisible = true
 position = Vector2(2011, 1018)
 
 [node name="BridgeShape" parent="Rooms/Room 5/Environment/Bridge" index="1"]
-visible = true
 position = Vector2(152.5, 0)
 shape = SubResource("RectangleShape2D_msvnt")
 
@@ -1457,7 +1456,6 @@ shape = SubResource("RectangleShape2D_msvnt")
 position = Vector2(2652, 314)
 
 [node name="BridgeShape" parent="Rooms/Room 5/Environment/Bridge2" index="1"]
-visible = true
 position = Vector2(183.5, 0)
 shape = SubResource("RectangleShape2D_errya")
 
