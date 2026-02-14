@@ -715,6 +715,7 @@ rotation = 3.1415927
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_6lqkh")
+reverb_room_size = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/QuestDoorRoom"]
 position = Vector2(197.5, -274)

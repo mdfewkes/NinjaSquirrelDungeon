@@ -45,6 +45,9 @@ func toggle_mute() -> void:
 	var master_bus := AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_mute(master_bus, not AudioServer.is_bus_mute(master_bus))
 
+func set_reverb_size(room_size: float) -> void:
+	var effect = AudioServer.get_bus_effect(AudioServer.get_bus_index("SFX"), 0)
+	effect.set_room_size(clamp(room_size, 0.0, 1.0))
 
 func PlaySFX(sfx: AudioSFX, target: Node2D, attenuation: float = 1.5) -> AudioStreamPlayer2D:
 	if sfx == null or target == null:

@@ -68,7 +68,7 @@ func _setup() -> void:
 
 
 func _locate_player() -> Room:
-	var last_saw_player = current_room
+	var last_saw_player = null
 	for room in rooms:
 		if player and room.collision_shape_2d.shape.get_rect().has_point(player.global_position):
 			last_saw_player = room

@@ -526,6 +526,7 @@ shape = SubResource("RectangleShape2D_7r056")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+reverb_room_size = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SpiritCage"]
 position = Vector2(579, -203)
@@ -594,6 +595,7 @@ autoplay = "default"
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+reverb_room_size = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 1"]
 position = Vector2(1783.5, 332.5)
@@ -720,6 +722,7 @@ position = Vector2(1415, -37)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+reverb_room_size = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 3"]
 position = Vector2(2027, 355.5)
@@ -1165,6 +1168,7 @@ position = Vector2(2658, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+reverb_room_size = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 4"]
 position = Vector2(1854.5, 526)
@@ -1332,6 +1336,7 @@ position = Vector2(3373, 7)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+reverb_room_size = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 5"]
 position = Vector2(3028, 718)
