@@ -11,6 +11,8 @@ enum State { idle, charging, rebound, cut_scene }
 @export var starting_point : Marker2D
 
 @export var sfx_on_charge: AudioSFX
+@export var sfx_on_step: AudioSFX
+@export var sfx_on_boss_fall: AudioSFX
 
 @onready var hit_box: HitBox = $HitBox
 @onready var on_screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
@@ -36,6 +38,7 @@ func _ready() -> void:
 func start_final_cut_scene() -> void:
 	state = State.cut_scene
 	animation_player.play("Falling")
+	AudioManager.PlaySFX(sfx_on_boss_fall, self, 0.25)
 
 
 func _reset() -> void:
@@ -62,7 +65,7 @@ func _start_charging() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		velocity = global_position.direction_to(player.global_position)
-	AudioManager.PlaySFX(sfx_on_charge, sound_source, 0.5)
+	AudioManager.PlaySFX(sfx_on_charge, sound_source, 0.25)
 	#print("charging:", velocity)
 
 
@@ -107,3 +110,6 @@ func _on_left_screen() -> void:
 		print("left screen, resetting", global_position.x, player.global_position.x)
 		global_position = starting_point.global_position
 		_start_charging()
+
+func play_sfx_step() -> void:
+	AudioManager.PlaySFX_at_position(sfx_on_step, sound_source.global_position, 0.25)

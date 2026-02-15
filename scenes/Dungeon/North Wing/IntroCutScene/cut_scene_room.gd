@@ -2,8 +2,14 @@ extends Room
 
 ## If set, this dialog will play before the cut scene starts
 @export var dialog_script_path: String
+@export var sfx_thud: AudioSFX
+@export var sfx_boss_step: AudioSFX
+@export var sfx_boss_grab: AudioSFX
+@export var sfx_boss_chomp: AudioSFX
+@export var sfx_boss_grow: AudioSFX
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var cut_scene_badger: StaticBody2D = $Enemies/CutSceneBadger
 
 func _start_cut_scene() -> void:
 	if dialog_script_path:
@@ -31,3 +37,18 @@ func _finish_scene():
 	t.tween_property(player, "global_position", marker.global_position, 1.5)
 	await t.finished
 	player.is_cutscene_squirrel = false
+
+func play_sfx_thud() -> void:
+	AudioManager.PlaySFX(sfx_thud, cut_scene_badger)
+
+func play_sfx_step() -> void:
+	AudioManager.PlaySFX(sfx_boss_step, cut_scene_badger)
+
+func play_sfx_grab() -> void:
+	AudioManager.PlaySFX(sfx_boss_grab, cut_scene_badger)
+
+func play_sfx_chomp() -> void:
+	AudioManager.PlaySFX(sfx_boss_chomp, cut_scene_badger)
+
+func play_sfx_grow() -> void:
+	AudioManager.PlaySFX(sfx_boss_grow, cut_scene_badger, 0.25)

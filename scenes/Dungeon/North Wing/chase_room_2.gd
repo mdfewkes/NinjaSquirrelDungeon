@@ -6,6 +6,8 @@ extends Room
 @onready var player_trigger: Area2D = $CutScene/PlayerTrigger
 @onready var animation_player: AnimationPlayer = $CutScene/AnimationPlayer
 
+@export var sfx_on_thump: AudioSFX
+
 var player_in_place = false
 
 func _ready() -> void:
@@ -28,6 +30,7 @@ func fade_out() -> void:
 	
 func thump() -> void:
 	ImpactEffects.shake(4, 0.4)
+	AudioManager.PlaySFX(sfx_on_thump, boss_trigger)
 
 func _on_body_entered_player_trigger(player: Node2D) -> void:
 	if player is Player:

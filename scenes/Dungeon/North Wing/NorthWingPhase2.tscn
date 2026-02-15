@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://drbtij3kj2iei"]
+[gd_scene load_steps=110 format=4 uid="uid://drbtij3kj2iei"]
 
 [ext_resource type="Script" uid="uid://8a5snm317mpn" path="res://code/Level.gd" id="1_dk06n"]
 [ext_resource type="PackedScene" uid="uid://edngnlq58tuy" path="res://scenes/Hearts_UI/hearts_ui.tscn" id="2_7jnt8"]
@@ -10,17 +10,27 @@
 [ext_resource type="Texture2D" uid="uid://h5cp4be866fl" path="res://scenes/Tileset/water-tiles.png" id="8_dhuvy"]
 [ext_resource type="PackedScene" uid="uid://cwkbh11twqgse" path="res://scenes/Player/player.tscn" id="9_75gdc"]
 [ext_resource type="Script" uid="uid://bardjl21pgsso" path="res://scenes/Dungeon/North Wing/IntroCutScene/cut_scene_room.gd" id="10_y374w"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="11_dhuvy"]
 [ext_resource type="PackedScene" uid="uid://idvuu5pv2ejg" path="res://scenes/Light/light.tscn" id="11_yjfbv"]
+[ext_resource type="AudioStream" uid="uid://p8g5xgj7aono" path="res://scenes/Boss/Audio/boss_small_step_01.ogg" id="12_75gdc"]
 [ext_resource type="PackedScene" uid="uid://cu1cul1uy6ju6" path="res://scenes/Boss/cut_scene_badger.tscn" id="12_ou0te"]
+[ext_resource type="AudioStream" uid="uid://bow3oq3qjk71x" path="res://scenes/Boss/Audio/boss_step_06.ogg" id="12_wxuag"]
 [ext_resource type="Texture2D" uid="uid://cclls0cbhvqv5" path="res://exclamation-Sheet.png" id="13_ncfnn"]
 [ext_resource type="PackedScene" uid="uid://ok2xqx8uwq6a" path="res://scenes/Effects/shock_wave.tscn" id="13_wxuag"]
+[ext_resource type="AudioStream" uid="uid://bbieeypdovf76" path="res://scenes/Boss/Audio/boss_small_step_02.ogg" id="13_y374w"]
 [ext_resource type="PackedScene" uid="uid://og7se7clp0jl" path="res://scenes/Items/acorn.tscn" id="14_sivhr"]
+[ext_resource type="AudioStream" uid="uid://ckbjfm7dw7tpq" path="res://scenes/Boss/Audio/boss_small_step_03.ogg" id="14_yjfbv"]
 [ext_resource type="PackedScene" uid="uid://bacx7l8nfuxpv" path="res://scenes/Bridge/bridge.tscn" id="15_dwx28"]
+[ext_resource type="AudioStream" uid="uid://dnusw2mn4wxpj" path="res://scenes/Player/Audio/player_tailwhip_grab_01.ogg" id="15_yjfbv"]
 [ext_resource type="Script" uid="uid://bwmcs76ikeq20" path="res://scenes/Dungeon/North Wing/threatening_save_room.gd" id="16_6wr4v"]
+[ext_resource type="AudioStream" uid="uid://by7m3uakfxnfb" path="res://scenes/Player/Audio/player_tailwhip_grab_02.ogg" id="16_ou0te"]
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="17_6f2in"]
+[ext_resource type="AudioStream" uid="uid://bumrlxnsq160r" path="res://scenes/Player/Audio/player_tailwhip_grab_03.ogg" id="17_wxuag"]
 [ext_resource type="Script" uid="uid://cdx7hdljg4psy" path="res://code/Room.gd" id="18_ip20v"]
+[ext_resource type="AudioStream" uid="uid://c1lb5pwti336e" path="res://scenes/Boss/Audio/boss_chomp.ogg" id="18_ou0te"]
 [ext_resource type="PackedScene" uid="uid://c6414fygx6ytt" path="res://scenes/Boss/chasing_badger.tscn" id="19_kisyw"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="20_37rcr"]
+[ext_resource type="AudioStream" uid="uid://dv2xtp8ifpec" path="res://scenes/Boss/Audio/boss_grow.ogg" id="20_sivhr"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="21_12rr6"]
 [ext_resource type="PackedScene" uid="uid://dfsk2ubkhnubj" path="res://scenes/Traps/wall_spikes.tscn" id="22_m0fmw"]
 [ext_resource type="Script" uid="uid://c73gjb37miysr" path="res://code/BreakableWall.gd" id="23_k66xe"]
@@ -135,6 +145,56 @@ physics_layer_0/collision_mask = 128
 physics_layer_1/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_o3ebs")
 
+[sub_resource type="Resource" id="Resource_6wr4v"]
+script = ExtResource("11_dhuvy")
+stream = ExtResource("12_wxuag")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ou0te"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("12_75gdc")
+stream_1/stream = ExtResource("13_y374w")
+stream_2/stream = ExtResource("14_yjfbv")
+
+[sub_resource type="Resource" id="Resource_wxuag"]
+script = ExtResource("11_dhuvy")
+volume_dB = -9.0
+stream = SubResource("AudioStreamRandomizer_ou0te")
+max_voices = 1
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fhi6e"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("15_yjfbv")
+stream_1/stream = ExtResource("16_ou0te")
+stream_2/stream = ExtResource("17_wxuag")
+
+[sub_resource type="Resource" id="Resource_sivhr"]
+script = ExtResource("11_dhuvy")
+volume_dB = -9.0
+stream = SubResource("AudioStreamRandomizer_fhi6e")
+max_voices = 1
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="Resource" id="Resource_dwx28"]
+script = ExtResource("11_dhuvy")
+stream = ExtResource("18_ou0te")
+max_voices = 1
+voice_stealling = false
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="Resource" id="Resource_6f2in"]
+script = ExtResource("11_dhuvy")
+stream = ExtResource("20_sivhr")
+max_voices = 1
+voice_stealling = false
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o03n2"]
 size = Vector2(1089, 1261)
 
@@ -158,10 +218,10 @@ offsets = PackedFloat32Array(0.00295858, 1)
 colors = PackedColorArray(1, 1, 1, 0.039215688, 1, 1, 1, 0.3137255)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdgqb"]
-size = Vector2(506, 128)
+size = Vector2(965, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nj8f"]
-size = Vector2(60, 200)
+size = Vector2(34, 200)
 
 [sub_resource type="Animation" id="Animation_rxbiy"]
 length = 0.001
@@ -389,14 +449,89 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(3.8, 7.8, 8.400001, 9, 9.6, 10.8, 12.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.10004495, 0.197204, 0.4069136, 0.49637687, 0.59449786, 0.9080075, 0.99843276, 1.1071354, 1.4020364, 1.5030433, 1.5992404, 1.9022613, 2.0013442, 2.1009967, 2.4001696, 2.5040624, 2.5973737, 2.7985373, 2.90243, 3.0015132, 3.7666667, 3.8, 6, 7.766667, 7.8, 7.8333335, 8.400001, 9, 9.6, 10.8, 12.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_step"
+}, {
+"args": [],
+"method": &"play_sfx_grab"
+}, {
 "args": [0.4, 0.2],
 "method": &"_shake"
 }, {
+"args": [],
+"method": &"play_sfx_chomp"
+}, {
+"args": [],
+"method": &"play_sfx_thud"
+}, {
 "args": [0.6, 0.5],
 "method": &"_shake"
+}, {
+"args": [],
+"method": &"play_sfx_grow"
 }, {
 "args": [1.2, 0.5],
 "method": &"_shake"
@@ -992,6 +1127,11 @@ max_hp = 7
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_y374w")
+sfx_thud = SubResource("Resource_6wr4v")
+sfx_boss_step = SubResource("Resource_wxuag")
+sfx_boss_grab = SubResource("Resource_sivhr")
+sfx_boss_chomp = SubResource("Resource_dwx28")
+sfx_boss_grow = SubResource("Resource_6f2in")
 room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
@@ -1077,7 +1217,7 @@ pull_speed_coefficient = 0.0
 position = Vector2(-641, 321)
 
 [node name="BridgeShape" parent="Rooms/CutSceneRoom/Environment/Bridge" index="1"]
-position = Vector2(-195, -1)
+position = Vector2(-424.5, -1)
 shape = SubResource("RectangleShape2D_wdgqb")
 
 [node name="Bridge2" parent="Rooms/CutSceneRoom/Environment" instance=ExtResource("15_dwx28")]
@@ -1092,6 +1232,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom/Environment/SceneTrigger"]
+position = Vector2(-13, 0)
 shape = SubResource("RectangleShape2D_4nj8f")
 debug_color = Color(0.1483334, 0.89, 0, 0.41960785)
 
@@ -1549,6 +1690,7 @@ position = Vector2(7268, 303)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("24_06b6y")
+sfx_on_thump = SubResource("Resource_6wr4v")
 camera_zoom = 0.8
 light_modifier = 0.3
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
