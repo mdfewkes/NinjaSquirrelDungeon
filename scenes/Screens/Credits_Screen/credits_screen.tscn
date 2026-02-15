@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://bvpoyro4kke7w" path="res://scenes/Tileset/dungeon_tiles.tres" id="1_fe5uk"]
 [ext_resource type="Script" uid="uid://cmjre38k8slo1" path="res://scenes/Screens/Credits_Screen/credits_screen.gd" id="1_ify3x"]
 [ext_resource type="Script" uid="uid://dykoufw7v12mn" path="res://scenes/Screens/button_change_scene.gd" id="2_fe5uk"]
-[ext_resource type="Texture2D" uid="uid://cfdtyc7efffo5" path="res://scenes/GhostNPC/Art/west-ghost-ending.png" id="4_j101b"]
-[ext_resource type="Texture2D" uid="uid://cajirvdhfsnnx" path="res://scenes/GhostNPC/Art/entrance-ghost-ending.png" id="5_pa7yt"]
-[ext_resource type="Texture2D" uid="uid://yegwdj2n25eh" path="res://scenes/GhostNPC/Art/east-ghost-ending.png" id="6_rd0xc"]
-[ext_resource type="Texture2D" uid="uid://cycfjlh3m832a" path="res://scenes/GhostNPC/Art/ratrick-ending.png" id="7_j101b"]
+[ext_resource type="Texture2D" uid="uid://b61i6l2q17ly7" path="res://scenes/GhostNPC/Art/west-ghost-ending.png" id="4_j101b"]
+[ext_resource type="Texture2D" uid="uid://beh5faryy1fe8" path="res://scenes/GhostNPC/Art/entrance-ghost-ending.png" id="5_pa7yt"]
+[ext_resource type="Texture2D" uid="uid://d2se3mgvlbiyj" path="res://scenes/GhostNPC/Art/east-ghost-ending.png" id="6_rd0xc"]
+[ext_resource type="Texture2D" uid="uid://c5wmw51r6lqke" path="res://scenes/GhostNPC/Art/ratrick-ending.png" id="7_j101b"]
 [ext_resource type="Script" uid="uid://xp4j6tj7xq86" path="res://scenes/AudioManager/music_switch.gd" id="8_pa7yt"]
 
 [sub_resource type="Gradient" id="Gradient_2x54i"]
@@ -81,7 +81,7 @@ layout_mode = 2
 layout_mode = 2
 bbcode_enabled = true
 text = "[b]Michael Fewkes[/b]
-Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening
+Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening, dynamic reverb, sounds (destructibles, planks, lamps, bridge break, sliding, spikes, swing trap, bonfire, latch and grab, ambience, boss cut scene, boss actions, slime), destructible crates and barrels, sound mixing
 
 [b]Mark Guinn[/b]
 Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, bonfire placement, additional level design polish, assorted fixes
@@ -122,7 +122,7 @@ Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with var
 [b]Mel Fitzgerald[/b]
 Wall banners with variations, 3 door types (fancy, pointy, wood), 3 door lock sprites
 
-[b]Owen Peery[/b]: 
+[b]Owen Peery[/b] 
 Reddish orange tail whip particles
 
 [b]David Bates[/b]

@@ -1,5 +1,5 @@
 [b]Michael Fewkes[/b]
-Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening
+Project lead, core gameplay, hopping enemy, dungeon west wing level design, camera system, healthbar, putting out lights, player states, attack cooldowns, hitbox system and related tuning, knockback, audio manager, skill check gating, light flickering, various team asset integration, light tweening, dynamic reverb, sounds (destructibles, planks, lamps, bridge break, sliding, spikes, swing trap, bonfire, latch and grab, ambience, boss cut scene, boss actions, slime), destructible crates and barrels, sound mixing
 
 [b]Mark Guinn[/b]
 Traps (all types), tail hook shot, key/door/items, sneaking area, boss intro, final chase, decoration tiles, screenshake, checkpoint, alert effect, projectile deflection, death animations, room persistence, breakable walls and bridges, cloaking, idle tail motion, water with shader, credits screen, bonfire placement, additional level design polish, assorted fixes
