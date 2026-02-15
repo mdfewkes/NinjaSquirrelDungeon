@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b5d8bygx2t72e" path="res://scenes/Traps/Audio/swing_low_01.ogg" id="3_280a6"]
 [ext_resource type="Texture2D" uid="uid://whw4v4a1rfin" path="res://scenes/Traps/Art/swinging-rock.png" id="3_epsgw"]
 [ext_resource type="AudioStream" uid="uid://bnyrny0y8vgqn" path="res://scenes/Traps/Audio/swing_low_02.ogg" id="4_lx8de"]
-[ext_resource type="AudioStream" uid="uid://bimy3hqflm50j" path="res://scenes/Traps/Audio/swing_pass_01.ogg" id="5_j2f72"]
+[ext_resource type="AudioStream" uid="uid://bimy3hqflm50j" path="res://scenes/Traps/swing_pass_01.ogg" id="5_j2f72"]
 [ext_resource type="AudioStream" uid="uid://d2jvkd6i5f482" path="res://scenes/Traps/Audio/swing_pass_02.ogg" id="6_bmml6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_332dy"]

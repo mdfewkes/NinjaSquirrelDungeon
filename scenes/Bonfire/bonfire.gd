@@ -4,6 +4,10 @@ extends StaticBody2D
 @onready var trigger: Area2D = $ActivationTrigger
 
 @export var activated := false
+@export var sfx_activate: AudioSFX
+@export var sfx_loop: AudioSFX
+
+var sfx_playback_loop: AudioStreamPlayer2D
 
 func _ready() -> void:
 	fire_efx.hide()
@@ -19,4 +23,6 @@ func _on_body_entered(body: Node2D) -> void:
 func activate(player: Player) -> void:
 	fire_efx.show()
 	activated = true
+	AudioManager.PlaySFX(sfx_activate, self)
+	sfx_playback_loop = AudioManager.PlaySFX(sfx_loop, self)
 	StateManager.set_key("respawn_point", player.global_position)

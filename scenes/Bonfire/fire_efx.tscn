@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cdf1eo5u4dhu4"]
 
-[ext_resource type="Texture2D" uid="uid://bqaedberyob7f" path="res://scenes/Bonfire/Fire_Spite_Sheet.png" id="1_w6bqk"]
-[ext_resource type="Texture2D" uid="uid://ra6bdirp5di1" path="res://scenes/Bonfire/Embers-2.png" id="3_1cpxv"]
-[ext_resource type="Texture2D" uid="uid://8g51unenjudn" path="res://scenes/Bonfire/Embers-3.png" id="4_t56kc"]
-[ext_resource type="Texture2D" uid="uid://fsuwkt4rj1r1" path="res://scenes/Bonfire/Embers-4.png" id="5_co6nf"]
+[ext_resource type="Texture2D" uid="uid://bqaedberyob7f" path="res://scenes/Bonfire/Art/Fire_Spite_Sheet.png" id="1_w6bqk"]
+[ext_resource type="Texture2D" uid="uid://ra6bdirp5di1" path="res://scenes/Bonfire/Art/Embers-2.png" id="3_1cpxv"]
+[ext_resource type="Texture2D" uid="uid://8g51unenjudn" path="res://scenes/Bonfire/Art/Embers-3.png" id="4_t56kc"]
+[ext_resource type="Texture2D" uid="uid://fsuwkt4rj1r1" path="res://scenes/Bonfire/Art/Embers-4.png" id="5_co6nf"]
 
 [sub_resource type="Gradient" id="Gradient_pkg7o"]
 offsets = PackedFloat32Array(0, 0.72)

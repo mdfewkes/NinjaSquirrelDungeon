@@ -1,10 +1,48 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwkfo0fdexbrh"]
+[gd_scene load_steps=21 format=3 uid="uid://cwkfo0fdexbrh"]
 
 [ext_resource type="Script" uid="uid://bmq7p5sxdqmeg" path="res://scenes/Bonfire/bonfire.gd" id="1_70l5l"]
-[ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://scenes/Bonfire/Trashcan.png" id="1_s8pws"]
+[ext_resource type="Texture2D" uid="uid://briylnswuyobk" path="res://scenes/Bonfire/Art/Trashcan.png" id="1_s8pws"]
 [ext_resource type="PackedScene" uid="uid://cdf1eo5u4dhu4" path="res://scenes/Bonfire/fire_efx.tscn" id="2_70l5l"]
-[ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://scenes/Bonfire/TrashHole.png" id="2_buw6a"]
+[ext_resource type="Texture2D" uid="uid://urrml4k4jt15" path="res://scenes/Bonfire/Art/TrashHole.png" id="2_buw6a"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_ifex5"]
+[ext_resource type="AudioStream" uid="uid://d3qartplaxlv2" path="res://scenes/Bonfire/Audio/bonfire_ignite_01.ogg" id="3_i8hfl"]
+[ext_resource type="AudioStream" uid="uid://cehc0vwul6t1u" path="res://scenes/Bonfire/Audio/bonfire_ignite_02.ogg" id="4_nc6de"]
+[ext_resource type="AudioStream" uid="uid://d2oj36pay8da8" path="res://scenes/Bonfire/Audio/bonfire_ignite_03.ogg" id="5_hj1gf"]
 [ext_resource type="Script" uid="uid://8wwkar2rentt" path="res://code/TailCloakArea.gd" id="5_jdxka"]
+[ext_resource type="AudioStream" uid="uid://cbhx1ltd8ehce" path="res://scenes/Bonfire/Audio/bonfire_ignite_04.ogg" id="6_qewfx"]
+[ext_resource type="AudioStream" uid="uid://djhlr126vilp0" path="res://scenes/Bonfire/Audio/bonfire_loop.ogg" id="7_i8hfl"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0i7e2"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("3_i8hfl")
+stream_1/stream = ExtResource("4_nc6de")
+stream_2/stream = ExtResource("5_hj1gf")
+stream_3/stream = ExtResource("6_qewfx")
+
+[sub_resource type="Resource" id="Resource_vlbje"]
+script = ExtResource("2_ifex5")
+volume_dB = -6.0
+stream = SubResource("AudioStreamRandomizer_0i7e2")
+max_voices = 1
+voice_stealling = false
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nc6de"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_i8hfl")
+
+[sub_resource type="Resource" id="Resource_hj1gf"]
+script = ExtResource("2_ifex5")
+volume_dB = -6.0
+stream = SubResource("AudioStreamRandomizer_nc6de")
+max_voices = -1
+voice_stealling = false
+trigger_when_out_of_range = true
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buw6a"]
 size = Vector2(50, 67)
@@ -25,6 +63,8 @@ size = Vector2(122, 156)
 [node name="Bonfire" type="StaticBody2D"]
 collision_mask = 3
 script = ExtResource("1_70l5l")
+sfx_activate = SubResource("Resource_vlbje")
+sfx_loop = SubResource("Resource_hj1gf")
 
 [node name="TrashHole" type="Sprite2D" parent="."]
 position = Vector2(1, -10)
