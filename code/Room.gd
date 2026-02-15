@@ -3,6 +3,7 @@ extends Area2D
 
 @export var camera_zoom: float = 1.0
 @export var reverb_room_size: float = 0.8
+@export var room_ambience: AudioManager.AmbiStates = AudioManager.AmbiStates.None
 @export var light_modifier: float = 1.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -47,6 +48,7 @@ func set_as_current_room() -> void:
 	zoom_tween.tween_property(camera, "zoom", Vector2.ONE * camera_zoom, 0.6)
 	
 	AudioManager.set_reverb_size(reverb_room_size)
+	AudioManager.PlayAmbience(room_ambience)
 
 func remove_as_current_room() -> void:
 	for light in lights:

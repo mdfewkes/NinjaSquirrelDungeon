@@ -16,18 +16,18 @@
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="13_mhtcy"]
 [ext_resource type="PackedScene" uid="uid://b4rtepymi3alj" path="res://scenes/Door/door.tscn" id="13_p32oj"]
 [ext_resource type="PackedScene" uid="uid://cwfms7dbcl64a" path="res://scenes/GhostNPC/ghost_npc_entrance.tscn" id="13_ymxj4"]
-[ext_resource type="AudioStream" uid="uid://r4t0587gpucq" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="14_6y8s7"]
+[ext_resource type="AudioStream" uid="uid://cuinlhfb2rygy" path="res://scenes/Light/Audio/lamp_extinguish_01.ogg" id="14_6y8s7"]
 [ext_resource type="PackedScene" uid="uid://bqie6v1y53wic" path="res://decorations/crack96.tscn" id="14_ve4ef"]
-[ext_resource type="AudioStream" uid="uid://f4fixav30oey" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="15_77jtg"]
+[ext_resource type="AudioStream" uid="uid://6sc36l3h6tnf" path="res://scenes/Light/Audio/lamp_extinguish_02.ogg" id="15_77jtg"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_dnpav"]
 [ext_resource type="PackedScene" uid="uid://c7hmt2i55od51" path="res://decorations/roots_3.tscn" id="15_ecawk"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_ymxj4"]
-[ext_resource type="AudioStream" uid="uid://bkst75va1c5m3" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="16_7r8ff"]
+[ext_resource type="AudioStream" uid="uid://q0pl0pudl7vl" path="res://scenes/Light/Audio/lamp_extinguish_03.ogg" id="16_7r8ff"]
 [ext_resource type="PackedScene" uid="uid://d2t5ogsor7a8v" path="res://decorations/crack93.tscn" id="16_43n1i"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="16_1803i"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="16_sqdfd"]
-[ext_resource type="Texture2D" uid="uid://bjt1jciq4fyn" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
-[ext_resource type="AudioStream" uid="uid://btankt1gydsoq" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="17_ens25"]
+[ext_resource type="Texture2D" uid="uid://dbvkfutesvdg1" path="res://scenes/GhostNPC/Art/ghost_entrance.png" id="17_6u3ie"]
+[ext_resource type="AudioStream" uid="uid://cvv3qrthghq1u" path="res://scenes/Light/Audio/lamp_extinguish_04.ogg" id="17_ens25"]
 [ext_resource type="PackedScene" uid="uid://c0h8k2ar5ruax" path="res://decorations/roots_7.tscn" id="17_m7uob"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="19_6u3ie"]
 [ext_resource type="PackedScene" uid="uid://dvn3i4dod2c7e" path="res://decorations/banner_3.tscn" id="19_r2h0m"]
@@ -408,6 +408,7 @@ position = Vector2(582, 574)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_6lqkh")
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
@@ -645,6 +646,7 @@ shape = SubResource("RectangleShape2D_dnpav")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_6lqkh")
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/WestEnteranceRoom"]

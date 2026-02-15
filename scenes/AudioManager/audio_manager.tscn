@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d20pn8vvxkruw"]
+[gd_scene load_steps=15 format=3 uid="uid://d20pn8vvxkruw"]
 
 [ext_resource type="Script" uid="uid://bcu8yo1vqybs5" path="res://scenes/AudioManager/audio_manager.gd" id="1_kr7s0"]
 [ext_resource type="Texture2D" uid="uid://cnkairp1wrcsd" path="res://scenes/Player/Art/tail-segment-2.png" id="2_1gfwg"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://clvbw7hu0nt72" path="res://music/LoS Approaching Boss Badger (Revised).ogg" id="5_pi0ky"]
 [ext_resource type="AudioStream" uid="uid://de11cmwc41wo1" path="res://music/LoS Boss Badger Cutscene into Chase.ogg" id="5_v2isx"]
 [ext_resource type="AudioStream" uid="uid://o4vbchh66jj6" path="res://music/LoS Celebratory Fanfare.ogg" id="8_5yedo"]
+[ext_resource type="AudioStream" uid="uid://blyl5ynovldei" path="res://scenes/AudioManager/Audio/ambi_water_close.ogg" id="9_40gls"]
+[ext_resource type="AudioStream" uid="uid://cviy4uc0olaak" path="res://scenes/AudioManager/Audio/ambi_water_room.ogg" id="10_p8k1w"]
+[ext_resource type="AudioStream" uid="uid://5p1v3f86nblv" path="res://scenes/AudioManager/Audio/ambi_water_drip.ogg" id="11_bg2gi"]
+[ext_resource type="AudioStream" uid="uid://ijuti3lkv4ix" path="res://scenes/AudioManager/Audio/ambi_silence.ogg" id="12_p8k1w"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_v2isx"]
 clip_count = 6
@@ -47,6 +51,30 @@ Vector2i(5, -1): {
 }
 }
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_607xg"]
+clip_count = 4
+clip_0/name = &"WaterClose"
+clip_0/stream = ExtResource("9_40gls")
+clip_0/auto_advance = 0
+clip_1/name = &"WaterRoom"
+clip_1/stream = ExtResource("10_p8k1w")
+clip_1/auto_advance = 0
+clip_2/name = &"WaterDrip"
+clip_2/stream = ExtResource("11_bg2gi")
+clip_2/auto_advance = 0
+clip_3/name = &"None"
+clip_3/stream = ExtResource("12_p8k1w")
+clip_3/auto_advance = 0
+initial_clip = 3
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+}
+}
+
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_kr7s0")
 
@@ -60,6 +88,13 @@ process_mode = 3
 stream = SubResource("AudioStreamInteractive_v2isx")
 autoplay = true
 bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_607xg")
+volume_db = -12.0
+autoplay = true
+bus = &"Ambience"
 
 [node name="SFXTemplate" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

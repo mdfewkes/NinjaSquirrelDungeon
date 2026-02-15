@@ -436,6 +436,7 @@ y_sort_enabled = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/StartRoom"]
@@ -1169,6 +1170,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_ajolp")
 reverb_room_size = 0.9
+room_ambience = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room 4"]
 position = Vector2(1854.5, 526)

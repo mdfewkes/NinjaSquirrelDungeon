@@ -3,14 +3,18 @@ extends Node
 @onready var sfx_template: AudioStreamPlayer2D = $SFXTemplate
 @onready var ui_template: AudioStreamPlayer = $UITemplate
 @onready var music: AudioStreamPlayer = $Music
+@onready var ambience: AudioStreamPlayer = $Ambience
 @onready var texture_rect: Sprite2D = $TextureRect
 
 @export var listening_range: float = 1000.0
 
 enum MusicStates {Title, Game, FinalRoom, FinalChase, Finale}
 var music_state = MusicStates.Title
+enum AmbiStates {WaterClose, WaterRoom, WaterDrip, None}
+var ambi_state = AmbiStates.None
 
 var interactive_music_player: AudioStreamPlaybackInteractive
+var interactive_ambience_player: AudioStreamPlaybackInteractive
 
 var active_voices = {} # Dict String : Array[AudioStreamPlayback]
 
@@ -22,6 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	interactive_music_player = music.get_stream_playback() as AudioStreamPlaybackInteractive
 	interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
+	interactive_ambience_player = ambience.get_stream_playback() as AudioStreamPlaybackInteractive
+	interactive_ambience_player.switch_to_clip_by_name(AmbiStates.keys()[ambi_state])
 
 func _process(_delta: float) -> void:
 	var dead_voices = []
@@ -127,6 +133,11 @@ func PlayMusic(new_track: MusicStates) -> void:
 	if new_track != music_state:
 		music_state = new_track
 		interactive_music_player.switch_to_clip_by_name(MusicStates.keys()[music_state])
+
+func PlayAmbience(new_track: AmbiStates) -> void:
+	if new_track != ambi_state:
+		ambi_state = new_track
+		interactive_ambience_player.switch_to_clip_by_name(AmbiStates.keys()[ambi_state])
 
 func _open_voice_available(sfx: AudioSFX) -> bool:
 	if Time.get_ticks_msec() - sfx.last_play_time < sfx.cooldown_time_msec:

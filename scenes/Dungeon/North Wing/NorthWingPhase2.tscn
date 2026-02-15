@@ -992,6 +992,7 @@ max_hp = 7
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_y374w")
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/CutSceneRoom"]
@@ -1143,6 +1144,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("16_6wr4v")
 camera_zoom = 1.2
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SaveRoom1"]
@@ -1514,6 +1516,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("16_6wr4v")
 camera_zoom = 1.2
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/SaveRoom2"]

@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cwkfo0fdexbrh" path="res://scenes/Bonfire/bonfire.tscn" id="21_cw42d"]
 [ext_resource type="PackedScene" uid="uid://4pkxpvcoftys" path="res://scenes/Switch/floor_switch.tscn" id="21_gk2mf"]
 [ext_resource type="PackedScene" uid="uid://d1ufiipttrbp5" path="res://scenes/Traps/floor_spikes.tscn" id="22_gk2mf"]
-[ext_resource type="Texture2D" uid="uid://bv8fd47wc87ka" path="res://scenes/GhostNPC/Art/ratrick.png" id="22_xg67u"]
+[ext_resource type="Texture2D" uid="uid://bryo0b5netxe0" path="res://scenes/GhostNPC/Art/ratrick.png" id="22_xg67u"]
 [ext_resource type="PackedScene" uid="uid://cx3eeeibe2dli" path="res://decorations/crack91.tscn" id="23_cjcqq"]
 [ext_resource type="PackedScene" uid="uid://by6eos1lmsxqn" path="res://decorations/sewer_pipe_medium.tscn" id="23_me5xx"]
 [ext_resource type="PackedScene" uid="uid://vjdut0t0bqjn" path="res://decorations/cracks.tscn" id="24_iqksg"]
@@ -34,16 +34,16 @@
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="25_006yv"]
 [ext_resource type="PackedScene" uid="uid://chpcbg466cs4t" path="res://scenes/Items/quest_item.tscn" id="26_krmrj"]
 [ext_resource type="Texture2D" uid="uid://laap04erq2vh" path="res://temp assets/spirit-heart.png" id="27_006yv"]
-[ext_resource type="Texture2D" uid="uid://unw4lr5pc7w6" path="res://scenes/GhostNPC/Art/skull.png" id="27_cc6al"]
-[ext_resource type="Texture2D" uid="uid://cqju4jhmdqcqy" path="res://scenes/GhostNPC/Art/tap.png" id="27_vfetf"]
-[ext_resource type="Texture2D" uid="uid://d2jdcktv85qr1" path="res://scenes/GhostNPC/Art/book.png" id="28_50cqo"]
+[ext_resource type="Texture2D" uid="uid://cd3rm5f43iviu" path="res://scenes/GhostNPC/Art/skull.png" id="27_cc6al"]
+[ext_resource type="Texture2D" uid="uid://bswnmd2th2k1o" path="res://scenes/GhostNPC/Art/tap.png" id="27_vfetf"]
+[ext_resource type="Texture2D" uid="uid://dn0vu8lnjq6d8" path="res://scenes/GhostNPC/Art/book.png" id="28_50cqo"]
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="29_1foii"]
-[ext_resource type="Texture2D" uid="uid://durkhvhl42l0" path="res://scenes/GhostNPC/Art/tea.png" id="29_gmq1v"]
-[ext_resource type="Texture2D" uid="uid://dshdm4sv37dlm" path="res://scenes/GhostNPC/Art/pillow.png" id="30_3h4sk"]
-[ext_resource type="Texture2D" uid="uid://d2jo8qjr0kc1r" path="res://scenes/GhostNPC/Art/berries.png" id="31_006yv"]
-[ext_resource type="Texture2D" uid="uid://bk6te4ppn0jmm" path="res://scenes/GhostNPC/Art/ghost_west_wing.png" id="31_181sq"]
+[ext_resource type="Texture2D" uid="uid://br0kj7fggcn8e" path="res://scenes/GhostNPC/Art/tea.png" id="29_gmq1v"]
+[ext_resource type="Texture2D" uid="uid://btx6y312utatn" path="res://scenes/GhostNPC/Art/pillow.png" id="30_3h4sk"]
+[ext_resource type="Texture2D" uid="uid://d0hefh6h4spca" path="res://scenes/GhostNPC/Art/berries.png" id="31_006yv"]
+[ext_resource type="Texture2D" uid="uid://7u6jyewqfrpx" path="res://scenes/GhostNPC/Art/ghost_west_wing.png" id="31_181sq"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="31_ljvvc"]
-[ext_resource type="Texture2D" uid="uid://cc5yi0dpadrvt" path="res://scenes/GhostNPC/Art/lantern.png" id="32_3h4sk"]
+[ext_resource type="Texture2D" uid="uid://dbqqidclekwy0" path="res://scenes/GhostNPC/Art/lantern.png" id="32_3h4sk"]
 [ext_resource type="PackedScene" uid="uid://cp3csbhb5l2jl" path="res://decorations/blood_splatter_2.tscn" id="33_8q0v7"]
 [ext_resource type="PackedScene" uid="uid://b08aywfjn720e" path="res://decorations/crack95.tscn" id="33_mr5wn"]
 [ext_resource type="PackedScene" uid="uid://cdegjx8rmd2y1" path="res://decorations/crack94.tscn" id="35_3c5hn"]
@@ -381,6 +381,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
 reverb_room_size = 1.0
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room01"]
@@ -531,6 +532,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
 reverb_room_size = 0.6
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room02"]
@@ -602,6 +604,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
 reverb_room_size = 1.0
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room03"]
@@ -634,10 +637,10 @@ position = Vector2(-155, -1003)
 position = Vector2(236, -413)
 
 [node name="Hopper2" parent="Rooms/Room03/Enemies" instance=ExtResource("16_78h8h")]
-position = Vector2(-1277, -752)
+position = Vector2(-1279, -797)
 
 [node name="Hopper3" parent="Rooms/Room03/Enemies" instance=ExtResource("16_78h8h")]
-position = Vector2(-1273, -544)
+position = Vector2(-1275, -430)
 
 [node name="Environment" type="Node2D" parent="Rooms/Room03"]
 
@@ -709,6 +712,7 @@ flip_v = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room04"]
@@ -748,6 +752,7 @@ peripheral_vision = 0.2
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room05"]
@@ -805,6 +810,7 @@ rotation = 1.5707964
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 1
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room06"]
@@ -1061,6 +1067,7 @@ position = Vector2(-4162, 1173)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room10"]
@@ -1214,6 +1221,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
 reverb_room_size = 0.3
+room_ambience = 2
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Room12"]
@@ -1620,6 +1628,7 @@ texture = ExtResource("55_iqf1y")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 0
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Passage05-06"]
@@ -1680,6 +1689,7 @@ texture = ExtResource("56_iqf1y")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_m4rh1")
+room_ambience = 0
 metadata/_custom_type_script = "uid://cdx7hdljg4psy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Passage13-10"]
