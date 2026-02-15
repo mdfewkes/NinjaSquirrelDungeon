@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cns5m44736nn8" path="res://scenes/GhostNPC/ghost_npc.tscn" id="15_7r056"]
 [ext_resource type="PackedScene" uid="uid://bssqmivy5msuh" path="res://scenes/Items/extra_health.tscn" id="15_cslsd"]
 [ext_resource type="Script" uid="uid://whwvdn7314bl" path="res://code/AreaLevelTransition.gd" id="15_lg7io"]
-[ext_resource type="Texture2D" uid="uid://m5y68c6dqtgc" path="res://scenes/GhostNPC/Art/ghost_east_wing.png" id="15_o5awk"]
+[ext_resource type="Texture2D" uid="uid://c4vy14wghe17a" path="res://scenes/GhostNPC/Art/ghost_east_wing.png" id="15_o5awk"]
 [ext_resource type="PackedScene" uid="uid://cyku0xo4jn1hn" path="res://decorations/barrel.tscn" id="16_0ht87"]
 [ext_resource type="PackedScene" uid="uid://e054clg25bop" path="res://scenes/Items/green_key.tscn" id="16_7r056"]
 [ext_resource type="PackedScene" uid="uid://bmuwm24uar0hy" path="res://scenes/Traps/dart_trap.tscn" id="16_cslsd"]
@@ -32,8 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://b5hdg4he8621a" path="res://temp assets/spirit-cage-door.png" id="20_funrx"]
 [ext_resource type="PackedScene" uid="uid://bpkl5kq3kyjsa" path="res://decorations/sewer_grate.tscn" id="21_1lvyh"]
 [ext_resource type="PackedScene" uid="uid://cp4oujqsvng5j" path="res://decorations/sewer_pipe_small.tscn" id="22_s2ci2"]
-[ext_resource type="Texture2D" uid="uid://7q07yd8fsalp" path="res://scenes/GhostNPC/Art/sword.png" id="25_aybc4"]
-[ext_resource type="Texture2D" uid="uid://p0am3oafh1eg" path="res://scenes/GhostNPC/Art/wreckage.png" id="26_funrx"]
+[ext_resource type="Texture2D" uid="uid://3unfv2d5irr3" path="res://scenes/GhostNPC/Art/sword.png" id="25_aybc4"]
+[ext_resource type="Texture2D" uid="uid://cw65bbnq6b1n8" path="res://scenes/GhostNPC/Art/wreckage.png" id="26_funrx"]
 [ext_resource type="PackedScene" uid="uid://27ywljbb2yge" path="res://decorations/blood_splatter_3.tscn" id="26_sgyp7"]
 [ext_resource type="PackedScene" uid="uid://dif47m4g5npmd" path="res://decorations/blood_splatter_1.tscn" id="27_cm3cw"]
 [ext_resource type="PackedScene" uid="uid://bgylxwlfrgtjb" path="res://decorations/rope.tscn" id="30_thkkl"]
@@ -1206,25 +1206,6 @@ position = Vector2(2392, 1006)
 color = Color(0.50281453, 0.99999994, 0.8089073, 1)
 energy = 2.0
 
-[node name="DartTrap" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
-position = Vector2(1649, -8)
-rotation = 1.5707964
-
-[node name="DartTrap2" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
-position = Vector2(1701, -8)
-rotation = 1.5707964
-fire_wait_time = 2.0
-
-[node name="DartTrap3" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
-position = Vector2(1744, -9)
-rotation = 1.5707964
-fire_wait_time = 3.0
-
-[node name="DartTrap4" parent="Rooms/Room 4" instance=ExtResource("16_cslsd")]
-position = Vector2(1798, -7)
-rotation = 1.5707964
-fire_wait_time = 4.0
-
 [node name="Environment" type="Node2D" parent="Rooms/Room 4"]
 
 [node name="banner1" parent="Rooms/Room 4/Environment" instance=ExtResource("33_lvp0c")]
@@ -1330,6 +1311,25 @@ switches = [NodePath("../LowerDoorSwitch")]
 
 [node name="LowerDoorSwitch" parent="Rooms/Room 4/Environment" instance=ExtResource("50_wspux")]
 position = Vector2(2218, 425)
+
+[node name="DartTrap" parent="Rooms/Room 4/Environment" instance=ExtResource("16_cslsd")]
+position = Vector2(1649, -8)
+rotation = 1.5707964
+
+[node name="DartTrap2" parent="Rooms/Room 4/Environment" instance=ExtResource("16_cslsd")]
+position = Vector2(1701, -8)
+rotation = 1.5707964
+fire_wait_time = 2.0
+
+[node name="DartTrap3" parent="Rooms/Room 4/Environment" instance=ExtResource("16_cslsd")]
+position = Vector2(1744, -9)
+rotation = 1.5707964
+fire_wait_time = 3.0
+
+[node name="DartTrap4" parent="Rooms/Room 4/Environment" instance=ExtResource("16_cslsd")]
+position = Vector2(1798, -7)
+rotation = 1.5707964
+fire_wait_time = 4.0
 
 [node name="Room 5" type="Area2D" parent="Rooms"]
 position = Vector2(3373, 7)
