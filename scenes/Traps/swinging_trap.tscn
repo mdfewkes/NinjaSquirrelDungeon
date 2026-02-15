@@ -1,8 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://7hlcc4tjod4o"]
+[gd_scene load_steps=20 format=3 uid="uid://7hlcc4tjod4o"]
 
 [ext_resource type="Script" uid="uid://ducuwmk7pveb8" path="res://scenes/Traps/swinging_trap.gd" id="1_edkgv"]
+[ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_1utxi"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="2_gp6gi"]
+[ext_resource type="AudioStream" uid="uid://b5d8bygx2t72e" path="res://scenes/Traps/Audio/swing_low_01.ogg" id="3_280a6"]
 [ext_resource type="Texture2D" uid="uid://whw4v4a1rfin" path="res://scenes/Traps/Art/swinging-rock.png" id="3_epsgw"]
+[ext_resource type="AudioStream" uid="uid://bnyrny0y8vgqn" path="res://scenes/Traps/Audio/swing_low_02.ogg" id="4_lx8de"]
+[ext_resource type="AudioStream" uid="uid://bimy3hqflm50j" path="res://scenes/Traps/Audio/swing_pass_01.ogg" id="5_j2f72"]
+[ext_resource type="AudioStream" uid="uid://d2jvkd6i5f482" path="res://scenes/Traps/Audio/swing_pass_02.ogg" id="6_bmml6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_332dy"]
+playback_mode = 1
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("3_280a6")
+stream_1/stream = ExtResource("4_lx8de")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1vrmx"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("5_j2f72")
+stream_1/stream = ExtResource("6_bmml6")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8oa1g"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_332dy")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_1vrmx")
+stream_1/volume = 0.0
+
+[sub_resource type="Resource" id="Resource_x0k27"]
+script = ExtResource("2_1utxi")
+stream = SubResource("AudioStreamSynchronized_8oa1g")
+max_voices = 2
+metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="Gradient" id="Gradient_epsgw"]
 colors = PackedColorArray(0.39607844, 0.12156863, 0.1254902, 1, 0.5137255, 0.3137255, 0.22352941, 0)
@@ -250,6 +283,7 @@ _data = {
 
 [node name="SwingingTrap" type="Node2D"]
 script = ExtResource("1_edkgv")
+sfx_on_trigger = SubResource("Resource_x0k27")
 
 [node name="Rotator" type="Node2D" parent="."]
 
