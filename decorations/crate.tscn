@@ -38,6 +38,7 @@ stream_1/volume = 0.0
 
 [sub_resource type="Resource" id="Resource_x1eyh"]
 script = ExtResource("3_xkkml")
+volume_dB = -3.0
 stream = SubResource("AudioStreamSynchronized_hfm0u")
 max_voices = 2
 metadata/_custom_type_script = "uid://0c6lrocedisf"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=205 format=3 uid="uid://cwkbh11twqgse"]
+[gd_scene load_steps=217 format=3 uid="uid://cwkbh11twqgse"]
 
 [ext_resource type="Script" uid="uid://csd2ece2n6ytn" path="res://scenes/Player/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://cbogxglk1gmar" path="res://scenes/Player/Audio/hero_hurt_01.ogg" id="2_7iww4"]
@@ -76,7 +76,15 @@
 [ext_resource type="PackedScene" uid="uid://7c06frkpwm1x" path="res://scenes/Effects/tail_whip_particles.tscn" id="60_f8f8k"]
 [ext_resource type="Script" uid="uid://dgn2dmvhjwau0" path="res://code/FallDetector.gd" id="68_f8f8k"]
 [ext_resource type="Texture2D" uid="uid://dwk7dp54yxm2o" path="res://scenes/Player/Art/blob-shadow.png" id="69_d7mgq"]
+[ext_resource type="AudioStream" uid="uid://rcd57vv5wn4n" path="res://scenes/Player/Audio/player_tailwhip_latch_01.ogg" id="69_tsafh"]
+[ext_resource type="AudioStream" uid="uid://dvbvrfesv53ue" path="res://scenes/Player/Audio/player_tailwhip_latch_02.ogg" id="70_2dc26"]
 [ext_resource type="PackedScene" uid="uid://c05407r0r140w" path="res://scenes/Effects/hit_effect.tscn" id="70_23nhs"]
+[ext_resource type="AudioStream" uid="uid://ci8urtdwop3v1" path="res://scenes/Player/Audio/player_tailwhip_latch_03.ogg" id="71_qwgwf"]
+[ext_resource type="AudioStream" uid="uid://b3b01qp6bu0c0" path="res://scenes/Player/Audio/player_tailwhip_latch_04.ogg" id="72_kwych"]
+[ext_resource type="AudioStream" uid="uid://c1n7pwv8813rw" path="res://scenes/Player/Audio/player_tailwhip_latch_05.ogg" id="73_gxbrw"]
+[ext_resource type="AudioStream" uid="uid://dnusw2mn4wxpj" path="res://scenes/Player/Audio/player_tailwhip_grab_01.ogg" id="74_kwych"]
+[ext_resource type="AudioStream" uid="uid://by7m3uakfxnfb" path="res://scenes/Player/Audio/player_tailwhip_grab_02.ogg" id="75_gxbrw"]
+[ext_resource type="AudioStream" uid="uid://bumrlxnsq160r" path="res://scenes/Player/Audio/player_tailwhip_grab_03.ogg" id="76_icrpp"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wwtew"]
 streams_count = 12
@@ -2714,6 +2722,38 @@ script = ExtResource("14_ihqbe")
 stream = ExtResource("31_ploos")
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_icrpp"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 5
+stream_0/stream = ExtResource("69_tsafh")
+stream_1/stream = ExtResource("70_2dc26")
+stream_2/stream = ExtResource("71_qwgwf")
+stream_3/stream = ExtResource("72_kwych")
+stream_4/stream = ExtResource("73_gxbrw")
+
+[sub_resource type="Resource" id="Resource_fhi6e"]
+script = ExtResource("14_ihqbe")
+volume_dB = -7.5
+stream = SubResource("AudioStreamRandomizer_icrpp")
+max_voices = 1
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fhi6e"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("74_kwych")
+stream_1/stream = ExtResource("75_gxbrw")
+stream_2/stream = ExtResource("76_icrpp")
+
+[sub_resource type="Resource" id="Resource_ta7ao"]
+script = ExtResource("14_ihqbe")
+volume_dB = -9.0
+stream = SubResource("AudioStreamRandomizer_fhi6e")
+max_voices = 1
+metadata/_custom_type_script = "uid://0c6lrocedisf"
+
 [sub_resource type="Gradient" id="Gradient_hc2s7"]
 colors = PackedColorArray(0.39, 0.39, 0.39, 1, 0.6194887, 0.61948866, 0.6194887, 1)
 
@@ -2888,6 +2928,8 @@ script = ExtResource("14_t6q27")
 [node name="Tail Whip ActionState" type="Node" parent="."]
 script = ExtResource("25_jn0uf")
 sfx_on_start = SubResource("Resource_e6s7e")
+sfx_on_pull_wall = SubResource("Resource_fhi6e")
+sfx_on_pull_obj = SubResource("Resource_ta7ao")
 metadata/_custom_type_script = "uid://tfabbyx4daf2"
 
 [node name="TailHookWallRay" type="RayCast2D" parent="."]
