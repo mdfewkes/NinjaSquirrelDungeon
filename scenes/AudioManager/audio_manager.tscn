@@ -1,39 +1,59 @@
-[gd_scene load_steps=15 format=3 uid="uid://d20pn8vvxkruw"]
+[gd_scene load_steps=19 format=3 uid="uid://d20pn8vvxkruw"]
 
 [ext_resource type="Script" uid="uid://bcu8yo1vqybs5" path="res://scenes/AudioManager/audio_manager.gd" id="1_kr7s0"]
 [ext_resource type="Texture2D" uid="uid://cnkairp1wrcsd" path="res://scenes/Player/Art/tail-segment-2.png" id="2_1gfwg"]
-[ext_resource type="AudioStream" uid="uid://bkfhflwh4nn2y" path="res://music/LoS Dungeon Sneak first pass.ogg" id="3_e10ti"]
-[ext_resource type="AudioStream" uid="uid://bgqqv6r1f4w8e" path="res://music/LoS Main Theme.ogg" id="3_pi0ky"]
-[ext_resource type="AudioStream" uid="uid://dxoo1kndeykao" path="res://music/LoS Boss Badger Chase (Revised).ogg" id="5_o3p52"]
-[ext_resource type="AudioStream" uid="uid://clvbw7hu0nt72" path="res://music/LoS Approaching Boss Badger (Revised).ogg" id="5_pi0ky"]
-[ext_resource type="AudioStream" uid="uid://de11cmwc41wo1" path="res://music/LoS Boss Badger Cutscene into Chase.ogg" id="5_v2isx"]
-[ext_resource type="AudioStream" uid="uid://o4vbchh66jj6" path="res://music/LoS Celebratory Fanfare.ogg" id="8_5yedo"]
+[ext_resource type="AudioStream" uid="uid://dmj0wvhmby8o" path="res://music/LoS Main Theme Leveled.ogg" id="3_80lub"]
+[ext_resource type="AudioStream" uid="uid://bfsx3g0k8iudf" path="res://music/LoS Dungeon Sneak - Sneak Base Level Without Melody Leveled.ogg" id="6_b04sh"]
+[ext_resource type="AudioStream" uid="uid://dh72mdy1fb53i" path="res://music/LoS Dungeon Sneak - Sneak Base Level Melody Leveled.ogg" id="7_s5vwi"]
+[ext_resource type="AudioStream" uid="uid://swtvcvl6qwqw" path="res://music/LoS Approaching Boss Badger (Revised) Leveled.ogg" id="9_6wb4t"]
 [ext_resource type="AudioStream" uid="uid://blyl5ynovldei" path="res://scenes/AudioManager/Audio/ambi_water_close.ogg" id="9_40gls"]
 [ext_resource type="AudioStream" uid="uid://cviy4uc0olaak" path="res://scenes/AudioManager/Audio/ambi_water_room.ogg" id="10_p8k1w"]
+[ext_resource type="AudioStream" uid="uid://doj4wwnulq5yn" path="res://music/LoS Boss Badger Cutscene into Chase Leveled.ogg" id="10_qyquc"]
+[ext_resource type="AudioStream" uid="uid://bkrjhvlf3vujg" path="res://music/LoS Boss Badger Chase (Revised) Leveled.ogg" id="11_5ykvh"]
 [ext_resource type="AudioStream" uid="uid://5p1v3f86nblv" path="res://scenes/AudioManager/Audio/ambi_water_drip.ogg" id="11_bg2gi"]
+[ext_resource type="AudioStream" uid="uid://1pv3ehwo2b7f" path="res://music/LoS Celebratory Fanfare Leveled.ogg" id="12_amvpa"]
 [ext_resource type="AudioStream" uid="uid://ijuti3lkv4ix" path="res://scenes/AudioManager/Audio/ambi_silence.ogg" id="12_p8k1w"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cw6me"]
+playback_mode = 1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_s5vwi")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6wb4t"]
+playback_mode = 1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("6_b04sh")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_qyquc"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_cw6me")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_6wb4t")
+stream_1/volume = 0.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_v2isx"]
 clip_count = 6
 clip_0/name = &"Title"
-clip_0/stream = ExtResource("3_pi0ky")
+clip_0/stream = ExtResource("3_80lub")
 clip_0/auto_advance = 1
 clip_0/next_clip = 1
 clip_1/name = &"Game"
-clip_1/stream = ExtResource("3_e10ti")
+clip_1/stream = SubResource("AudioStreamSynchronized_qyquc")
 clip_1/auto_advance = 0
 clip_2/name = &"FinalRoom"
-clip_2/stream = ExtResource("5_pi0ky")
+clip_2/stream = ExtResource("9_6wb4t")
 clip_2/auto_advance = 0
 clip_3/name = &"FinalChase"
-clip_3/stream = ExtResource("5_v2isx")
+clip_3/stream = ExtResource("10_qyquc")
 clip_3/auto_advance = 1
 clip_3/next_clip = 4
 clip_4/name = &"FinalChaseLoop"
-clip_4/stream = ExtResource("5_o3p52")
+clip_4/stream = ExtResource("11_5ykvh")
 clip_4/auto_advance = 0
 clip_5/name = &"Finale"
-clip_5/stream = ExtResource("8_5yedo")
+clip_5/stream = ExtResource("12_amvpa")
 clip_5/auto_advance = 0
 initial_clip = 2
 _transitions = {
@@ -86,6 +106,7 @@ texture = ExtResource("2_1gfwg")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = SubResource("AudioStreamInteractive_v2isx")
+volume_db = 3.0
 autoplay = true
 bus = &"Music"
 
