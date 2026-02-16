@@ -1,18 +1,31 @@
-[gd_scene load_steps=29 format=3 uid="uid://vaibohkpftii"]
+[gd_scene load_steps=35 format=3 uid="uid://vaibohkpftii"]
 
 [ext_resource type="Script" uid="uid://dbnk78nmnqcue" path="res://scenes/Hopper/hopper.gd" id="1_qld5t"]
 [ext_resource type="Texture2D" uid="uid://hcla4vwsqm6x" path="res://temp assets/slime_skull.png" id="2_1crdu"]
 [ext_resource type="Script" uid="uid://0c6lrocedisf" path="res://scenes/AudioManager/audio_sfx.gd" id="2_vntx1"]
 [ext_resource type="AudioStream" uid="uid://bys0g2dhekyyy" path="res://scenes/Hopper/Audio/Splash1.ogg" id="3_ebdqv"]
+[ext_resource type="AudioStream" uid="uid://dlltoviopvln8" path="res://scenes/Hopper/Audio/slime_wet_01.ogg" id="3_fckge"]
 [ext_resource type="Script" uid="uid://jrn1snxemt88" path="res://code/HurtBox.gd" id="3_gw15p"]
+[ext_resource type="AudioStream" uid="uid://c0x8pqx5e8x5q" path="res://scenes/Hopper/Audio/slime_wet_02.ogg" id="4_gicnr"]
 [ext_resource type="AudioStream" uid="uid://bv30xgwbgr3x6" path="res://scenes/Hopper/Audio/Splash2.ogg" id="4_kajec"]
 [ext_resource type="Script" uid="uid://dtiynebo6fexe" path="res://code/HitBox.gd" id="4_lf76h"]
+[ext_resource type="AudioStream" uid="uid://cijbkrhu7ks77" path="res://scenes/Hopper/Audio/slime_wet_03.ogg" id="5_8mf7f"]
 [ext_resource type="Texture2D" uid="uid://dh07adr4abtjg" path="res://scenes/Hopper/Art/hoppershadow.png" id="5_rgrea"]
 [ext_resource type="AudioStream" uid="uid://dehj5c2feq22u" path="res://scenes/Hopper/Audio/Splash4.ogg" id="6_hyt3b"]
+[ext_resource type="AudioStream" uid="uid://cy00yoleid1y5" path="res://scenes/Hopper/Audio/slime_wet_04.ogg" id="6_wim8l"]
 [ext_resource type="Script" uid="uid://bvqjs8a0h3dyi" path="res://code/GrabBox.gd" id="6_ye5xp"]
 [ext_resource type="PackedScene" uid="uid://c40ufdur12sa0" path="res://scenes/Effects/death_particles.tscn" id="7_1crdu"]
 [ext_resource type="AudioStream" uid="uid://hnaqq15nm3jh" path="res://scenes/Hopper/Audio/Splash5.ogg" id="7_fckge"]
 [ext_resource type="AudioStream" uid="uid://b8aw6r8vl8y68" path="res://scenes/Hopper/Audio/Splash3.ogg" id="8_gw15p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5e8hw"]
+random_pitch = 1.3
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("3_fckge")
+stream_1/stream = ExtResource("4_gicnr")
+stream_2/stream = ExtResource("5_8mf7f")
+stream_3/stream = ExtResource("6_wim8l")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gicnr"]
 random_pitch = 1.3
@@ -24,10 +37,17 @@ stream_2/stream = ExtResource("8_gw15p")
 stream_3/stream = ExtResource("6_hyt3b")
 stream_4/stream = ExtResource("7_fckge")
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_584en"]
+stream_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_5e8hw")
+stream_0/volume = -3.0
+stream_1/stream = SubResource("AudioStreamRandomizer_gicnr")
+stream_1/volume = 0.0
+
 [sub_resource type="Resource" id="Resource_8mf7f"]
 script = ExtResource("2_vntx1")
 volume_dB = -3.0
-stream = SubResource("AudioStreamRandomizer_gicnr")
+stream = SubResource("AudioStreamSynchronized_584en")
 metadata/_custom_type_script = "uid://0c6lrocedisf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uatfv"]

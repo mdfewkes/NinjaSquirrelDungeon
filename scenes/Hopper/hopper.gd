@@ -74,7 +74,9 @@ func _on_hurt(hit_box: HitBox) -> void:
 	state = States.STUN
 	if current_hp > 0:
 		animation_player.play("Stun")
+		AudioManager.PlaySFX(sfx_on_move, self)
 
 func _on_death() -> void:
 	super._on_death()
 	state = States.DYING
+	AudioManager.PlaySFX_at_position(sfx_on_move, global_position)
