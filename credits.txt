@@ -19,9 +19,6 @@ Player animations (idle, 4-way run and attack), sewer wall tileset, boss badget 
 [b]Dan Dela Rosa[/b]
 Cutscene support with animation and text scroll including action commands, reset on death, cutscene map triggers, instructions screen, lore screen improvements, initial player death animation
 
-[b]Durondal[/b]
-Dynamic light shadows, pause menu with key 
-
 [b]Christer Kaitila[/b]
 Ghost implementation (raccoon and dartmonk), ninja star, decorations (crate, barrell, rope, cracks), additional ninja squirrel sounds, tail segment sprites, player shadow, footprints effect, gamepad fixes toggle, bug fixes (bat health, player damage)
 
@@ -31,14 +28,17 @@ Initial lore (part of core story, tea pot, animal family clan names, basis for d
 [b]Dávid Tóth[/b]
 Procedural player tail, initial player art draft, Ratrick the Plush decoration
 
+[b]Mel Fitzgerald[/b]
+Wall banners with 3 variations, bed roll, 6 decorative clutter piles, broken ladder, green praying statue, fancy water bowl, 3 door types (fancy, pointy, wood), 3 door lock sprites
+
 [b]William Goddard[/b]
-Original patrolling bat behavior and initial sprite
+Patrolling behavior and initial bat sprite
+
+[b]Durondal[/b]
+Dynamic light shadows, pause menu with key 
 
 [b]JohnasaurusArt[/b]
 Sounds (switch trap, goblin smokey defeat, flame attack, flight, splash with variations)
-
-[b]Mel Fitzgerald[/b]
-Wall banners with variations, 3 door types (fancy, pointy, wood), 3 door lock sprites
 
 [b]Owen Peery[/b] 
 Reddish orange tail whip particles
